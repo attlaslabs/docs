@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "aspen",
   "name": "Attlas Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#155dfc",
+    "light": "#6492f6",
+    "dark": "#155dfc"
   },
   "favicon": {
     "light": "/images/app-dark.png",
@@ -26,15 +26,30 @@
         {
           "anchor": "Documentation",
           "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "icon": "book"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://attlas.so/blog",
           "icon": "newspaper"
         }
       ]
-    }
+    },
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart",
+          "add_sources",
+          "profile",
+          "triggers",
+          "customizations",
+          "Sharing_options",
+          "invite_members"
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/images/app-dark.png",
@@ -74,5 +89,19 @@
   },
   "fonts": {
     "family": "Geist"
+  },
+  "interaction": {
+    "drilldown": false
+  },
+  "errors": {
+    "404": {
+      "redirect": true
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#fafafa",
+      "dark": "#141110"
+    }
   }
 }
