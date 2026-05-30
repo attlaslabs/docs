@@ -80,7 +80,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "navigation": {
     "pages": [
-      "introduction",
+      "",
       {
         "group": "Learn",
         "pages": [
