@@ -99,7 +99,6 @@
     "groups": [
       {
         "group": "Get started",
-        "expanded": true,
         "root": "get-started",
         "pages": [
           "start/add-source",
@@ -113,7 +112,6 @@
       },
       {
         "group": "Basic features",
-        "expanded": true,
         "root": "basic-features-overview",
         "pages": [
           "basic/conversations",
@@ -123,7 +121,6 @@
       },
       {
         "group": "Pro features",
-        "expanded": true,
         "root": "pro",
         "pages": [
           "pro/auto-sync",
@@ -134,7 +131,6 @@
       },
       {
         "group": "Good practices",
-        "expanded": true,
         "root": "good-practices",
         "pages": [
           "practices/coverage-rate",
@@ -144,7 +140,6 @@
       },
       {
         "group": "Playbooks",
-        "expanded": true,
         "root": "playbooks",
         "pages": [
           "playbooks/companies",
@@ -153,7 +148,6 @@
       },
       {
         "group": "Ressources",
-        "expanded": true,
         "root": "ressources",
         "pages": [
           {
