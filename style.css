@@ -14,3 +14,9 @@
     box-shadow: 0 0 0 1px rgb(var(--primary)/100%),0 3px 0 rgb(var(--primary)/50%);
     margin: 0 2px;
 }
+
+@media (min-width: 1024px) {
+    #page-context-menu-button {
+        margin-left: auto;
+    }
+}
