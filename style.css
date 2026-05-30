@@ -1,3 +1,16 @@
 .sidebar-group {
     margin-top: 1rem;
 }
+
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    color: rgb(var(--primary));
+}
+
+:not(pre)>code {
+    background-color: rgb(var(--primary) / .1);
+}
+
+.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    box-shadow: 0 0 0 1px rgb(var(--primary)/100%),0 3px 0 rgb(var(--primary)/50%);
+    margin: 0 2px;
+}
