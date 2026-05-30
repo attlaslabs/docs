@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .sidebar-group {
     margin-top: 1rem;
 }
@@ -8,11 +12,17 @@
 
 :not(pre)>code {
     background-color: rgb(var(--primary) / .1);
+    padding: .125rem .4375rem;
+    margin: 0 .1875rem;
+}
+
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    font-weight: 600;
 }
 
 .prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)) {
     box-shadow: 0 0 0 1px rgb(var(--primary)/100%),0 3px 0 rgb(var(--primary)/50%);
-    margin: 0 3px;
+    margin: 0 .1875rem;
 }
 
 @media (min-width: 1024px) {
