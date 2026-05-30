@@ -79,8 +79,7 @@
   },
   "$schema": "https://mintlify.com/docs.json",
   "navigation": {
-    "pages": [
-      "",
+    "groups": [
       {
         "group": "Learn",
         "pages": [
