@@ -43,20 +43,25 @@
         }
       ]
     },
-    "groups": [
+    "dropdowns": [
       {
-        "group": "Getting Started",
+        "dropdown": "Untitled Dropdown",
+        "tabs": [
+          {
+            "tab": "Test"
+          }
+        ]
+      },
+      {
+        "dropdown": "Getting started",
         "pages": [
-          "index",
-          "quickstart",
-          "add_sources",
+          "sources",
           "profile",
           "triggers",
-          "customizations",
-          "Sharing_options",
-          "invite_members"
-        ],
-        "expanded": true
+          "customization",
+          "shares",
+          "invites"
+        ]
       }
     ]
   },
