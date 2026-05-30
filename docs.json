@@ -17,8 +17,8 @@
   },
   "background": {
     "color": {
-      "light": "#fafafa",
-      "dark": "#141110"
+      "light": "#ffffff",
+      "dark": "#110e0e"
     }
   },
   "navbar": {
