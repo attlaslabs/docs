@@ -96,7 +96,7 @@
         }
       ]
     },
-    "groups": [
+    "pages": [
       {
         "group": "Get started",
         "root": "get-started",
@@ -162,7 +162,8 @@
           "faq",
           "media-kit"
         ]
-      }
+      },
+      "introduction"
     ]
   }
 }
