@@ -43,24 +43,19 @@
         }
       ]
     },
-    "dropdowns": [
+    "groups": [
       {
-        "dropdown": "Untitled Dropdown",
-        "tabs": [
-          {
-            "tab": "Test"
-          }
-        ]
-      },
-      {
-        "dropdown": "Getting started",
+        "group": "Getting started",
+        "icon": "apple",
+        "expanded": true,
         "pages": [
-          "sources",
-          "profile",
-          "triggers",
-          "customization",
-          "shares",
-          "invites"
+          {
+            "group": "group",
+            "icon": "app-window-mac",
+            "pages": [
+              "page"
+            ]
+          }
         ]
       }
     ]
