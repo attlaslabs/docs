@@ -26,12 +26,20 @@
         {
           "anchor": "Documentation",
           "href": "https://mintlify.com/docs",
-          "icon": "book"
+          "icon": "book",
+          "color": {
+            "light": "#155dfc",
+            "dark": "#155dfc"
+          }
         },
         {
           "anchor": "Blog",
           "href": "https://attlas.so/blog",
-          "icon": "newspaper"
+          "icon": "newspaper",
+          "color": {
+            "light": "#155dfc",
+            "dark": "#155dfc"
+          }
         }
       ]
     },
@@ -47,7 +55,8 @@
           "customizations",
           "Sharing_options",
           "invite_members"
-        ]
+        ],
+        "expanded": true
       }
     ]
   },
