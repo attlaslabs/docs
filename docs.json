@@ -14,6 +14,21 @@
   "navigation": {
     "pages": [
       {
+        "group": "Getting started",
+        "icon": "apple",
+        "expanded": true,
+        "pages": [
+          {
+            "group": "group",
+            "icon": "app-window-mac",
+            "pages": [
+              "page"
+            ]
+          }
+        ]
+      },
+      "abdoqknd",
+      {
         "group": "Getting Started",
         "pages": [
           "index",
@@ -42,23 +57,7 @@
           }
         }
       ]
-    },
-    "groups": [
-      {
-        "group": "Getting started",
-        "icon": "apple",
-        "expanded": true,
-        "pages": [
-          {
-            "group": "group",
-            "icon": "app-window-mac",
-            "pages": [
-              "page"
-            ]
-          }
-        ]
-      }
-    ]
+    }
   },
   "logo": {
     "light": "/images/app-dark.png",
