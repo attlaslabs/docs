@@ -77,6 +77,12 @@
   "seo": {
     "indexing": "navigable"
   },
+  "metadata": {
+    "timestamp": true
+  },
+  "search": {
+    "prompt": "Search something..."
+  },
   "$schema": "https://mintlify.com/docs.json",
   "navigation": {
     "groups": [
@@ -91,9 +97,8 @@
               "start/sources",
               "start/profile",
               "start/triggers",
-              "start/customizations",
-              "start/sharing-options",
-              "start/invites"
+              "start/customization",
+              "start/sharing"
             ]
           },
           {
@@ -111,14 +116,15 @@
             "icon": "gift",
             "root": "pro",
             "pages": [
-              "pro/auto-sync",
-              "pro/generate-questions",
-              "pro/private-chats",
-              "pro/invites"
+              "pro/workspaces",
+              "pro/corrections",
+              "pro/generation",
+              "pro/autosync",
+              "pro/seo"
             ]
           },
           {
-            "group": "Good practices",
+            "group": "Best practices",
             "icon": "heart-handshake",
             "root": "practices",
             "pages": [
@@ -152,17 +158,11 @@
                 ]
               },
               "faq",
-              "media-kit"
+              "mediakit"
             ]
           }
         ]
       }
     ]
-  },
-  "metadata": {
-    "timestamp": true
-  },
-  "search": {
-    "prompt": "Search something..."
   }
 }
