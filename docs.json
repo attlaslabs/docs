@@ -12,24 +12,6 @@
     "dark": "/images/app-dark.png"
   },
   "navigation": {
-    "pages": [
-      {
-        "group": "Getting started",
-        "icon": "apple",
-        "expanded": true,
-        "pages": [
-          {
-            "group": "group",
-            "icon": "app-window-mac",
-            "pages": [
-              "page"
-            ]
-          }
-        ],
-        "root": "abdoqknd"
-      },
-      "abdoqknd"
-    ],
     "global": {
       "anchors": [
         {
@@ -51,7 +33,24 @@
           }
         }
       ]
-    }
+    },
+    "groups": [
+      {
+        "group": "Getting started",
+        "icon": "apple",
+        "expanded": true,
+        "root": "start-overview",
+        "pages": [
+          {
+            "group": "group",
+            "icon": "app-window-mac",
+            "pages": [
+              "page"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/images/app-dark.png",
