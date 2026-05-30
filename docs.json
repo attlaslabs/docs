@@ -88,12 +88,12 @@
             "icon": "play",
             "root": "start",
             "pages": [
-              "start/add-sources",
-              "start/set-profile",
+              "start/sources",
+              "start/profile",
               "start/triggers",
               "start/customizations",
               "start/sharing-options",
-              "start/invite-members"
+              "start/invites"
             ]
           },
           {
@@ -113,8 +113,8 @@
             "pages": [
               "pro/auto-sync",
               "pro/generate-questions",
-              "pro/chats-restriction",
-              "pro/invite-members"
+              "pro/private-chats",
+              "pro/invites"
             ]
           },
           {
@@ -124,7 +124,7 @@
             "pages": [
               "practices/coverage-rate",
               "practices/corrections",
-              "practices/knowledge-management"
+              "practices/knowledge"
             ]
           },
           {
@@ -146,9 +146,9 @@
                 "expanded": true,
                 "root": "legal",
                 "pages": [
-                  "legal/privacy-cookies",
-                  "legal/terms-conditions",
-                  "legal/data-processing"
+                  "legal/privacy",
+                  "legal/terms",
+                  "legal/data"
                 ]
               },
               "faq",
