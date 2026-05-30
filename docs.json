@@ -40,14 +40,17 @@
         "expanded": true,
         "root": "get-started-overview",
         "pages": [
-          "page"
+          "get-started",
+          "get-started/add-source"
         ]
       },
       {
         "group": "Basic features",
         "expanded": true,
         "root": "basic-features-overview",
-        "pages": []
+        "pages": [
+          "basic-features"
+        ]
       },
       {
         "group": "Pro features",
