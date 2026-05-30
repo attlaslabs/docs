@@ -159,5 +159,11 @@
         ]
       }
     ]
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "search": {
+    "prompt": "Search something..."
   }
 }
