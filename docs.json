@@ -36,45 +36,77 @@
     },
     "groups": [
       {
-        "group": "Getting started",
+        "group": "Get started",
         "expanded": true,
-        "root": "get-started-overview",
+        "root": "start",
         "pages": [
-          "get-started",
-          "get-started/add-source"
+          "start/add-source",
+          "start/add-sources",
+          "start/set-profile",
+          "start/triggers",
+          "start/customizations",
+          "start/sharing-options",
+          "start/invite-members"
         ]
       },
       {
         "group": "Basic features",
         "expanded": true,
-        "root": "basic-features-overview",
+        "root": "basic",
         "pages": [
-          "basic-features"
+          "basic/conversations",
+          "basic/messages",
+          "basic/analytics"
         ]
       },
       {
         "group": "Pro features",
         "expanded": true,
-        "root": "pro-features-overview",
-        "pages": []
+        "root": "features",
+        "pages": [
+          "pro/auto-sync",
+          "pro/generate-questions",
+          "pro/chats-restriction",
+          "pro/invite-members"
+        ]
       },
       {
         "group": "Good practices",
         "expanded": true,
-        "root": "good-practices-overview",
-        "pages": []
+        "root": "practices",
+        "pages": [
+          "practices/coverage-rate",
+          "practices/corrections",
+          "practices/knowledge-management"
+        ]
       },
       {
         "group": "Playbooks",
         "expanded": true,
-        "root": "playbooks-overview",
-        "pages": []
+        "root": "playbooks",
+        "pages": [
+          "playbooks/companies",
+          "playbooks/creators"
+        ]
       },
       {
         "group": "Ressources",
         "expanded": true,
-        "root": "ressources-overview",
-        "pages": []
+        "root": "ressources",
+        "pages": [
+          {
+            "group": "Terms & Privacy",
+            "expanded": true,
+            "root": "legal",
+            "pages": [
+              "legal/privacy-cookies",
+              "legal/terms-conditions",
+              "legal/data-processing"
+            ]
+          },
+          "faq",
+          "media-kit"
+        ]
       }
     ]
   },
