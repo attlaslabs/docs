@@ -25,16 +25,10 @@
               "page"
             ]
           }
-        ]
+        ],
+        "root": "abdoqknd"
       },
-      "abdoqknd",
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
+      "abdoqknd"
     ],
     "global": {
       "anchors": [
@@ -74,7 +68,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "href": "https://attlas.so/dashboard"
     }
   },
   "contextual": {
