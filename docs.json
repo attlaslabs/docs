@@ -97,9 +97,10 @@
       ]
     },
     "pages": [
+      "introduction",
       {
         "group": "Get started",
-        "root": "get-started",
+        "root": "start",
         "pages": [
           "start/add-source",
           "start/add-sources",
@@ -112,7 +113,7 @@
       },
       {
         "group": "Basic features",
-        "root": "basic-features-overview",
+        "root": "basic",
         "pages": [
           "basic/conversations",
           "basic/messages",
@@ -131,7 +132,7 @@
       },
       {
         "group": "Good practices",
-        "root": "good-practices",
+        "root": "practices",
         "pages": [
           "practices/coverage-rate",
           "practices/corrections",
@@ -157,13 +158,13 @@
               "legal/privacy-cookies",
               "legal/terms-conditions",
               "legal/data-processing"
-            ]
+            ],
+            "root": "legal"
           },
           "faq",
           "media-kit"
         ]
-      },
-      "introduction"
+      }
     ]
   }
 }
