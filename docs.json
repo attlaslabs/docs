@@ -1,5 +1,4 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "Attlas Documentation",
   "colors": {
@@ -7,30 +6,93 @@
     "light": "#6492f6",
     "dark": "#155dfc"
   },
+  "logo": {
+    "light": "/images/app-dark.png",
+    "dark": "/images/app-dark.png",
+    "href": "https://attlas.so/docs"
+  },
   "favicon": {
     "light": "/images/app-dark.png",
     "dark": "/images/app-dark.png"
   },
+  "background": {
+    "color": {
+      "light": "#fafafa",
+      "dark": "#141110"
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "href": "mailto:hello@attlas.so",
+        "label": "Support"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://attlas.so/dashboard"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/AttlasChat",
+      "linkedin": "https://linkedin.com/company/attlas-so",
+      "instagram": "https://www.instagram.com/attlas.so"
+    }
+  },
+  "fonts": {
+    "family": "Geist"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "errors": {
+    "404": {
+      "redirect": true
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ],
+    "display": "toc"
+  },
+  "interaction": {
+    "drilldown": false
+  },
+  "thumbnails": {
+    "fonts": {
+      "family": "Geist"
+    }
+  },
+  "seo": {
+    "indexing": "navigable"
+  },
+  "$schema": "https://mintlify.com/docs.json",
   "navigation": {
     "global": {
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
           "icon": "book",
           "color": {
             "light": "#155dfc",
             "dark": "#155dfc"
-          }
+          },
+          "href": "https://mintlify.com/docs"
         },
         {
           "anchor": "Blog",
-          "href": "https://attlas.so/blog",
           "icon": "newspaper",
           "color": {
             "light": "#155dfc",
             "dark": "#155dfc"
-          }
+          },
+          "href": "https://attlas.so/blog"
         }
       ]
     },
@@ -38,7 +100,7 @@
       {
         "group": "Get started",
         "expanded": true,
-        "root": "start",
+        "root": "get-started",
         "pages": [
           "start/add-source",
           "start/add-sources",
@@ -52,7 +114,7 @@
       {
         "group": "Basic features",
         "expanded": true,
-        "root": "basic",
+        "root": "basic-features-overview",
         "pages": [
           "basic/conversations",
           "basic/messages",
@@ -62,7 +124,7 @@
       {
         "group": "Pro features",
         "expanded": true,
-        "root": "features",
+        "root": "pro",
         "pages": [
           "pro/auto-sync",
           "pro/generate-questions",
@@ -73,7 +135,7 @@
       {
         "group": "Good practices",
         "expanded": true,
-        "root": "practices",
+        "root": "good-practices",
         "pages": [
           "practices/coverage-rate",
           "practices/corrections",
@@ -97,7 +159,6 @@
           {
             "group": "Terms & Privacy",
             "expanded": true,
-            "root": "legal",
             "pages": [
               "legal/privacy-cookies",
               "legal/terms-conditions",
@@ -109,58 +170,5 @@
         ]
       }
     ]
-  },
-  "logo": {
-    "light": "/images/app-dark.png",
-    "dark": "/images/app-dark.png",
-    "href": "https://attlas.so"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hello@attlas.so"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://attlas.so/dashboard"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude"
-    ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/AttlasChat",
-      "linkedin": "https://linkedin.com/company/attlas-so",
-      "instagram": "https://www.instagram.com/attlas.so"
-    }
-  },
-  "icons": {
-    "library": "lucide"
-  },
-  "fonts": {
-    "family": "Geist"
-  },
-  "interaction": {
-    "drilldown": false
-  },
-  "errors": {
-    "404": {
-      "redirect": true
-    }
-  },
-  "background": {
-    "color": {
-      "light": "#fafafa",
-      "dark": "#141110"
-    }
   }
 }
