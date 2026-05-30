@@ -37,18 +37,41 @@
     "groups": [
       {
         "group": "Getting started",
-        "icon": "apple",
         "expanded": true,
-        "root": "start-overview",
+        "root": "get-started-overview",
         "pages": [
-          {
-            "group": "group",
-            "icon": "app-window-mac",
-            "pages": [
-              "page"
-            ]
-          }
+          "page"
         ]
+      },
+      {
+        "group": "Basic features",
+        "expanded": true,
+        "root": "basic-features-overview",
+        "pages": []
+      },
+      {
+        "group": "Pro features",
+        "expanded": true,
+        "root": "pro-features-overview",
+        "pages": []
+      },
+      {
+        "group": "Good practices",
+        "expanded": true,
+        "root": "good-practices-overview",
+        "pages": []
+      },
+      {
+        "group": "Playbooks",
+        "expanded": true,
+        "root": "playbooks-overview",
+        "pages": []
+      },
+      {
+        "group": "Ressources",
+        "expanded": true,
+        "root": "ressources-overview",
+        "pages": []
       }
     ]
   },
