@@ -24,3 +24,7 @@
 [data-component-part="card-icon"] {
   align-self: self-start;
 }
+
+.card.block {
+    height: stretch;
+}
