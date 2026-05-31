@@ -1,6 +1,5 @@
-html {
+html, main, body {
   scroll-behavior: smooth;
-  interpolate-size: allow-keywords;
 }
 
 .sidebar-group {
