@@ -108,7 +108,8 @@
             "pages": [
               "basic/conversations",
               "basic/messages",
-              "basic/analytics"
+              "basic/analytics",
+              "basic/ai-settings"
             ]
           },
           {
