@@ -12,7 +12,7 @@
     "href": "https://attlas.so/docs"
   },
   "favicon": {
-    "light": "/images/app-dark.png",
+    "light": "/images/app-light.png",
     "dark": "/images/app-dark.png"
   },
   "background": {
