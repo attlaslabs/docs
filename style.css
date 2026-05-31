@@ -45,6 +45,7 @@ html, main, body {
 
 .mdx-content img {
     border-radius: 12px;
+    margin-bottom: 1.25em;
 }
 
 @media (min-width: 768px) {
