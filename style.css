@@ -43,6 +43,16 @@ html, main, body {
     background-color: rgba(255, 255, 255, 0.025);
 }
 
+.mdx-content img {
+    border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+    .mdx-content img {
+        border-radius: 20px;
+    }
+}
+
 .prose-gray {
     --tw-prose-body: #44403C;
     --tw-prose-headings: #0C0A09;
