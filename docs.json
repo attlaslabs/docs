@@ -117,7 +117,7 @@
             "root": "pro",
             "pages": [
               "pro/workspaces",
-              "pro/corrections",
+              "pro/reviewing",
               "pro/generation",
               "pro/autosync",
               "pro/opengraph"
