@@ -134,6 +134,16 @@
             ]
           },
           {
+            "group": "Integrations",
+            "root": "integrations",
+            "icon": "shapes",
+            "pages": [
+              "integrations/tally",
+              "integrations/google-calendar",
+              "integrations/notion"
+            ]
+          },
+          {
             "group": "Playbooks",
             "icon": "folder-bookmark",
             "root": "playbooks",
