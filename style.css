@@ -38,3 +38,42 @@ html, main, body {
 .card.block {
     height: stretch;
 }
+
+.prose-gray {
+    --tw-prose-body: #44403C;
+    --tw-prose-headings: #0C0A09;
+    --tw-prose-lead: #63594b;
+    --tw-prose-links: #0C0A09;
+    --tw-prose-bold: #0C0A09;
+    --tw-prose-counters: #80786b;
+    --tw-prose-bullets: #dbd8d1;
+    --tw-prose-hr: #ebe9e5;
+    --tw-prose-quotes: #0C0A09;
+    --tw-prose-quote-borders: #ebe9e5;
+    --tw-prose-captions: #807a6b;
+    --tw-prose-kbd: #0C0A09;
+    --tw-prose-kbd-shadows: 17 24 39;
+    --tw-prose-code: #0C0A09;
+    --tw-prose-pre-code: #ebe9e5;
+    --tw-prose-pre-bg: #372b1f;
+    --tw-prose-th-borders: #dbd7d1;
+    --tw-prose-td-borders: #e5e7eb;
+    --tw-prose-invert-body: #D6D3D1;
+    --tw-prose-invert-headings: #F5F5F4;
+    --tw-prose-invert-lead: #afa69c;
+    --tw-prose-invert-links: #f5f5f4;
+    --tw-prose-invert-bold: #F5F5F4;
+    --tw-prose-invert-counters: #afa89c;
+    --tw-prose-invert-bullets: #63594b;
+    --tw-prose-invert-hr: #514537;
+    --tw-prose-invert-quotes: #f6f5f3;
+    --tw-prose-invert-quote-borders: #514437;
+    --tw-prose-invert-captions: #afa89c;
+    --tw-prose-invert-kbd: #f5f5f4;
+    --tw-prose-invert-kbd-shadows: 255 255 255;
+    --tw-prose-invert-code: #F5F5F4;
+    --tw-prose-invert-pre-code: #dbdad1;
+    --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
+    --tw-prose-invert-th-borders: #635a4b;
+    --tw-prose-invert-td-borders: #514937;
+}
