@@ -106,10 +106,11 @@
             "icon": "box",
             "root": "basic",
             "pages": [
-              "basic/conversations",
-              "basic/messages",
-              "basic/analytics",
-              "basic/ai-settings"
+              "basic/link-hub",
+              "basic/ai-chat",
+              "basic/ai-settings",
+              "basic/conversation-history",
+              "basic/analytics"
             ]
           },
           {
@@ -122,13 +123,15 @@
               "pro/generation",
               "pro/autosync",
               "pro/opengraph"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Best practices",
             "icon": "trophy",
             "root": "practices",
             "pages": [
+              "practices/best-practices-for-using-attlas",
               "practices/coverage-rate",
               "practices/corrections",
               "practices/knowledge"
@@ -166,7 +169,8 @@
                   "legal/privacy",
                   "legal/terms",
                   "legal/data"
-                ]
+                ],
+                "hidden": true
               },
               "faq",
               "mediakit"
