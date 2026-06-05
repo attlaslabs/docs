@@ -123,8 +123,7 @@
               "pro/generation",
               "pro/autosync",
               "pro/opengraph"
-            ],
-            "hidden": true
+            ]
           },
           {
             "group": "Best practices",
@@ -134,7 +133,8 @@
               "practices/best-practices-for-using-attlas",
               "practices/coverage-rate",
               "practices/corrections",
-              "practices/knowledge"
+              "practices/knowledge",
+              "practices/untitled-page"
             ]
           },
           {
