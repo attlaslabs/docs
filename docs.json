@@ -97,7 +97,7 @@
               "start/sources",
               "start/profile",
               "start/triggers",
-              "start/customization",
+              "start/themes",
               "start/sharing"
             ]
           },
@@ -122,7 +122,8 @@
               "pro/reviewing",
               "pro/generation",
               "pro/autosync",
-              "pro/opengraph"
+              "pro/opengraph",
+              "pro/customization"
             ]
           },
           {
