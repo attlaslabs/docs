@@ -106,7 +106,7 @@
             "icon": "box",
             "root": "basic",
             "pages": [
-              "basic/link-hub",
+              "basic/link-aggregator",
               "basic/ai-chat",
               "basic/ai-settings",
               "basic/conversation-history",
