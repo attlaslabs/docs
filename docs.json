@@ -120,7 +120,6 @@
             "pages": [
               "pro/workspaces",
               "pro/reviewing",
-              "pro/generation",
               "pro/autosync",
               "pro/opengraph",
               "pro/customization"
