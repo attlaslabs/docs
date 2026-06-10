@@ -10,76 +10,55 @@ It acts as a health indicator, helping you understand whether your chat is succe
 
 ---
 
-## How does Attlas calculate this rate?
+## Automatic evaluation of responses
 
-Whenever your chat responds to a question, an external evaluator analyzes the response and assigns a percentage based on how complete and accurate it is.
+Every message sent by your chatbot automatically receives a score from 0 to 100, visible in the **Conversations** view. This score measures the quality of the response from the user's perspective: did they get what they were looking for?
 
-**Let's look at an example:**
+The overall **coverage rate** shown in your dashboard is the average of these individual evaluations.
 
-**Question:** _"What is the price of the marketing course?"_
+### How to read the scores
 
-**Answer:** _"Course pricing is available on the Pricing page of the website."_
+- 🟢 **Green (85 to 100)** — The response is direct, accurate, and helpful. The user obtained the information they were looking for.
+- 🟠 **Orange (50 to 84)** — The response is partially helpful. This may indicate that an off-topic question was correctly declined, or that a relevant response lacked precision on an important aspect.
+- 🔴 **Red (0 to 49)** — The user left without a satisfying answer. Either the chatbot did not have the necessary information, or the response did not match the question asked.
 
-In this case, the chat did not provide the exact answer (the course price), but it also did not leave the user without any guidance. Therefore, the response may be considered partially complete and receive a coverage score of 50%.
+### Understanding the reasoning
 
-The coverage rate is calculated as the average of these evaluations across all interactions.
-
----
-
-## Why is the coverage rate important?
-
-A high coverage rate indicates that your chat is:
-
-- Providing more complete answers;
-- Reducing user frustration;
-- Fulfilling its role as a reliable source of information.
-
-<Warning>
-  **A low coverage rate** indicates that the chat does not yet have all the information required to answer user questions effectively. This may leave common questions unanswered and suggests that the content in your knowledge base should be reviewed, expanded, or improved.
-</Warning>
+Click on any score to display a short explanation detailing why that grade was assigned and which aspect of the response influenced the decision. This is your starting point for identifying exactly what needs to be improved.
 
 ---
 
-## How can you use this metric to your advantage?
+## Improving your chatbot using scores
 
-The coverage rate is more than just a number — it is a practical tool for continuously improving your chat.
+Red scores are the most valuable to review. When analyzing them, there are two main scenarios to consider:
+
+1. **The question was within scope, but the information was missing** → This is content you need to add to your knowledge base. The more you enrich the knowledge base, the more your overall coverage rate will increase.
+2. **The question was off-topic** → The chatbot behaved correctly. No action is required.
+
+<Info>
+  **Focus on satisfaction, not politeness:** The score evaluates user satisfaction, not the politeness of the bot. A response like *"I don't have this information"*, even if politely and perfectly formulated, is never considered a good response if the question was legitimate.
+</Info>
+
+---
+
+## How to use this metric to your advantage
+
+The coverage rate is more than just a number — it is a practical tool for continuously improving your assistant.
 
 ### 1. Monitor the rate in analytics
-
-Track your coverage rate regularly to identify opportunities for improvement.
+Track your overall coverage rate regularly in the overview dashboard to identify trends.
 
 ### 2. Review evaluator feedback
-
 Check the explanations and comments provided by the evaluator alongside each score.
 
-![Covarege Attlas](/images/covarege-attlas.jpg)
+![Coverage Attlas](/images/covarege-attlas.jpg)
 
 ### 3. Add or improve content
+Update your knowledge base so your chat can respond more clearly, accurately, and contextually to previously failed questions.
 
-Update your knowledge base so your chat can respond more clearly, accurately, and contextually.
-
-### 4. Track your progress
-
-The closer your coverage rate is to 100%, the more complete and effective your chat tends to be.
-
-### 5. Correct low-rated responses
-
-Visit the **<kbd>Corrections</kbd>** section and review the questions and answers that received low coverage scores.
-
-Provide improved responses and additional context so future answers become more accurate and your coverage rate continues to increase.
+### 4. Correct low-rated responses
+Visit the **<kbd>Corrections</kbd>** section and review the questions and answers that received low coverage scores. Provide improved responses and additional context so future answers become more accurate.
 
 <Card title="Learn more about the Corrections feature" icon="pencil-line" href="/practices/corrections">
   Corrections is available exclusively on the **Attlas PRO** plan.
 </Card>
-
----
-
-## Final tip
-
-Think of the coverage rate as a compass. It helps guide you toward a chat that is more complete, more accurate, and better prepared to deliver an excellent user experience.
-
-Use the following benchmarks as a reference:
-
-- 🟢 **Above 80%** → Your chat is well-trained and effectively serves user needs.
-- 🟡 **Between 50% and 79%** → Knowledge gaps exist and additional information should be added.
-- 🔴 **Below 50%** → The user experience is being impacted and an urgent review of the knowledge base is recommended.
