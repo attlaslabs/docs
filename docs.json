@@ -131,9 +131,9 @@
             "root": "practices",
             "pages": [
               "practices/best-practices-for-using-attlas",
+              "practices/structuring-content",
               "practices/coverage-rate",
               "practices/corrections",
-              "practices/knowledge",
               "practices/archetypes"
             ]
           },
