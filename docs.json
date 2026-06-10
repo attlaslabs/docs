@@ -145,7 +145,8 @@
               "integrations/tally",
               "integrations/google-calendar",
               "integrations/notion"
-            ]
+            ],
+            "tag": "Soon"
           },
           {
             "group": "Playbooks",
