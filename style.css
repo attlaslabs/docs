@@ -59,7 +59,7 @@ html, main, body {
     }
 }
 
-.card.block .mdx-content img {
+.card.block > img {
     margin-bottom: 0em;
 }
 
