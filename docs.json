@@ -142,11 +142,10 @@
             "root": "integrations",
             "icon": "shapes",
             "pages": [
-              "integrations/tally",
               "integrations/google-calendar",
+              "integrations/tally",
               "integrations/notion"
-            ],
-            "tag": "Soon"
+            ]
           },
           {
             "group": "Playbooks",
@@ -183,6 +182,28 @@
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "color": {
+            "light": "#155dfc",
+            "dark": "#155dfc"
+          },
+          "href": "https://attlas.so"
+        },
+        {
+          "anchor": "Blog",
+          "icon": "newspaper",
+          "color": {
+            "light": "#155dfc",
+            "dark": "#155dfc"
+          },
+          "href": "https://attlas.so/blog"
+        }
+      ]
+    }
   }
 }
