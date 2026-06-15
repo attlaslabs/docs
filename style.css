@@ -59,6 +59,10 @@ html, main, body {
     }
 }
 
+.card.block .mdx-content img {
+    margin-bottom: 0em;
+}
+
 .prose-gray {
     --tw-prose-body: #44403C;
     --tw-prose-headings: #0C0A09;
