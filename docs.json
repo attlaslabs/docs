@@ -182,10 +182,6 @@
       "destination": "/integrations/notion"
     },
     {
-      "source": "/fr/integrations/postgresql",
-      "destination": "/integrations/postgresql"
-    },
-    {
       "source": "/fr/playbooks/companies",
       "destination": "/playbooks/companies"
     },
@@ -320,10 +316,6 @@
     {
       "source": "/pt/integrations/notion",
       "destination": "/integrations/notion"
-    },
-    {
-      "source": "/pt/integrations/postgresql",
-      "destination": "/integrations/postgresql"
     },
     {
       "source": "/pt/playbooks/companies",
@@ -465,8 +457,7 @@
                   "integrations/google-calendar",
                   "integrations/sql-database",
                   "integrations/tally",
-                  "integrations/notion",
-                  "integrations/postgresql"
+                  "integrations/notion"
                 ]
               },
               {
