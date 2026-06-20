@@ -370,6 +370,41 @@
     "languages": [
       {
         "language": "en",
+        "navbar": {
+          "links": [
+            { "href": "mailto:hello@attlas.so", "label": "Contact Us" },
+            { "href": "https://attlas.so/login", "label": "Login" }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Dashboard",
+            "href": "https://attlas.so/dashboard"
+          }
+        },
+        "footer": {
+          "socials": {
+            "x": "https://x.com/AttlasChat",
+            "linkedin": "https://linkedin.com/company/attlas-so",
+            "instagram": "https://www.instagram.com/attlas.so"
+          },
+          "links": [
+            {
+              "header": "Resources",
+              "items": [
+                { "label": "Documentation", "href": "/start/sources" },
+                { "label": "Blog", "href": "https://attlas.so/blog" },
+                { "label": "FAQ", "href": "/faq" }
+              ]
+            },
+            {
+              "header": "Legal",
+              "items": [
+                { "label": "Privacy", "href": "/legal/privacy" },
+                { "label": "Terms", "href": "/legal/terms" }
+              ]
+            }
+          ]
+        },
         "groups": [
           {
             "group": "Learn",
@@ -473,6 +508,41 @@
       },
       {
         "language": "fr",
+        "navbar": {
+          "links": [
+            { "href": "mailto:hello@attlas.so", "label": "Nous contacter" },
+            { "href": "https://attlas.so/login", "label": "Connexion" }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Tableau de bord",
+            "href": "https://attlas.so/dashboard"
+          }
+        },
+        "footer": {
+          "socials": {
+            "x": "https://x.com/AttlasChat",
+            "linkedin": "https://linkedin.com/company/attlas-so",
+            "instagram": "https://www.instagram.com/attlas.so"
+          },
+          "links": [
+            {
+              "header": "Ressources",
+              "items": [
+                { "label": "Documentation", "href": "/fr/start/sharing" },
+                { "label": "Blog", "href": "https://attlas.so/blog" },
+                { "label": "FAQ", "href": "/faq" }
+              ]
+            },
+            {
+              "header": "Légal",
+              "items": [
+                { "label": "Confidentialité", "href": "/legal/privacy" },
+                { "label": "Conditions d'utilisation", "href": "/legal/terms" }
+              ]
+            }
+          ]
+        },
         "groups": [
           {
             "group": "Apprendre",
@@ -491,6 +561,41 @@
       },
       {
         "language": "pt",
+        "navbar": {
+          "links": [
+            { "href": "mailto:hello@attlas.so", "label": "Contato" },
+            { "href": "https://attlas.so/login", "label": "Entrar" }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Painel",
+            "href": "https://attlas.so/dashboard"
+          }
+        },
+        "footer": {
+          "socials": {
+            "x": "https://x.com/AttlasChat",
+            "linkedin": "https://linkedin.com/company/attlas-so",
+            "instagram": "https://www.instagram.com/attlas.so"
+          },
+          "links": [
+            {
+              "header": "Recursos",
+              "items": [
+                { "label": "Documentação", "href": "/pt/start/sharing" },
+                { "label": "Blog", "href": "https://attlas.so/blog" },
+                { "label": "FAQ", "href": "/faq" }
+              ]
+            },
+            {
+              "header": "Legal",
+              "items": [
+                { "label": "Privacidade", "href": "/legal/privacy" },
+                { "label": "Termos de uso", "href": "/legal/terms" }
+              ]
+            }
+          ]
+        },
         "groups": [
           {
             "group": "Aprender",
