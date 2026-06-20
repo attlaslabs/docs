@@ -86,144 +86,12 @@
   "$schema": "https://mintlify.com/docs.json",
   "redirects": [
     {
-      "source": "/fr/index",
-      "destination": "/index"
+      "source": "/fr/docs",
+      "destination": "/fr"
     },
     {
-      "source": "/fr/start/sources",
-      "destination": "/start/sources"
-    },
-    {
-      "source": "/fr/start/profile",
-      "destination": "/start/profile"
-    },
-    {
-      "source": "/fr/start/triggers",
-      "destination": "/start/triggers"
-    },
-    {
-      "source": "/fr/start/themes",
-      "destination": "/start/themes"
-    },
-    {
-      "source": "/fr/basic/link-aggregator",
-      "destination": "/basic/link-aggregator"
-    },
-    {
-      "source": "/fr/basic/ai-chat",
-      "destination": "/basic/ai-chat"
-    },
-    {
-      "source": "/fr/basic/ai-settings",
-      "destination": "/basic/ai-settings"
-    },
-    {
-      "source": "/fr/basic/conversation-history",
-      "destination": "/basic/conversation-history"
-    },
-    {
-      "source": "/fr/basic/analytics",
-      "destination": "/basic/analytics"
-    },
-    {
-      "source": "/fr/pro/workspaces",
-      "destination": "/pro/workspaces"
-    },
-    {
-      "source": "/fr/pro/reviewing",
-      "destination": "/pro/reviewing"
-    },
-    {
-      "source": "/fr/pro/autosync",
-      "destination": "/pro/autosync"
-    },
-    {
-      "source": "/fr/pro/opengraph",
-      "destination": "/pro/opengraph"
-    },
-    {
-      "source": "/fr/pro/customization",
-      "destination": "/pro/customization"
-    },
-    {
-      "source": "/fr/practices/best-practices-for-using-attlas",
-      "destination": "/practices/best-practices-for-using-attlas"
-    },
-    {
-      "source": "/fr/practices/structuring-content",
-      "destination": "/practices/structuring-content"
-    },
-    {
-      "source": "/fr/practices/coverage-rate",
-      "destination": "/practices/coverage-rate"
-    },
-    {
-      "source": "/fr/practices/corrections",
-      "destination": "/practices/corrections"
-    },
-    {
-      "source": "/fr/practices/archetypes",
-      "destination": "/practices/archetypes"
-    },
-    {
-      "source": "/fr/integrations/google-calendar",
-      "destination": "/integrations/google-calendar"
-    },
-    {
-      "source": "/fr/integrations/sql-database",
-      "destination": "/integrations/sql-database"
-    },
-    {
-      "source": "/fr/integrations/tally",
-      "destination": "/integrations/tally"
-    },
-    {
-      "source": "/fr/integrations/notion",
-      "destination": "/integrations/notion"
-    },
-    {
-      "source": "/fr/playbooks/companies",
-      "destination": "/playbooks/companies"
-    },
-    {
-      "source": "/fr/playbooks/smarter-link-in-bio",
-      "destination": "/playbooks/smarter-link-in-bio"
-    },
-    {
-      "source": "/fr/playbooks/attlas-performance",
-      "destination": "/playbooks/attlas-performance"
-    },
-    {
-      "source": "/fr/playbooks/creative-uses",
-      "destination": "/playbooks/creative-uses"
-    },
-    {
-      "source": "/fr/playbooks/how-to-start",
-      "destination": "/playbooks/how-to-start"
-    },
-    {
-      "source": "/fr/legal/privacy",
-      "destination": "/legal/privacy"
-    },
-    {
-      "source": "/fr/legal/terms",
-      "destination": "/legal/terms"
-    },
-    {
-      "source": "/fr/legal/data",
-      "destination": "/legal/data"
-    },
-    {
-      "source": "/fr/faq",
-      "destination": "/faq"
-    },
-    {
-      "source": "/fr/mediakit",
-      "destination": "/mediakit"
-    },
-    {
-      "source": "/pt/index",
-      "destination": "/index"
+      "source": "/pt/docs",
+      "destination": "/pt"
     },
     {
       "source": "/pt/start/sources",
@@ -356,6 +224,138 @@
     {
       "source": "/pt/mediakit",
       "destination": "/mediakit"
+    },
+    {
+      "source": "/fr/start/sources",
+      "destination": "/start/sources"
+    },
+    {
+      "source": "/fr/start/profile",
+      "destination": "/start/profile"
+    },
+    {
+      "source": "/fr/start/triggers",
+      "destination": "/start/triggers"
+    },
+    {
+      "source": "/fr/start/themes",
+      "destination": "/start/themes"
+    },
+    {
+      "source": "/fr/basic/link-aggregator",
+      "destination": "/basic/link-aggregator"
+    },
+    {
+      "source": "/fr/basic/ai-chat",
+      "destination": "/basic/ai-chat"
+    },
+    {
+      "source": "/fr/basic/ai-settings",
+      "destination": "/basic/ai-settings"
+    },
+    {
+      "source": "/fr/basic/conversation-history",
+      "destination": "/basic/conversation-history"
+    },
+    {
+      "source": "/fr/basic/analytics",
+      "destination": "/basic/analytics"
+    },
+    {
+      "source": "/fr/pro/workspaces",
+      "destination": "/pro/workspaces"
+    },
+    {
+      "source": "/fr/pro/reviewing",
+      "destination": "/pro/reviewing"
+    },
+    {
+      "source": "/fr/pro/autosync",
+      "destination": "/pro/autosync"
+    },
+    {
+      "source": "/fr/pro/opengraph",
+      "destination": "/pro/opengraph"
+    },
+    {
+      "source": "/fr/pro/customization",
+      "destination": "/pro/customization"
+    },
+    {
+      "source": "/fr/practices/best-practices-for-using-attlas",
+      "destination": "/practices/best-practices-for-using-attlas"
+    },
+    {
+      "source": "/fr/practices/structuring-content",
+      "destination": "/practices/structuring-content"
+    },
+    {
+      "source": "/fr/practices/coverage-rate",
+      "destination": "/practices/coverage-rate"
+    },
+    {
+      "source": "/fr/practices/corrections",
+      "destination": "/practices/corrections"
+    },
+    {
+      "source": "/fr/practices/archetypes",
+      "destination": "/practices/archetypes"
+    },
+    {
+      "source": "/fr/integrations/google-calendar",
+      "destination": "/integrations/google-calendar"
+    },
+    {
+      "source": "/fr/integrations/sql-database",
+      "destination": "/integrations/sql-database"
+    },
+    {
+      "source": "/fr/integrations/tally",
+      "destination": "/integrations/tally"
+    },
+    {
+      "source": "/fr/integrations/notion",
+      "destination": "/integrations/notion"
+    },
+    {
+      "source": "/fr/playbooks/companies",
+      "destination": "/playbooks/companies"
+    },
+    {
+      "source": "/fr/playbooks/smarter-link-in-bio",
+      "destination": "/playbooks/smarter-link-in-bio"
+    },
+    {
+      "source": "/fr/playbooks/attlas-performance",
+      "destination": "/playbooks/attlas-performance"
+    },
+    {
+      "source": "/fr/playbooks/creative-uses",
+      "destination": "/playbooks/creative-uses"
+    },
+    {
+      "source": "/fr/playbooks/how-to-start",
+      "destination": "/playbooks/how-to-start"
+    },
+    {
+      "source": "/fr/legal/privacy",
+      "destination": "/legal/privacy"
+    },
+    {
+      "source": "/fr/legal/terms",
+      "destination": "/legal/terms"
+    },
+    {
+      "source": "/fr/legal/data",
+      "destination": "/legal/data"
+    },
+    {
+      "source": "/fr/faq",
+      "destination": "/faq"
+    },
+    {
+      "source": "/fr/mediakit",
+      "destination": "/mediakit"
     }
   ],
   "navigation": {
@@ -364,8 +364,14 @@
         "language": "en",
         "navbar": {
           "links": [
-            { "href": "mailto:hello@attlas.so", "label": "Contact Us" },
-            { "href": "https://attlas.so/login", "label": "Login" }
+            {
+              "href": "mailto:hello@attlas.so",
+              "label": "Contact Us"
+            },
+            {
+              "href": "https://attlas.so/login",
+              "label": "Login"
+            }
           ],
           "primary": {
             "type": "button",
@@ -383,16 +389,31 @@
             {
               "header": "Resources",
               "items": [
-                { "label": "Documentation", "href": "/start/sources" },
-                { "label": "Blog", "href": "https://attlas.so/blog" },
-                { "label": "FAQ", "href": "/faq" }
+                {
+                  "label": "Documentation",
+                  "href": "/start/sources"
+                },
+                {
+                  "label": "Blog",
+                  "href": "https://attlas.so/blog"
+                },
+                {
+                  "label": "FAQ",
+                  "href": "/faq"
+                }
               ]
             },
             {
               "header": "Legal",
               "items": [
-                { "label": "Privacy", "href": "/legal/privacy" },
-                { "label": "Terms", "href": "/legal/terms" }
+                {
+                  "label": "Privacy",
+                  "href": "/legal/privacy"
+                },
+                {
+                  "label": "Terms",
+                  "href": "/legal/terms"
+                }
               ]
             }
           ]
@@ -499,41 +520,6 @@
       },
       {
         "language": "fr",
-        "navbar": {
-          "links": [
-            { "href": "mailto:hello@attlas.so", "label": "Nous contacter" },
-            { "href": "https://attlas.so/login", "label": "Connexion" }
-          ],
-          "primary": {
-            "type": "button",
-            "label": "Tableau de bord",
-            "href": "https://attlas.so/dashboard"
-          }
-        },
-        "footer": {
-          "socials": {
-            "x": "https://x.com/AttlasChat",
-            "linkedin": "https://linkedin.com/company/attlas-so",
-            "instagram": "https://www.instagram.com/attlas.so"
-          },
-          "links": [
-            {
-              "header": "Ressources",
-              "items": [
-                { "label": "Documentation", "href": "/fr/start/sharing" },
-                { "label": "Blog", "href": "https://attlas.so/blog" },
-                { "label": "FAQ", "href": "/faq" }
-              ]
-            },
-            {
-              "header": "Légal",
-              "items": [
-                { "label": "Confidentialité", "href": "/legal/privacy" },
-                { "label": "Conditions d'utilisation", "href": "/legal/terms" }
-              ]
-            }
-          ]
-        },
         "groups": [
           {
             "group": "Apprendre",
@@ -552,41 +538,6 @@
       },
       {
         "language": "pt",
-        "navbar": {
-          "links": [
-            { "href": "mailto:hello@attlas.so", "label": "Contato" },
-            { "href": "https://attlas.so/login", "label": "Entrar" }
-          ],
-          "primary": {
-            "type": "button",
-            "label": "Painel",
-            "href": "https://attlas.so/dashboard"
-          }
-        },
-        "footer": {
-          "socials": {
-            "x": "https://x.com/AttlasChat",
-            "linkedin": "https://linkedin.com/company/attlas-so",
-            "instagram": "https://www.instagram.com/attlas.so"
-          },
-          "links": [
-            {
-              "header": "Recursos",
-              "items": [
-                { "label": "Documentação", "href": "/pt/start/sharing" },
-                { "label": "Blog", "href": "https://attlas.so/blog" },
-                { "label": "FAQ", "href": "/faq" }
-              ]
-            },
-            {
-              "header": "Legal",
-              "items": [
-                { "label": "Privacidade", "href": "/legal/privacy" },
-                { "label": "Termos de uso", "href": "/legal/terms" }
-              ]
-            }
-          ]
-        },
         "groups": [
           {
             "group": "Aprender",

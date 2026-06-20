@@ -202,7 +202,7 @@ function regenerateNav(lang, allPages) {
 
   // Rebuild redirects for this language (untranslated pages → English equivalent)
   const otherRedirects = (docsJson.redirects || []).filter(
-    (r) => !r.source.startsWith(`/${lang}/`)
+    (r) => !r.source.startsWith(`/${lang}/`) || r.source === `/${lang}/docs`
   )
   const missingPages = allPages.filter((p) => !translatedExists(lang, p))
   const langRedirects = missingPages.map((p) => ({
