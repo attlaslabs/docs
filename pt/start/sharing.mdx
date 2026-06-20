@@ -1,0 +1,143 @@
+---
+title: "Compartilhe seu chat em qualquer lugar"
+sidebarTitle: "Opções de compartilhamento"
+description: "Explore as diferentes formas de distribuir seu chat e alcançar seu público."
+---
+
+Depois que seu chat estiver configurado e treinado, é hora de compartilhá-lo com o mundo.
+
+A Attlas oferece vários métodos de distribuição para que você possa escolher aquele que melhor se adapta ao seu público, canal ou projeto.
+
+Para acessar essas opções, clique no botão **<kbd>Compartilhar</kbd>** localizado no canto superior direito da plataforma.
+
+![Opções de Compartilhamento 1](/images/sharing-options-1.jpg)
+
+---
+
+## Opções de compartilhamento
+
+Aqui estão as 4 principais maneiras de compartilhar seu chat:
+
+1. **Link direto**: Perfeito para redes sociais, e-mails e aplicativos de mensagens.
+2. **Escanear e conversar (QR Code)**: Ideal para materiais impressos e locais físicos.
+3. **Balão de chat**: Um botão flutuante na parte inferior do seu site.
+4. **Exibir em uma página (Iframe)**: Um widget inline integrado diretamente nas suas páginas.
+
+---
+
+## Link direto
+
+O link direto permite que você compartilhe uma versão em página inteira do seu chat. Você pode usá-lo em diversas plataformas:
+
+- **Redes sociais**: Compartilhe links diretamente em posts ou links de bio (bio do Instagram, LinkedIn, Linktree).
+- **Mensagens**: Envie diretamente via WhatsApp, SMS ou Telegram.
+- **E-mail**: Adicione a newsletters, campanhas ou assinaturas de e-mail.
+- **Materiais promocionais**: Adicione a apresentações, PDFs ou documentos.
+
+Basta copiar o link público gerado no seu painel e compartilhá-lo com seu público.
+
+---
+
+## Escanear e conversar (QR Code)
+
+Conecte o mundo físico ao seu chat com IA gerando um QR Code personalizado. É altamente eficaz para:
+
+- **Materiais impressos**: Cartões de visita, panfletos, catálogos e livretos.
+- **Locais físicos**: Cardápios de restaurantes, mesas, embalagens ou cartazes.
+- **Eventos**: Banners, estandes de feiras e apresentações.
+
+Ao ser escaneado, os usuários serão levados diretamente para o seu chat no navegador móvel.
+
+<Info>
+  Se você alterar seu nome de usuário na seção **Perfil**, será necessário gerar e baixar um novo QR Code.
+</Info>
+
+---
+
+## Adicionar um balão de chat
+
+Adicione um balão de chat flutuante no canto inferior do seu site para que os visitantes possam interagir com seu assistente sem sair do seu site.
+
+<Frame>
+  ![Site do Attlas Bubble Chat](/images/attlas-bubble-chat-site.jpg)
+</Frame>
+
+<Note>
+  A opção de compartilhamento via balão de chat está disponível exclusivamente nos planos **Attlas Starter e PRO**.
+</Note>
+
+### Instalação
+
+Copie o trecho de script e cole-o logo antes da tag de fechamento `</body>` do seu HTML:
+
+```html
+<script 
+  id="attlas-widget" 
+  data-chat-id="SEU_CHAT_ID" 
+  src="https://attlas.so/embed.js" 
+  defer>
+</script>
+```
+
+### Lista de permissões de domínios
+
+Para proteger a cota da sua conta e garantir que seu chat seja carregado apenas no seu próprio site, você pode restringir os domínios autorizados a executar o script.
+
+<Frame>
+  ![Screenshot Studio 1781949144938](/images/screenshot-studio-1781949144938.webp)
+</Frame>
+
+- **Como funciona:** Nas **Configurações de Incorporação** do seu chat, você pode especificar uma lista de domínios permitidos (ex.: `meusite.com`). O script do widget será inicializado apenas nessas origens.
+- **Nenhum domínio especificado (Padrão):** Se a lista de domínios permitidos estiver vazia, o script do widget funcionará em **qualquer domínio** (útil para testes locais).
+
+<Info>
+  A verificação da lista de permissões de domínios é executada dinamicamente quando o script busca a configuração do widget.
+</Info>
+
+---
+
+## Exibir em uma página
+
+A opção **Exibir em uma página** permite incorporar o chat completo diretamente em uma página da web usando um iframe. Ao adicionar este código ao seu site, blog ou página do Notion, o chat aparecerá diretamente dentro do conteúdo da página.
+
+Esta opção é ideal para:
+
+- Centros de ajuda e páginas de FAQ
+- Bases de conhecimento e sites de documentação
+- Portais de suporte
+- Painéis internos
+
+### Instalação
+
+Copie e cole o código HTML a seguir no editor do seu site, no local onde deseja que o chat apareça:
+
+```html
+<iframe 
+  src="https://attlas.so/chats/seu-slug-do-chat?embed=true" 
+  width="100%" 
+  height="700px">
+</iframe>
+```
+
+<Tip>
+  Você pode ajustar a largura e a altura do iframe para se adaptar ao layout do seu site.
+</Tip>
+
+<Warning>
+  **Nota de segurança:** A configuração da lista de permissões de domínios (`allowed_domains`) **aplica-se apenas ao script do widget**. Ela não protege nem restringe o carregamento direto da URL do iframe. Qualquer pessoa que incorporar a URL direta do iframe em uma página personalizada ainda poderá renderizar e interagir com o chat.
+</Warning>
+
+---
+
+## Qual opção você deve escolher?
+
+Cada método de compartilhamento atende a um propósito diferente:
+
+| Opção | Ideal para | Lista de permissões de domínios |
+| :-- | :-- | :-- |
+| **Link direto** | Compartilhamento rápido em qualquer canal digital | Não |
+| **Escanear e conversar** | Materiais físicos e QR Codes | Não |
+| **Balão de chat** | Adicionar um assistente interativo ao seu site | **Sim** (restringe o carregamento do widget) |
+| **Exibir em uma página** | Incorporar a experiência completa do chat inline | Não (ignora as verificações de domínio) |
+
+Você pode usar uma ou várias dessas opções ao mesmo tempo, criando mais oportunidades para os usuários interagirem com seu chat.
