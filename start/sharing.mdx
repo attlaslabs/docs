@@ -16,113 +16,112 @@ To access these options, click the **<kbd>Share</kbd>** button located in the to
 
 ## Sharing options
 
-Attlas offers four main ways to share your chat:
+Here are the 4 main ways to share your chat:
 
-- Direct link
-- Scan & Chat (QR Code)
-- Chat bubble
-- Display on a page
-
-Let's explore each option.
+1. **Direct link**: Perfect for social media, emails, and messaging apps.
+2. **Scan & Chat (QR Code)**: Ideal for printed materials and physical locations.
+3. **Chat bubble**: A floating button at the bottom of your website.
+4. **Display on a page (Iframe)**: An inline widget integrated directly into your pages.
 
 ---
 
 ## Direct link
 
-The Direct link is the simplest and fastest way to share your chat.
+The direct link lets you share a full-page version of your chat. You can use it across various platforms:
 
-When you create a chat, Attlas automatically generates a unique URL that can be shared anywhere.
+- **Social media**: Share links directly in posts or bio links (Instagram bio, LinkedIn, Linktree).
+- **Messaging**: Send directly via WhatsApp, SMS, or Telegram.
+- **Email**: Add to newsletters, campaigns, or email signatures.
+- **Promotional materials**: Add to presentations, PDFs, or documents.
 
-You can use this link on:
-
-- Social media
-- WhatsApp
-- Email
-- Instagram bio
-- LinkedIn
-- Email signatures
-- Promotional materials
-
-Simply copy the link and share it with your audience.
+Simply copy the generated public link from your dashboard and share it with your audience.
 
 ---
 
-## Scan & Chat
+## Scan & Chat (QR Code)
 
-The **Scan & Chat** option automatically generates a QR Code for your chat.
+Connect the physical world to your AI chat by generating a custom QR Code. It is highly effective for:
 
-This QR Code can be downloaded and used in both physical and digital materials.
+- **Printed materials**: Business cards, flyers, catalogs, and booklets.
+- **Physical locations**: Restaurant menus, tables, packaging, or posters.
+- **Events**: Banners, trade show stands, and presentations.
 
-**Examples of use:**
+When scanned, users will be taken directly to your chat in their mobile browser.
 
-- Business cards
-- Menus
-- Flyers
-- Presentations
-- Catalogs
-- Packaging
-- Events and trade shows
-
-When scanned, users will be taken directly to your chat.
-
-**Note:** If you change your username in the **Profile** section, you will need to generate a new QR Code.
+<Info>
+  If you change your username in the **Profile** section, you will need to generate and download a new QR Code.
+</Info>
 
 ---
 
 ## Add a chat bubble
 
-The **Add a chat bubble** option allows you to add a floating Attlas chat button to your website.
+Add a floating chat bubble in the bottom corner of your website so visitors can interact with your assistant without leaving your site.
 
 <Frame>
   ![Attlas Bubble Chat Site](/images/attlas-bubble-chat-site.jpg)
 </Frame>
 
+<Note>
+  The chat bubble sharing option is available exclusively on the **Attlas Starter and PRO plans**.
+</Note>
+
+### Installation
+
+Copy the script snippet and paste it right before the closing `</body>` tag of your HTML:
+
+```html
+<script 
+  id="attlas-widget" 
+  data-chat-id="YOUR_CHAT_ID" 
+  src="https://attlas.so/embed.js" 
+  defer>
+</script>
+```
+
+### Domain Whitelisting
+
+To protect your account's quota and ensure your chat is only loaded on your own website, you can restrict the domains authorized to run the script.
+
+- **How it works:** In your chat's **Embed Settings**, you can specify a list of allowed domains (e.g., `mywebsite.com`). The widget script will only initialize on these origins.
+- **No domain specified (Default):** If the allowed domains list is empty, the widget script will function on **any domain** (useful for local testing).
+
 <Info>
-  The **chat bubble** sharing option is available exclusively on the **Attlas Starter and PRO plans.**
+  The domain whitelist check is executed dynamically when the script fetches the widget configuration.
 </Info>
-
-When enabled, Attlas will generate a small JavaScript code snippet.
-
-Simply copy the code and add it to your website to display a chat bubble similar to those commonly used by customer support platforms.
-
-When visitors click the bubble, your chat will open instantly.
-
-This option is ideal for:
-
-- Company websites
-- Landing pages
-- Online stores
-- Blogs
-- Corporate portals
-
-<Tip>
-  On most platforms, you only need to paste the code before the closing`</body>` tag.
-</Tip>
 
 ---
 
 ## Display on a page
 
-The **Display on a page** option allows you to embed the full chat directly into a webpage.
-
-Attlas automatically generates an embed code using an iframe.
-
-By adding this code to your website, blog, or Notion page, the chat will appear directly within the page content.
+The **Display on a page** option allows you to embed the full chat directly into a webpage using an iframe. By adding this code to your website, blog, or Notion page, the chat will appear directly within the page content.
 
 This option is ideal for:
 
-- Help centers
-- Knowledge bases
-- Documentation sites
-- Support pages
-- Internal portals
-- Company websites
+- Help centers and FAQ pages
+- Knowledge bases and documentation sites
+- Support portals
+- Internal dashboards
 
-Unlike the Chat bubble option, the chat remains fully visible on the page, creating a more integrated user experience.
+### Installation
+
+Copy and paste the following HTML code into your website's editor where you want the chat to appear:
+
+```html
+<iframe 
+  src="https://attlas.so/chats/your-chat-slug?embed=true" 
+  width="100%" 
+  height="700px">
+</iframe>
+```
 
 <Tip>
   You can adjust the iframe's width and height to fit your website layout.
 </Tip>
+
+<Warning>
+  **Security Note:** The domain whitelist configuration (`allowed_domains`) **only applies to the widget script**. It does not protect or restrict the direct loading of the iframe URL. Anyone embedding the direct iframe URL on a custom page will still be able to render and interact with the chat.
+</Warning>
 
 ---
 
@@ -130,11 +129,11 @@ Unlike the Chat bubble option, the chat remains fully visible on the page, creat
 
 Each sharing method serves a different purpose:
 
-| Option | Best for |
-| :-- | :-- |
-| Direct link | Quick sharing across any channel |
-| Scan & Chat | Physical materials and QR Codes |
-| Chat bubble | Adding an assistant to your website |
-| Display on a page | Embedding the full chat into a webpage |
+| Option | Best for | Domain Whitelisting |
+| :--- | :--- | :--- |
+| **Direct link** | Quick sharing across any digital channel | No |
+| **Scan & Chat** | Physical materials and QR Codes | No |
+| **Chat bubble** | Adding an interactive assistant to your website | **Yes** (restricts widget load) |
+| **Display on a page** | Embedding the full chat experience inline | No (bypasses domain checks) |
 
 You can use one or several of these options at the same time, creating more opportunities for users to interact with your chat.

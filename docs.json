@@ -143,6 +143,7 @@
             "icon": "shapes",
             "pages": [
               "integrations/google-calendar",
+              "integrations/sql-database",
               "integrations/tally",
               "integrations/notion"
             ]

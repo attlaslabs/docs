@@ -1,0 +1,57 @@
+---
+title: "SQL database"
+tag: "Soon"
+description: "Let Attlas query your SQL databases directly to analyze data and answer complex questions in real time."
+---
+
+The SQL database integration (PostgreSQL-compatible) allows you to connect a database to your chat room. Once connected, Attlas will be able to read the schema of the authorized tables and formulate read queries to accurately answer your users' questions.
+
+---
+
+## **🛠️ How to connect**
+
+1. Go to your **Chat Settings** \> **Integrations** \> **SQL Database**.
+2. Click **Connect** and fill in your database details:
+   - **Name & Description:** A friendly name and description to help the AI understand what data is inside.
+   - **Host & Port:** Your database server address and port (default is `5432` for PostgreSQL).
+   - **Database:** The name of your database.
+   - **User & Password:** Your database credentials (ideally read-only).
+   - **SSL Mode:** Select `require` or `disable`.
+3. Click **Test** to verify the credentials and see how many tables are found.
+4. Click **Save** to finish.
+
+---
+
+## Fill in the connection details
+
+Click the Connect button to open the form and fill in the following fields:
+
+| Field | Description example |
+| --- | --- |
+| Name | A friendly name to identify this connection |
+| Description | A description of what the database does (helps Attlas understand the context of the data) |
+| Host | The address of your database server.	[db.example.com](http://db.example.com) or 123.45.67.89 |
+| Port | The connection port (5432 by default for PostgreSQL) |
+| User | The connection username |
+| Password | The password associated with the user |
+| SSL Mode | The security level of the SSL connection |
+
+---
+
+## **⚙️ Managing your integration**
+
+Click **Settings** on your active SQL Database card to manage the following:
+
+- **Select Tables to Share:** You don't have to share everything. Toggle which specific tables or views the AI is allowed to access.
+- **Refresh Schema:** If you add or edit columns/tables in your database, click **Refresh** to sync the changes with the AI.
+- **Temporarily Disable:** Turn the integration on or off at any time using the toggle switch.
+- **Disconnect:** Click **Disconnect** to completely remove the database connection.
+
+---
+
+## **🔒 Security best practices**
+
+To keep your data safe, we highly recommend:
+
+- **Use a Read-Only User:** Create a database user with only `SELECT` permissions. Attlas does not need write access (`INSERT`, `UPDATE`, `DELETE`).
+- **Keep SSL Enabled:** We recommend setting `sslmode` to `require` to encrypt data in transit.
