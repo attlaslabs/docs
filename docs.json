@@ -145,7 +145,8 @@
               "integrations/google-calendar",
               "integrations/sql-database",
               "integrations/tally",
-              "integrations/notion"
+              "integrations/notion",
+              "integrations/postgresql"
             ]
           },
           {
