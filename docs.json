@@ -524,6 +524,7 @@
           {
             "group": "Apprendre",
             "pages": [
+              "fr/index",
               {
                 "group": "Prise en main",
                 "pages": [
@@ -542,6 +543,7 @@
           {
             "group": "Aprender",
             "pages": [
+              "pt/index",
               {
                 "group": "Primeiros passos",
                 "pages": [
