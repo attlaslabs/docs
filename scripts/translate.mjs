@@ -116,7 +116,8 @@ Your task: translate from English to ${target}.
 Guidelines:
 - Preserve the exact MDX/Markdown structure entirely — do not alter whitespace, indentation, or line breaks
 - Translate frontmatter VALUES (title, description, sidebarTitle) but NEVER the keys
-- Do NOT translate: code blocks (\`\`\`...\`\`\`), inline code (\`...\`), component/tag names (<Card>, <Info>, <Note>, <Check>, <Columns>, <Column>, <CodeGroup>, etc.), JSX attribute NAMES (href, icon, color, root, expanded, hidden), URLs, file paths, variable names, icon identifiers
+- Do NOT translate: code blocks (\`\`\`...\`\`\`), inline code (\`...\`), component/tag names (<Card>, <Info>, <Note>, <Check>, <Columns>, <Column>, <CodeGroup>, etc.), JSX attribute NAMES (href, icon, color, root, expanded, hidden), external URLs (starting with http/https or //), relative paths, variable names, icon identifiers
+- Prepend the target language code prefix (\`/${lang}\`) to all absolute internal URLs/links (e.g. paths starting with a single forward slash \`/\` pointing to other documentation pages inside markdown links \`[Label](/path)\` or JSX components like \`href="/path"\` must become \`[Label](/${lang}/path)\` or \`href="/${lang}/path"\`)
 - DO translate: all prose text, heading text (## ### etc.), list items, table content, the VALUE strings of component props such as title="..." or description="..."
 - Maintain the same register: professional yet approachable SaaS documentation style
 - Use vocabulary and phrasing a native ${target} speaker would naturally use in a product documentation context

@@ -5,3 +5,70 @@ posthog.init('phc_w0Wd85mUMrqNRlwBauyzX31bDWOhk3zVJf28SWs2gHU', {
     defaults: '2026-05-30',
     person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
 });
+
+// Localize sidebar anchors and logo link based on the current URL
+(function() {
+  function localizeLinks() {
+    const path = window.location.pathname;
+    let lang = '';
+    if (path.startsWith('/fr/') || path === '/fr') {
+      lang = 'fr';
+    } else if (path.startsWith('/pt/') || path === '/pt') {
+      lang = 'pt';
+    }
+
+    const links = document.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+
+      // Update Home link
+      if (href === 'https://attlas.so' || href === 'https://attlas.so/fr' || href === 'https://attlas.so/pt') {
+        if (lang) {
+          a.setAttribute('href', `https://attlas.so/${lang}`);
+        } else {
+          a.setAttribute('href', 'https://attlas.so');
+        }
+      }
+      
+      // Update Blog link
+      if (href === 'https://attlas.so/blog' || href === 'https://attlas.so/blog/fr' || href === 'https://attlas.so/blog/pt') {
+        if (lang) {
+          a.setAttribute('href', `https://attlas.so/blog/${lang}`);
+        } else {
+          a.setAttribute('href', 'https://attlas.so/blog');
+        }
+      }
+
+      // Update Logo link (to go to https://attlas.so/docs/<lang> or https://attlas.so/docs)
+      if (href === 'https://attlas.so/docs' || href === 'https://attlas.so/docs/fr' || href === 'https://attlas.so/docs/pt') {
+        if (lang) {
+          a.setAttribute('href', `https://attlas.so/docs/${lang}`);
+        } else {
+          a.setAttribute('href', 'https://attlas.so/docs');
+        }
+      }
+    });
+  }
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', localizeLinks);
+    let lastPath = window.location.pathname;
+    setInterval(() => {
+      if (window.location.pathname !== lastPath) {
+        lastPath = window.location.pathname;
+        localizeLinks();
+      }
+    }, 500);
+    localizeLinks();
+    
+    // MutationObserver to catch dynamically loaded anchors/elements
+    try {
+      const observer = new MutationObserver(localizeLinks);
+      observer.observe(document.body || document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    } catch(e) {}
+  }
+})();
