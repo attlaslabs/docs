@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * translate.mjs — Attlas Docs translation script
+ * translate.mjs, Attlas Docs translation script
  *
  * Usage:
  *   node scripts/translate.mjs --lang fr
@@ -72,7 +72,7 @@ function loadAllPages() {
   const enNav = docsJson.navigation.languages.find((l) => l.language === 'en')
   const fromNav = extractPages(enNav.groups)
 
-  // index.mdx is the homepage and not listed in nav groups — add it explicitly
+  // index.mdx is the homepage and not listed in nav groups, add it explicitly
   return ['index', ...fromNav]
 }
 
@@ -114,14 +114,15 @@ function buildSystemPrompt(lang) {
 Your task: translate from English to ${target}.
 
 Guidelines:
-- Preserve the exact MDX/Markdown structure entirely — do not alter whitespace, indentation, or line breaks
+- Preserve the exact MDX/Markdown structure entirely, do not alter whitespace, indentation, or line breaks
 - Translate frontmatter VALUES (title, description, sidebarTitle) but NEVER the keys
 - Do NOT translate: code blocks (\`\`\`...\`\`\`), inline code (\`...\`), component/tag names (<Card>, <Info>, <Note>, <Check>, <Columns>, <Column>, <CodeGroup>, etc.), JSX attribute NAMES (href, icon, color, root, expanded, hidden), external URLs (starting with http/https or //), relative paths, variable names, icon identifiers
 - Prepend the target language code prefix (\`/${lang}\`) to all absolute internal URLs/links (e.g. paths starting with a single forward slash \`/\` pointing to other documentation pages inside markdown links \`[Label](/path)\` or JSX components like \`href="/path"\` must become \`[Label](/${lang}/path)\` or \`href="/${lang}/path"\`)
+- Never use the em-dash (—) or en-dash in the translation; always use a comma (,) instead
 - DO translate: all prose text, heading text (## ### etc.), list items, table content, the VALUE strings of component props such as title="..." or description="..."
 - Maintain the same register: professional yet approachable SaaS documentation style
 - Use vocabulary and phrasing a native ${target} speaker would naturally use in a product documentation context
-- Return ONLY the translated MDX content — no explanation, no preamble, no markdown code fence wrapper around the whole output`
+- Return ONLY the translated MDX content, no explanation, no preamble, no markdown code fence wrapper around the whole output`
 }
 
 async function callApi(content, lang, apiKey) {
@@ -214,7 +215,7 @@ function regenerateNav(lang, allPages) {
   docsJson.redirects = [...otherRedirects, ...langRedirects]
 
   fs.writeFileSync(path.join(ROOT, 'docs.json'), JSON.stringify(docsJson, null, 2) + '\n')
-  console.log(`  ✓ docs.json updated — ${groups.length} group(s) in nav, ${langRedirects.length} redirect(s) for untranslated pages`)
+  console.log(`  ✓ docs.json updated, ${groups.length} group(s) in nav, ${langRedirects.length} redirect(s) for untranslated pages`)
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────

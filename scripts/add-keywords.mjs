@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * add-keywords.mjs — Generate and add keywords to frontmatter of MDX files in subfolders
+ * add-keywords.mjs, Generate and add keywords to frontmatter of MDX files in subfolders
  *
  * Usage:
  *   node scripts/add-keywords.mjs --dry-run
@@ -241,7 +241,7 @@ async function main() {
             .filter(Boolean)
         }
       }
-      
+
       if (!Array.isArray(keywordsArray) || keywordsArray.length === 0) {
         throw new Error('Response is not a JSON array or does not contain a JSON array')
       }
