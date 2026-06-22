@@ -361,31 +361,6 @@
     "languages": [
       {
         "language": "en",
-        "logo": {
-          "light": "/images/logotype-light.png",
-          "dark": "/images/logotype-dark.png",
-          "href": "https://attlas.so/docs"
-        },
-        "anchors": [
-          {
-            "anchor": "Home",
-            "icon": "house",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so"
-          },
-          {
-            "anchor": "Blog",
-            "icon": "newspaper",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so/blog"
-          }
-        ],
         "navbar": {
           "links": [
             {
@@ -544,36 +519,11 @@
       },
       {
         "language": "fr",
-        "logo": {
-          "light": "/images/logotype-light.png",
-          "dark": "/images/logotype-dark.png",
-          "href": "https://attlas.so/docs/fr"
-        },
         "banner": {
           "content": "⚠️ La traduction française est en cours. Pour accéder à la documentation complète, veuillez consulter la [version anglaise](/).",
           "dismissible": true,
           "type": "warning"
         },
-        "anchors": [
-          {
-            "anchor": "Home",
-            "icon": "house",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so/fr"
-          },
-          {
-            "anchor": "Blog",
-            "icon": "newspaper",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so/blog/fr"
-          }
-        ],
         "groups": [
           {
             "group": "Apprendre",
@@ -593,36 +543,11 @@
       },
       {
         "language": "pt",
-        "logo": {
-          "light": "/images/logotype-light.png",
-          "dark": "/images/logotype-dark.png",
-          "href": "https://attlas.so/docs/pt"
-        },
         "banner": {
           "content": "⚠️ A tradução para português está em andamento. Para aceder à documentação completa, consulte a [versão em inglês](/).",
           "dismissible": true,
           "type": "warning"
         },
-        "anchors": [
-          {
-            "anchor": "Home",
-            "icon": "house",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so/pt"
-          },
-          {
-            "anchor": "Blog",
-            "icon": "newspaper",
-            "color": {
-              "light": "#155dfc",
-              "dark": "#155dfc"
-            },
-            "href": "https://attlas.so/blog/pt"
-          }
-        ],
         "groups": [
           {
             "group": "Aprender",
