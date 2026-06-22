@@ -19,33 +19,33 @@ posthog.init('phc_w0Wd85mUMrqNRlwBauyzX31bDWOhk3zVJf28SWs2gHU', {
 
     const links = document.querySelectorAll('a');
     links.forEach(a => {
-      const href = a.getAttribute('href');
+      let href = a.getAttribute('href');
       if (!href) return;
 
+      // Supprimer le slash final pour la comparaison
+      const normalizedHref = href.replace(/\/$/, '');
+
       // Update Home link
-      if (href === 'https://attlas.so' || href === 'https://attlas.so/fr' || href === 'https://attlas.so/pt') {
-        if (lang) {
-          a.setAttribute('href', `https://attlas.so/${lang}`);
-        } else {
-          a.setAttribute('href', 'https://attlas.so');
+      if (normalizedHref === 'https://attlas.so' || normalizedHref === 'https://attlas.so/fr' || normalizedHref === 'https://attlas.so/pt') {
+        const target = lang ? `https://attlas.so/${lang}` : 'https://attlas.so';
+        if (a.getAttribute('href') !== target) {
+          a.setAttribute('href', target);
         }
       }
       
       // Update Blog link
-      if (href === 'https://attlas.so/blog' || href === 'https://attlas.so/blog/fr' || href === 'https://attlas.so/blog/pt') {
-        if (lang) {
-          a.setAttribute('href', `https://attlas.so/blog/${lang}`);
-        } else {
-          a.setAttribute('href', 'https://attlas.so/blog');
+      if (normalizedHref === 'https://attlas.so/blog' || normalizedHref === 'https://attlas.so/blog/fr' || normalizedHref === 'https://attlas.so/blog/pt') {
+        const target = lang ? `https://attlas.so/blog/${lang}` : 'https://attlas.so/blog';
+        if (a.getAttribute('href') !== target) {
+          a.setAttribute('href', target);
         }
       }
 
-      // Update Logo link (to go to https://attlas.so/docs/<lang> or https://attlas.so/docs)
-      if (href === 'https://attlas.so/docs' || href === 'https://attlas.so/docs/fr' || href === 'https://attlas.so/docs/pt') {
-        if (lang) {
-          a.setAttribute('href', `https://attlas.so/docs/${lang}`);
-        } else {
-          a.setAttribute('href', 'https://attlas.so/docs');
+      // Update Logo link
+      if (normalizedHref === 'https://attlas.so/docs' || normalizedHref === 'https://attlas.so/docs/fr' || normalizedHref === 'https://attlas.so/docs/pt') {
+        const target = lang ? `https://attlas.so/docs/${lang}` : 'https://attlas.so/docs';
+        if (a.getAttribute('href') !== target) {
+          a.setAttribute('href', target);
         }
       }
     });

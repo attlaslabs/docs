@@ -129,15 +129,63 @@ Copy and paste the following HTML code into your website's editor where you want
 
 ---
 
+## Distribution channels
+
+The **Distribution** tab in the Share panel lets you create named channels to track where your conversations are coming from — for example, distinguishing users who arrived via your website from those who came through a newsletter or a QR code at an event.
+
+### What is a channel?
+
+A channel is a label you define (e.g. `website`, `newsletter`, `event-june`). When you select it in the Share tab, Attlas automatically appends an `?origin=<channel>` parameter to every share method you copy:
+
+| Share method | With channel selected |
+| :-- | :-- |
+| Direct link | `https://attlas.so/your-chat?origin=website` |
+| Iframe embed | `src="https://attlas.so/your-chat?origin=website"` |
+| Chat bubble script | `<script ... data-origin="website" ...>` |
+
+This lets you see in your analytics which channel drove each conversation.
+
+### Creating a channel
+
+<Frame>
+  ![Distribution channels tab](/images/distribution-channel_1.webp)
+</Frame>
+
+1. Open the **Share** panel and switch to the **Distribution** tab.
+2. Click in the channel input field and type a name (e.g. `newsletter`), then press **Enter** to add it.
+3. Repeat to add as many channels as you need.
+4. Channels are saved automatically — no extra confirmation needed.
+
+<Info>
+  Channel names are slugified automatically: spaces and special characters are converted to hyphens and lowercased (e.g. `My Blog Post` → `my-blog-post`).
+</Info>
+
+### Using a channel when sharing
+
+<Frame>
+  ![Distribution channels link sharing](/images/distribution-channel_2.webp)
+</Frame>
+
+1. Switch back to the **Share** tab.
+2. If you have channels defined, a dropdown appears at the top of the tab.
+3. Select the channel that matches the destination you are sharing to.
+4. Copy the link, iframe code, or script — the `origin` parameter is already included.
+
+<Tip>
+  Leave the channel selector on **All channels** when you want a generic link without attribution.
+</Tip>
+
+---
+
 ## Which option should you choose?
 
 Each sharing method serves a different purpose:
 
-| Option | Best for | Domain Whitelisting |
-| :-- | :-- | :-- |
-| **Direct link** | Quick sharing across any digital channel | No |
-| **Scan & Chat** | Physical materials and QR Codes | No |
-| **Chat bubble** | Adding an interactive assistant to your website | **Yes** (restricts widget load) |
-| **Display on a page** | Embedding the full chat experience inline | No (bypasses domain checks) |
+| Option | Best for | Channel tracking | Domain Whitelisting |
+| :-- | :-- | :-- | :-- |
+| **Direct link** | Quick sharing across any digital channel | Yes (`?origin=`) | No |
+| **Scan & Chat** | Physical materials and QR Codes | Yes (encoded in QR) | No |
+| **Chat bubble** | Adding an interactive assistant to your website | Yes (`data-origin=`) | **Yes** (restricts widget load) |
+| **Display on a page** | Embedding the full chat experience inline | Yes (`?origin=`) | No (bypasses domain checks) |
 
 You can use one or several of these options at the same time, creating more opportunities for users to interact with your chat.
