@@ -101,3 +101,7 @@ html, main, body {
     --tw-prose-invert-th-borders: #635a4b;
     --tw-prose-invert-td-borders: #514937;
 }
+
+[data-depth="2"] {
+    display: none;
+}
