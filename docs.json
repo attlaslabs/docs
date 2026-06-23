@@ -426,7 +426,6 @@
                 "icon": "play",
                 "root": "start",
                 "pages": [
-                  "start/sources",
                   "start/profile",
                   "start/triggers",
                   "start/themes",
@@ -489,7 +488,8 @@
                   "playbooks/smarter-link-in-bio",
                   "playbooks/attlas-performance",
                   "playbooks/creative-uses",
-                  "playbooks/how-to-start"
+                  "playbooks/how-to-start",
+                  "playbooks/internal-knowleage"
                 ]
               },
               {
