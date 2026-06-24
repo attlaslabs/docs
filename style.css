@@ -106,10 +106,10 @@ html, main, body {
     display: none;
 }
 
-#page-context-menu:first-of-type {
+#page-context-menu.justify-end {
   display: none !important;
 }
 
-#page-context-menu:nth-of-type(2) {
+#page-context-menu.mt-3 {
   display: flex !important;
 }
