@@ -113,8 +113,3 @@ html, main, body {
 #page-context-menu.mt-3 {
   display: flex !important;
 }
-
-div[data-radix-menu-content][data-align="end"] {
-  left: anchor(left) !important;
-  right: auto !important;
-}
