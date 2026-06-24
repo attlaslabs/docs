@@ -506,7 +506,6 @@
           ]
         },
         "groups": [
-          "index",
           {
             "group": "Learn",
             "pages": [
@@ -622,7 +621,6 @@
           "type": "warning"
         },
         "groups": [
-          "fr/index",
           {
             "group": "Apprendre",
             "pages": [
@@ -645,7 +643,6 @@
           "type": "warning"
         },
         "groups": [
-          "pt/index",
           {
             "group": "Aprender",
             "pages": [
