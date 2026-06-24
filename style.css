@@ -113,3 +113,7 @@ html, main, body {
 #page-context-menu.mt-3 {
   display: flex !important;
 }
+
+div[data-radix-menu-content][data-align="end"] {
+  margin-left: calc(100% - var(--radix-dropdown-menu-trigger-width)) !important;
+}
