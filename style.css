@@ -115,5 +115,6 @@ html, main, body {
 }
 
 div[data-radix-menu-content][data-align="end"] {
-  margin-left: calc(100% - var(--radix-dropdown-menu-trigger-width)) !important;
+  left: anchor(left) !important;
+  right: auto !important;
 }
