@@ -507,105 +507,110 @@
         },
         "groups": [
           {
-            "group": "Get started",
-            "icon": "play",
-            "root": "start",
+            "group": "Learn",
             "pages": [
               "index",
-              "start/sources",
-              "start/profile",
-              "start/triggers",
-              "start/themes",
-              "start/sharing"
-            ]
-          },
-          {
-            "group": "Basic features",
-            "icon": "box",
-            "root": "basic",
-            "pages": [
-              "basic/link-aggregator",
-              "basic/ai-chat",
-              "basic/ai-settings",
-              "basic/conversation-history",
-              "basic/analytics"
-            ]
-          },
-          {
-            "group": "Pro features",
-            "icon": "gift",
-            "root": "pro",
-            "pages": [
-              "pro/workspaces",
-              "pro/reviewing",
-              "pro/autosync",
-              "pro/opengraph",
-              "pro/customization"
-            ]
-          },
-          {
-            "group": "Best practices",
-            "icon": "trophy",
-            "root": "practices",
-            "pages": [
-              "using-attlas",
-              "practices/structuring-content",
-              "practices/coverage-rate",
-              "practices/corrections",
-              "practices/archetypes"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "root": "integrations",
-            "icon": "shapes",
-            "pages": [
-              "integrations/google-calendar",
-              "integrations/sql-database",
-              "integrations/tally",
-              "integrations/notion"
-            ]
-          },
-          {
-            "group": "Playbooks",
-            "icon": "folder-bookmark",
-            "root": "playbooks",
-            "pages": [
-              "playbooks/companies",
-              "playbooks/attlas-performance",
-              "playbooks/how-to-start",
-              "playbooks/internal-knowledge",
               {
-                "group": "Creators",
-                "icon": "users",
-                "root": "playbooks/creators",
+                "group": "Get started",
+                "icon": "play",
+                "root": "start",
                 "pages": [
-                  "playbooks/creators/link-in-bio",
-                  "playbooks/creators/creative-uses"
+                  "start/sources",
+                  "start/profile",
+                  "start/triggers",
+                  "start/themes",
+                  "start/sharing"
                 ]
-              }
-            ]
-          },
-          {
-            "group": "Ressources",
-            "icon": "book-marked",
-            "root": "ressources",
-            "pages": [
+              },
               {
-                "group": "Terms & Privacy",
-                "expanded": true,
-                "root": "legal",
+                "group": "Basic features",
+                "icon": "box",
+                "root": "basic",
                 "pages": [
-                  "legal/privacy",
-                  "legal/terms",
-                  "legal/data"
+                  "basic/link-aggregator",
+                  "basic/ai-chat",
+                  "basic/ai-settings",
+                  "basic/conversation-history",
+                  "basic/analytics"
+                ]
+              },
+              {
+                "group": "Pro features",
+                "icon": "gift",
+                "root": "pro",
+                "pages": [
+                  "pro/workspaces",
+                  "pro/reviewing",
+                  "pro/autosync",
+                  "pro/opengraph",
+                  "pro/customization"
+                ]
+              },
+              {
+                "group": "Best practices",
+                "icon": "trophy",
+                "root": "practices",
+                "pages": [
+                  "using-attlas",
+                  "practices/structuring-content",
+                  "practices/coverage-rate",
+                  "practices/corrections",
+                  "practices/archetypes"
+                ]
+              },
+              {
+                "group": "Integrations",
+                "root": "integrations",
+                "icon": "shapes",
+                "pages": [
+                  "integrations/google-calendar",
+                  "integrations/sql-database",
+                  "integrations/tally",
+                  "integrations/notion"
+                ]
+              },
+              {
+                "group": "Playbooks",
+                "icon": "folder-bookmark",
+                "root": "playbooks",
+                "pages": [
+                  "playbooks/companies",
+                  "playbooks/attlas-performance",
+                  "playbooks/how-to-start",
+                  "playbooks/internal-knowledge",
+                  {
+                    "group": "Creators",
+                    "icon": "users",
+                    "root": "playbooks/creators",
+                    "pages": [
+                      "playbooks/creators/link-in-bio",
+                      "playbooks/creators/creative-uses"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Ressources",
+                "icon": "book-marked",
+                "root": "ressources",
+                "pages": [
+                  {
+                    "group": "Terms & Privacy",
+                    "expanded": true,
+                    "root": "legal",
+                    "pages": [
+                      "legal/privacy",
+                      "legal/terms",
+                      "legal/data"
+                    ],
+                    "hidden": true
+                  },
+                  "faq",
+                  "mediakit"
                 ],
                 "hidden": true
-              },
-              "faq",
-              "mediakit"
-            ],
-            "hidden": true
+              }
+            ]
           }
         ]
       },
@@ -618,11 +623,16 @@
         },
         "groups": [
           {
-            "group": "Prise en main",
-            "icon": "play",
+            "group": "Apprendre",
             "pages": [
               "fr/index",
-              "fr/start/sharing"
+              {
+                "group": "Prise en main",
+                "icon": "play",
+                "pages": [
+                  "fr/start/sharing"
+                ]
+              }
             ]
           }
         ]
@@ -636,11 +646,16 @@
         },
         "groups": [
           {
-            "group": "Primeiros passos",
-            "icon": "play",
+            "group": "Aprender",
             "pages": [
               "pt/index",
-              "pt/start/sharing"
+              {
+                "group": "Primeiros passos",
+                "icon": "play",
+                "pages": [
+                  "pt/start/sharing"
+                ]
+              }
             ]
           }
         ]
