@@ -157,8 +157,8 @@
       "destination": "/pro/customization"
     },
     {
-      "source": "/pt/practices/best-practices-for-using-attlas",
-      "destination": "/practices/best-practices-for-using-attlas"
+      "source": "/pt/practices/using-attlas",
+      "destination": "/practices/using-attlas"
     },
     {
       "source": "/pt/practices/structuring-content",
@@ -289,8 +289,8 @@
       "destination": "/pro/customization"
     },
     {
-      "source": "/fr/practices/best-practices-for-using-attlas",
-      "destination": "/practices/best-practices-for-using-attlas"
+      "source": "/fr/practices/using-attlas",
+      "destination": "/practices/using-attlas"
     },
     {
       "source": "/fr/practices/structuring-content",
