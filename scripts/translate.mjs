@@ -60,8 +60,13 @@ function extractPages(entries) {
   for (const entry of entries) {
     if (typeof entry === 'string') {
       pages.push(entry)
-    } else if (entry.pages) {
-      pages.push(...extractPages(entry.pages))
+    } else {
+      if (entry.root) {
+        pages.push(entry.root)
+      }
+      if (entry.pages) {
+        pages.push(...extractPages(entry.pages))
+      }
     }
   }
   return pages
@@ -80,7 +85,7 @@ function loadAllPages() {
 
 function parseArgs() {
   const args = process.argv.slice(2)
-  const opts = { lang: null, files: [], force: false, dryRun: false }
+  const opts = { lang: null, files: [], force: false, dryRun: false, onlyNav: false }
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--lang') opts.lang = args[++i]
     else if (args[i] === '--file') {
@@ -90,6 +95,7 @@ function parseArgs() {
     }
     else if (args[i] === '--force') opts.force = true
     else if (args[i] === '--dry-run') opts.dryRun = true
+    else if (args[i] === '--only-nav') opts.onlyNav = true
   }
   return opts
 }
@@ -177,7 +183,7 @@ function buildNavEntry(lang, entry) {
     pages: translatedPages,
   }
   if (entry.icon) result.icon = entry.icon
-  if (entry.root) result.root = `${lang}/${entry.root}`
+  if (entry.root && translatedExists(lang, entry.root)) result.root = `${lang}/${entry.root}`
   if (entry.expanded) result.expanded = entry.expanded
   if (entry.hidden) result.hidden = entry.hidden
 
@@ -195,7 +201,8 @@ function regenerateNav(lang, allPages) {
 
   // Patch the language entry inline in docs.json
   const langIndex = docsJson.navigation.languages.findIndex((l) => l.language === lang)
-  const langEntry = { language: lang, groups }
+  const existingLang = langIndex !== -1 ? docsJson.navigation.languages[langIndex] : {}
+  const langEntry = { ...existingLang, language: lang, groups }
   if (langIndex === -1) {
     docsJson.navigation.languages.push(langEntry)
   } else {
@@ -225,8 +232,18 @@ async function main() {
   const opts = parseArgs()
 
   if (!opts.lang || !LANGUAGE_NAMES[opts.lang]) {
-    console.error('Usage: node scripts/translate.mjs --lang <fr|pt> [--file <path>] [--force] [--dry-run]')
+    console.error('Usage: node scripts/translate.mjs --lang <fr|pt> [--file <path>] [--force] [--dry-run] [--only-nav]')
     process.exit(1)
+  }
+
+  const { lang, force, dryRun, onlyNav } = opts
+  const allPages = loadAllPages()
+
+  if (onlyNav) {
+    console.log(`\nRegenerating navigation for ${LANGUAGE_NAMES[lang]} (${lang})...`)
+    regenerateNav(lang, allPages)
+    console.log('Done.\n')
+    return
   }
 
   const apiKey = process.env.OPENROUTER_TRANSLATION_KEY
@@ -235,8 +252,6 @@ async function main() {
     process.exit(1)
   }
 
-  const { lang, force, dryRun } = opts
-  const allPages = loadAllPages()
   const filesToTranslate =
     opts.files.length > 0 ? opts.files : allPages.map((p) => p + '.mdx')
 

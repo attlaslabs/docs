@@ -101,136 +101,8 @@
       "destination": "/pt"
     },
     {
-      "source": "/pt/start/sources",
-      "destination": "/start/sources"
-    },
-    {
-      "source": "/pt/start/profile",
-      "destination": "/start/profile"
-    },
-    {
-      "source": "/pt/start/triggers",
-      "destination": "/start/triggers"
-    },
-    {
-      "source": "/pt/start/themes",
-      "destination": "/start/themes"
-    },
-    {
-      "source": "/pt/basic/link-aggregator",
-      "destination": "/basic/link-aggregator"
-    },
-    {
-      "source": "/pt/basic/ai-chat",
-      "destination": "/basic/ai-chat"
-    },
-    {
-      "source": "/pt/basic/ai-settings",
-      "destination": "/basic/ai-settings"
-    },
-    {
-      "source": "/pt/basic/conversation-history",
-      "destination": "/basic/conversation-history"
-    },
-    {
-      "source": "/pt/basic/analytics",
-      "destination": "/basic/analytics"
-    },
-    {
-      "source": "/pt/pro/workspaces",
-      "destination": "/pro/workspaces"
-    },
-    {
-      "source": "/pt/pro/reviewing",
-      "destination": "/pro/reviewing"
-    },
-    {
-      "source": "/pt/pro/autosync",
-      "destination": "/pro/autosync"
-    },
-    {
-      "source": "/pt/pro/opengraph",
-      "destination": "/pro/opengraph"
-    },
-    {
-      "source": "/pt/pro/customization",
-      "destination": "/pro/customization"
-    },
-    {
-      "source": "/pt/practices/using-attlas",
-      "destination": "/practices/using-attlas"
-    },
-    {
-      "source": "/pt/practices/structuring-content",
-      "destination": "/practices/structuring-content"
-    },
-    {
-      "source": "/pt/practices/coverage-rate",
-      "destination": "/practices/coverage-rate"
-    },
-    {
-      "source": "/pt/practices/corrections",
-      "destination": "/practices/corrections"
-    },
-    {
-      "source": "/pt/practices/archetypes",
-      "destination": "/practices/archetypes"
-    },
-    {
-      "source": "/pt/integrations/google-calendar",
-      "destination": "/integrations/google-calendar"
-    },
-    {
-      "source": "/pt/integrations/sql-database",
-      "destination": "/integrations/sql-database"
-    },
-    {
-      "source": "/pt/integrations/tally",
-      "destination": "/integrations/tally"
-    },
-    {
-      "source": "/pt/integrations/notion",
-      "destination": "/integrations/notion"
-    },
-    {
-      "source": "/pt/playbooks/companies",
-      "destination": "/playbooks/companies"
-    },
-    {
-      "source": "/pt/playbooks/link-in-bio",
-      "destination": "/playbooks/creators/link-in-bio"
-    },
-    {
-      "source": "/pt/playbooks/attlas-performance",
-      "destination": "/playbooks/attlas-performance"
-    },
-    {
-      "source": "/pt/playbooks/creative-uses",
-      "destination": "/playbooks/creators/creative-uses"
-    },
-    {
-      "source": "/pt/playbooks/how-to-start",
-      "destination": "/playbooks/how-to-start"
-    },
-    {
-      "source": "/pt/legal/privacy",
-      "destination": "/legal/privacy"
-    },
-    {
-      "source": "/pt/legal/terms",
-      "destination": "/legal/terms"
-    },
-    {
-      "source": "/pt/legal/data",
-      "destination": "/legal/data"
-    },
-    {
-      "source": "/pt/faq",
-      "destination": "/faq"
-    },
-    {
-      "source": "/pt/mediakit",
-      "destination": "/mediakit"
+      "source": "/fr/start",
+      "destination": "/start"
     },
     {
       "source": "/fr/start/sources",
@@ -247,6 +119,10 @@
     {
       "source": "/fr/start/themes",
       "destination": "/start/themes"
+    },
+    {
+      "source": "/fr/basic",
+      "destination": "/basic"
     },
     {
       "source": "/fr/basic/link-aggregator",
@@ -269,6 +145,10 @@
       "destination": "/basic/analytics"
     },
     {
+      "source": "/fr/pro",
+      "destination": "/pro"
+    },
+    {
       "source": "/fr/pro/workspaces",
       "destination": "/pro/workspaces"
     },
@@ -289,8 +169,12 @@
       "destination": "/pro/customization"
     },
     {
-      "source": "/fr/practices/using-attlas",
-      "destination": "/practices/using-attlas"
+      "source": "/fr/practices",
+      "destination": "/practices"
+    },
+    {
+      "source": "/fr/using-attlas",
+      "destination": "/using-attlas"
     },
     {
       "source": "/fr/practices/structuring-content",
@@ -309,6 +193,10 @@
       "destination": "/practices/archetypes"
     },
     {
+      "source": "/fr/integrations",
+      "destination": "/integrations"
+    },
+    {
       "source": "/fr/integrations/google-calendar",
       "destination": "/integrations/google-calendar"
     },
@@ -325,24 +213,44 @@
       "destination": "/integrations/notion"
     },
     {
-      "source": "/fr/playbooks/companies",
-      "destination": "/playbooks/companies"
+      "source": "/fr/playbooks",
+      "destination": "/playbooks"
     },
     {
-      "source": "/fr/playbooks/link-in-bio",
-      "destination": "/playbooks/creators/link-in-bio"
+      "source": "/fr/playbooks/companies",
+      "destination": "/playbooks/companies"
     },
     {
       "source": "/fr/playbooks/attlas-performance",
       "destination": "/playbooks/attlas-performance"
     },
     {
-      "source": "/fr/playbooks/creative-uses",
+      "source": "/fr/playbooks/how-to-start",
+      "destination": "/playbooks/how-to-start"
+    },
+    {
+      "source": "/fr/playbooks/internal-knowledge",
+      "destination": "/playbooks/internal-knowledge"
+    },
+    {
+      "source": "/fr/playbooks/creators",
+      "destination": "/playbooks/creators"
+    },
+    {
+      "source": "/fr/playbooks/creators/link-in-bio",
+      "destination": "/playbooks/creators/link-in-bio"
+    },
+    {
+      "source": "/fr/playbooks/creators/creative-uses",
       "destination": "/playbooks/creators/creative-uses"
     },
     {
-      "source": "/fr/playbooks/how-to-start",
-      "destination": "/playbooks/how-to-start"
+      "source": "/fr/ressources",
+      "destination": "/ressources"
+    },
+    {
+      "source": "/fr/legal",
+      "destination": "/legal"
     },
     {
       "source": "/fr/legal/privacy",
@@ -362,6 +270,178 @@
     },
     {
       "source": "/fr/mediakit",
+      "destination": "/mediakit"
+    },
+    {
+      "source": "/pt/start",
+      "destination": "/start"
+    },
+    {
+      "source": "/pt/start/sources",
+      "destination": "/start/sources"
+    },
+    {
+      "source": "/pt/start/profile",
+      "destination": "/start/profile"
+    },
+    {
+      "source": "/pt/start/triggers",
+      "destination": "/start/triggers"
+    },
+    {
+      "source": "/pt/start/themes",
+      "destination": "/start/themes"
+    },
+    {
+      "source": "/pt/basic",
+      "destination": "/basic"
+    },
+    {
+      "source": "/pt/basic/link-aggregator",
+      "destination": "/basic/link-aggregator"
+    },
+    {
+      "source": "/pt/basic/ai-chat",
+      "destination": "/basic/ai-chat"
+    },
+    {
+      "source": "/pt/basic/ai-settings",
+      "destination": "/basic/ai-settings"
+    },
+    {
+      "source": "/pt/basic/conversation-history",
+      "destination": "/basic/conversation-history"
+    },
+    {
+      "source": "/pt/basic/analytics",
+      "destination": "/basic/analytics"
+    },
+    {
+      "source": "/pt/pro",
+      "destination": "/pro"
+    },
+    {
+      "source": "/pt/pro/workspaces",
+      "destination": "/pro/workspaces"
+    },
+    {
+      "source": "/pt/pro/reviewing",
+      "destination": "/pro/reviewing"
+    },
+    {
+      "source": "/pt/pro/autosync",
+      "destination": "/pro/autosync"
+    },
+    {
+      "source": "/pt/pro/opengraph",
+      "destination": "/pro/opengraph"
+    },
+    {
+      "source": "/pt/pro/customization",
+      "destination": "/pro/customization"
+    },
+    {
+      "source": "/pt/practices",
+      "destination": "/practices"
+    },
+    {
+      "source": "/pt/using-attlas",
+      "destination": "/using-attlas"
+    },
+    {
+      "source": "/pt/practices/structuring-content",
+      "destination": "/practices/structuring-content"
+    },
+    {
+      "source": "/pt/practices/coverage-rate",
+      "destination": "/practices/coverage-rate"
+    },
+    {
+      "source": "/pt/practices/corrections",
+      "destination": "/practices/corrections"
+    },
+    {
+      "source": "/pt/practices/archetypes",
+      "destination": "/practices/archetypes"
+    },
+    {
+      "source": "/pt/integrations",
+      "destination": "/integrations"
+    },
+    {
+      "source": "/pt/integrations/google-calendar",
+      "destination": "/integrations/google-calendar"
+    },
+    {
+      "source": "/pt/integrations/sql-database",
+      "destination": "/integrations/sql-database"
+    },
+    {
+      "source": "/pt/integrations/tally",
+      "destination": "/integrations/tally"
+    },
+    {
+      "source": "/pt/integrations/notion",
+      "destination": "/integrations/notion"
+    },
+    {
+      "source": "/pt/playbooks",
+      "destination": "/playbooks"
+    },
+    {
+      "source": "/pt/playbooks/companies",
+      "destination": "/playbooks/companies"
+    },
+    {
+      "source": "/pt/playbooks/attlas-performance",
+      "destination": "/playbooks/attlas-performance"
+    },
+    {
+      "source": "/pt/playbooks/how-to-start",
+      "destination": "/playbooks/how-to-start"
+    },
+    {
+      "source": "/pt/playbooks/internal-knowledge",
+      "destination": "/playbooks/internal-knowledge"
+    },
+    {
+      "source": "/pt/playbooks/creators",
+      "destination": "/playbooks/creators"
+    },
+    {
+      "source": "/pt/playbooks/creators/link-in-bio",
+      "destination": "/playbooks/creators/link-in-bio"
+    },
+    {
+      "source": "/pt/playbooks/creators/creative-uses",
+      "destination": "/playbooks/creators/creative-uses"
+    },
+    {
+      "source": "/pt/ressources",
+      "destination": "/ressources"
+    },
+    {
+      "source": "/pt/legal",
+      "destination": "/legal"
+    },
+    {
+      "source": "/pt/legal/privacy",
+      "destination": "/legal/privacy"
+    },
+    {
+      "source": "/pt/legal/terms",
+      "destination": "/legal/terms"
+    },
+    {
+      "source": "/pt/legal/data",
+      "destination": "/legal/data"
+    },
+    {
+      "source": "/pt/faq",
+      "destination": "/faq"
+    },
+    {
+      "source": "/pt/mediakit",
       "destination": "/mediakit"
     }
   ],
@@ -434,6 +514,7 @@
                 "icon": "play",
                 "root": "start",
                 "pages": [
+                  "start/sources",
                   "start/profile",
                   "start/triggers",
                   "start/themes",
@@ -543,14 +624,12 @@
           {
             "group": "Apprendre",
             "pages": [
-              "fr/index",
               {
                 "group": "Prise en main",
                 "pages": [
                   "fr/start/sharing"
                 ],
-                "icon": "play",
-                "root": "fr/start"
+                "icon": "play"
               }
             ]
           }
@@ -567,14 +646,12 @@
           {
             "group": "Aprender",
             "pages": [
-              "pt/index",
               {
                 "group": "Primeiros passos",
                 "pages": [
                   "pt/start/sharing"
                 ],
-                "icon": "play",
-                "root": "pt/start"
+                "icon": "play"
               }
             ]
           }
