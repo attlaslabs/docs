@@ -506,12 +506,12 @@
           ]
         },
         "groups": [
-          "index",
           {
             "group": "Get started",
             "icon": "play",
             "root": "start",
             "pages": [
+              "index",
               "start/sources",
               "start/profile",
               "start/triggers",
@@ -617,11 +617,11 @@
           "type": "warning"
         },
         "groups": [
-          "fr/index",
           {
             "group": "Prise en main",
             "icon": "play",
             "pages": [
+              "fr/index",
               "fr/start/sharing"
             ]
           }
@@ -635,11 +635,11 @@
           "type": "warning"
         },
         "groups": [
-          "pt/index",
           {
             "group": "Primeiros passos",
             "icon": "play",
             "pages": [
+              "pt/index",
               "pt/start/sharing"
             ]
           }
