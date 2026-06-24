@@ -506,6 +506,7 @@
           ]
         },
         "groups": [
+          "index",
           {
             "group": "Get started",
             "icon": "play",
@@ -616,6 +617,7 @@
           "type": "warning"
         },
         "groups": [
+          "fr/index",
           {
             "group": "Prise en main",
             "icon": "play",
@@ -633,6 +635,7 @@
           "type": "warning"
         },
         "groups": [
+          "pt/index",
           {
             "group": "Primeiros passos",
             "icon": "play",

@@ -3,7 +3,7 @@ html, main, body {
 }
 
 .sidebar-group {
-    margin-top: 1rem;
+    margin-top: .25rem;
 }
 
 .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
