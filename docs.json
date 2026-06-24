@@ -469,7 +469,7 @@
                 "icon": "trophy",
                 "root": "practices",
                 "pages": [
-                  "practices/best-practices-for-using-attlas",
+                  "using-attlas",
                   "practices/structuring-content",
                   "practices/coverage-rate",
                   "practices/corrections",

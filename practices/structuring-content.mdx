@@ -20,22 +20,6 @@ Markdown is a simple way to structure content using headings, subheadings, lists
 
 It is widely used in documentation, knowledge bases, and AI systems because it helps preserve the hierarchy of information.
 
-For example:
-
-<Check>
-  # Product X
-
-  ## How it works
-
-  Product description.
-
-  ## Frequently asked questions
-
-  - How do I subscribe?
-  - How do I cancel?
-  - How do I contact support?
-</Check>
-
 Even when you upload PDFs, Word documents, or plain text, Attlas attempts to identify and understand this structure automatically.
 
 The more organized the structure is, the better.
@@ -65,32 +49,71 @@ One of the best practices is dividing content into clear sections.
 
 ### Poor Example
 
-<Danger>
-  Product X is a business management software. The product integrates with CRM systems. Support is available from 8 AM to 6 PM. The basic plan costs \$99. The advanced plan costs \$199.
-</Danger>
+<Tabs>
+  <Tab title="Example">
+    <CodeGroup>
+
+    ```markdown Markdown wrap
+    Product X is a business management software. The product integrates with CRM systems. Support is available from 8 AM to 6 PM. The basic plan costs $99. The advanced plan costs $199.
+    ```
+
+    </CodeGroup>
+  </Tab>
+  <Tab title="Result">
+    <Danger>
+      Product X is a business management software. The product integrates with CRM systems. Support is available from 8 AM to 6 PM. The basic plan costs \$99. The advanced plan costs \$199.
+    </Danger>
+  </Tab>
+</Tabs>
 
 ### Better Example
 
-<Check>
-  # Product X
+<Tabs>
+  <Tab title="Example">
+    <CodeGroup>
 
-  ## What it is
+    ```markdown Markdown
+    # Product X
+    
+    ## What it is
+    Business management software.
+    
+    ## Integrations
+    CRM integration.
+    
+    ## Support
+    Support available from 8 AM to 6 PM.
+    
+    ## Pricing
+    - Basic Plan: $99
+    - Advanced Plan: $199
+    ```
 
-  Business management software.
+    </CodeGroup>
+  </Tab>
+  <Tab title="Result">
+    <Check>
+      # Product X
 
-  ## Integrations
+      ## What it is
 
-  CRM integration.
+      Business management software.
 
-  ## Support
+      ## Integrations
 
-  Support available from 8 AM to 6 PM.
+      CRM integration.
 
-  ## Pricing
+      ## Support
 
-  - Basic Plan: \$99
-  - Advanced Plan: \$199
-</Check>
+      Support available from 8 AM to 6 PM.
+
+      ## Pricing
+
+      - Basic Plan: \$99
+      - Advanced Plan: \$199
+    </Check>
+  </Tab>
+</Tabs>
 
 The second version creates a much clearer hierarchy for AI to interpret.
 
@@ -103,7 +126,7 @@ Lists help separate concepts and reduce ambiguity.
 ### Example
 
 <Check>
-  Product benefits:
+  **Product benefits:**
 
   - Easy implementation
   - CRM integration
@@ -143,11 +166,11 @@ When creating help centers or FAQ content, use a clear question-and-answer struc
 ### Example
 
 <Check>
-  ## How do I request a refund?
+  ### How do I request a refund?
 
   You can request a refund through your customer portal.
 
-  ## What is the delivery time?
+  ### What is the delivery time?
 
   The average delivery time is five business days.
 </Check>
@@ -178,7 +201,7 @@ Whenever possible:
 - Remove duplicate content;
 - Maintain a single source of truth for important information.
 
-<Card title="Attlas Best Practices Guide" icon="bot" href="/practices/best-practices-for-using-attlas">
+<Card title="Attlas Best Practices Guide" icon="bot" href="/practices/using-attlas">
   Learn more about content consistency and quality in our Attlas Best Practices Guide.
 </Card>
 
