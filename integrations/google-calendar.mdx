@@ -2,42 +2,60 @@
 title: "Google Calendar integration"
 sidebarTitle: "Google Calendar"
 description: "Connect your calendar with your Attlas Chat, allowing visitors and leads to book, view, and cancel meetings directly through conversation."
-tag: "Soon"
+tag: "New"
 og:image: "https://res.cloudinary.com/dfntbextx/image/upload/v1781489472/thumb_google-calendar_uqf9ct.webp"
 ---
 
-## What is the Google Calendar Integration?
+The Google Calendar integration transforms your Attlas Chat into an automated, 24/7 scheduler. Instead of redirecting users to third-party scheduling pages, your chat handles the entire booking flow dynamically in the chat window.
 
-The Google Calendar integration transforms your Attlas Chat into an automated, 24/7 receptionist. Instead of redirecting users to third-party scheduling pages or exchanging multiple emails to find a time that works, your chat handles the entire booking flow dynamically in the chat window.
+It checks your real-time availability, respects your scheduling preferences, captures lead information, and sends out calendar invitations automatically.
 
-It reads your real-time availability, respects your scheduling preferences, captures lead information, and sends out calendar invitations automatically.
+---
 
-## Key Benefits
+## Key benefits
 
-- **Zero Booking Friction**: Visitors can book a meeting instantly within the flow of their conversation. No need to click external links, sign up for services, or leave your website.
-- **Always in Sync (No Double Bookings)**: The chat checks your calendar’s busy slots in real time before proposing any time to visitors.
-- **Dynamic, Context-Aware Scheduling**: You can tell the chat exactly what kind of meetings you want to host and what questions to ask. The AI adapts the conversation based on your instructions.
-- **Automatic Calendar Invites**: Once a booking is confirmed, the chat automatically schedules the meeting in your Google Calendar and sends a calendar invite with a cancellation link to the visitor.
-- **Effortless Lead Generation**: When a visitor books a meeting, they are automatically saved as a lead with their contact details in your database, giving you a structured pipeline.
-- **Instant Cancellation Management**: Both you and your visitors can cancel meetings easily. Visitors can request a cancellation directly through the chat, and you can manage all upcoming meetings from your dashboard.
+- **Zero booking friction**: Visitors can book a meeting instantly within the flow of their conversation. No need to click external links, sign up for services, or leave your website.
+- **Always in sync**: The chat checks your calendar’s busy slots in real time before proposing any time to visitors.
+- **Dynamic, context-aware scheduling**: You can tell the chat exactly what kind of meetings you want to host and what questions to ask. The AI adapts the conversation based on your instructions.
+- **Automatic calendar invites**: Once a booking is confirmed, the chat automatically schedules the meeting in your Google Calendar and sends a calendar invite with a cancellation link to the visitor.
+- **Effortless lead generation**: When a visitor books a meeting, they are automatically saved as a lead with their contact details in your database, giving you a structured pipeline.
+- **Instant cancellation management**: Both you and your visitors can cancel meetings easily. Visitors can request a cancellation directly through the chat, and you can manage all upcoming meetings from your dashboard.
 
-## How It Works
+---
+
+## Contact capture and sync
+
+Every time a visitor schedules a meeting, Attlas Chat automatically captures their details to help you build your lead pipeline:
+
+<Frame>
+  ![Contact capture in Attlas](/images/calendar_4.webp)
+</Frame>
+
+- **Required credentials**: The assistant always gathers at a minimum the visitor's email and name before finalizing any appointment.
+- **Lead database**: The gathered visitor information (first name, last name, email, phone number if required, and conversation context/notes) is automatically saved or updated in your workspace database.
+- **Contacts dashboard**: All leads captured through your calendar integration are grouped and viewable in one place on your dashboard under the [Contacts](file:///Users/yannyimo/Documents/00%20-%20CODE/attlas-next/app/%28app%29/%28authenticated%29/contacts/page.tsx) page (`/contacts`).
+
+---
+
+## How it works
 
 Here is how the system orchestrates a seamless booking experience:
 
-1. **Checking Availability**: The visitor asks to schedule a meeting. The Attlas Chat instantly runs a background check against your Google Calendar's busy times and your custom work hours.
-2. **Collecting Details**: The chat gathers the visitor's name, email address, and any additional details you requested (like company size or project goals).
-3. **Booking the Event**: The AI books the meeting. Under the hood:
+1. **Checking availability**: The visitor asks to schedule a meeting. The Attlas Chat instantly runs a background check against your Google Calendar's busy times and your custom work hours.
+2. **Collecting details**: The chat gathers the visitor's name, email address, and any additional details you requested (like company size or project goals).
+3. **Booking the event**: The AI books the meeting. Under the hood:
    - A calendar event is created in your Google Calendar.
    - A calendar invitation is sent to the visitor's inbox.
-   - The visitor's details are saved in your dashboard as a new lead.
-4. **Displaying the Confirmation**: A clean, visual booking card appears in the chat interface confirming the time and date of the meeting.
+   - The visitor's details are saved in your database as a new lead.
+4. **Displaying the confirmation**: A clean, visual booking card appears in the chat interface confirming the time and date of the meeting.
 
-## How to Set It Up
+---
+
+## How to set it up
 
 Getting started is simple and takes less than two minutes.
 
-### **1. Connect Your Google Calendar**
+### **1. Connect your Google Calendar**
 
 1. Navigate to your **Settings** dashboard.
 2. Select the **Integrations** tab.
@@ -45,18 +63,37 @@ Getting started is simple and takes less than two minutes.
 4. Log into your Google account and grant the necessary permissions to manage your calendar events.
 5. Select which calendar you want your chat to book events on (e.g., your primary email calendar).
 
-### 2. Set Your Availability and Rules
+---
 
-Configure your booking preferences directly in your dashboard:
+### 2. Set your availability and rules
 
-- **Booking Context**: Describe the type of meeting to the chat. For example: _"This is a 30-minute discovery call. Please ask the visitor for their company website and what main challenge they are facing."_
+Configure your booking preferences directly in your dashboard. Any changes you make are saved automatically:
+
+<Frame>
+  ![Google Calendar settings](/images/calendar_1.webp)
+</Frame>
+
 - **Timezone**: Set your operating timezone.
-- **Weekly Schedule**: Choose the days of the week and hours you are available to meet.
+- **Appointment Types**: List the types of events or topics (e.g., Discovery Call, Product Demo) available for visitors to choose from.
+- **Booking Context**: Describe the type of meeting to the chat. For example: _"This is a 30-minute discovery call. Please ask the visitor for their company website and what main challenge they are facing."_
 - **Meeting Duration**: Choose slot durations (e.g., 15, 30, 45, 60, or 90 minutes).
 - **Minimum Notice**: Avoid last-minute surprises by setting a minimum notice period (e.g., no bookings less than 24 hours in advance).
+- **Require Phone Number**: Enable this option if you want to make phone numbers mandatory for all bookings.
 
-### 3. Managing Appointments
+<Frame>
+  ![Google Calendar availability settings](/images/calendar_2.webp)
+</Frame>
 
-- **View Upcoming Meetings**: You can view all confirmed upcoming appointments, visitor details, and scheduled times directly from the **Appointments** section in your settings.
-- **Cancel Meetings**: Need to reschedule or cancel? Click **Cancel** next to any meeting in your dashboard. The system will automatically remove it from your Google Calendar, notify the visitor, and update your records.
-- **Visitor-Led Cancellations**: If a visitor returns to the chat and asks to cancel their meeting, the Attlas Chat will ask for their email address, verify their scheduled event, and cancel it for them instantly.
+- **Weekly Schedule**: Choose the days of the week and hours you are available to meet.
+
+---
+
+### 3. Managing appointments
+
+<Frame>
+  ![Upcoming appointments](/images/calendar_3.webp)
+</Frame>
+
+- **View upcoming meetings**: You can view all confirmed upcoming appointments, visitor details, and scheduled times directly from the **Appointments** section in your settings.
+- **Cancel meetings**: Need to reschedule or cancel? Click **Cancel** next to any meeting in your dashboard. The system will automatically remove it from your Google Calendar, notify the visitor, and update your records.
+- **Visitor-led cancellations**: If a visitor returns to the chat and asks to cancel their meeting, the Attlas Chat will ask for their email address, verify their scheduled event, and cancel it for them instantly.
