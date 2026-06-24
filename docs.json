@@ -509,6 +509,7 @@
           {
             "group": "Learn",
             "pages": [
+              "index",
               {
                 "group": "Get started",
                 "icon": "play",
@@ -624,12 +625,13 @@
           {
             "group": "Apprendre",
             "pages": [
+              "fr/index",
               {
                 "group": "Prise en main",
+                "icon": "play",
                 "pages": [
                   "fr/start/sharing"
-                ],
-                "icon": "play"
+                ]
               }
             ]
           }
@@ -646,12 +648,13 @@
           {
             "group": "Aprender",
             "pages": [
+              "pt/index",
               {
                 "group": "Primeiros passos",
+                "icon": "play",
                 "pages": [
                   "pt/start/sharing"
-                ],
-                "icon": "play"
+                ]
               }
             ]
           }
