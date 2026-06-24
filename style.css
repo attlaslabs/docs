@@ -105,3 +105,11 @@ html, main, body {
 [data-depth="2"] {
     display: none;
 }
+
+#page-context-menu:first-of-type {
+  display: none !important;
+}
+
+#page-context-menu:nth-of-type(2) {
+  display: flex !important;
+}
