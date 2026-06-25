@@ -12,12 +12,13 @@ html, main, body {
 
 :not(pre)>code {
     background-color: rgb(var(--primary) / .1);
-    padding: .125rem .4375rem;
+    padding: .125rem .25rem;
     margin: 0 .1875rem;
 }
 
 .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
     font-weight: 600;
+    font-size: 0.8125rem;
 }
 
 .prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)) {
