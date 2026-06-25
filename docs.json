@@ -505,11 +505,11 @@
             }
           ]
         },
+        "pages": ["index"],
         "groups": [
           {
             "group": "Learn",
             "pages": [
-              "index",
               {
                 "group": "Get started",
                 "icon": "play",
@@ -620,11 +620,13 @@
           "dismissible": true,
           "type": "warning"
         },
+        "pages": [
+          "fr/index"
+        ],
         "groups": [
           {
             "group": "Apprendre",
             "pages": [
-              "fr/index",
               {
                 "group": "Prise en main",
                 "icon": "play",
@@ -644,11 +646,13 @@
           "dismissible": true,
           "type": "warning"
         },
+        "pages": [
+          "pt/index"
+        ],
         "groups": [
           {
             "group": "Aprender",
             "pages": [
-              "pt/index",
               {
                 "group": "Primeiros passos",
                 "icon": "play",
