@@ -13,6 +13,7 @@ The SQL database integration (PostgreSQL-compatible) allows you to connect a dat
 1. Go to your **Chat Settings** \> **Integrations** \> **SQL Database**.
 2. Click **Connect** and fill in your database details:
    - **Name & Description:** A friendly name and description to help the AI understand what data is inside.
+   - **Currency (Optional):** The primary currency used for monetary values in your tables, helping the AI format and interpret financial data.
    - **Host & Port:** Your database server address and port (default is `5432` for PostgreSQL).
    - **Database:** The name of your database.
    - **User & Password:** Your database credentials (ideally read-only).
@@ -30,8 +31,10 @@ Click the Connect button to open the form and fill in the following fields:
 | --- | --- |
 | Name | A friendly name to identify this connection |
 | Description | A description of what the database does (helps Attlas understand the context of the data) |
+| Currency | The primary currency used for monetary data in this database (e.g., USD, EUR), optional |
 | Host | The address of your database server.	[db.example.com](http://db.example.com) or 123.45.67.89 |
 | Port | The connection port (5432 by default for PostgreSQL) |
+| Database | The name of your database |
 | User | The connection username |
 | Password | The password associated with the user |
 | SSL Mode | The security level of the SSL connection |
