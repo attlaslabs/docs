@@ -474,23 +474,6 @@
           },
           "links": [
             {
-              "header": "Resources",
-              "items": [
-                {
-                  "label": "Documentation",
-                  "href": "/start/sources"
-                },
-                {
-                  "label": "Blog",
-                  "href": "https://attlas.so/blog"
-                },
-                {
-                  "label": "FAQ",
-                  "href": "/faq"
-                }
-              ]
-            },
-            {
               "header": "Legal",
               "items": [
                 {
@@ -508,8 +491,7 @@
         "groups": [
           {
             "group": "Home",
-            "pages": ["index"],
-            "hidden": true
+            "pages": ["index"]
           },
           {
             "group": "Learn",
@@ -626,9 +608,8 @@
         },
         "groups": [
           {
-            "group": "Home",
-            "pages": ["fr/index"],
-            "hidden": true
+            "group": "Accueil",
+            "pages": ["fr/index"]
           },
           {
             "group": "Apprendre",
@@ -654,9 +635,8 @@
         },
         "groups": [
           {
-            "group": "Home",
-            "pages": ["pt/index"],
-            "hidden": true
+            "group": "Início",
+            "pages": ["pt/index"]
           },
           {
             "group": "Aprender",
@@ -677,7 +657,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Home",
+          "anchor": "Website",
           "icon": "house",
           "color": {
             "light": "#155dfc",
