@@ -101,10 +101,6 @@
       "destination": "/pt"
     },
     {
-      "source": "/fr/start",
-      "destination": "/start"
-    },
-    {
       "source": "/fr/start/sources",
       "destination": "/start/sources"
     },
@@ -119,10 +115,6 @@
     {
       "source": "/fr/start/themes",
       "destination": "/start/themes"
-    },
-    {
-      "source": "/fr/basic",
-      "destination": "/basic"
     },
     {
       "source": "/fr/basic/link-aggregator",
@@ -145,10 +137,6 @@
       "destination": "/basic/analytics"
     },
     {
-      "source": "/fr/pro",
-      "destination": "/pro"
-    },
-    {
       "source": "/fr/pro/workspaces",
       "destination": "/pro/workspaces"
     },
@@ -167,10 +155,6 @@
     {
       "source": "/fr/pro/customization",
       "destination": "/pro/customization"
-    },
-    {
-      "source": "/fr/practices",
-      "destination": "/practices"
     },
     {
       "source": "/fr/using-attlas",
@@ -193,16 +177,8 @@
       "destination": "/practices/archetypes"
     },
     {
-      "source": "/fr/integrations",
-      "destination": "/integrations"
-    },
-    {
       "source": "/fr/integrations/google-calendar",
       "destination": "/integrations/google-calendar"
-    },
-    {
-      "source": "/fr/integrations/sql-database",
-      "destination": "/integrations/sql-database"
     },
     {
       "source": "/fr/integrations/tally",
@@ -211,10 +187,6 @@
     {
       "source": "/fr/integrations/notion",
       "destination": "/integrations/notion"
-    },
-    {
-      "source": "/fr/playbooks",
-      "destination": "/playbooks"
     },
     {
       "source": "/fr/playbooks/companies",
@@ -233,24 +205,12 @@
       "destination": "/playbooks/internal-knowledge"
     },
     {
-      "source": "/fr/playbooks/creators",
-      "destination": "/playbooks/creators"
-    },
-    {
       "source": "/fr/playbooks/creators/link-in-bio",
       "destination": "/playbooks/creators/link-in-bio"
     },
     {
       "source": "/fr/playbooks/creators/creative-uses",
       "destination": "/playbooks/creators/creative-uses"
-    },
-    {
-      "source": "/fr/ressources",
-      "destination": "/ressources"
-    },
-    {
-      "source": "/fr/legal",
-      "destination": "/legal"
     },
     {
       "source": "/fr/legal/privacy",
@@ -273,10 +233,6 @@
       "destination": "/mediakit"
     },
     {
-      "source": "/pt/start",
-      "destination": "/start"
-    },
-    {
       "source": "/pt/start/sources",
       "destination": "/start/sources"
     },
@@ -291,10 +247,6 @@
     {
       "source": "/pt/start/themes",
       "destination": "/start/themes"
-    },
-    {
-      "source": "/pt/basic",
-      "destination": "/basic"
     },
     {
       "source": "/pt/basic/link-aggregator",
@@ -317,10 +269,6 @@
       "destination": "/basic/analytics"
     },
     {
-      "source": "/pt/pro",
-      "destination": "/pro"
-    },
-    {
       "source": "/pt/pro/workspaces",
       "destination": "/pro/workspaces"
     },
@@ -339,10 +287,6 @@
     {
       "source": "/pt/pro/customization",
       "destination": "/pro/customization"
-    },
-    {
-      "source": "/pt/practices",
-      "destination": "/practices"
     },
     {
       "source": "/pt/using-attlas",
@@ -365,16 +309,8 @@
       "destination": "/practices/archetypes"
     },
     {
-      "source": "/pt/integrations",
-      "destination": "/integrations"
-    },
-    {
       "source": "/pt/integrations/google-calendar",
       "destination": "/integrations/google-calendar"
-    },
-    {
-      "source": "/pt/integrations/sql-database",
-      "destination": "/integrations/sql-database"
     },
     {
       "source": "/pt/integrations/tally",
@@ -383,10 +319,6 @@
     {
       "source": "/pt/integrations/notion",
       "destination": "/integrations/notion"
-    },
-    {
-      "source": "/pt/playbooks",
-      "destination": "/playbooks"
     },
     {
       "source": "/pt/playbooks/companies",
@@ -405,24 +337,12 @@
       "destination": "/playbooks/internal-knowledge"
     },
     {
-      "source": "/pt/playbooks/creators",
-      "destination": "/playbooks/creators"
-    },
-    {
       "source": "/pt/playbooks/creators/link-in-bio",
       "destination": "/playbooks/creators/link-in-bio"
     },
     {
       "source": "/pt/playbooks/creators/creative-uses",
       "destination": "/playbooks/creators/creative-uses"
-    },
-    {
-      "source": "/pt/ressources",
-      "destination": "/ressources"
-    },
-    {
-      "source": "/pt/legal",
-      "destination": "/legal"
     },
     {
       "source": "/pt/legal/privacy",
@@ -491,7 +411,9 @@
         "groups": [
           {
             "group": "Home",
-            "pages": ["index"]
+            "pages": [
+              "index"
+            ]
           },
           {
             "group": "Learn",
@@ -608,19 +530,27 @@
         },
         "groups": [
           {
-            "group": "Accueil",
-            "pages": ["fr/index"]
+            "group": "Home",
+            "pages": [
+              "fr/index"
+            ]
           },
           {
             "group": "Apprendre",
             "pages": [
               {
                 "group": "Prise en main",
-                "icon": "play",
-                "expanded": false,
                 "pages": [
                   "fr/start/sharing"
-                ]
+                ],
+                "icon": "play"
+              },
+              {
+                "group": "Intégrations",
+                "pages": [
+                  "fr/integrations/sql-database"
+                ],
+                "icon": "shapes"
               }
             ]
           }
@@ -635,19 +565,27 @@
         },
         "groups": [
           {
-            "group": "Início",
-            "pages": ["pt/index"]
+            "group": "Home",
+            "pages": [
+              "pt/index"
+            ]
           },
           {
             "group": "Aprender",
             "pages": [
               {
                 "group": "Primeiros passos",
-                "icon": "play",
-                "expanded": false,
                 "pages": [
                   "pt/start/sharing"
-                ]
+                ],
+                "icon": "play"
+              },
+              {
+                "group": "Integrações",
+                "pages": [
+                  "pt/integrations/sql-database"
+                ],
+                "icon": "shapes"
               }
             ]
           }

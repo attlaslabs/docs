@@ -1,0 +1,67 @@
+---
+title: "Banco de Dados SQL"
+tag: "Em breve"
+description: "Permita que o Attlas consulte seus bancos de dados SQL diretamente para analisar dados e responder perguntas complexas em tempo real."
+---
+
+A integração de banco de dados SQL (compatível com PostgreSQL) permite conectar um banco de dados à sua sala de chat. Uma vez conectado, o Attlas será capaz de ler o esquema das tabelas autorizadas e formular consultas de leitura para responder com precisão às perguntas dos seus usuários.
+
+---
+
+## **🛠️ Como conectar**
+
+1. Vá para **Configurações do Chat** \> **Integrações** \> **Banco de Dados SQL**.
+2. Clique em **Conectar** e preencha os detalhes do seu banco de dados:
+   - **Nome e Descrição:** Um nome amigável e uma descrição para ajudar a IA a entender quais dados estão contidos.
+   - **Moeda (Opcional):** A moeda principal usada para valores monetários em suas tabelas, ajudando a IA a formatar e interpretar dados financeiros.
+   - **Host e Porta:** O endereço do seu servidor de banco de dados e a porta (padrão é `5432` para PostgreSQL).
+   - **Banco de Dados:** O nome do seu banco de dados.
+   - **Usuário e Senha:** Suas credenciais do banco de dados (idealmente somente leitura).
+   - **Modo SSL:** Selecione `require` ou `disable`.
+3. Clique em **Testar** para verificar as credenciais e ver quantas tabelas foram encontradas.
+4. Clique em **Salvar** para finalizar.
+
+---
+
+## Preencha os detalhes da conexão
+
+Clique no botão Conectar para abrir o formulário e preencher os seguintes campos:
+
+| Campo | Exemplo de descrição |
+| --- | --- |
+| Nome | Um nome amigável para identificar esta conexão |
+| Descrição | Uma descrição do que o banco de dados faz (ajuda o Attlas a entender o contexto dos dados) |
+| Moeda | A moeda principal usada para dados monetários neste banco de dados (por exemplo, USD, EUR), opcional |
+| Host | O endereço do seu servidor de banco de dados. [db.example.com](http://db.example.com) ou 123.45.67.89 |
+| Porta | A porta de conexão (5432 por padrão para PostgreSQL) |
+| Banco de Dados | O nome do seu banco de dados |
+| Usuário | O nome de usuário da conexão |
+| Senha | A senha associada ao usuário |
+| Modo SSL | O nível de segurança da conexão SSL |
+
+---
+
+## **⚙️ Gerenciando sua integração**
+
+Clique em **Configurações** no cartão do Banco de Dados SQL ativo para gerenciar o seguinte:
+
+- **Selecionar Tabelas para Compartilhar:** Você não precisa compartilhar tudo. Alterne quais tabelas ou visões específicas a IA tem permissão para acessar.
+- **Atualizar Esquema:** Se você adicionar ou editar colunas/tabelas no seu banco de dados, clique em **Atualizar** para sincronizar as alterações com a IA.
+- **Desabilitar Temporariamente:** Ative ou desative a integração a qualquer momento usando o interruptor.
+- **Desconectar:** Clique em **Desconectar** para remover completamente a conexão do banco de dados.
+
+## **💡 Melhores práticas para esquema de banco de dados**
+
+Para ajudar o Attlas a escrever consultas precisas e realizar cálculos exatos, considere estas dicas de design de esquema:
+
+- **Use tipos de coluna precisos:** Se você deseja que o chat realize cálculos, como somas, médias ou proporções, em dados numéricos, certifique-se de que essas colunas usem um tipo numérico, como `numeric`, `decimal`, `integer` ou `float`. Evite armazenar números como texto, como `varchar` ou `text`, pois isso torna os cálculos mais difíceis e menos precisos.
+- **Adicione comentários em colunas:** Use comentários do banco de dados em suas tabelas e colunas. Adicionar uma breve descrição diretamente a uma coluna, por exemplo `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fornece um contexto crucial que orienta o Attlas na escrita das consultas SQL corretas.
+
+---
+
+## **🔒 Melhores práticas de segurança**
+
+Para manter seus dados seguros, recomendamos fortemente:
+
+- **Use um Usuário Somente Leitura:** Crie um usuário de banco de dados apenas com permissões de `SELECT`. O Attlas não precisa de acesso de gravação (`INSERT`, `UPDATE`, `DELETE`).
+- **Mantenha o SSL Ativado:** Recomendamos configurar `sslmode` como `require` para criptografar dados em trânsito.

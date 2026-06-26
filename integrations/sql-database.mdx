@@ -50,6 +50,13 @@ Click **Settings** on your active SQL Database card to manage the following:
 - **Temporarily Disable:** Turn the integration on or off at any time using the toggle switch.
 - **Disconnect:** Click **Disconnect** to completely remove the database connection.
 
+## **💡 Best practices for database schema**
+
+To help Attlas write accurate queries and perform precise calculations, consider these schema design tips:
+
+- **Use precise column types:** If you want the chat to perform calculations, such as sums, averages, or ratios, on numeric data, ensure those columns use a numeric type, such as `numeric`, `decimal`, `integer`, or `float`. Avoid storing numbers as text, such as `varchar` or `text`, as this makes calculations harder and less accurate.
+- **Add column comments:** Use database comments on your tables and columns. Adding a brief description directly to a column, for example `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, provides crucial context that guides Attlas in writing the correct SQL queries.
+
 ---
 
 ## **🔒 Security best practices**
