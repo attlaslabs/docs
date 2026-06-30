@@ -1,0 +1,91 @@
+---
+title: "Integração com o Google Calendar"
+sidebarTitle: "Google Calendar"
+description: "Conecte seu calendário ao Attlas Chat, permitindo que visitantes e leads agendem, visualizem e cancelem reuniões diretamente na conversa."
+tag: "Novo"
+og:image: "https://res.cloudinary.com/dfntbextx/image/upload/v1781489472/thumb_google-calendar_uqf9ct.webp"
+---
+
+A integração com o Google Calendar transforma seu Attlas Chat em um agendador automático, funcionando 24 horas por dia, 7 dias por semana. Em vez de redirecionar os usuários para páginas de agendamento de terceiros, seu chat gerencia todo o fluxo de reservas de forma dinâmica na janela de conversa.
+
+Ele verifica sua disponibilidade em tempo real, respeita suas preferências de agendamento, captura informações de leads e envia convites de calendário automaticamente.
+
+---
+
+## Principais benefícios
+
+- **Sem atritos no agendamento**: Visitantes podem reservar uma reunião instantaneamente dentro do fluxo da conversa. Não é necessário clicar em links externos, se inscrever em serviços ou sair do seu site.
+- **Sempre sincronizado**: O chat verifica os horários ocupados no seu calendário em tempo real antes de propor qualquer horário aos visitantes.
+- **Agendamento dinâmico e contextualizado**: Você pode informar ao chat exatamente que tipo de reuniões deseja receber e quais perguntas fazer. A IA adapta a conversa com base nas suas instruções.
+- **Convites automáticos de calendário**: Assim que a reserva é confirmada, o chat agenda automaticamente a reunião no seu Google Calendar e envia ao visitante um convite com um link de cancelamento.
+- **Geração de leads sem esforço**: Quando um visitante agenda uma reunião, ele é salvo automaticamente como lead com seus dados de contato no seu banco de dados, proporcionando um pipeline estruturado.
+- **Gerenciamento instantâneo de cancelamentos**: Tanto você quanto seus visitantes podem cancelar reuniões com facilidade. Os visitantes podem solicitar o cancelamento diretamente no chat, e você pode gerenciar todas as próximas reuniões no painel.
+
+---
+
+## Captura e sincronização de contatos
+
+A cada reunião agendada por um visitante, o Attlas Chat captura automaticamente seus dados para ajudar você a construir seu pipeline de leads:
+
+![Captura de contatos no Attlas](/images/calendar_4.webp)
+
+- **Credenciais obrigatórias**: O assistente sempre coleta, no mínimo, o email e o nome do visitante antes de finalizar qualquer compromisso.
+- **Banco de dados de leads**: As informações coletadas do visitante (nome, sobrenome, email, número de telefone se exigido, e contexto/observações da conversa) são automaticamente salvas ou atualizadas no banco de dados do seu workspace.
+- **Painel de contatos**: Todos os leads capturados por meio da integração com o calendário são agrupados e podem ser visualizados em um só lugar, no painel, em [Contatos](https://attlas.so/contacts).
+
+---
+
+## Como funciona
+
+Veja como o sistema orquestra uma experiência de agendamento perfeita:
+
+1. **Verificando a disponibilidade**: O visitante solicita agendar uma reunião. O Attlas Chat executa instantaneamente uma verificação em segundo plano dos horários ocupados no Google Calendar e das suas horas de trabalho personalizadas.
+2. **Coletando detalhes**: O chat reúne o nome do visitante, o endereço de email e quaisquer outras informações que você tenha solicitado (como tamanho da empresa ou objetivos do projeto).
+3. **Agendando o evento**: A IA reserva a reunião. Nos bastidores:
+   - Um evento é criado no seu Google Calendar.
+   - Um convite de calendário é enviado para a caixa de entrada do visitante.
+   - Os dados do visitante são salvos no seu banco de dados como um novo lead.
+4. **Exibindo a confirmação**: Um cartão de reserva visual e limpo aparece na interface de chat confirmando o horário e a data da reunião.
+
+---
+
+## Como configurar
+
+Começar é simples e leva menos de dois minutos.
+
+### **1. Conecte seu Google Calendar**
+
+1. Navegue até o painel de **Configurações**.
+2. Selecione a aba **Integrações**.
+3. Encontre o card **Google Calendar** e clique em **Conectar**.
+4. Faça login na sua conta Google e conceda as permissões necessárias para gerenciar seus eventos de calendário.
+5. Selecione em qual calendário você deseja que seu chat agende eventos (por exemplo, o calendário do seu email principal).
+
+---
+
+### 2. Defina sua disponibilidade e regras
+
+Configure suas preferências de agendamento diretamente no painel. Todas as alterações são salvas automaticamente:
+
+![Configurações do Google Calendar](/images/calendar_1.webp)
+
+- **Fuso horário**: Defina o fuso horário de operação.
+- **Tipos de compromisso**: Liste os tipos de eventos ou tópicos (por exemplo, Ligação de Descoberta, Demonstração do Produto) disponíveis para os visitantes escolherem.
+- **Contexto do agendamento**: Descreva o tipo de reunião para o chat. Por exemplo: _"Esta é uma ligação de descoberta de 30 minutos. Pergunte ao visitante o site da empresa e qual é o principal desafio que ele está enfrentando."_
+- **Duração da reunião**: Escolha a duração dos horários (por exemplo, 15, 30, 45, 60 ou 90 minutos).
+- **Aviso prévio mínimo**: Evite surpresas de última hora definindo um período mínimo de antecedência (por exemplo, sem reservas com menos de 24 horas de antecedência).
+- **Exigir número de telefone**: Ative esta opção se quiser tornar o número de telefone obrigatório para todas as reservas.
+
+![Configurações de disponibilidade do Google Calendar](/images/calendar_2.webp)
+
+- **Horário semanal**: Escolha os dias da semana e horários em que você está disponível para reuniões.
+
+---
+
+### 3. Gerenciando compromissos
+
+![Próximos compromissos](/images/calendar_3.webp)
+
+- **Visualizar próximas reuniões**: Você pode ver todos os compromissos futuros confirmados, dados dos visitantes e horários agendados diretamente na seção **Compromissos** das configurações.
+- **Cancelar reuniões**: Precisa reagendar ou cancelar? Clique em **Cancelar** ao lado de qualquer reunião no painel. O sistema removerá automaticamente o evento do Google Calendar, notificará o visitante e atualizará seus registros.
+- **Cancelamentos iniciados pelo visitante**: Se um visitante retornar ao chat e solicitar o cancelamento da reunião, o Attlas Chat pedirá o endereço de email dele, verificará o evento agendado e o cancelará instantaneamente.

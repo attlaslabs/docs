@@ -1,0 +1,239 @@
+---
+title: "Structurer le contenu pour de meilleures performances"
+sidebarTitle: "Structurer le contenu"
+description: "Apprenez à organiser votre contenu pour qu'Attlas comprenne mieux vos informations et fournisse des réponses plus précises."
+---
+
+La qualité des réponses de votre chat ne dépend pas seulement de la quantité d'informations que vous fournissez.
+
+La manière dont ces informations sont organisées compte également.
+
+Bien qu'Attlas puisse traiter de nombreux types de contenu, des informations bien structurées produisent généralement des réponses plus claires, plus précises et plus cohérentes.
+
+Pour cette raison, dans la mesure du possible, nous recommandons d'organiser votre contenu en utilisant une structure similaire à **Markdown**.
+
+---
+
+## Qu'est-ce que Markdown ?
+
+Markdown est un moyen simple de structurer le contenu à l'aide de titres, de sous-titres, de listes et de sections clairement organisées.
+
+Il est largement utilisé dans la documentation, les bases de connaissances et les systèmes d'IA, car il aide à préserver la hiérarchie des informations.
+
+Même lorsque vous téléversez des PDF, des documents Word ou du texte brut, Attlas tente d'identifier et de comprendre automatiquement cette structure.
+
+Plus la structure est organisée, mieux c'est.
+
+---
+
+## Syntaxe Markdown courante
+
+Voici un aide-mémoire des éléments de formatage Markdown les plus courants que vous pouvez utiliser pour structurer vos documents :
+
+| Élément | Syntaxe Markdown | Description |
+| :--- | :--- | :--- |
+| **En-têtes** | `# Header 1`<br/>`## Header 2`<br/>`### Header 3` | Définit la structure et la hiérarchie du document. |
+| **Gras** | `**text**` ou `__text__` | Met en évidence des termes ou des étiquettes importants. |
+| **Italique** | `*text*` ou `_text_` | Met en évidence des notes ou des termes secondaires. |
+| **Listes** | `- Item 1`<br/>`1. First Item` | Sépare des éléments, des avantages ou des étapes séquentielles. |
+| **Liens** | `[Attlas](https://attlas.so)` | Référence des pages ou des sources externes. |
+| **Citations** | `> Important note` | Met en évidence des citations, des avertissements ou des mises en garde. |
+| **Code en ligne** | `` `code` `` | Met en évidence des paramètres système, des clés ou des options. |
+| **Bloc de code** | ` ``` `<br/>`code block`<br/>` ``` ` | Regroupe des scripts multi-lignes ou des données structurées. |
+
+---
+
+## Pourquoi la structure est-elle importante ?
+
+L'IA ne se contente pas de lire les mots.
+
+Elle essaie également de comprendre :
+
+- Ce qui constitue un titre ;
+- Ce qui constitue un sous-titre ;
+- Quelles informations appartiennent à chaque section ;
+- Comment les sujets sont liés ;
+- Ce qui représente une liste ;
+- Ce qui constitue une question et ce qui constitue une réponse.
+
+Lorsque les informations sont bien organisées, Attlas peut mieux comprendre le contexte et récupérer les informations avec plus de précision.
+
+---
+
+## Utilisez des titres et des sous-titres
+
+L'une des bonnes pratiques consiste à diviser le contenu en sections claires.
+
+### Mauvais exemple
+
+<Tabs>
+  <Tab title="Exemple">
+    <CodeGroup>
+
+    ```markdown Markdown wrap
+    Product X is a business management software. The product integrates with CRM systems. Support is available from 8 AM to 6 PM. The basic plan costs $99. The advanced plan costs $199.
+    ```
+
+    </CodeGroup>
+  </Tab>
+  <Tab title="Résultat">
+    <Danger>
+      Le produit X est un logiciel de gestion d'entreprise. Le produit s'intègre aux systèmes CRM. Le support est disponible de 8 h à 18 h. Le forfait de base coûte \$99. Le forfait avancé coûte \$199.
+    </Danger>
+  </Tab>
+</Tabs>
+
+### Meilleur exemple
+
+<Tabs>
+  <Tab title="Exemple">
+    <CodeGroup>
+
+    ```markdown Markdown
+    # Product X
+    
+    ## What it is
+    Business management software.
+    
+    ## Integrations
+    CRM integration.
+    
+    ## Support
+    Support available from 8 AM to 6 PM.
+    
+    ## Pricing
+    - Basic Plan: $99
+    - Advanced Plan: $199
+    ```
+
+    </CodeGroup>
+  </Tab>
+  <Tab title="Résultat">
+    <Check>
+      # Produit X
+
+      ## Qu'est-ce que c'est
+
+      Logiciel de gestion d'entreprise.
+
+      ## Intégrations
+
+      Intégration CRM.
+
+      ## Support
+
+      Support disponible de 8 h à 18 h.
+
+      ## Tarifs
+
+      - Forfait de base : \$99
+      - Forfait avancé : \$199
+    </Check>
+  </Tab>
+</Tabs>
+
+La deuxième version crée une hiérarchie bien plus claire à interpréter par l'IA.
+
+---
+
+## Utilisez des listes dès que possible
+
+Les listes aident à séparer les concepts et à réduire l'ambiguïté.
+
+### Exemple
+
+<Check>
+  **Avantages du produit :**
+
+  - Mise en œuvre facile
+  - Intégration CRM
+  - Support dédié
+  - Rapports avancés
+</Check>
+
+C'est souvent plus facile à interpréter qu'un grand bloc de texte.
+
+---
+
+## Regroupez les informations connexes
+
+Évitez de mélanger des sujets totalement différents dans le même document.
+
+### À éviter
+
+- Informations sur le produit ;
+- Politiques internes ;
+- Recettes ;
+- Informations sur l'entreprise ;
+
+Tout cela combiné dans un seul fichier.
+
+### À privilégier
+
+Un document pour chaque sujet principal.
+
+Cela aide Attlas à comprendre le contexte de manière plus efficace.
+
+---
+
+## Utilisez un format de questions-réponses pour les FAQ
+
+Lors de la création de centres d'aide ou de contenu FAQ, utilisez une structure claire de questions-réponses.
+
+### Exemple
+
+<Check>
+  ### Comment demander un remboursement ?
+
+  Vous pouvez demander un remboursement via votre portail client.
+
+  ### Quel est le délai de livraison ?
+
+  Le délai de livraison moyen est de cinq jours ouvrables.
+</Check>
+
+Ce format permet à Attlas de retrouver plus facilement les réponses lorsque les utilisateurs posent des questions similaires.
+
+---
+
+## Évitez les informations redondantes ou contradictoires
+
+L'une des causes les plus fréquentes de réponses incohérentes est un contenu contradictoire.
+
+### Exemple
+
+Document A :
+
+> Notre entreprise existe depuis 20 ans.
+
+Document B :
+
+> Notre entreprise fonctionne depuis 22 ans.
+
+Lorsque cela se produit, Attlas peut avoir du mal à déterminer quelle information est la plus à jour.
+
+Dans la mesure du possible :
+
+- Mettez à jour les anciens documents ;
+- Supprimez le contenu en double ;
+- Conservez une source unique de vérité pour les informations importantes.
+
+<Card title="Guide des bonnes pratiques d'Attlas" icon="bot" href="/fr/practices/using-attlas">
+  Apprenez-en plus sur la cohérence et la qualité du contenu dans notre Guide des bonnes pratiques d'Attlas.
+</Card>
+
+---
+
+## Une meilleure structure signifie une meilleure compréhension
+
+Attlas peut traiter le contenu de nombreux formats différents.
+
+Cependant, lorsque l'information est organisée à l'aide de titres, de sous-titres, de listes et de sections clairement définies, la compréhension devient bien plus efficace.
+
+Considérez la structure du contenu comme une carte.
+
+Plus il est facile pour l'IA de naviguer dans vos informations, meilleures seront les réponses qu'elle pourra fournir.
+
+Une bonne structure ne remplace pas un bon contenu.
+
+Mais un bon contenu associé à une bonne structure produit presque toujours de meilleurs résultats.

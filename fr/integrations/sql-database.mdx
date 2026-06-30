@@ -4,64 +4,64 @@ tag: "Bientôt"
 description: "Laissez Attlas interroger directement vos bases de données SQL pour analyser des données et répondre à des questions complexes en temps réel."
 ---
 
-L'intégration de base de données SQL (compatible PostgreSQL) vous permet de connecter une base de données à votre salle de discussion. Une fois connecté, Attlas pourra lire le schéma des tables autorisées et formuler des requêtes en lecture pour répondre avec précision aux questions de vos utilisateurs.
+L’intégration de base de données SQL (compatible PostgreSQL) vous permet de connecter une base de données à votre salon de discussion. Une fois connectée, Attlas pourra lire le schéma des tables autorisées et formuler des requêtes en lecture pour répondre avec précision aux questions de vos utilisateurs.
 
 ---
 
 ## **🛠️ Comment se connecter**
 
-1. Accédez aux **Paramètres du chat** \> **Intégrations** \> **Base de données SQL**.
+1. Accédez à **Paramètres du chat** \> **Intégrations** \> **Base de données SQL**.
 2. Cliquez sur **Connecter** et renseignez les informations de votre base de données :
-   - **Nom et description :** Un nom convivial et une description pour aider l'IA à comprendre le type de données qu'elle contient.
-   - **Devise (facultatif) :** La devise principale utilisée pour les valeurs monétaires dans vos tables, aidant l'IA à formater et interpréter les données financières.
-   - **Hôte et port :** L'adresse et le port de votre serveur de base de données (le port par défaut est `5432` pour PostgreSQL).
+   - **Nom et description :** Un nom convivial et une description pour aider l’IA à comprendre les données contenues.
+   - **Devise (facultatif) :** La devise principale utilisée pour les valeurs monétaires dans vos tables, aidant l’IA à formater et interpréter les données financières.
+   - **Hôte et port :** L’adresse de votre serveur de base de données et le port (par défaut `5432` pour PostgreSQL).
    - **Base de données :** Le nom de votre base de données.
-   - **Utilisateur et mot de passe :** Vos identifiants de connexion (idéalement en lecture seule).
+   - **Utilisateur et mot de passe :** Vos identifiants de base de données (de préférence en lecture seule).
    - **Mode SSL :** Sélectionnez `require` ou `disable`.
-3. Cliquez sur **Tester** pour vérifier les identifiants et voir combien de tables sont trouvées.
+3. Cliquez sur **Tester** pour vérifier les informations d’identification et voir combien de tables sont détectées.
 4. Cliquez sur **Enregistrer** pour terminer.
 
 ---
 
 ## Renseigner les détails de connexion
 
-Cliquez sur le bouton Connecter pour ouvrir le formulaire et remplissez les champs suivants :
+Cliquez sur le bouton Connecter pour ouvrir le formulaire et renseignez les champs suivants :
 
 | Champ | Exemple de description |
 | --- | --- |
 | Nom | Un nom convivial pour identifier cette connexion |
-| Description | Une description de ce à quoi sert la base de données (aide Attlas à comprendre le contexte des données) |
+| Description | Une description de ce que fait la base de données (aide Attlas à comprendre le contexte des données) |
 | Devise | La devise principale utilisée pour les données monétaires dans cette base de données (par ex., USD, EUR), facultatif |
-| Hôte | L'adresse de votre serveur de base de données. [db.example.com](http://db.example.com) ou 123.45.67.89 |
+| Hôte | L’adresse de votre serveur de base de données. [db.example.com](http://db.example.com) ou 123.45.67.89 |
 | Port | Le port de connexion (5432 par défaut pour PostgreSQL) |
 | Base de données | Le nom de votre base de données |
-| Utilisateur | Le nom d'utilisateur de connexion |
-| Mot de passe | Le mot de passe associé à l'utilisateur |
+| Utilisateur | Le nom d’utilisateur de connexion |
+| Mot de passe | Le mot de passe associé à l’utilisateur |
 | Mode SSL | Le niveau de sécurité de la connexion SSL |
 
 ---
 
 ## **⚙️ Gérer votre intégration**
 
-Cliquez sur **Paramètres** sur la carte de votre base de données SQL active pour gérer les éléments suivants :
+Cliquez sur **Paramètres** sur votre carte Base de données SQL active pour gérer les éléments suivants :
 
-- **Sélectionner les tables à partager :** Vous n'avez pas à tout partager. Activez/désactivez les tables ou vues spécifiques auxquelles l'IA est autorisée à accéder.
-- **Actualiser le schéma :** Si vous ajoutez ou modifiez des colonnes/tables dans votre base de données, cliquez sur **Actualiser** pour synchroniser les modifications avec l'IA.
-- **Désactiver temporairement :** Activez ou désactivez l'intégration à tout moment à l'aide de l'interrupteur.
+- **Sélectionner les tables à partager :** Vous n’avez pas à tout partager. Activez/désactivez les tables ou vues spécifiques auxquelles l’IA est autorisée à accéder.
+- **Rafraîchir le schéma :** Si vous ajoutez ou modifiez des colonnes/tables dans votre base de données, cliquez sur **Rafraîchir** pour synchroniser les modifications avec l’IA.
+- **Désactiver temporairement :** Activez ou désactivez l’intégration à tout moment à l’aide du bouton bascule.
 - **Déconnecter :** Cliquez sur **Déconnecter** pour supprimer complètement la connexion à la base de données.
 
 ## **💡 Bonnes pratiques pour le schéma de base de données**
 
-Pour aider Attlas à écrire des requêtes précises et effectuer des calculs exacts, tenez compte de ces conseils de conception de schéma :
+Pour aider Attlas à écrire des requêtes précises et à effectuer des calculs exacts, tenez compte de ces conseils de conception de schéma :
 
-- **Utilisez des types de colonnes précis :** Si vous souhaitez que le chat effectue des calculs, tels que des sommes, des moyennes ou des ratios, sur des données numériques, assurez-vous que ces colonnes utilisent un type numérique, tel que `numeric`, `decimal`, `integer` ou `float`. Évitez de stocker des nombres sous forme de texte, comme `varchar` ou `text`, car cela rend les calculs plus difficiles et moins précis.
-- **Ajoutez des commentaires de colonne :** Utilisez les commentaires de base de données sur vos tables et colonnes. Ajouter une brève description directement sur une colonne, par exemple `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fournit un contexte crucial qui guide Attlas pour écrire les requêtes SQL correctes.
+- **Utilisez des types de colonnes précis :** Si vous souhaitez que le chat effectue des calculs, tels que des sommes, des moyennes ou des ratios, sur des données numériques, assurez-vous que ces colonnes utilisent un type numérique, tel que `numeric`, `decimal`, `integer` ou `float`. Évitez de stocker les nombres sous forme de texte, comme `varchar` ou `text`, car cela rend les calculs plus difficiles et moins précis.
+- **Ajoutez des commentaires aux colonnes :** Utilisez des commentaires de base de données sur vos tables et colonnes. L'ajout d'une brève description directement sur une colonne, par exemple `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fournit un contexte crucial qui guide Attlas dans l'écriture des bonnes requêtes SQL.
 
 ---
 
 ## **🔒 Bonnes pratiques de sécurité**
 
-Pour assurer la sécurité de vos données, nous vous recommandons vivement :
+Pour assurer la sécurité de vos données, nous recommandons vivement :
 
-- **Utilisez un utilisateur en lecture seule :** Créez un utilisateur de base de données avec uniquement les permissions `SELECT`. Attlas n'a pas besoin d'accès en écriture (`INSERT`, `UPDATE`, `DELETE`).
+- **Utilisez un utilisateur en lecture seule :** Créez un utilisateur de base de données avec uniquement les permissions `SELECT`. Attlas n’a pas besoin d’accès en écriture (`INSERT`, `UPDATE`, `DELETE`).
 - **Gardez SSL activé :** Nous vous recommandons de définir `sslmode` sur `require` pour chiffrer les données en transit.

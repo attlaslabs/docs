@@ -1,0 +1,239 @@
+---
+title: "Estruturando conteúdo para melhor desempenho"
+sidebarTitle: "Estruturando conteúdo"
+description: "Saiba como organizar seu conteúdo para que o Attlas possa entender melhor suas informações e fornecer respostas mais precisas."
+---
+
+A qualidade das respostas do seu chat não depende apenas da quantidade de informações que você fornece.
+
+A forma como essas informações são organizadas também importa.
+
+Embora o Attlas consiga processar muitos tipos diferentes de conteúdo, informações bem estruturadas tendem a produzir respostas mais claras, precisas e consistentes.
+
+Por isso, sempre que possível, recomendamos organizar seu conteúdo usando uma estrutura semelhante ao **Markdown**.
+
+---
+
+## O que é Markdown?
+
+Markdown é uma maneira simples de estruturar conteúdo usando títulos, subtítulos, listas e seções claramente organizadas.
+
+Ele é amplamente utilizado em documentações, bases de conhecimento e sistemas de IA porque ajuda a preservar a hierarquia das informações.
+
+Mesmo quando você faz upload de PDFs, documentos do Word ou texto simples, o Attlas tenta identificar e entender essa estrutura automaticamente.
+
+Quanto mais organizada for a estrutura, melhor.
+
+---
+
+## Sintaxe Markdown comum
+
+Aqui está uma referência rápida dos elementos de formatação Markdown mais comuns que você pode usar para estruturar seus documentos:
+
+| Elemento | Sintaxe Markdown | Descrição |
+| :--- | :--- | :--- |
+| **Cabeçalhos** | `# Cabeçalho 1`<br/>`## Cabeçalho 2`<br/>`### Cabeçalho 3` | Define a estrutura e hierarquia do documento. |
+| **Negrito** | `**texto**` ou `__texto__` | Destaca termos ou rótulos importantes. |
+| **Itálico** | `*texto*` ou `_texto_` | Destaca notas ou termos secundários. |
+| **Listas** | `- Item 1`<br/>`1. Primeiro item` | Separa itens, benefícios ou etapas sequenciais. |
+| **Links** | `[Attlas](https://attlas.so)` | Referencia páginas ou fontes externas. |
+| **Citações** | `> Nota importante` | Destaca citações, avisos ou alertas. |
+| **Código inline** | `` `código` `` | Destaca parâmetros do sistema, chaves ou opções. |
+| **Bloco de código** | ` ``` `<br/>`bloco de código`<br/>` ``` ` | Agrupa scripts de várias linhas ou dados estruturados. |
+
+---
+
+## Por que a estrutura é importante?
+
+A IA não lê apenas palavras.
+
+Ela também tenta entender:
+
+- O que é um título;
+- O que é um subtítulo;
+- Qual informação pertence a cada seção;
+- Como os tópicos se relacionam;
+- O que representa uma lista;
+- O que é uma pergunta e o que é uma resposta.
+
+Quando as informações estão bem organizadas, o Attlas consegue entender melhor o contexto e recuperar informações com mais precisão.
+
+---
+
+## Use títulos e subtítulos
+
+Uma das melhores práticas é dividir o conteúdo em seções claras.
+
+### Exemplo Ruim
+
+<Tabs>
+  <Tab title="Exemplo">
+    <CodeGroup>
+
+    ```markdown Markdown wrap
+    Product X is a business management software. The product integrates with CRM systems. Support is available from 8 AM to 6 PM. The basic plan costs $99. The advanced plan costs $199.
+    ```
+
+    </CodeGroup>
+  </Tab>
+  <Tab title="Resultado">
+    <Danger>
+      Produto X é um software de gestão empresarial. O produto integra-se com sistemas CRM. O suporte está disponível das 8h às 18h. O plano básico custa \$99. O plano avançado custa \$199.
+    </Danger>
+  </Tab>
+</Tabs>
+
+### Exemplo Melhor
+
+<Tabs>
+  <Tab title="Exemplo">
+    <CodeGroup>
+
+    ```markdown Markdown
+    # Product X
+    
+    ## What it is
+    Business management software.
+    
+    ## Integrations
+    CRM integration.
+    
+    ## Support
+    Support available from 8 AM to 6 PM.
+    
+    ## Pricing
+    - Basic Plan: $99
+    - Advanced Plan: $199
+    ```
+
+    </CodeGroup>
+  </Tab>
+  <Tab title="Resultado">
+    <Check>
+      # Produto X
+
+      ## O que é
+
+      Software de gestão empresarial.
+
+      ## Integrações
+
+      Integração com CRM.
+
+      ## Suporte
+
+      Suporte disponível das 8h às 18h.
+
+      ## Preços
+
+      - Plano Básico: \$99
+      - Plano Avançado: \$199
+    </Check>
+  </Tab>
+</Tabs>
+
+A segunda versão cria uma hierarquia muito mais clara para a IA interpretar.
+
+---
+
+## Use listas sempre que possível
+
+Listas ajudam a separar conceitos e reduzir ambiguidades.
+
+### Exemplo
+
+<Check>
+  **Benefícios do produto:**
+
+  - Implementação fácil
+  - Integração com CRM
+  - Suporte dedicado
+  - Relatórios avançados
+</Check>
+
+Isso geralmente é mais fácil de interpretar do que um grande bloco de texto.
+
+---
+
+## Agrupe informações relacionadas
+
+Evite misturar tópicos completamente diferentes no mesmo documento.
+
+### Evite
+
+- Informações do produto;
+- Políticas internas;
+- Receitas culinárias;
+- Informações da empresa;
+
+Tudo combinado em um único arquivo.
+
+### Prefira
+
+Um documento para cada tópico principal.
+
+Isso ajuda o Attlas a entender o contexto de forma mais eficaz.
+
+---
+
+## Use o formato de pergunta e resposta para FAQs
+
+Ao criar centrais de ajuda ou conteúdo de FAQ, utilize uma estrutura clara de pergunta e resposta.
+
+### Exemplo
+
+<Check>
+  ### Como solicito um reembolso?
+
+  Você pode solicitar um reembolso através do seu portal do cliente.
+
+  ### Qual é o prazo de entrega?
+
+  O prazo médio de entrega é de cinco dias úteis.
+</Check>
+
+Esse formato facilita para o Attlas recuperar respostas quando os usuários fazem perguntas similares.
+
+---
+
+## Evite informações redundantes ou conflitantes
+
+Uma das causas mais comuns de respostas inconsistentes é o conteúdo conflitante.
+
+### Exemplo
+
+Documento A:
+
+> Nossa empresa está no mercado há 20 anos.
+
+Documento B:
+
+> Nossa empresa está operando há 22 anos.
+
+Quando isso acontece, o Attlas pode ter dificuldade para determinar qual informação é a mais atualizada.
+
+Sempre que possível:
+
+- Atualize documentos mais antigos;
+- Remova conteúdo duplicado;
+- Mantenha uma única fonte de verdade para informações importantes.
+
+<Card title="Guia de Boas Práticas do Attlas" icon="bot" href="/pt/practices/using-attlas">
+  Saiba mais sobre consistência e qualidade de conteúdo em nosso Guia de Boas Práticas do Attlas.
+</Card>
+
+---
+
+## Melhor estrutura significa melhor entendimento
+
+O Attlas consegue processar conteúdo de muitos formatos diferentes.
+
+No entanto, quando as informações são organizadas usando títulos, subtítulos, listas e seções claramente definidas, o entendimento se torna muito mais eficaz.
+
+Pense na estrutura do conteúdo como um mapa.
+
+Quanto mais fácil for para a IA navegar pelas suas informações, melhores serão as respostas que ela pode fornecer.
+
+Uma boa estrutura não substitui um bom conteúdo.
+
+Mas um bom conteúdo combinado com uma boa estrutura quase sempre produz melhores resultados.

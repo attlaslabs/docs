@@ -1,0 +1,68 @@
+---
+title: "Taux de couverture"
+sidebarTitle: "Taux de couverture"
+description: "Comprenez dans quelle mesure votre chat répond aux questions des utilisateurs et identifiez les opportunités d'amélioration."
+---
+
+Le **taux de couverture** est une métrique disponible dans le tableau de bord **vue d'ensemble** d'Attlas, qui mesure la qualité des réponses fournies par votre chat aux utilisateurs.
+
+Il agit comme un indicateur de santé, vous aidant à comprendre si votre chat répond avec succès aux questions les plus fréquentes posées par votre audience.
+
+---
+
+## Évaluation automatique des réponses
+
+Chaque message envoyé par votre chatbot reçoit automatiquement un score de 0 à 100, visible dans la vue **Conversations**. Ce score mesure la qualité de la réponse du point de vue de l'utilisateur : a-t-il obtenu ce qu'il cherchait ?
+
+Le **taux de couverture** global affiché dans votre tableau de bord est la moyenne de ces évaluations individuelles.
+
+### Comment interpréter les scores
+
+- 🟢 **Vert (85 à 100)**, La réponse est directe, précise et utile. L'utilisateur a obtenu l'information qu'il cherchait.
+- 🟠 **Orange (50 à 84)**, La réponse est partiellement utile. Cela peut indiquer qu'une question hors sujet a été correctement refusée, ou qu'une réponse pertinente manquait de précision sur un aspect important.
+- 🔴 **Rouge (0 à 49)**, L'utilisateur est reparti sans réponse satisfaisante. Soit le chatbot ne disposait pas des informations nécessaires, soit la réponse ne correspondait pas à la question posée.
+
+### Comprendre le raisonnement
+
+Cliquez sur n'importe quel score pour afficher une courte explication détaillant pourquoi cette note a été attribuée et quel aspect de la réponse a influencé la décision. C'est votre point de départ pour identifier exactement ce qui doit être amélioré.
+
+---
+
+## Améliorer votre chatbot grâce aux scores
+
+Les scores rouges sont les plus précieux à examiner. Lors de leur analyse, deux scénarios principaux sont à considérer :
+
+1. **La question était dans le périmètre, mais l'information manquait** → C'est du contenu que vous devez ajouter à votre base de connaissances. Plus vous enrichissez la base de connaissances, plus votre taux de couverture global augmentera.
+2. **La question était hors sujet** → Le chatbot s'est comporté correctement. Aucune action n'est requise.
+
+<Info>
+  **Concentrez-vous sur la satisfaction, pas sur la politesse :** Le score évalue la satisfaction de l'utilisateur, pas la politesse du bot. Une réponse comme _"Je n'ai pas cette information"_, même si elle est formulée poliment et parfaitement, n'est jamais considérée comme une bonne réponse si la question était légitime.
+</Info>
+
+---
+
+## Comment utiliser cette métrique à votre avantage
+
+Le taux de couverture est plus qu'un simple chiffre, c'est un outil pratique pour améliorer continuellement votre assistant.
+
+### 1. Surveiller le taux dans les analyses
+
+Suivez régulièrement votre taux de couverture global dans le tableau de bord de vue d'ensemble pour identifier les tendances.
+
+### 2. Examiner les retours de l'évaluateur
+
+Consultez les explications et commentaires fournis par l'évaluateur à côté de chaque score.
+
+![Covarege Attlas](/images/coverage.webp)
+
+### 3. Ajouter ou améliorer le contenu
+
+Mettez à jour votre base de connaissances afin que votre chat puisse répondre de manière plus claire, plus précise et plus contextuelle aux questions qui ont échoué précédemment.
+
+### 4. Corriger les réponses mal notées
+
+Accédez à la section **<kbd>Corrections</kbd>** et examinez les questions et réponses ayant obtenu de faibles scores de couverture. Fournissez des réponses améliorées et un contexte supplémentaire pour que les réponses futures soient plus précises.
+
+<Card title="En savoir plus sur la fonctionnalité Corrections" icon="pencil-line" horizontal href="/fr/practices/corrections">
+  La fonctionnalité Corrections est disponible exclusivement sur le plan **Attlas PRO**.
+</Card>
