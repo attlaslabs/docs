@@ -259,11 +259,6 @@
       },
       {
         "language": "fr",
-        "banner": {
-          "content": "⚠️ La traduction française est en cours. Pour accéder à la documentation complète, veuillez consulter la [version anglaise](/).",
-          "dismissible": true,
-          "type": "warning"
-        },
         "groups": [
           {
             "group": "Home",
@@ -371,11 +366,6 @@
       },
       {
         "language": "pt",
-        "banner": {
-          "content": "⚠️ A tradução para português está em andamento. Para aceder à documentação completa, consulte a [versão em inglês](/).",
-          "dismissible": true,
-          "type": "warning"
-        },
         "groups": [
           {
             "group": "Home",
