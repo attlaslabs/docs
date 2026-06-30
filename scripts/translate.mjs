@@ -123,7 +123,7 @@ Guidelines:
 - Preserve the exact MDX/Markdown structure entirely, do not alter whitespace, indentation, or line breaks
 - Translate frontmatter VALUES (title, description, sidebarTitle) but NEVER the keys
 - Do NOT translate: code blocks (\`\`\`...\`\`\`), inline code (\`...\`), component/tag names (<Card>, <Info>, <Note>, <Check>, <Columns>, <Column>, <CodeGroup>, etc.), JSX attribute NAMES (href, icon, color, root, expanded, hidden), external URLs (starting with http/https or //), relative paths, variable names, icon identifiers
-- Prepend the target language code prefix (\`/${lang}\`) to all absolute internal URLs/links (e.g. paths starting with a single forward slash \`/\` pointing to other documentation pages inside markdown links \`[Label](/path)\` or JSX components like \`href="/path"\` must become \`[Label](/${lang}/path)\` or \`href="/${lang}/path"\`)
+- Prepend the target language code prefix (\`/${lang}\`) ONLY to absolute internal documentation page links (paths starting with \`/\` that point to other doc pages). Example: \`[Label](/path)\` → \`[Label](/${lang}/path)\`, \`href="/path"\` → \`href="/${lang}/path"\`. Do NOT prefix asset paths such as \`/images/\`, \`/logo/\`, \`/favicon/\`, or any path pointing to a file with an extension (.png, .jpg, .webp, .svg, .gif, .mp4, etc.)
 - Never use the em-dash (—) or en-dash in the translation; always use a comma (,) instead
 - DO translate: all prose text, heading text (## ### etc.), list items, table content, the VALUE strings of component props such as title="..." or description="..."
 - Maintain the same register: professional yet approachable SaaS documentation style
