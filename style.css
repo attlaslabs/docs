@@ -73,6 +73,7 @@ html, main, body {
 
 .card.block > img {
     margin-bottom: 0em;
+    border-radius: 0;
 }
 
 .prose-gray {
