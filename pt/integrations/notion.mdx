@@ -1,5 +1,74 @@
 ---
-title: "Notion"
+title: "Integração com o Notion"
 sidebarTitle: "Notion"
-hidden: true
+description: "Conecte o seu workspace do Notion ao seu Attlas Chat para importar páginas e manter a base de conhecimento do seu assistente automaticamente sincronizada."
+tag: "Novo"
+og:image: "/images/thumb_notion.webp"
 ---
+
+A integração com o Notion permite sincronizar as páginas do seu workspace diretamente com o seu Attlas Chat. Em vez de exportar e enviar arquivos manualmente, você pode conectar a sua conta do Notion e selecionar as páginas que deseja que o seu assistente aprenda.
+
+Após a importação, o Attlas mantém a sua base de conhecimento atualizada monitorando as modificações e exclusões das páginas.
+
+---
+
+## Principais benefícios
+
+- **Seleção direta de páginas**: escolha exatamente quais páginas e subpáginas compartilhar com o seu chat usando o seletor oficial do Notion.
+- **Sincronização em tempo real**: quaisquer atualizações ou edições feitas no Notion são sincronizadas automaticamente com a base de conhecimento do seu chatbot.
+- **Limpeza automática**: se você excluir ou arquivar uma página no Notion, o Attlas a remove automaticamente das suas fontes.
+- **Conhecimento centralizado**: mantenha a documentação da sua equipe no Notion enquanto o seu assistente fornece respostas atualizadas aos seus usuários.
+
+<Note>
+  A integração com o Notion está disponível nos planos pagos. Certifique-se de que a sua assinatura inclui Integrações antes de começar.
+</Note>
+
+---
+
+## Como conectar
+
+As conexões são estabelecidas **por chat**, o que significa que você pode conectar diferentes workspaces ou páginas do Notion a diferentes chats.
+
+![Connect with Notion](/images/integration_notion_connect.webp)
+
+Para conectar o Notion:
+1. No **Ttb**, selecione o chat que deseja configurar.
+2. Acesse as **Configurações** do chat (usando o botão de configurações na navegação).
+3. Clique na aba **Integrações**.
+4. Localize o cartão do **Notion** e clique em **Conectar**.
+5. Faça login na sua conta do Notion e autorize o acesso. Você pode selecionar páginas específicas ou conceder acesso a todo o seu workspace.
+
+Após a conexão, o cartão exibirá o nome do seu workspace do Notion conectado.
+
+---
+
+## Importando páginas
+
+![Connect with Notion](/images/integration_notion_select.webp)
+
+Você pode importar páginas para a base de conhecimento do seu chatbot a partir de dois locais no Attlas:
+
+### A partir das configurações
+1. Na aba **Integrações** em Configurações, clique em **Importar páginas** no cartão do Notion.
+2. Selecione as páginas que deseja importar do seu workspace conectado.
+3. Clique em **Importar** para iniciar a ingestão.
+
+![Connect with Notion](/images/integration_notion_add.webp)
+
+### A partir da base de conhecimento
+1. Acesse a seção **Conhecimento** do seu chat.
+2. Clique em **Adicionar fonte**.
+3. Selecione **Adicionar do Notion**.
+4. Escolha as páginas que deseja adicionar e confirme a importação.
+
+---
+
+## Sincronização e edição
+
+Para garantir consistência e precisão, a integração com o Notion funciona com base nos seguintes princípios:
+
+### O Notion como fonte única da verdade
+O editor de documentos integrado do Attlas é desativado (somente leitura) para todos os documentos importados do Notion. Para atualizar o conteúdo desses documentos, você deve editá-los diretamente no Notion. Isso evita conflitos e garante uma fonte única da verdade.
+
+### Tempo de sincronização
+A sincronização de edições e exclusões é automática, mas **não é instantânea**. As atualizações ou exclusões feitas no Notion podem levar **até 5 minutos** para serem refletidas na base de conhecimento do seu Attlas Chat.
