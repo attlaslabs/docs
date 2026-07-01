@@ -143,3 +143,7 @@ html, main, body {
 li a div:has(> .nav-tag-pill) {
   margin-left: auto;
 }
+
+.nav-tag-pill-text {
+    font-weight: 400;
+}
