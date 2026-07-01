@@ -195,7 +195,7 @@
                 "icon": "trophy",
                 "expanded": false,
                 "pages": [
-                  "using-attlas",
+                  "practices/using-attlas",
                   "practices/structuring-content",
                   "practices/coverage-rate",
                   "practices/corrections",
@@ -305,7 +305,7 @@
               {
                 "group": "Bonnes pratiques",
                 "pages": [
-                  "fr/using-attlas",
+                  "fr/practices/using-attlas",
                   "fr/practices/structuring-content",
                   "fr/practices/coverage-rate",
                   "fr/practices/corrections",
@@ -412,7 +412,7 @@
               {
                 "group": "Boas práticas",
                 "pages": [
-                  "pt/using-attlas",
+                  "pt/practices/using-attlas",
                   "pt/practices/structuring-content",
                   "pt/practices/coverage-rate",
                   "pt/practices/corrections",

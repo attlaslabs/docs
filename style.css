@@ -139,3 +139,7 @@ html, main, body {
     border-color: rgb(var(--tw-prose-headings));
     padding-left: 1rem;
 }
+
+li a div:has(> .nav-tag-pill) {
+  margin-left: auto;
+}
