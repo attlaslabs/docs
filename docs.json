@@ -171,6 +171,7 @@
                 "icon": "box",
                 "expanded": false,
                 "pages": [
+                  "basic/multilingual",
                   "basic/link-aggregator",
                   "basic/ai-chat",
                   "basic/ai-settings",
@@ -283,6 +284,7 @@
               {
                 "group": "Fonctionnalités de base",
                 "pages": [
+                  "fr/basic/multilingual",
                   "fr/basic/link-aggregator",
                   "fr/basic/ai-chat",
                   "fr/basic/ai-settings",
@@ -390,6 +392,7 @@
               {
                 "group": "Funcionalidades básicas",
                 "pages": [
+                  "pt/basic/multilingual",
                   "pt/basic/link-aggregator",
                   "pt/basic/ai-chat",
                   "pt/basic/ai-settings",
