@@ -56,6 +56,7 @@ You can then:
 
 - Select the questions that make the most sense
 - Remove the ones you don't want to use
+- Choose a parent trigger from the **Target Parent** selector to group them under an existing foldable trigger or section (or leave it as **Root** to keep them top-level)
 - Generate new suggestions if the initial results do not meet your expectations
 
 When you're finished, click `Add` and you're done. The questions will be added immediately and can be tested in the **Playground**.
@@ -189,13 +190,58 @@ And if a user doesn't want to click on any trigger, that's perfectly fine. They 
 
 ---
 
+## Nested Triggers (Parent-Child)
+
+To keep your chat interface clean and organized, you can nest triggers under other triggers to create a parent-child relationship.
+
+### Foldable triggers
+
+Only certain trigger types can act as a parent (foldable) and contain child triggers:
+
+| Trigger Type | Foldable |
+| --- | --- |
+| Question | No |
+| Link | Yes |
+| Card | Yes |
+| File | Yes |
+| Google Drive | Yes |
+| YouTube video | No |
+| YouTube channel | No |
+| Spotify | No |
+| Map | No |
+| Email | No |
+| Phone | No |
+| Section | Yes |
+
+### How it works
+
+When a trigger contains child triggers:
+- **In the Chat:** Clicking the parent trigger expands it inline to reveal its children.
+  - If the parent is a content trigger (such as a Link, File, or Card), the expansion displays a primary action row at the top (to visit the link or download the file), followed by the child questions.
+  - If the parent is a **Section**, it expands to display the child items.
+
+### How to set up nested triggers
+
+<Frame caption="Drag trigger in group">
+  <img src="/images/trigger-drag-in.webp" alt="Drag trigger in group" />
+</Frame>
+
+<Frame caption="Drag trigger out of group">
+  <img src="/images/trigger-drag-out.webp" alt="Drag trigger out of group" />
+</Frame>
+
+You can create parent-child relationships in two ways:
+
+1. **Drag and Drop:** In the trigger list, drag a trigger to the right (indenting it) to nest it under the trigger above it. Drag it back to the left (outdenting) to restore it as a top-level trigger.
+2. **From the Editor:** Open the edit drawer of any parent-eligible trigger, scroll down to the **Suggested Questions** section, and click <kbd>Add Question</kbd> to add questions directly as children.
+
+---
+
 ## And the result?
 
 It's incredible!
 
-
  ![Attlas Chats Triggers](/images/triggers.png)
-
 
 <Note>
   **Triggers are just one of the interaction methods available in Attlas.** In addition to triggers, users can freely chat with the AI Chat directly on the page, ask questions, explore content, and receive personalized responses.
