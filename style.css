@@ -60,6 +60,10 @@ html, main, body {
     margin-bottom: 1.25em;
 }
 
+.mdx-content picture > img {
+    margin-bottom: 0;
+}
+
 .prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){
     margin-top: .25em;
     margin-bottom: .25em;
@@ -68,6 +72,9 @@ html, main, body {
 @media (min-width: 768px) {
     .mdx-content img, .mdx-content video {
         border-radius: 20px;
+    }
+    .mdx-content picture > img {
+        border-radius: 12px;
     }
 }
 
