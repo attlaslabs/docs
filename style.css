@@ -64,6 +64,10 @@ html, main, body {
     margin-bottom: 0;
 }
 
+[data-name="frame"] {
+    margin-bottom: 1.25em;
+}
+
 .prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){
     margin-top: .25em;
     margin-bottom: .25em;
