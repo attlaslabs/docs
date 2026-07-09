@@ -60,7 +60,7 @@ html, main, body {
     margin-bottom: 1.25em;
 }
 
-.mdx-content picture > img {
+picture > img {
     margin-bottom: 0;
 }
 
@@ -77,7 +77,7 @@ html, main, body {
     .mdx-content img, .mdx-content video {
         border-radius: 20px;
     }
-    .mdx-content picture > img {
+    picture > img {
         border-radius: 12px;
     }
 }
