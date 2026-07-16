@@ -99,6 +99,10 @@
     {
       "source": "/pt/docs",
       "destination": "/pt"
+    },
+    {
+      "source": "/basic/ai-settings",
+      "destination": "/actions/ai-settings"
     }
   ],
   "navigation": {
@@ -174,9 +178,18 @@
                   "basic/multilingual",
                   "basic/link-aggregator",
                   "basic/ai-chat",
-                  "basic/ai-settings",
                   "basic/conversation-history",
                   "basic/analytics"
+                ]
+              },
+              {
+                "group": "Actions",
+                "icon": "bullseye",
+                "expanded": false,
+                "pages": [
+                  "actions/ai-settings",
+                  "actions/goal",
+                  "actions/human-in-the-loop"
                 ]
               },
               {
@@ -287,11 +300,19 @@
                   "fr/basic/multilingual",
                   "fr/basic/link-aggregator",
                   "fr/basic/ai-chat",
-                  "fr/basic/ai-settings",
                   "fr/basic/conversation-history",
                   "fr/basic/analytics"
                 ],
                 "icon": "box"
+              },
+              {
+                "group": "Actions",
+                "pages": [
+                  "fr/actions/ai-settings",
+                  "fr/actions/goal",
+                  "fr/actions/human-in-the-loop"
+                ],
+                "icon": "bullseye"
               },
               {
                 "group": "Fonctionnalités Pro",
@@ -395,11 +416,19 @@
                   "pt/basic/multilingual",
                   "pt/basic/link-aggregator",
                   "pt/basic/ai-chat",
-                  "pt/basic/ai-settings",
                   "pt/basic/conversation-history",
                   "pt/basic/analytics"
                 ],
                 "icon": "box"
+              },
+              {
+                "group": "Actions",
+                "pages": [
+                  "pt/actions/ai-settings",
+                  "pt/actions/goal",
+                  "pt/actions/human-in-the-loop"
+                ],
+                "icon": "bullseye"
               },
               {
                 "group": "Funcionalidades Pro",
