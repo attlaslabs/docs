@@ -184,8 +184,7 @@
               },
               {
                 "group": "Actions",
-                "icon": "bullseye",
-                "expanded": false,
+                "icon": "astroid",
                 "pages": [
                   "actions/ai-settings",
                   "actions/goal",
@@ -312,7 +311,7 @@
                   "fr/actions/goal",
                   "fr/actions/human-in-the-loop"
                 ],
-                "icon": "bullseye"
+                "icon": "astroid"
               },
               {
                 "group": "Fonctionnalités Pro",
@@ -428,7 +427,7 @@
                   "pt/actions/goal",
                   "pt/actions/human-in-the-loop"
                 ],
-                "icon": "bullseye"
+                "icon": "astroid"
               },
               {
                 "group": "Funcionalidades Pro",
@@ -463,7 +462,7 @@
                 "icon": "shapes"
               },
               {
-                "group": "Guias práticos",
+                "group": "Boas práticas",
                 "pages": [
                   "pt/playbooks/companies",
                   "pt/playbooks/attlas-performance",
