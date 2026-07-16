@@ -6,6 +6,10 @@ html, main, body {
     margin-top: .25rem;
 }
 
+.sidebar-group ul {
+    padding-left: 16px;
+}
+
 .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
     color: rgb(var(--primary));
 }
@@ -158,8 +162,4 @@ li a div:has(> .nav-tag-pill) {
 
 .nav-tag-pill-text {
     font-weight: 400;
-}
-
-#_R_l9rcnav5tccsmisnpfiulb_, #_r_b_ {
-  padding-left: 16px;
 }
