@@ -46,8 +46,8 @@ node scripts/translate.mjs --lang fr --file basic/ai-chat.mdx  # identique
 2. La section `navigation.languages` de `docs.json` est mise à jour pour cette
    langue, seules les pages dont la traduction existe apparaissent dans la nav
 3. Le tableau `redirects` de `docs.json` est recalculé : les pages non encore
-   traduites ont un redirect `/fr/<page>` → `/<page>` (anglais), et les
-   redirects des pages nouvellement traduites sont supprimés
+   traduites ont un redirect `/fr/<page>` → `/<page>` (anglais) et les redirects
+   des pages nouvellement traduites sont supprimés
 
 ---
 
