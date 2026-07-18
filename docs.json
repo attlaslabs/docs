@@ -101,8 +101,8 @@
       "destination": "/pt"
     },
     {
-      "source": "/basic/ai-settings",
-      "destination": "/actions/ai-settings"
+      "source": "/basic/personality",
+      "destination": "/actions/personality"
     }
   ],
   "navigation": {
@@ -186,7 +186,7 @@
                 "group": "Actions",
                 "icon": "astroid",
                 "pages": [
-                  "actions/ai-settings",
+                  "actions/personality",
                   "actions/goal",
                   "actions/human-in-the-loop"
                 ]
@@ -307,7 +307,7 @@
               {
                 "group": "Actions",
                 "pages": [
-                  "fr/actions/ai-settings",
+                  "fr/actions/personality",
                   "fr/actions/goal",
                   "fr/actions/human-in-the-loop"
                 ],
@@ -423,7 +423,7 @@
               {
                 "group": "Actions",
                 "pages": [
-                  "pt/actions/ai-settings",
+                  "pt/actions/personality",
                   "pt/actions/goal",
                   "pt/actions/human-in-the-loop"
                 ],
