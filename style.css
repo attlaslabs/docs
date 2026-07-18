@@ -64,8 +64,9 @@ html, main, body {
     margin-bottom: 1.25em;
 }
 
-picture > img {
+.mdx-content picture > img {
     margin-bottom: 0;
+    border-radius: 12px;
 }
 
 [data-name="frame"] {
@@ -81,7 +82,7 @@ picture > img {
     .mdx-content img, .mdx-content video {
         border-radius: 20px;
     }
-    picture > img {
+    .mdx-content picture > img {
         border-radius: 12px;
     }
 }
