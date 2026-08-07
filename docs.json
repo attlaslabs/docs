@@ -179,7 +179,8 @@
                   "basic/link-aggregator",
                   "basic/ai-chat",
                   "basic/conversation-history",
-                  "basic/analytics"
+                  "basic/analytics",
+                  "basic/crm"
                 ]
               },
               {
@@ -300,7 +301,8 @@
                   "fr/basic/link-aggregator",
                   "fr/basic/ai-chat",
                   "fr/basic/conversation-history",
-                  "fr/basic/analytics"
+                  "fr/basic/analytics",
+                  "fr/basic/crm"
                 ],
                 "icon": "box"
               },
@@ -416,7 +418,8 @@
                   "pt/basic/link-aggregator",
                   "pt/basic/ai-chat",
                   "pt/basic/conversation-history",
-                  "pt/basic/analytics"
+                  "pt/basic/analytics",
+                  "pt/basic/crm"
                 ],
                 "icon": "box"
               },

@@ -1,0 +1,95 @@
+---
+title: "CRM et contacts"
+sidebarTitle: "CRM et contacts"
+description: "Organisez, suivez et gérez tous les contacts et prospects capturés par votre chat Attlas avec les vues tableau et pipeline."
+---
+
+The **CRM & Contacts** section serves as a built-in CRM for managing all leads collected through your Attlas chatbots. 
+
+Whenever a visitor interacts with a lead capture trigger, fills out contact details, or books an appointment during a conversation, their information is automatically saved and organized into your workspace contacts.
+
+---
+
+## Accéder à vos contacts
+
+<Check>
+  Pour afficher vos prospects, cliquez sur l'onglet **<kbd>CRM</kbd>** situé dans la barre latérale gauche de votre espace de travail.
+</Check>
+
+De là, vous pouvez basculer entre les environnements de l'espace de travail en utilisant le sélecteur d'espace de travail en haut de la page.
+
+---
+
+## Vues : Tableau et Pipeline (Kanban)
+
+Attlas fournit deux vues complémentaires pour vous aider à organiser et traiter les prospects selon votre flux de travail.
+
+### Vue Tableau
+
+![CRM table view](/images/crm-list.webp)
+
+La **Vue Tableau** affiche tous les prospects collectés dans une liste structurée. Elle est idéale pour rechercher, filtrer et effectuer des opérations par lot sur de grands volumes de contacts.
+
+| Champ | Description |
+| :--- | :--- |
+| **Informations de contact** | Nom, adresse e-mail, numéro de téléphone et détails WhatsApp fournis par le visiteur. |
+| **Chat source** | Le chat spécifique qui a capturé le prospect. |
+| **Canal d'origine** | Le point d'entrée ou le canal intégré où l'interaction a eu lieu. |
+| **Langue** | La langue utilisée par le visiteur pendant la conversation. |
+| **Rendez-vous** | Date de réservation du calendrier et statut (le cas échéant). |
+| **Étape** | Statut actuel dans votre pipeline de vente. |
+| **Date** | Horodatage de la première enregistrement du contact. |
+
+#### Filtrage et exportation
+- **Filtrer par chatbot** : Affinez votre liste de contacts aux prospects collectés par un chatbot spécifique.
+- **Recherche** : Localisez les contacts instantanément par nom, e-mail ou numéro de téléphone.
+- **Exporter en CSV** : Cliquez sur le bouton **<kbd>Exporter CSV</kbd>** pour télécharger votre liste de prospects pour une utilisation dans des outils externes comme HubSpot, Salesforce ou Mailchimp.
+- **Suppression en masse** : Sélectionnez plusieurs lignes pour supprimer en masse les entrées de test indésirables ou les anciens contacts.
+
+---
+
+### Vue Kanban
+
+![CRM Kanban view](/images/crm-kanban.webp)
+
+La **Vue Kanban** organise vos prospects en colonnes visuelles représentant votre pipeline de vente. Cette vue vous donne un aperçu clair de l'avancement des affaires et aide à prioriser les activités de suivi.
+
+Les prospects passent par 5 étapes de statut personnalisables :
+
+| Étape | Description |
+| :--- | :--- |
+| **Nouveau** | Prospects récemment capturés nécessitant un examen initial ou une prise de contact. |
+| **Contacté** | Prospects que vous ou votre équipe avez contactés. |
+| **Qualifié** | Prospects qui répondent à vos critères et montrent un intérêt clair. |
+| **Gagné** | Prospects convertis avec succès ou affaires conclues. |
+| **Perdu** | Prospects qui n'ont pas converti ou ont été archivés. |
+
+<Tip>
+  Vous pouvez glisser-déposer les cartes de prospect entre les colonnes d'étape pour mettre à jour instantanément leur statut dans le pipeline.
+</Tip>
+
+---
+
+## Détails du contact et historique de conversation
+
+![CRM contact details](/images/crm-contact.webp)
+
+Cliquer sur un contact dans la vue Tableau ou Kanban ouvre la fenêtre modale détaillée du contact.
+
+### Détails du prospect et notes
+- **Modifier l'étape du pipeline** : Changez le statut d'étape directement depuis le menu déroulant.
+- **Ajouter des notes** : Conservez des notes contextuelles pour votre équipe (par exemple, des exigences spécifiques du client ou des résumés d'appels). Les notes s'enregistrent automatiquement.
+- **Rendez-vous** : Consultez les réservations de calendrier liées et les détails des réunions.
+
+### Inspection de l'historique de conversation
+Passez à l'onglet **Conversation** dans la fenêtre modale du contact pour voir la transcription exacte où le prospect a été capturé. L'examen du contexte de la conversation vous aide à comprendre l'intention du visiteur avant de faire une prise de contact.
+
+---
+
+## Confidentialité des données et chiffrement
+
+Attlas protège par défaut les coordonnées sensibles de vos visiteurs.
+
+<Note>
+  Les informations personnelles identifiables (PII) telles que les adresses e-mail, les numéros de téléphone et les numéros WhatsApp sont chiffrées au repos sur les serveurs Attlas. Elles sont déchiffrées de manière sécurisée à la volée uniquement lorsque les membres autorisés de l'espace de travail consultent l'interface des contacts.
+</Note>
