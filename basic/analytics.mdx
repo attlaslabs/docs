@@ -6,7 +6,7 @@ description: "Monitor your chat's performance through metrics, charts and audien
 
 Analytics allows you to track your chat's performance and understand how users are interacting with it.
 
-Through the available reports and metrics, you can identify improvement opportunities, discover which content generates the most interest and ensure your chat is meeting your audience's needs.
+Through the available metrics and charts, you can identify improvement opportunities, discover which content generates the most interest, and ensure your chat is meeting your audience's needs.
 
 <Check>
   To access the Analytics dashboard, go to the **overview** tab in the left-hand sidebar menu.
@@ -42,7 +42,7 @@ The key metrics provide a quick overview of your chat's health and performance.
 
 The coverage rate measures your chat's ability to answer user questions using the information available in its knowledge base.
 
-<Card title="Covarage rate guide" icon="antenna" horizontal href="/practices/coverage-rate">
+<Card title="Coverage rate guide" icon="antenna" horizontal href="/practices/coverage-rate">
   Learn more about coverage rate in our complete guide
 </Card>
 
@@ -178,6 +178,18 @@ This happens because some triggers, such as external links, videos, or files, ge
 
 ---
 
+### Channel comparison
+
+The **channel comparison** chart allows you to track and compare performance metrics across different acquisition channels (such as web widgets, direct links, or embedded chats) over time.
+
+![Channel comparison](/images/analytics-channels.webp)
+
+- **Selectable metric:** Use the dropdown selector in the chart header to toggle between **Views**, **Clicks**, and **Conversations**.
+- **Channel breakdown:** Compare performance lines for each channel side by side to see which acquisition source drives the highest audience engagement.
+- **Unattributed traffic:** Automatically identifies visitors arriving without explicit channel parameters.
+
+---
+
 ### Answer quality
 
 The **answer quality** chart helps you monitor the quality of interactions and your chat's ability to meet user needs.
@@ -191,15 +203,6 @@ The **coverage** view shows the average coverage rate of user messages during th
 This metric indicates how effectively your chat was able to answer questions using information from its knowledge base.
 
 ![Coverage](/images/analytics-coverage.webp)
-
-**Example:**
-
-On a given day:
-
-- 3 conversations were started
-- 20 messages were exchanged
-
-If the chart shows a coverage rate of 95%, it means that the vast majority of those messages were answered successfully using the trained content, although small gaps may have occurred in some responses.
 
 ---
 
@@ -288,44 +291,32 @@ If most of your traffic comes from mobile devices, prioritize experiences, conte
 
 ---
 
-## Reports
+## Visitor messages
 
-Generate in-depth, AI-powered analysis reports to evaluate your chat's performance, audience behavior, and content gaps over any period.
+The **Visitor messages** feed gives you real-time visibility into the exact questions and prompts sent by your audience.
 
-![Attlas Reports](/images/reports.webp)
+![Visitor messages](/images/analytics-human-messages.webp)
 
-<Check>
-  To view or generate reports, click the **Reports** button at the top right of the **Overview** dashboard, or navigate directly to `/overview/your-chat-slug/reports`.
-</Check>
+- **Real-time stream:** Browse incoming user messages sorted by recent activity.
+- **Search filter:** Type any word or phrase into the search box to find specific topics or recurring questions.
+- **Length filter:** Filter messages by word count using the dropdown:
+  - **All lengths:** Show every visitor message.
+  - **Short:** Messages containing 3 words or fewer.
+  - **Medium:** Messages containing 4 to 8 words.
+  - **Long:** Messages containing 9 words or more.
+- **Full conversation inspection:** Click on any message to open the conversation modal and review the full chat context leading up to that question.
 
-### Generating a Report
+![Conversation inspection](/images/analytics-conversation.webp)
 
-1. Click **Reports** in the top navigation of the Overview dashboard.
-2. Click the **Generate Report** button.
-3. Select your desired time period:
-   - **Pre-set ranges:** Last 7 days, 14 days, 30 days, 90 days, or 12 months.
-   - **Custom range:** Select precise start and end dates using the calendar picker.
-4. Choose your preferred **Report Language** (for example English, French, Portuguese, Spanish, German, or Japanese). The report will be generated entirely in the selected language.
-5. Click **Generate**. Attlas will analyze your chat history and generate your report in seconds.
+---
 
-<Note>
-  Available historical date ranges depend on your plan level.
-</Note>
+## AI Reports
 
-### What's Included in a Report
+Generate in-depth, AI-powered analysis reports to evaluate your chat's performance over custom timeframes.
 
-Each AI Report compiles data and AI analysis into actionable sections:
-
-- **Executive Summary:** Key highlights, top performing areas, and primary takeaways.
-- **Audience & Traffic Channels:** Detailed breakdown of top countries, cities, device types, and visitor acquisition sources.
-- **Engagement & Activity:** Visual charts of conversation volume, message counts, funnel conversion, and top clicked triggers.
-- **What Worked vs What Didn't:** Clear breakdown of successful user interactions compared to areas where visitors experienced friction.
-- **Blind Spots & Knowledge Gaps:** Highlights questions where the AI provided weak or incomplete responses, showing you exactly what information is missing from your knowledge base.
-- **Actionable Recommendations:** Tailored, step-by-step suggestions generated by AI to help you optimize triggers, update training documents, and increase response quality.
-
-### Downloading and Exporting
-
-You can download any generated report for offline review, sharing with team members, or archiving by clicking the **Download** button at the top of the report view.
+<Card title="AI Reports (Pro)" icon="sparkles" horizontal href="/pro/reports">
+  Learn how to generate, analyze, and export custom AI reports on Pro plans.
+</Card>
 
 ---
 

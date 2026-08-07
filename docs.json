@@ -201,6 +201,7 @@
                   "pro/reviewing",
                   "pro/autosync",
                   "pro/opengraph",
+                  "pro/reports",
                   "pro/customization"
                 ]
               },
@@ -322,6 +323,7 @@
                   "fr/pro/reviewing",
                   "fr/pro/autosync",
                   "fr/pro/opengraph",
+                  "fr/pro/reports",
                   "fr/pro/customization"
                 ],
                 "icon": "gift"
@@ -439,6 +441,7 @@
                   "pt/pro/reviewing",
                   "pt/pro/autosync",
                   "pt/pro/opengraph",
+                  "pt/pro/reports",
                   "pt/pro/customization"
                 ],
                 "icon": "gift"
