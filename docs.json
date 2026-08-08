@@ -222,9 +222,11 @@
                 "expanded": false,
                 "pages": [
                   "integrations/google-calendar",
+                  "integrations/notion",
+                  "integrations/webhooks",
                   "integrations/sql-database",
-                  "integrations/tally",
-                  "integrations/notion"
+                  "integrations/bandsintown",
+                  "integrations/tally"
                 ],
                 "icon": "shapes"
               },
@@ -343,9 +345,11 @@
                 "group": "Intégrations",
                 "pages": [
                   "fr/integrations/google-calendar",
+                  "fr/integrations/notion",
+                  "fr/integrations/webhooks",
                   "fr/integrations/sql-database",
-                  "fr/integrations/tally",
-                  "fr/integrations/notion"
+                  "fr/integrations/bandsintown",
+                  "fr/integrations/tally"
                 ],
                 "icon": "shapes"
               },
@@ -461,9 +465,11 @@
                 "group": "Integrações",
                 "pages": [
                   "pt/integrations/google-calendar",
+                  "pt/integrations/notion",
+                  "pt/integrations/webhooks",
                   "pt/integrations/sql-database",
-                  "pt/integrations/tally",
-                  "pt/integrations/notion"
+                  "pt/integrations/bandsintown",
+                  "pt/integrations/tally"
                 ],
                 "icon": "shapes"
               },

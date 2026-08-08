@@ -1,0 +1,68 @@
+---
+title: "Intégration Bandsintown"
+sidebarTitle: "Bandsintown"
+description: "Connectez votre profil d'artiste Bandsintown pour afficher les dates de tournée et les concerts à venir directement dans votre Attlas Chat."
+tag: "New"
+og:image: "/images/thumbs/thumb_bandsintown.webp"
+---
+
+L'intégration Bandsintown permet aux musiciens, groupes et artistes de présenter leurs dates de tournée directement dans leur Attlas Chat. Une fois la connexion active, votre assistant IA obtient automatiquement le contexte complet de votre calendrier de tournée à venir et peut répondre aux questions des visiteurs en langage naturel.
+
+Au lieu de rediriger les utilisateurs vers des pages d'événements externes, les visiteurs peuvent poser des questions naturellement (comme *«Quand est votre prochain concert à Paris ?»*) et recevoir des réponses précises et conversationnelles accompagnées de cartes de concert interactives dans le chat.
+
+---
+
+## Avantages clés
+
+- **Sensibilisation automatique de l'IA** : Dès que Bandsintown est connecté, votre assistant IA a accès à votre calendrier de concerts et répond aux questions des visiteurs de manière naturelle dans la conversation.
+- **Synchronisation automatisée des tournées** : Vos concerts à venir sont automatiquement récupérés depuis Bandsintown, garantissant un calendrier précis sans mise à jour manuelle.
+- **Rendu natif dans le chat** : Les dates de concert apparaissent sous forme de cartes interactives dans la fenêtre de chat, avec les détails de la salle, le lieu et les options de billetterie.
+- **Pilule de déclenchement dédiée** : Vous pouvez mettre en avant vos dates de tournée sur votre page de chat en utilisant le déclencheur dédié **Concerts**.
+- **Confidentialité et sécurité** : Les clés API restent chiffrées sur le serveur et sont dépouillées des identifiants de suivi avant que les liens ne soient transmis au visiteur.
+
+---
+
+## Comment configurer Bandsintown
+
+![Bandsintown Setup](/images/integration-bandsintown.webp)
+
+La configuration de l'intégration prend moins de deux minutes :
+
+1. Accédez à vos **Paramètres de Chat** dans le tableau de bord Attlas.
+2. Sélectionnez l'onglet **Intégrations**.
+3. Repérez la carte **Bandsintown** et cliquez sur **Connecter**.
+4. Saisissez votre **Nom d'artiste** (tel qu'il apparaît sur Bandsintown) ainsi que votre **Clé API** Bandsintown.
+5. Cliquez sur **Enregistrer** pour vérifier les identifiants et activer l'intégration.
+
+<Info>
+  Vous pouvez obtenir une clé API depuis votre compte **Bandsintown for Artists** sous **Paramètres > Général > Obtenir une clé API**. Pour plus de détails, consultez la [documentation de l'API Bandsintown](https://help.artists.bandsintown.com/en/articles/7053475-what-is-the-bandsintown-api).
+</Info>
+
+<Note>
+  Attlas vérifie votre profil d'artiste lors de la configuration pour s'assurer que votre nom d'artiste et votre clé API sont valides avant l'enregistrement.
+</Note>
+
+---
+
+## Ajouter un déclencheur Concerts
+
+Une fois Bandsintown connecté, vous pouvez ajouter un déclencheur de calendrier de tournée en direct à votre page de chat :
+
+1. Allez dans l'onglet **Déclencheurs** de vos paramètres de chat.
+2. Cliquez sur **Ajouter un déclencheur** et sélectionnez **Concerts**.
+3. (Facultatif) Choisissez d'afficher la carte d'en-tête de l'artiste ou uniquement les dates de concert.
+4. Enregistrez vos modifications.
+
+Lorsque les visiteurs cliquent sur le déclencheur **Concerts**, vos dates de concert à venir s'affichent directement dans l'interface du chat.
+
+---
+
+## Fonctionnement en conversation
+
+Une fois connecté, l'assistant IA interroge dynamiquement votre calendrier Bandsintown dès qu'un visiteur pose des questions comme *«Quand est votre prochain concert ?»*, *«Jouez-vous à Londres ?»* ou *«Où puis-je acheter des billets ?»*.
+
+L'assistant répond en langage naturel tout en affichant une carte de concert visuelle claire contenant les détails du spectacle et les liens directs vers la billetterie.
+
+<Tip>
+  Si vous n'avez aucun concert à venir programmé, l'assistant en informe poliment l'utilisateur en langage naturel tout en maintenant une expérience conversationnelle.
+</Tip>

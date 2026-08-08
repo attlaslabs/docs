@@ -1,0 +1,83 @@
+---
+title: "Webhooks integration"
+sidebarTitle: "Webhooks"
+description: "Receive real-time HTTP POST notifications in your backend whenever leads are captured or calendar events are booked and canceled."
+tag: "New"
+og:image: "/images/thumbs/thumb_webhook.webp"
+---
+
+Webhooks allow you to connect Attlas Chat to your backend, CRM, or external tools in real time. Whenever a visitor interacts with your chat, for example by leaving their contact details or scheduling a meeting, Attlas sends an automated HTTP POST request to your specified endpoint.
+
+---
+
+![Webhook Integration](/images/integration-webhook.webp)
+
+## Key events
+
+Attlas triggers webhooks for three main events:
+
+| Event | Type | Triggered when |
+| --- | --- | --- |
+| `contact_created` | `contact` | A new lead or contact is created via a conversation or booking. |
+| `event_created` | `calendar` | A visitor schedules a new meeting on Google Calendar through the chat. |
+| `event_canceled` | `calendar` | A scheduled meeting is canceled by you or the visitor. |
+
+<Note>
+The `contact_created` event is only sent when a **new contact** is created. If an existing contact returns and updates their profile, no duplicate `contact_created` event is emitted.
+</Note>
+
+---
+
+## How to set up Webhooks
+
+Setting up a webhook endpoint takes less than a minute:
+
+1. Navigate to your **Chat Settings**.
+2. Select the **Integrations** tab.
+3. Locate the **Webhooks** card and click **Connect**.
+4. Enter your destination **Webhook URL** (must be a secure `https://` endpoint).
+5. (Optional) Configure custom HTTP headers if your receiving server requires specific header tokens.
+6. (Optional) Generate an HMAC **Signing Secret** to verify payload authenticity.
+7. Click **Save** to activate.
+
+---
+
+## Payload structure
+
+Each payload is sent as a JSON object containing details about the event and the associated chat:
+
+```json
+{
+  "id": "5c6f8a0b-1234-4567-890a-bcdef1234567",
+  "type": "contact",
+  "event": "contact_created",
+  "created_at": "2026-08-07T10:12:33.412Z",
+  "chat_id": 42,
+  "data": {
+    "id": "b1e23456-7890-4abc-def0-1234567890ab",
+    "firstname": "Ana",
+    "email": "ana@example.com",
+    "phone": "+33612345678",
+    "source": "form",
+    "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c"
+  }
+}
+```
+
+<Info>
+The `data` object only includes non-empty fields. Optional fields that were not provided by the visitor are omitted to keep payloads clean.
+</Info>
+
+---
+
+## Security & Verification
+
+To ensure requests originate from Attlas, you can generate a **Signing Secret** in your webhook settings. When enabled, every request includes an `X-Attlas-Signature` header containing a timestamp and an HMAC-SHA256 signature (`t=timestamp,v1=signature`).
+
+---
+
+## Delivery, retries & monitoring
+
+- **Security checks**: Destination URLs must use public `https://`. Localhost and private IP addresses are blocked.
+- **Timeouts & retries**: Requests have a 10-second timeout. If your server returns a `5xx` error or times out, Attlas automatically retries delivery up to 3 times with exponential backoff.
+- **Delivery logs**: You can view recent delivery attempts, status codes, and error messages directly inside your Attlas settings dialog.

@@ -1,0 +1,83 @@
+---
+title: "Integração de Webhooks"
+sidebarTitle: "Webhooks"
+description: "Receba notificações HTTP POST em tempo real no seu backend sempre que leads são capturados ou eventos de calendário são agendados e cancelados."
+tag: "Novo"
+og:image: "/images/thumbs/thumb_webhook.webp"
+---
+
+Webhooks permitem que você conecte o Attlas Chat ao seu backend, CRM ou ferramentas externas em tempo real. Sempre que um visitante interage com seu chat, por exemplo, fornecendo seus dados de contato ou agendando uma reunião, o Attlas envia uma requisição HTTP POST automatizada para o endpoint especificado.
+
+---
+
+![Integração de Webhook](/images/integration-webhook.webp)
+
+## Eventos principais
+
+O Attlas dispara webhooks para três eventos principais:
+
+| Evento | Tipo | Disparado quando |
+| --- | --- | --- |
+| `contact_created` | `contact` | Um novo lead ou contato é criado via conversa ou agendamento. |
+| `event_created` | `calendar` | Um visitante agenda uma nova reunião no Google Calendar através do chat. |
+| `event_canceled` | `calendar` | Uma reunião agendada é cancelada por você ou pelo visitante. |
+
+<Note>
+O evento `contact_created` é enviado apenas quando um **novo contato** é criado. Se um contato existente retorna e atualiza seu perfil, nenhum evento `contact_created` duplicado é emitido.
+</Note>
+
+---
+
+## Como configurar Webhooks
+
+Configurar um endpoint de webhook leva menos de um minuto:
+
+1. Navegue até as **Configurações do Chat**.
+2. Selecione a aba **Integrações**.
+3. Localize o cartão **Webhooks** e clique em **Conectar**.
+4. Insira a **URL do Webhook** de destino (deve ser um endpoint seguro `https://`).
+5. (Opcional) Configure cabeçalhos HTTP personalizados se seu servidor de recebimento exigir tokens de cabeçalho específicos.
+6. (Opcional) Gere um **Segredo de Assinatura** HMAC para verificar a autenticidade do payload.
+7. Clique em **Salvar** para ativar.
+
+---
+
+## Estrutura do payload
+
+Cada payload é enviado como um objeto JSON contendo detalhes sobre o evento e o chat associado:
+
+```json
+{
+  "id": "5c6f8a0b-1234-4567-890a-bcdef1234567",
+  "type": "contact",
+  "event": "contact_created",
+  "created_at": "2026-08-07T10:12:33.412Z",
+  "chat_id": 42,
+  "data": {
+    "id": "b1e23456-7890-4abc-def0-1234567890ab",
+    "firstname": "Ana",
+    "email": "ana@example.com",
+    "phone": "+33612345678",
+    "source": "form",
+    "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c"
+  }
+}
+```
+
+<Info>
+O objeto `data` inclui apenas campos não vazios. Campos opcionais que não foram fornecidos pelo visitante são omitidos para manter os payloads limpos.
+</Info>
+
+---
+
+## Segurança e Verificação
+
+Para garantir que as requisições sejam originadas do Attlas, você pode gerar um **Segredo de Assinatura** nas configurações do seu webhook. Quando ativado, cada requisição inclui um cabeçalho `X-Attlas-Signature` contendo um timestamp e uma assinatura HMAC-SHA256 (`t=timestamp,v1=signature`).
+
+---
+
+## Entrega, tentativas e monitoramento
+
+- **Verificações de segurança**: URLs de destino devem usar `https://` público. Endereços de localhost e IPs privados são bloqueados.
+- **Timeouts e tentativas**: As requisições têm um timeout de 10 segundos. Se seu servidor retornar um erro `5xx` ou expirar, o Attlas automaticamente tenta reenviar até 3 vezes com backoff exponencial.
+- **Logs de entrega**: Você pode visualizar tentativas recentes de entrega, códigos de status e mensagens de erro diretamente no diálogo de configurações do Attlas.

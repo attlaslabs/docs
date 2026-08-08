@@ -1,0 +1,68 @@
+---
+title: "Integração com o Bandsintown"
+sidebarTitle: "Bandsintown"
+description: "Conecte seu perfil de artista no Bandsintown para exibir datas de turnês ao vivo e próximos shows diretamente no seu Attlas Chat."
+tag: "New"
+og:image: "/images/thumbs/thumb_bandsintown.webp"
+---
+
+A integração com o Bandsintown permite que músicos, bandas e artistas exibam datas de turnês ao vivo diretamente no Attlas Chat. Quando a conexão está ativa, seu assistente de IA automaticamente tem acesso completo à sua agenda de shows e pode responder às perguntas dos visitantes em linguagem natural.
+
+Em vez de redirecionar os usuários para páginas externas de eventos, os visitantes podem fazer perguntas naturalmente (como *"Quando é o seu próximo show em Paris?"*) e receber respostas precisas e conversacionais, além de cards interativos dos shows diretamente no chat.
+
+---
+
+## Principais benefícios
+
+- **Consciência automática da IA**: Assim que o Bandsintown é conectado, seu assistente de IA tem acesso à sua agenda de shows e responde naturalmente às perguntas dos visitantes durante a conversa.
+- **Sincronização automática da turnê**: Seus próximos shows são automaticamente buscados no Bandsintown, mantendo sua agenda precisa sem atualizações manuais.
+- **Exibição nativa no chat**: As datas dos shows aparecem como cards interativos na janela do chat, com detalhes do local, cidade e opções de ingressos.
+- **Botão de gatilho dedicado**: Você pode destacar as datas da turnê na sua página de chat usando o gatilho dedicado **Concerts**.
+- **Privacidade e segurança**: As chaves de API permanecem criptografadas no servidor e são despojadas de IDs de rastreamento antes que qualquer link chegue ao visitante.
+
+---
+
+## Como configurar o Bandsintown
+
+![Configuração do Bandsintown](/images/integration-bandsintown.webp)
+
+A configuração da integração leva menos de dois minutos:
+
+1. Vá para **Configurações do Chat** no painel do Attlas.
+2. Selecione a aba **Integrações**.
+3. Localize o card **Bandsintown** e clique em **Conectar**.
+4. Insira o **Nome do Artista** (conforme listado no Bandsintown) e sua **Chave de API do Bandsintown**.
+5. Clique em **Salvar** para verificar as credenciais e ativar a integração.
+
+<Info>
+  Você pode obter uma chave de API na sua conta **Bandsintown for Artists** em **Settings > General > Get API Key**. Para mais detalhes, acesse a [Documentação da API do Bandsintown](https://help.artists.bandsintown.com/en/articles/7053475-what-is-the-bandsintown-api).
+</Info>
+
+<Note>
+  O Attlas verifica o perfil do artista durante a configuração para garantir que o nome e a chave de API sejam válidos antes de salvar.
+</Note>
+
+---
+
+## Adicionando um gatilho Concerts
+
+Depois que o Bandsintown estiver conectado, você pode adicionar um gatilho de agenda de turnê ao vivo na sua página de chat:
+
+1. Vá para a aba **Gatilhos** nas configurações do chat.
+2. Clique em **Adicionar gatilho** e selecione **Concerts**.
+3. (Opcional) Escolha se deseja exibir o card de cabeçalho do artista ou apenas as datas dos eventos.
+4. Salve as alterações.
+
+Quando os visitantes clicam no gatilho **Concerts**, as próximas datas de shows se expandem diretamente dentro da interface do chat.
+
+---
+
+## Como funciona na conversa
+
+Uma vez conectado, o assistente de IA consulta dinamicamente seu calendário do Bandsintown sempre que um visitante faz perguntas como *"Quando é o seu próximo show?"*, *"Você vai tocar em Londres?"* ou *"Onde posso comprar ingressos?"*.
+
+O assistente responde em linguagem natural e clara, exibindo um card visual limpo com os detalhes do show e links diretos para ingressos.
+
+<Tip>
+  Se você não tiver nenhuma data de turnê agendada, o assistente informa educadamente o usuário em linguagem natural, mantendo uma experiência conversacional.
+</Tip>

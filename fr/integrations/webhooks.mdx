@@ -1,0 +1,83 @@
+---
+title: "Intégration Webhooks"
+sidebarTitle: "Webhooks"
+description: "Recevez des notifications HTTP POST en temps réel dans votre backend lorsque des prospects sont capturés ou que des événements de calendrier sont réservés et annulés."
+tag: "New"
+og:image: "/images/thumbs/thumb_webhook.webp"
+---
+
+Les webhooks vous permettent de connecter Attlas Chat à votre backend, CRM ou outils externes en temps réel. Chaque fois qu'un visiteur interagit avec votre chat, par exemple en laissant ses coordonnées ou en planifiant un rendez-vous, Attlas envoie une requête HTTP POST automatisée à votre endpoint spécifié.
+
+---
+
+![Intégration Webhook](/images/integration-webhook.webp)
+
+## Événements clés
+
+Attlas déclenche des webhooks pour trois événements principaux :
+
+| Événement | Type | Déclenché lorsque |
+| --- | --- | --- |
+| `contact_created` | `contact` | Un nouveau prospect ou contact est créé via une conversation ou une réservation. |
+| `event_created` | `calendar` | Un visiteur planifie un nouveau rendez-vous sur Google Agenda via le chat. |
+| `event_canceled` | `calendar` | Un rendez-vous planifié est annulé par vous ou par le visiteur. |
+
+<Note>
+L'événement `contact_created` est envoyé uniquement lorsqu'un **nouveau contact** est créé. Si un contact existant revient et met à jour son profil, aucun événement `contact_created` en double n'est émis.
+</Note>
+
+---
+
+## Comment configurer les Webhooks
+
+La configuration d'un endpoint webhook prend moins d'une minute :
+
+1. Accédez à vos **Paramètres du chat**.
+2. Sélectionnez l'onglet **Intégrations**.
+3. Repérez la carte **Webhooks** et cliquez sur **Connecter**.
+4. Saisissez l'**URL du Webhook** de destination (doit être un endpoint `https://` sécurisé).
+5. (Optionnel) Configurez des en-têtes HTTP personnalisés si votre serveur de réception nécessite des jetons d'en-tête spécifiques.
+6. (Optionnel) Générez un **Secret de signature** HMAC pour vérifier l'authenticité des charges utiles.
+7. Cliquez sur **Enregistrer** pour activer.
+
+---
+
+## Structure de la charge utile
+
+Chaque charge utile est envoyée sous forme d'objet JSON contenant des détails sur l'événement et le chat associé :
+
+```json
+{
+  "id": "5c6f8a0b-1234-4567-890a-bcdef1234567",
+  "type": "contact",
+  "event": "contact_created",
+  "created_at": "2026-08-07T10:12:33.412Z",
+  "chat_id": 42,
+  "data": {
+    "id": "b1e23456-7890-4abc-def0-1234567890ab",
+    "firstname": "Ana",
+    "email": "ana@example.com",
+    "phone": "+33612345678",
+    "source": "form",
+    "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c"
+  }
+}
+```
+
+<Info>
+L'objet `data` inclut uniquement les champs non vides. Les champs optionnels qui n'ont pas été fournis par le visiteur sont omis pour garder les charges utiles propres.
+</Info>
+
+---
+
+## Sécurité et vérification
+
+Pour garantir que les requêtes proviennent d'Attlas, vous pouvez générer un **Secret de signature** dans les paramètres du webhook. Une fois activé, chaque requête inclut un en-tête `X-Attlas-Signature` contenant un horodatage et une signature HMAC-SHA256 (`t=timestamp,v1=signature`).
+
+---
+
+## Livraison, nouvelles tentatives et surveillance
+
+- **Contrôles de sécurité** : les URL de destination doivent utiliser `https://` public. Les adresses localhost et IP privées sont bloquées.
+- **Délais d'attente et nouvelles tentatives** : les requêtes ont un délai de 10 secondes. Si votre serveur renvoie une erreur `5xx` ou expire, Attlas retente automatiquement la livraison jusqu'à 3 fois avec un backoff exponentiel.
+- **Journaux de livraison** : vous pouvez consulter les tentatives de livraison récentes, les codes de statut et les messages d'erreur directement dans la boîte de dialogue des paramètres d'Attlas.
