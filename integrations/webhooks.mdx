@@ -60,6 +60,7 @@ Each payload is sent as a JSON object containing details about the event and the
     "email": "ana@example.com",
     "phone": "+33612345678",
     "source": "form",
+    "kind": "lead_capture",
     "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c",
     "history": [
       {
@@ -82,6 +83,18 @@ Each payload is sent as a JSON object containing details about the event and the
 <Info>
 The `data` object only includes non-empty fields. Optional fields that were not provided by the visitor are omitted to keep payloads clean.
 </Info>
+
+### Lead intent & exit channels (`kind`, `channel`, `whatsapp`)
+
+For contact events, Attlas enriches payload details with intent and channel metadata:
+
+- `kind`: Identifies the raw intent of the contact creation:
+  - `lead_capture`: Standard lead capture form submission.
+  - `human_request`: Visitor requested to speak to a human.
+  - `booking`: Meeting scheduled via Google Calendar.
+  - `whatsapp`: Visitor engaged via WhatsApp trigger.
+- `channel`: Specifies the exit medium when applicable (e.g. `"whatsapp"` when the visitor leaves via a WhatsApp trigger; omitted when empty).
+- `whatsapp`: The visitor's WhatsApp phone number if provided or captured.
 
 ### Conversation history & message objects
 

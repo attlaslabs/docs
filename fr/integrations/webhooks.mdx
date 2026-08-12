@@ -60,6 +60,7 @@ Chaque charge utile est envoyée sous forme d'objet JSON contenant des détails 
     "email": "ana@example.com",
     "phone": "+33612345678",
     "source": "form",
+    "kind": "lead_capture",
     "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c",
     "history": [
       {
@@ -82,6 +83,18 @@ Chaque charge utile est envoyée sous forme d'objet JSON contenant des détails 
 <Info>
 L'objet `data` inclut uniquement les champs non vides. Les champs optionnels qui n'ont pas été fournis par le visiteur sont omis pour garder les charges utiles propres.
 </Info>
+
+### Intention du prospect et canaux (`kind`, `channel`, `whatsapp`)
+
+Pour les événements de type contact, Attlas enrichit la charge utile avec l'intention et le canal d'origine :
+
+- `kind` : Identifie l'intention brute de création du contact :
+  - `lead_capture` : Soumission d'un formulaire classique de capture de prospect.
+  - `human_request` : Demande d'échange avec un humain.
+  - `booking` : Réservation de rendez-vous via Google Agenda.
+  - `whatsapp` : Engagement via un déclencheur WhatsApp.
+- `channel` : Nomme le canal de sortie lorsqu'il existe (par exemple `"whatsapp"` si le visiteur redirige vers WhatsApp ; omis si vide).
+- `whatsapp` : Le numéro WhatsApp du visiteur lorsqu'il est renseigné ou capturé.
 
 ### Historique de conversation et objets messages
 

@@ -60,6 +60,7 @@ Cada payload é enviado como um objeto JSON contendo detalhes sobre o evento e o
     "email": "ana@example.com",
     "phone": "+33612345678",
     "source": "form",
+    "kind": "lead_capture",
     "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c",
     "history": [
       {
@@ -82,6 +83,18 @@ Cada payload é enviado como um objeto JSON contendo detalhes sobre o evento e o
 <Info>
 O objeto `data` inclui apenas campos não vazios. Campos opcionais que não foram fornecidos pelo visitante são omitidos para manter os payloads limpos.
 </Info>
+
+### Intenção do lead e canais (`kind`, `channel`, `whatsapp`)
+
+Para eventos de contato, o Attlas enriquece o payload com metadados de intenção e canal:
+
+- `kind`: Identifica a intenção bruta da criação do contato:
+  - `lead_capture`: Envio de formulário padrão de captura de lead.
+  - `human_request`: Solicitação do visitante para falar com um humano.
+  - `booking`: Reunião agendada via Google Calendar.
+  - `whatsapp`: Interação via gatilho de WhatsApp.
+- `channel`: Especifica o canal de saída quando aplicável (por exemplo `"whatsapp"` quando o visitante é direcionado ao WhatsApp; omitido quando vazio).
+- `whatsapp`: O número do WhatsApp do visitante quando fornecido ou capturado.
 
 ### Histórico da conversa e objetos de mensagem
 
