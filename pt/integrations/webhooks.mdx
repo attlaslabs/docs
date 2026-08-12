@@ -14,16 +14,17 @@ Webhooks permitem que você conecte o Attlas Chat ao seu backend, CRM ou ferrame
 
 ## Eventos principais
 
-O Attlas dispara webhooks para três eventos principais:
+O Attlas dispara webhooks para quatro eventos principais:
 
 | Evento | Tipo | Disparado quando |
 | --- | --- | --- |
 | `contact_created` | `contact` | Um novo lead ou contato é criado via conversa ou agendamento. |
+| `contact_updated` | `contact` | O perfil ou os dados de um contato existente são atualizados em uma nova interação. |
 | `event_created` | `calendar` | Um visitante agenda uma nova reunião no Google Calendar através do chat. |
 | `event_canceled` | `calendar` | Uma reunião agendada é cancelada por você ou pelo visitante. |
 
 <Note>
-O evento `contact_created` é enviado apenas quando um **novo contato** é criado. Se um contato existente retorna e atualiza seu perfil, nenhum evento `contact_created` duplicado é emitido.
+`contact_created` é enviado apenas quando um **novo contato** é criado. Se um visitante recorrente for reconhecido através de deduplicação (e-mail, telefone ou histórico de conversa), o Attlas emite `contact_updated` em seu lugar.
 </Note>
 
 ---
@@ -59,7 +60,21 @@ Cada payload é enviado como um objeto JSON contendo detalhes sobre o evento e o
     "email": "ana@example.com",
     "phone": "+33612345678",
     "source": "form",
-    "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c"
+    "conversation_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c",
+    "history": [
+      {
+        "type": "user",
+        "content": "Gostaria de agendar uma demonstração para amanhã",
+        "manual": true,
+        "timestampz": "2026-08-07T10:11:54.000Z"
+      },
+      {
+        "type": "assistant",
+        "content": "Claro! Qual horário funciona melhor para você?",
+        "manual": false,
+        "timestampz": "2026-08-07T10:12:01.000Z"
+      }
+    ]
   }
 }
 ```
@@ -67,6 +82,17 @@ Cada payload é enviado como um objeto JSON contendo detalhes sobre o evento e o
 <Info>
 O objeto `data` inclui apenas campos não vazios. Campos opcionais que não foram fornecidos pelo visitante são omitidos para manter os payloads limpos.
 </Info>
+
+### Histórico da conversa e objetos de mensagem
+
+Quando `conversation_id` estiver presente em `data` (para `contact_created`, `contact_updated` e `event_created`), o Attlas inclui o histórico completo de mensagens da conversa em `data.history`, do mais antigo para o mais recente.
+
+Cada mensagem em `history` contém:
+
+- `type`: `"user"` para mensagens do visitante, ou `"assistant"` para respostas da IA.
+- `content`: O conteúdo em texto da mensagem.
+- `manual`: `true` quando o visitante digitou a mensagem manualmente, ou `false` quando gerada ao clicar em um botão de resposta rápida ou enviada pelo assistente.
+- `timestampz`: Data e hora ISO 8601 de criação da mensagem.
 
 ---
 
