@@ -16,13 +16,14 @@ Os gatilhos atuam como iniciadores de conversa. Eles despertam a curiosidade dos
 
 ## Tipos de gatilhos
 
-O Attlas oferece **16 tipos de gatilhos** para atender a diferentes necessidades de interação:
+O Attlas oferece **17 tipos de gatilhos** para atender a diferentes necessidades de interação:
 
 - **Perguntas**: Forneça perguntas preparadas para iniciar a conversa.
 - **Links externos**: Direcione os visitantes para sites externos, landing pages ou lojas.
 - **Cartões**: Destaque artigos, produtos ou ofertas com uma imagem de capa no formato 16:9.
 - **Spotify**: Incorpore músicas ou playlists diretamente no chat.
 - **SoundCloud**: Incorpore faixas de áudio ou playlists com altura de player personalizável.
+- **Mini-vídeo**: Envie um vídeo curto que os visitantes podem reproduzir diretamente no chat.
 - **Vídeos do YouTube**: Destaque vídeos ou tutoriais específicos.
 - **Canal do YouTube**: Compartilhe o link do seu canal para incentivar inscrições e descobertas.
 - **Arquivos do Google Drive**: Compartilhe documentos, apresentações ou planilhas do Google Drive.
@@ -139,6 +140,20 @@ Incorpore faixas de áudio ou playlists diretamente na interface do chat.
 Basta adicionar um link para qualquer faixa ou playlist pública do SoundCloud. Você também pode ajustar a altura do player em pixels (entre 100px e 1000px, padrão de 200px) para melhor se adequar ao seu layout.
 
 ![Gatilho SoundCloud](/images/trigger-soundcloud.webp)
+
+---
+
+### Mini-vídeo
+
+Envie um vídeo MP4 curto para criar um ponto de entrada mais pessoal e visual no seu chat. Os visitantes podem reproduzir ou pausar o vídeo, ligar ou desligar o som e ver o tempo restante.
+
+Você pode escolher o formato **circular** ou **quadrado com cantos arredondados**. Também é possível ativar a **reprodução automática**. Os vídeos com reprodução automática sempre começam sem som, para que os visitantes mantenham o controle do áudio.
+
+![Gatilho mini-vídeo](/images/trigger-mini-video.webp)
+
+<Warning>
+  Os mini-vídeos são enviados apenas do seu dispositivo. Eles devem estar no formato MP4, ter no máximo 50 MB e durar até 2 minutos. Links diretos para vídeos e outros formatos de vídeo não são compatíveis.
+</Warning>
 
 ---
 
@@ -285,6 +300,7 @@ Nem todos os tipos de gatilho suportam personalização de ícone. Alguns possue
 | **Cartão** | Não (exibe sua própria imagem de capa) | Nenhum |
 | **Spotify** | Não | Logotipo do Spotify |
 | **SoundCloud** | Não | Logotipo do SoundCloud |
+| **Mini-vídeo** | Não (exibe seu próprio player de vídeo) | Nenhum |
 | **Vídeo do YouTube** | Não | Logotipo do YouTube |
 | **Canal do YouTube** | Sim | Logotipo do YouTube |
 | **Google Drive** | Sim | Logotipo do Google Drive |
@@ -314,6 +330,7 @@ Apenas certos tipos de gatilho podem atuar como pai (dobrável) e conter gatilho
 | Cartão | Sim |
 | Arquivo | Sim |
 | Google Drive | Sim |
+| Mini-vídeo | Não |
 | Vídeo do YouTube | Não |
 | Canal do YouTube | Não |
 | Spotify | Não |

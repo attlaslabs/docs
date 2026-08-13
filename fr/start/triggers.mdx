@@ -16,13 +16,14 @@ Les déclencheurs servent d'amorces de conversation. Ils éveillent la curiosit�
 
 ## Types de déclencheurs
 
-Attlas propose **16 types de déclencheurs** pour répondre à tous vos besoins d'interaction :
+Attlas propose **17 types de déclencheurs** pour répondre à tous vos besoins d'interaction :
 
 - **Questions** : Proposez des questions préparées pour démarrer la conversation.
 - **Liens externes** : Dirigez vos visiteurs vers des sites web, pages de destination ou boutiques.
 - **Cartes** : Mettez en avant des articles, produits ou offres avec une image de couverture au format 16/9.
 - **Spotify** : Intégrez des morceaux ou des playlists directement dans le chat.
 - **SoundCloud** : Intégrez des pistes audio ou des playlists avec une hauteur de lecteur personnalisable.
+- **Mini-vidéo** : Importez une courte vidéo que les visiteurs peuvent lire directement dans le chat.
 - **Vidéos YouTube** : Mettez en avant des vidéos ou des tutoriels spécifiques.
 - **Chaîne YouTube** : Partagez le lien de votre chaîne pour faire découvrir votre contenu.
 - **Fichiers Google Drive** : Partagez des documents, présentations ou feuilles de calcul depuis Google Drive.
@@ -139,6 +140,20 @@ Intégrez des pistes audio ou des playlists directement dans l'interface du chat
 Ajoutez simplement un lien vers n'importe quelle piste ou playlist SoundCloud publique. Vous pouvez également ajuster la hauteur d'intégration du lecteur en pixels (entre 100px et 1000px, avec une valeur par défaut de 200px) pour l'adapter au mieux à votre mise en page.
 
 ![Déclencheur Soundcloud](/images/trigger-soundcloud.webp)
+
+---
+
+### Mini-vidéo
+
+Importez une courte vidéo MP4 pour créer un point d’entrée plus personnel et visuel dans votre chat. Les visiteurs peuvent la lire ou la mettre en pause, activer ou couper le son, et voir le temps restant.
+
+Vous pouvez choisir une forme **circulaire** ou **carrée aux angles arrondis**. Vous pouvez aussi activer la **lecture automatique**. Les vidéos en lecture automatique démarrent toujours sans son, afin de laisser les visiteurs contrôler l’audio.
+
+![Déclencheur mini-vidéo](/images/trigger-mini-video.webp)
+
+<Warning>
+  Les mini-vidéos sont importées uniquement depuis votre appareil. Elles doivent être au format MP4, ne pas dépasser 50 Mo et durer au maximum 2 minutes. Les liens directs vers des vidéos et les autres formats vidéo ne sont pas pris en charge.
+</Warning>
 
 ---
 
@@ -285,6 +300,7 @@ Tous les types de déclencheurs ne prennent pas en charge la personnalisation de
 | **Carte** | Non (affiche sa propre image de couverture) | Aucune |
 | **Spotify** | Non | Logo Spotify |
 | **SoundCloud** | Non | Logo SoundCloud |
+| **Mini-vidéo** | Non (affiche son propre lecteur vidéo) | Aucun |
 | **Vidéo YouTube** | Non | Logo YouTube |
 | **Chaîne YouTube** | Oui | Logo YouTube |
 | **Google Drive** | Oui | Logo Google Drive |
@@ -314,6 +330,7 @@ Seuls certains types de déclencheurs peuvent servir de parent (pliable) et cont
 | Carte | Oui |
 | Fichier | Oui |
 | Google Drive | Oui |
+| Mini-vidéo | Non |
 | Vidéo YouTube | Non |
 | Chaîne YouTube | Non |
 | Spotify | Non |
