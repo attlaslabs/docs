@@ -1,7 +1,7 @@
 ---
 title: "Adicionar gatilhos"
 sidebarTitle: "Adicionar gatilhos"
-description: "Adicione gatilhos de chat, como perguntas, links ou mídia, para iniciar conversas e aumentar a interação do usuário instantaneamente."
+description: "Adicione gatilhos de chat, como perguntas, links, produtos ou mídia, para iniciar conversas e aumentar a interação do usuário instantaneamente."
 ---
 
 A aba **Gatilhos** é onde você adiciona as perguntas e ações que aparecerão no centro do seu chat.
@@ -16,7 +16,7 @@ Os gatilhos atuam como iniciadores de conversa. Eles despertam a curiosidade dos
 
 ## Tipos de gatilhos
 
-O Attlas oferece **18 tipos de gatilhos**, organizados por categoria:
+O Attlas oferece **19 tipos de gatilhos**, organizados por categoria:
 
 ### Comece com
 
@@ -29,6 +29,10 @@ O Attlas oferece **18 tipos de gatilhos**, organizados por categoria:
 
 - **Seção**: Agrupe e organize seus gatilhos sob divisores de cabeçalho visuais.
 - **Espaço**: Adicione espaçamento vertical para separar blocos de conteúdo.
+
+### Loja
+
+- **Produto**: Destaque itens da sua loja com fotos de capa, preços, moedas e links diretos de compra.
 
 ### Mídia
 
@@ -135,6 +139,38 @@ O cartão inclui uma imagem de capa no formato 16:9 e um título. Quando você a
 </Info>
 
 ![Gatilho Cartão](/images/trigger-editor-card.webp)
+
+---
+
+### Produtos
+
+Exiba suas mercadorias, produtos digitais ou serviços diretamente no seu chat com uma visualização de loja dedicada em 2 colunas.
+
+![Gatilho de Produto](/images/trigger-product.webp)
+
+Um gatilho de produto inclui:
+- Uma imagem de capa destacando seu produto
+- Um título claro para o produto
+- Um seletor de preço e moeda (compatível com USD, EUR, GBP, BRL, CAD e mais)
+- Uma URL de destino direcionando para sua página de checkout ou produto
+
+<Info>
+  **Exibição automática de moeda:** Quando os visitantes visualizam seu chat em outro idioma, o Attlas exibe automaticamente o preço equivalente na moeda local deles para uma experiência de compra simples e intuitiva.
+</Info>
+
+#### Abas Links e Loja
+
+<video autoPlay muted loop playsInline src="/videos/triggers-tabs.mp4" />
+
+No painel de Gatilhos, seus gatilhos são organizados em duas abas:
+1. **Links**: Para seus links padrão, perguntas, mídias e gatilhos de contato.
+2. **Loja**: Para seus produtos e seções da loja.
+
+Sempre que você tiver pelo menos um produto na sua Loja, o Attlas adiciona automaticamente um alternador elegante de **Links / Loja** no topo do seu chat público. Os visitantes podem alternar facilmente entre seus links principais e os itens da sua loja.
+
+<Tip>
+  Você pode adicionar divisores de **Seção** na sua aba Loja para agrupar seus itens por categoria (como "Vestuário", "E-books" ou "Acessórios"). As seções se estendem automaticamente pelas 2 colunas da grade de produtos.
+</Tip>
 
 ---
 
@@ -263,7 +299,7 @@ Ideal para:
 
 Os visitantes podem conferir as próximas datas de turnê, casas de show, locais e acessar links diretos para a compra de ingressos diretamente na conversa.
 
-<Card title="Saiba como configurar a integração com o Bandsintown" icon="music" horizontal href="/integrations/bandsintown">
+<Card title="Saiba como configurar a integração com o Bandsintown" icon="music" horizontal href="/pt/integrations/bandsintown">
   Conecte seu perfil do Bandsintown para exibir datas de turnê ao vivo e próximos shows diretamente no seu chat.
 </Card>
 
@@ -323,6 +359,7 @@ Nem todos os tipos de gatilho suportam personalização de ícone. Alguns possue
 | **Pergunta** | Sim | Ponto de interrogação |
 | **Link externo** | Sim | Link / Corrente |
 | **Cartão** | Não (exibe sua própria imagem de capa) | Nenhum |
+| **Produto** | Não (exibe sua própria imagem de capa) | Nenhum |
 | **Spotify** | Não | Logotipo do Spotify |
 | **SoundCloud** | Não | Logotipo do SoundCloud |
 | **Mini-vídeo** | Não (exibe seu próprio player de vídeo) | Nenhum |
@@ -354,6 +391,7 @@ Apenas certos tipos de gatilho podem atuar como pai (dobrável) e conter gatilho
 | Pergunta | Não |
 | Link | Sim |
 | Cartão | Sim |
+| Produto | Não |
 | Arquivo | Sim |
 | Google Drive | Sim |
 | Mini-vídeo | Não |

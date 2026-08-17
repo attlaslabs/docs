@@ -1,7 +1,7 @@
 ---
 title: "Add triggers"
 sidebarTitle: "Add triggers"
-description: "Add chat triggers like questions, links, or media to spark conversations and boost user interaction instantly."
+description: "Add chat triggers like questions, links, products, or media to spark conversations and boost user interaction instantly."
 ---
 
 The **Triggers** tab is where you add the questions and actions that will appear in the center of your chat.
@@ -16,7 +16,7 @@ Triggers act as conversation starters. They spark visitors curiosity and encoura
 
 ## Trigger types
 
-Attlas offers **18 trigger types**, organized by category:
+Attlas offers **19 trigger types**, organized by category:
 
 ### Start with
 
@@ -29,6 +29,10 @@ Attlas offers **18 trigger types**, organized by category:
 
 - **Section**: Group and categorize your triggers under visual header dividers.
 - **Space**: Add vertical spacing between trigger blocks for cleaner layouts.
+
+### Shop
+
+- **Product**: Showcase items from your store with cover photos, prices, currencies, and direct buy links.
 
 ### Media
 
@@ -78,7 +82,7 @@ This action allows you to generate questions from a document that has already be
 
 ![Generate Triggers](/images/generate-questions_1.webp)
 
-Simply click the **AI Action** <kbd>Generate Questions</kbd>** button and Attlas will open a window where you can choose:
+Simply click the **AI Action** <kbd>Generate Questions</kbd> button and Attlas will open a window where you can choose:
 
 1. Select the document you want to generate questions from
 2. Set the number of questions you want to generate
@@ -135,6 +139,38 @@ The card includes a 16:9 cover image and a title. When you add a URL, the card b
 </Info>
 
 ![Card Trigger](/images/trigger-editor-card.webp)
+
+---
+
+### Products
+
+Showcase your merchandise, digital products, or services directly inside your chat with a dedicated 2-column store view.
+
+![Product Trigger](/images/trigger-product.webp)
+
+A product trigger includes:
+- A cover image showcasing your product
+- A clear product title
+- A price and currency selector (supporting USD, EUR, GBP, BRL, CAD, and more)
+- A destination URL pointing to your checkout or product page
+
+<Info>
+  **Automatic Currency Display:** When visitors view your chat in another language, Attlas automatically displays the equivalent price in their local currency for an effortless shopping experience.
+</Info>
+
+#### Links and Shop tabs
+
+<video autoPlay muted loop playsInline src="/videos/triggers-tabs.mp4" />
+
+In the Triggers dashboard, your triggers are organized into two tabs:
+1. **Links**: For your standard links, questions, media, and contact triggers.
+2. **Shop**: For your products and store sections.
+
+Whenever you have at least one product in your Shop, Attlas automatically adds a smooth **Links / Shop switcher** at the top of your public chat. Visitors can easily toggle between your main links and your store items.
+
+<Tip>
+  You can add **Section** dividers in your Shop tab to group your items by category (such as "Apparel", "E-books", or "Accessories"). Sections automatically span across the 2-column product grid.
+</Tip>
 
 ---
 
@@ -323,6 +359,7 @@ Not all trigger types support icon customization. Some have fixed layouts or def
 | **Question** | Yes | Question Mark |
 | **External link** | Yes | Link / Chain |
 | **Card** | No (displays its own cover image) | None |
+| **Product** | No (displays its own cover image) | None |
 | **Spotify** | No | Spotify Logo |
 | **SoundCloud** | No | SoundCloud Logo |
 | **Mini-video** | No (displays its own video player) | None |
@@ -354,6 +391,7 @@ Only certain trigger types can act as a parent (foldable) and contain child trig
 | Question | No |
 | Link | Yes |
 | Card | Yes |
+| Product | No |
 | File | Yes |
 | Google Drive | Yes |
 | Mini-video | No |

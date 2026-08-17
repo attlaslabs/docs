@@ -1,7 +1,7 @@
 ---
 title: "Ajouter des déclencheurs"
 sidebarTitle: "Ajouter des déclencheurs"
-description: "Ajoutez des déclencheurs de chat comme des questions, des liens ou des médias pour susciter des conversations et stimuler instantanément l'interaction des utilisateurs."
+description: "Ajoutez des déclencheurs de chat comme des questions, des liens, des produits ou des médias pour susciter des conversations et stimuler instantanément l'interaction des utilisateurs."
 ---
 
 L'onglet **Déclencheurs** est l'endroit où vous ajoutez les questions et les actions qui apparaîtront au centre de votre chat.
@@ -16,7 +16,7 @@ Les déclencheurs servent d'amorces de conversation. Ils éveillent la curiosit�
 
 ## Types de déclencheurs
 
-Attlas propose **18 types de déclencheurs**, organisés par catégorie :
+Attlas propose **19 types de déclencheurs**, organisés par catégorie :
 
 ### Commencer avec
 
@@ -29,6 +29,10 @@ Attlas propose **18 types de déclencheurs**, organisés par catégorie :
 
 - **Section** : Regroupez et organisez vos déclencheurs sous des en-têtes visuels.
 - **Espace** : Ajoutez de l'espacement vertical pour aérer votre liste de déclencheurs.
+
+### Boutique
+
+- **Produit** : Mettez en valeur les articles de votre boutique avec des images de couverture, des prix, des devises et des liens d'achat directs.
 
 ### Médias
 
@@ -119,7 +123,7 @@ C'est un excellent moyen de diriger les utilisateurs vers du contenu pertinent e
 
 ### Cartes
 
-Créez des cartes de lien visuelles pour capter l'attention de vos utilisateurs avec une grande image de couverture.
+Créez des cartes de lien visuelles pour capter l'attention de vos utilisateurs avec une grande image de couverture. 
 
 Les cartes sont parfaites pour mettre en avant :
 
@@ -135,6 +139,38 @@ La carte comprend une image de couverture au format 16/9 et un titre. Lorsque vo
 </Info>
 
 ![Déclencheur carte](/images/trigger-editor-card.webp)
+
+---
+
+### Produits
+
+Mettez en valeur vos articles, produits numériques ou services directement dans votre chat grâce à une vue boutique dédiée sur 2 colonnes.
+
+![Déclencheur Produit](/images/trigger-product.webp)
+
+Un déclencheur produit comprend :
+- Une image de couverture mettant en valeur votre produit
+- Un titre de produit clair
+- Un sélecteur de prix et de devise (prenant en charge USD, EUR, GBP, BRL, CAD, et bien d'autres)
+- Une URL de destination pointant vers votre page produit ou de paiement
+
+<Info>
+  **Affichage automatique de la devise :** Lorsque les visiteurs consultent votre chat dans une autre langue, Attlas affiche automatiquement le prix équivalent dans leur devise locale pour une expérience d'achat fluide.
+</Info>
+
+#### Onglets Liens et Boutique
+
+<video autoPlay muted loop playsInline src="/videos/triggers-tabs.mp4" />
+
+Dans le tableau de bord des déclencheurs, vos déclencheurs sont organisés en deux onglets :
+1. **Liens** : Pour vos liens standards, questions, médias et déclencheurs de contact.
+2. **Boutique** : Pour vos produits et sections de boutique.
+
+Dès que vous avez au moins un produit dans votre boutique, Attlas ajoute automatiquement un sélecteur fluide **Liens / Boutique** en haut de votre chat public. Les visiteurs peuvent facilement basculer entre vos liens principaux et vos articles en vente.
+
+<Tip>
+  Vous pouvez ajouter des séparateurs de **Section** dans votre onglet Boutique pour regrouper vos articles par catégorie (comme « Vêtements », « E-books » ou « Accessoires »). Les sections s'étendent automatiquement sur les 2 colonnes de la grille de produits.
+</Tip>
 
 ---
 
@@ -263,7 +299,7 @@ Idéal pour :
 
 Les visiteurs peuvent consulter les dates de tournée à venir, les salles et les lieux, et accéder à des liens directs vers la billetterie directement depuis la conversation.
 
-<Card title="Découvrez comment configurer l'intégration Bandsintown" icon="music" horizontal href="/integrations/bandsintown">
+<Card title="Découvrez comment configurer l'intégration Bandsintown" icon="music" horizontal href="/fr/integrations/bandsintown">
   Connectez votre profil Bandsintown pour afficher les dates de tournée et les concerts à venir directement dans votre chat.
 </Card>
 
@@ -323,6 +359,7 @@ Tous les types de déclencheurs ne prennent pas en charge la personnalisation de
 | **Question** | Oui | Point d'interrogation |
 | **Lien externe** | Oui | Lien / Chaîne |
 | **Carte** | Non (affiche sa propre image de couverture) | Aucune |
+| **Produit** | Non (affiche sa propre image de couverture) | Aucune |
 | **Spotify** | Non | Logo Spotify |
 | **SoundCloud** | Non | Logo SoundCloud |
 | **Mini-vidéo** | Non (affiche son propre lecteur vidéo) | Aucun |
@@ -354,6 +391,7 @@ Seuls certains types de déclencheurs peuvent servir de parent (pliable) et cont
 | Question | Non |
 | Lien | Oui |
 | Carte | Oui |
+| Produit | Non |
 | Fichier | Oui |
 | Google Drive | Oui |
 | Mini-vidéo | Non |
