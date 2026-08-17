@@ -1,0 +1,57 @@
+---
+title: "Mintlify integration"
+sidebarTitle: "Mintlify"
+description: "Connect your public Mintlify documentation site so your AI assistant can search it and answer visitor questions with cited sources."
+tag: "New"
+og:image: "/images/thumbs/thumb_mintlify.webp"
+---
+
+The Mintlify integration lets you connect your public documentation site to your Attlas Chat. Once connected, your AI assistant can search your documentation in real time and answer visitor questions about your product, setup steps, or API, without you having to retype any of that content into Attlas.
+
+Instead of sending visitors away to browse your docs on their own, they can ask questions naturally (like *"How do I set up X?"*) and get an accurate answer sourced directly from your documentation, right inside the chat.
+
+---
+
+## Key benefits
+
+- **No content duplication**: Your documentation stays the single source of truth. Attlas reads it live instead of requiring a separate copy.
+- **Always up to date**: Any change you publish on your docs site is reflected in the assistant's answers automatically, there is nothing to resync.
+- **Cited answers**: When the assistant uses your documentation to answer, the chat shows a collapsible list of the sources it used, so visitors can dig deeper if they want.
+- **No credentials required**: You only provide your public documentation URL. Attlas never stores an API key or password for this integration.
+
+---
+
+## How to set up Mintlify
+
+![Mintlify integration setup](/images/integration-mintlify.webp)
+
+Setting up the integration takes less than a minute:
+
+1. Navigate to your **Chat Settings** in the Attlas dashboard.
+2. Select the **Integrations** tab.
+3. Locate the **Mintlify MCP** card and click **Connect**.
+4. Enter your **Documentation URL**, the public web address of your Mintlify docs site.
+5. Click **Test connection** to confirm Attlas can reach and search your documentation.
+6. Once the test succeeds, click **Save connection** to activate the integration.
+
+<Info>
+  You only need your documentation's public URL. Attlas automatically finds the right endpoint on your site, there is nothing else to configure.
+</Info>
+
+<Note>
+  Only chat owners and editors can connect, edit, or remove this integration. Other collaborators can see that it is connected but cannot change it.
+</Note>
+
+Once connected, you can turn the integration on or off at any time with a single toggle, without losing your saved documentation URL.
+
+---
+
+## How it works in conversation
+
+Once connected, the AI assistant automatically searches your documentation whenever a visitor asks a question it can help answer, like *"How do I reset my password?"* or *"Does this support X?"*. While it searches, visitors briefly see a "Searching the documentation..." indicator.
+
+The assistant then answers in plain, natural language and shows the documentation pages it used as sources in a collapsible list beneath its answer.
+
+<Tip>
+  Keep your documentation pages clear and well organized. The better structured your docs are, the more precisely your AI assistant can find and cite the right answer.
+</Tip>

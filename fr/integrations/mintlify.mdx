@@ -1,0 +1,57 @@
+---
+title: "Intégration Mintlify"
+sidebarTitle: "Mintlify"
+description: "Connectez votre site de documentation public Mintlify pour que votre assistant IA puisse le rechercher et répondre aux questions des visiteurs avec des sources citées."
+tag: "Nouveau"
+og:image: "/images/thumbs/thumb_mintlify.webp"
+---
+
+L'intégration Mintlify vous permet de connecter votre site de documentation public à votre Attlas Chat. Une fois connecté, votre assistant IA peut effectuer des recherches dans votre documentation en temps réel et répondre aux questions des visiteurs sur votre produit, les étapes de configuration ou votre API, sans que vous ayez à retaper ce contenu dans Attlas.
+
+Au lieu de rediriger les visiteurs vers votre documentation pour qu'ils la consultent par eux-mêmes, ils peuvent poser des questions naturellement (comme *"Comment configurer X ?"*) et obtenir une réponse précise provenant directement de votre documentation, directement dans le chat.
+
+---
+
+## Principaux avantages
+
+- **Pas de duplication de contenu** : Votre documentation reste la source unique de vérité. Attlas la lit en direct au lieu d'exiger une copie séparée.
+- **Toujours à jour** : Toute modification que vous publiez sur votre site de documentation est automatiquement reflétée dans les réponses de l'assistant, il n'y a rien à resynchroniser.
+- **Réponses avec citations** : Lorsque l'assistant utilise votre documentation pour répondre, le chat affiche une liste déroulante des sources utilisées, permettant aux visiteurs d'approfondir s'ils le souhaitent.
+- **Aucune information d'identification requise** : Vous fournissez uniquement l'URL publique de votre documentation. Attlas ne stocke jamais de clé API ni de mot de passe pour cette intégration.
+
+---
+
+## Comment configurer Mintlify
+
+![Configuration de l'intégration Mintlify](/images/integration-mintlify.webp)
+
+La configuration de l'intégration prend moins d'une minute :
+
+1. Accédez à vos **Paramètres du chat** dans le tableau de bord Attlas.
+2. Sélectionnez l'onglet **Intégrations**.
+3. Repérez la carte **Mintlify MCP** et cliquez sur **Connecter**.
+4. Saisissez votre **URL de la documentation**, l'adresse web publique de votre site de documentation Mintlify.
+5. Cliquez sur **Tester la connexion** pour confirmer qu'Attlas peut atteindre et interroger votre documentation.
+6. Une fois le test réussi, cliquez sur **Enregistrer la connexion** pour activer l'intégration.
+
+<Info>
+  Vous avez uniquement besoin de l'URL publique de votre documentation. Attlas trouve automatiquement le bon point de terminaison sur votre site, il n'y a rien d'autre à configurer.
+</Info>
+
+<Note>
+  Seuls les propriétaires et les éditeurs du chat peuvent connecter, modifier ou supprimer cette intégration. Les autres collaborateurs peuvent voir qu'elle est connectée mais ne peuvent pas la modifier.
+</Note>
+
+Une fois connectée, vous pouvez activer ou désactiver l'intégration à tout moment à l'aide d'un simple bouton, sans perdre l'URL de documentation enregistrée.
+
+---
+
+## Fonctionnement en conversation
+
+Une fois connecté, l'assistant IA recherche automatiquement dans votre documentation chaque fois qu'un visiteur pose une question à laquelle il peut répondre, comme *"Comment réinitialiser mon mot de passe ?"* ou *"Est-ce que cela prend en charge X ?"*. Pendant la recherche, les visiteurs voient brièvement un indicateur "Recherche dans la documentation...".
+
+L'assistant répond ensuite en langage naturel et affiche les pages de documentation qu'il a utilisées comme sources dans une liste déroulante sous sa réponse.
+
+<Tip>
+  Gardez vos pages de documentation claires et bien organisées. Plus vos documents sont bien structurés, plus votre assistant IA peut trouver et citer avec précision la bonne réponse.
+</Tip>

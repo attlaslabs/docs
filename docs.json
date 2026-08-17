@@ -228,7 +228,8 @@
                   "integrations/webhooks",
                   "integrations/sql-database",
                   "integrations/bandsintown",
-                  "integrations/tally"
+                  "integrations/tally",
+                  "integrations/mintlify"
                 ],
                 "icon": "shapes"
               },
@@ -353,7 +354,8 @@
                   "fr/integrations/webhooks",
                   "fr/integrations/sql-database",
                   "fr/integrations/bandsintown",
-                  "fr/integrations/tally"
+                  "fr/integrations/tally",
+                  "fr/integrations/mintlify"
                 ],
                 "icon": "shapes"
               },
@@ -475,7 +477,8 @@
                   "pt/integrations/webhooks",
                   "pt/integrations/sql-database",
                   "pt/integrations/bandsintown",
-                  "pt/integrations/tally"
+                  "pt/integrations/tally",
+                  "pt/integrations/mintlify"
                 ],
                 "icon": "shapes"
               },
