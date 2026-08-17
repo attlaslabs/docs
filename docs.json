@@ -166,6 +166,8 @@
                   "start/sources",
                   "start/profile",
                   "start/triggers",
+                  "start/shop",
+                  "start/questions",
                   "start/themes",
                   "start/sharing"
                 ]
@@ -292,6 +294,8 @@
                   "fr/start/sources",
                   "fr/start/profile",
                   "fr/start/triggers",
+                  "fr/start/shop",
+                  "fr/start/questions",
                   "fr/start/themes",
                   "fr/start/sharing"
                 ],
@@ -412,6 +416,8 @@
                   "pt/start/sources",
                   "pt/start/profile",
                   "pt/start/triggers",
+                  "pt/start/shop",
+                  "pt/start/questions",
                   "pt/start/themes",
                   "pt/start/sharing"
                 ],
