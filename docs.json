@@ -103,6 +103,10 @@
     {
       "source": "/basic/personality",
       "destination": "/actions/personality"
+    },
+    {
+      "source": "/mediakit",
+      "destination": "/ressources/brand-kit"
     }
   ],
   "navigation": {
@@ -254,24 +258,23 @@
                 ]
               },
               {
-                "group": "Ressources",
+                "group": "Resources",
                 "icon": "book-marked",
                 "expanded": false,
                 "pages": [
+                  "ressources/brand-kit",
+                  "faq",
                   {
                     "group": "Terms & Privacy",
-                    "expanded": true,
+                    "expanded": false,
                     "pages": [
                       "legal/privacy",
                       "legal/terms",
                       "legal/data"
                     ],
                     "hidden": true
-                  },
-                  "faq",
-                  "mediakit"
-                ],
-                "hidden": true
+                  }
+                ]
               }
             ]
           }
@@ -380,6 +383,8 @@
               {
                 "group": "Ressources",
                 "pages": [
+                  "fr/ressources/brand-kit",
+                  "fr/faq",
                   {
                     "group": "CGU & Confidentialité",
                     "pages": [
@@ -387,14 +392,10 @@
                       "fr/legal/terms",
                       "fr/legal/data"
                     ],
-                    "expanded": true,
                     "hidden": true
-                  },
-                  "fr/faq",
-                  "fr/mediakit"
+                  }
                 ],
-                "icon": "book-marked",
-                "hidden": true
+                "icon": "book-marked"
               }
             ]
           }
@@ -503,6 +504,8 @@
               {
                 "group": "Recursos",
                 "pages": [
+                  "pt/ressources/brand-kit",
+                  "pt/faq",
                   {
                     "group": "Termos & Privacidade",
                     "pages": [
@@ -510,14 +513,10 @@
                       "pt/legal/terms",
                       "pt/legal/data"
                     ],
-                    "expanded": true,
                     "hidden": true
-                  },
-                  "pt/faq",
-                  "pt/mediakit"
+                  }
                 ],
-                "icon": "book-marked",
-                "hidden": true
+                "icon": "book-marked"
               }
             ]
           }

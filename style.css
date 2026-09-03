@@ -164,3 +164,7 @@ li a div:has(> .nav-tag-pill) {
 .nav-tag-pill-text {
     font-weight: 400;
 }
+
+#content-area {
+    max-width: 700px !important;
+}
