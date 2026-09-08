@@ -1,0 +1,126 @@
+---
+title: "Chat MCP Integration"
+sidebarTitle: "Chat"
+description: "Connect your chat's knowledge base to AI tools like Claude Code, Cursor, Claude Desktop, VS Code, and Codex over MCP."
+tag: "New"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+The MCP endpoint integration lets external AI coding assistants and desktop tools connect directly to your Attlas chat using the Model Context Protocol (MCP). Once enabled, external assistants can search your chat's knowledge base and retrieve accurate, grounded answers directly inside your code editor or terminal.
+
+---
+
+## Key benefits
+
+- **Keyless and public**: External tools connect directly via your chat's public MCP URL, without requiring an account or API key.
+- **Privacy-first**: Only the chat's uploaded knowledge base is exposed. Conversations, contacts, and leads are never accessible over MCP.
+- **Ready-to-use snippets**: Copy ready-to-paste configurations for popular clients including Claude Code, Cursor, Claude Desktop, VS Code, and Codex.
+- **Instant access control**: Toggle the integration off at any time to immediately revoke external access.
+
+---
+
+## Available tools
+
+When an external assistant connects to your chat, it gets access to two built-in tools:
+
+| Tool | Description | Quota consumption |
+| --- | --- | --- |
+| `search_knowledge` | Searches your chat's knowledge base and returns relevant passages with source document references. | **Free** (no quota used) |
+| `ask` | Asks a question and returns a direct answer grounded strictly in your chat's knowledge base, along with source citations. | Consumes **1 message** per call |
+
+---
+
+## Message quota and usage
+
+Because the `ask` tool executes an AI model call to summarize and answer questions, it consumes your workspace message credits:
+
+- **1 message per question**: Each call to the `ask` tool deducts **1 message** from your monthly workspace quota, exactly like a visitor message on your public chat.
+- **Quota limits**: If your workspace runs out of message credits, `ask` requests will return a `quota_exceeded` error until your quota resets or is upgraded.
+- **Free search**: The `search_knowledge` tool only performs document retrieval and does **not** consume any message quota.
+
+<Note>
+  You can track your remaining message balance at any time in **Workspace settings > Billing**.
+</Note>
+
+---
+
+## How to enable the MCP endpoint
+
+<Note>
+  Your chat must be set to **Public** access mode to enable the MCP endpoint. Private or password-protected chats cannot expose a public MCP endpoint.
+</Note>
+
+1. Open your chat in the Attlas dashboard.
+2. Go to **Settings** and select the **Integrations** tab.
+3. Locate the **MCP endpoint** card and click **Connect**.
+4. In the dialog, choose your AI client from the dropdown menu to get the exact configuration.
+
+---
+
+## Client configuration
+
+Select your tool below to copy the setup command or configuration:
+
+<CodeGroup>
+
+```bash Claude Code
+# Run this in your terminal from your project folder:
+claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slug>/
+```
+
+```json Cursor
+{
+  "mcpServers": {
+    "attlas": {
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```json Claude Desktop
+{
+  "mcpServers": {
+    "attlas": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://attlas.so/mcp/chat/<your-chat-slug>/"
+      ]
+    }
+  }
+}
+```
+
+```json VS Code
+{
+  "servers": {
+    "attlas": {
+      "type": "http",
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```toml Codex
+[mcp_servers.attlas]
+command = "npx"
+args = ["mcp-remote", "https://attlas.so/mcp/chat/<your-chat-slug>/"]
+```
+
+</CodeGroup>
+
+<Tip>
+  If you use **Cursor**, you can also click the **Add to Cursor** button directly inside the modal in Attlas to install the connection with a single click.
+</Tip>
+
+---
+
+## Security
+
+<Warning>
+  Anyone with your chat's public MCP URL can query its knowledge base. Only enable this integration for chats whose documents are meant for public access.
+</Warning>
+
+To revoke access, toggle off the MCP endpoint switch in **Settings > Integrations**. External queries will stop immediately.

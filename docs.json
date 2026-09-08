@@ -277,6 +277,14 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "MCP",
+            "pages": [
+              "mcp/skills",
+              "mcp/workspace",
+              "mcp/chat"
+            ]
           }
         ]
       },
@@ -370,7 +378,7 @@
                   "fr/playbooks/how-to-start",
                   "fr/playbooks/internal-knowledge",
                   {
-                    "group": "Creators",
+                    "group": "Créateurs",
                     "pages": [
                       "fr/playbooks/creators/link-in-bio",
                       "fr/playbooks/creators/creative-uses"
@@ -397,6 +405,14 @@
                 ],
                 "icon": "book-marked"
               }
+            ]
+          },
+          {
+            "group": "MCP",
+            "pages": [
+              "fr/mcp/skills",
+              "fr/mcp/workspace",
+              "fr/mcp/chat"
             ]
           }
         ]
@@ -439,7 +455,7 @@
                 "icon": "box"
               },
               {
-                "group": "Actions",
+                "group": "Ações",
                 "pages": [
                   "pt/actions/personality",
                   "pt/actions/goal",
@@ -491,7 +507,7 @@
                   "pt/playbooks/how-to-start",
                   "pt/playbooks/internal-knowledge",
                   {
-                    "group": "Creators",
+                    "group": "Criadores",
                     "pages": [
                       "pt/playbooks/creators/link-in-bio",
                       "pt/playbooks/creators/creative-uses"
@@ -518,6 +534,14 @@
                 ],
                 "icon": "book-marked"
               }
+            ]
+          },
+          {
+            "group": "MCP",
+            "pages": [
+              "pt/mcp/skills",
+              "pt/mcp/workspace",
+              "pt/mcp/chat"
             ]
           }
         ]

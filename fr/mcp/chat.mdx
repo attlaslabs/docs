@@ -1,0 +1,126 @@
+---
+title: "Intégration MCP du chat"
+sidebarTitle: "Chat"
+description: "Connectez la base de connaissances de votre chat à des outils d'IA tels que Claude Code, Cursor, Claude Desktop, VS Code et Codex via MCP."
+tag: "New"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+L'intégration du point de terminaison MCP permet à des assistants de codage IA externes et à des outils de bureau de se connecter directement à votre chat Attlas en utilisant le Model Context Protocol (MCP). Une fois activée, les assistants externes peuvent rechercher dans la base de connaissances de votre chat et obtenir des réponses précises et fondées directement dans votre éditeur de code ou votre terminal.
+
+---
+
+## Principaux avantages
+
+- **Sans clé et public** : les outils externes se connectent directement via l'URL MCP publique de votre chat, sans nécessiter de compte ni de clé API.
+- **Respectueux de la vie privée** : seule la base de connaissances téléchargée du chat est exposée. Les conversations, les contacts et les prospects ne sont jamais accessibles via MCP.
+- **Extraits prêts à l'emploi** : copiez des configurations prêtes à coller pour des clients populaires comme Claude Code, Cursor, Claude Desktop, VS Code et Codex.
+- **Contrôle d'accès instantané** : désactivez l'intégration à tout moment pour révoquer immédiatement l'accès externe.
+
+---
+
+## Outils disponibles
+
+Lorsqu'un assistant externe se connecte à votre chat, il a accès à deux outils intégrés :
+
+| Outil | Description | Consommation de quota |
+| --- | --- | --- |
+| `search_knowledge` | Recherche dans la base de connaissances de votre chat et renvoie des passages pertinents avec les références des documents sources. | **Gratuit** (n'utilise pas de quota) |
+| `ask` | Pose une question et renvoie une réponse directe basée strictement sur la base de connaissances de votre chat, accompagnée des citations sources. | Consomme **1 message** par appel |
+
+---
+
+## Quota de messages et utilisation
+
+Parce que l'outil `ask` exécute un appel au modèle d'IA pour résumer et répondre aux questions, il consomme des crédits de messages de votre espace de travail :
+
+- **1 message par question** : chaque appel à l'outil `ask` déduit **1 message** de votre quota mensuel d'espace de travail, exactement comme un message de visiteur sur votre chat public.
+- **Limites de quota** : si votre espace de travail n'a plus de crédits de messages, les requêtes `ask` renverront une erreur `quota_exceeded` jusqu'à ce que votre quota soit réinitialisé ou mis à niveau.
+- **Recherche gratuite** : l'outil `search_knowledge` effectue uniquement une extraction de documents et **ne consomme aucun** quota de messages.
+
+<Note>
+  Vous pouvez suivre le solde de messages restant à tout moment dans **Paramètres de l'espace de travail > Facturation**.
+</Note>
+
+---
+
+## Comment activer le point de terminaison MCP
+
+<Note>
+  Votre chat doit être réglé sur le mode d'accès **Public** pour activer le point de terminaison MCP. Les chats privés ou protégés par mot de passe ne peuvent pas exposer de point de terminaison MCP public.
+</Note>
+
+1. Ouvrez votre chat dans le tableau de bord Attlas.
+2. Allez dans **Paramètres** et sélectionnez l'onglet **Intégrations**.
+3. Localisez la carte **Point de terminaison MCP** et cliquez sur **Connecter**.
+4. Dans la boîte de dialogue, choisissez votre client IA dans le menu déroulant pour obtenir la configuration exacte.
+
+---
+
+## Configuration du client
+
+Sélectionnez votre outil ci-dessous pour copier la commande ou la configuration de configuration :
+
+<CodeGroup>
+
+```bash Claude Code
+# Run this in your terminal from your project folder:
+claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slug>/
+```
+
+```json Cursor
+{
+  "mcpServers": {
+    "attlas": {
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```json Claude Desktop
+{
+  "mcpServers": {
+    "attlas": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://attlas.so/mcp/chat/<your-chat-slug>/"
+      ]
+    }
+  }
+}
+```
+
+```json VS Code
+{
+  "servers": {
+    "attlas": {
+      "type": "http",
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```toml Codex
+[mcp_servers.attlas]
+command = "npx"
+args = ["mcp-remote", "https://attlas.so/mcp/chat/<your-chat-slug>/"]
+```
+
+</CodeGroup>
+
+<Tip>
+  Si vous utilisez **Cursor**, vous pouvez également cliquer sur le bouton **Ajouter à Cursor** directement dans la fenêtre modale d'Attlas pour installer la connexion en un seul clic.
+</Tip>
+
+---
+
+## Sécurité
+
+<Warning>
+  Toute personne disposant de l'URL MCP publique de votre chat peut interroger sa base de connaissances. Activez cette intégration uniquement pour les chats dont les documents sont destinés à un accès public.
+</Warning>
+
+Pour révoquer l'accès, désactivez l'interrupteur du point de terminaison MCP dans **Paramètres > Intégrations**. Les requêtes externes s'arrêteront immédiatement.

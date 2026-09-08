@@ -1,0 +1,116 @@
+---
+title: "Skills"
+sidebarTitle: "Skills"
+description: "Install ready-made agent skills that drive the Attlas workspace MCP for you, so common tasks work without spelling out every step."
+tag: "New"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+The [workspace MCP server](/mcp/workspace) gives your AI assistant the raw tools to read and
+change your Attlas workspace. Skills add the layer on top: the correct call order, the
+waiting-for-ingestion loops, and the small traps (some updates merge, some overwrite), packaged
+so a request like "put our pricing page in the chat with a few questions under it" or "set up
+my new chat" just works.
+
+<Info>
+  Skills are optional. The MCP server works on its own. Skills make multi-step tasks more
+  reliable and save you from describing the workflow each time.
+</Info>
+
+## Prerequisite
+
+Connect the [workspace MCP server](/mcp/workspace) first, with an API key that has **Write**
+scope. Without it the skills have nothing to call. A Read key is enough for `attlas-insights`
+alone.
+
+## Available skills
+
+| Skill | What it handles |
+| --- | --- |
+| `attlas-chat-setup` | Public identity, business profile, opening hours, conversation objective (support, appointment, lead capture), assistant personality, visual theme. |
+| `attlas-knowledge` | Add pasted text, web pages, or YouTube and social videos to a chat's knowledge base, track ingestion status (including the failure reason when one goes wrong), clean up messy imported documents, remove stale ones. |
+| `attlas-triggers` | Create, edit, reorder, nest, and delete every trigger type (links, media, contact shortcuts, shop products) and suggested questions. Put each source on a path: a trigger for the content with 2 to 5 questions generated from it nested underneath. Set up the shop tab. |
+| `attlas-insights` | Headline metrics, trends, rankings, generated analytics reports, readable digests of visitor conversations, and CRM contact triage. Flags weak answers so you can fix them with a document update or a Correction. |
+
+Once installed, you do not call skills by name. Your assistant picks the right one from the
+request, for example "add our pricing page to the sales bot" or "how did the support chat do
+this month".
+
+## Install
+
+The skills live in the public repository
+[`attlaslabs/attlas-skills`](https://github.com/attlaslabs/attlas-skills).
+
+<CodeGroup>
+
+```bash skills CLI
+# Installs all four into every agent directory it manages
+# (.claude/skills, .agents/skills, ...) and records them in skills-lock.json.
+# Run from your project root. Re-run to update.
+npx skills add attlaslabs/attlas-skills
+```
+
+```bash Claude Code
+# The skills CLI above already covers Claude Code. To install by hand:
+git clone https://github.com/attlaslabs/attlas-skills
+cp -r attlas-skills/skills/attlas-* ~/.claude/skills/
+```
+
+```bash Codex
+# Writes the skills under .agents/skills/, which Codex reads.
+npx skills add attlaslabs/attlas-skills
+```
+
+```bash Cursor / VS Code / Claude Desktop
+# Clone the repo and copy the skill folders into the client's skills directory.
+git clone https://github.com/attlaslabs/attlas-skills
+cp -r attlas-skills/skills/attlas-* <your-skills-directory>/
+```
+
+</CodeGroup>
+
+<Tip>
+  In Claude Code, copy into `~/.claude/skills/` to make a skill available everywhere, or into
+  `<project>/.claude/skills/` to scope it to one project.
+</Tip>
+
+## What each skill knows
+
+These are the details the skills carry so your assistant does not have to rediscover them:
+
+- **Read before write.** `list_triggers` before reordering, `get_chat_config` before changing
+  settings, `list_documents` before editing knowledge.
+- **Ingestion is asynchronous.** Adding a document returns immediately with a `processing`
+  status. The skill polls until `completed`, `failed`, or `exceeded` before telling you it is
+  done.
+- **Merge versus overwrite.** `update_activity_profile` merges the keys you pass.
+  `update_theme` replaces the whole theme object. The skills send the right shape for each.
+- **Questions belong on a path.** When you add a source, the skill creates a trigger for it
+  and nests 2 to 5 questions generated from that source's own content underneath, rather
+  than dropping a flat list of questions with no structure.
+- **One call or two.** `generate_and_nest` generates the questions and creates them under a
+  parent trigger in one step. `generate_questions` just returns suggestions for you to
+  approve first. The skill picks based on whether the wording needs a review.
+- **Deletes differ.** Triggers and contacts move to a 30 day trash. Documents are permanent.
+  The skill confirms before bulk deletes.
+- **Plan limits surface as `feature_not_available`.** Some sources (video and social links)
+  and integrations need a paid plan. The skill checks and tells you plainly.
+- **Structure drives answer quality.** When the skill writes a knowledge document it uses
+  Markdown headings and lists, one topic per document, and flags conflicting or weak
+  answers for you to fix with a document update or a Correction.
+
+## Verify the install
+
+Ask your assistant something a skill covers and watch which MCP tools it calls:
+
+<Steps>
+  <Step title="List your chats">
+    Ask "list my Attlas chats". This confirms the MCP connection and returns the numeric chat
+    ids the skills need.
+  </Step>
+  <Step title="Try a workflow">
+    Ask "on my &lt;chat name&gt; chat, add a quick reply that asks about pricing". The
+    `attlas-triggers` skill should call `list_chats`, then `list_triggers`, then
+    `create_trigger`.
+  </Step>
+</Steps>

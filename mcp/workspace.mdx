@@ -1,0 +1,235 @@
+---
+title: "Workspace MCP"
+sidebarTitle: "Workspace"
+description: "Create Workspace API keys to connect AI coding assistants and desktop tools to your Attlas workspace over MCP."
+tag: "New"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+Workspace API keys let external developer tools and AI assistants (Claude Code, Cursor, Claude Desktop, VS Code, and Codex) connect to your entire Attlas workspace using the Model Context Protocol (MCP).
+
+Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, and analytics in your workspace.
+
+<Tip>
+  After connecting the MCP, we recommend installing the [Attlas skills](/mcp/skills). They teach your assistant the right way to use these tools, so requests like "put our pricing page in the chat with questions under it" or "set up my new chat" work in one step.
+</Tip>
+
+---
+
+## Key benefits
+
+- **Full workspace access**: Connect your assistant once to search and manage all chats, documents, triggers, CRM contacts, and metrics across the workspace.
+- **Granular permission scopes**: Choose exactly what each key can do (Read, Write, or Delete).
+- **Live activity log**: Monitor every MCP call in real time, with the timestamp, key used, target resource, and outcome.
+- **One-click restore**: Instantly recover triggers or contacts soft-deleted by an external tool.
+- **Instant revocation**: Revoke active keys immediately at any time.
+
+---
+
+## Permission scopes
+
+When creating an API key, select the permissions that match your use case:
+
+| Scope | UI label | What it can do |
+| --- | --- | --- |
+| `read` | **Read** | View and search chats, documents, triggers, contacts, conversations, and analytics. Included by default on all keys. |
+| `write` | **Write** | Create and update documents, triggers, contacts, and chat settings. Automatically includes Read permissions. |
+| `destructive` | **Delete** | Permanently delete chats, documents, triggers, contacts, and conversations. Automatically includes Write and Read permissions. |
+
+<Warning>
+  Only grant the **Delete** permission to trusted workflows where automated cleanup or resource deletion is explicitly required.
+</Warning>
+
+---
+
+## Plan requirements
+
+The workspace MCP server itself works on every plan. A few actions follow the same plan limits as the dashboard:
+
+| Action | Requirement |
+| --- | --- |
+| Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
+| Adding a YouTube, Instagram, TikTok, Facebook, or X video link to a knowledge base | Starter or PRO (video transcription). Web page links work on every plan. |
+| Editing a chat's connected SQL database settings | Starter or PRO (advanced integrations). |
+
+<Note>
+  When an action needs a higher plan, the tool returns a `feature_not_available` error that names the minimum plan, instead of failing without explanation.
+</Note>
+
+---
+
+## How to create an API key
+
+1. In the Attlas dashboard, open **Workspace settings**.
+2. Go to the **API keys** (or **MCP**) tab.
+3. Click **Create API key**.
+4. Enter a name (e.g. `Cursor assistant` or `CI/CD ingestion`).
+5. Choose your permissions (**Write** or **Delete**).
+6. Click **Create key** and copy your secret key (`atk_...`) immediately.
+
+<Warning>
+  Your API key is only displayed once. Store it securely. Attlas cannot display the secret again once the dialog is closed.
+</Warning>
+
+---
+
+## Client configuration
+
+The workspace MCP endpoint is hosted at:
+```text
+https://attlas.so/mcp/
+```
+
+Authenticate by passing your key as a Bearer token in the `Authorization` header:
+
+<CodeGroup>
+
+```bash Claude Code
+# Run in your terminal from your project directory:
+claude mcp add attlas --transport http https://attlas.so/mcp/ \
+  --header "Authorization: Bearer atk_your_api_key"
+```
+
+```json Cursor
+{
+  "mcpServers": {
+    "attlas": {
+      "url": "https://attlas.so/mcp/",
+      "headers": {
+        "Authorization": "Bearer atk_your_api_key"
+      }
+    }
+  }
+}
+```
+
+```json Claude Desktop
+{
+  "mcpServers": {
+    "attlas": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://attlas.so/mcp/",
+        "--header",
+        "Authorization: Bearer atk_your_api_key"
+      ]
+    }
+  }
+}
+```
+
+```json VS Code
+{
+  "servers": {
+    "attlas": {
+      "type": "http",
+      "url": "https://attlas.so/mcp/",
+      "headers": {
+        "Authorization": "Bearer atk_your_api_key"
+      }
+    }
+  }
+}
+```
+
+```toml Codex
+[mcp_servers.attlas]
+command = "npx"
+args = [
+  "mcp-remote",
+  "https://attlas.so/mcp/",
+  "--header",
+  "Authorization: Bearer atk_your_api_key"
+]
+```
+
+</CodeGroup>
+
+<Tip>
+  If you use **Cursor**, click the **Add to Cursor** button directly inside the Attlas API keys tab to configure the connection with a single click.
+</Tip>
+
+---
+
+## Claude web and desktop (custom connector)
+
+To connect from claude.ai or the Claude desktop app, add Attlas as a **custom connector**. The workspace endpoint authenticates with an API key, not OAuth, so a few fields need specific values.
+
+<Steps>
+  <Step title="Open the custom connector dialog">
+    In Claude, go to **Settings → Connectors → Add custom connector** (Team and Enterprise: **Organization settings → Connectors → Add → Custom**).
+  </Step>
+  <Step title="Enter the URL with its trailing slash">
+    ```text
+    https://attlas.so/mcp/
+    ```
+    Keep the trailing slash. `https://attlas.so/mcp` (no slash) is redirected, and some clients drop the `Authorization` header when following a redirect.
+  </Step>
+  <Step title="Set Authentication to None">
+    After you continue, Claude probes the URL and may pre-select **Always required**, marked *Detected*. This is a false positive: the server returns `401` to the unauthenticated probe, and Claude reads that as OAuth.
+
+    Select **None** instead. The description on that option says it explicitly: *"or for servers that use an API key rather than OAuth."* The **OAuth client** section then disappears.
+  </Step>
+  <Step title="Add the key as a request header">
+    Open **Request headers** and add one header:
+
+    | Field | Value |
+    | --- | --- |
+    | Name | `authorization` (pick it from the list; lower-case is fine, HTTP header names are case-insensitive) |
+    | Value | `Bearer atk_your_api_key` |
+    | Required | checked |
+
+    <Warning>
+      Enter the value **exactly** as the server expects it, including the word `Bearer` and one space before the key. Claude sends the value verbatim and adds no scheme. `atk_...` on its own is sent as `Authorization: atk_...` and the server rejects it with `401`.
+    </Warning>
+  </Step>
+  <Step title="Add the connector">
+    Click **Add**, then enable Attlas from the **+** menu in a conversation.
+  </Step>
+</Steps>
+
+<Note>
+  **Request headers** is a beta feature available to a limited set of organizations. If you don't see that section, connect with Claude Code or `mcp-remote` instead (see [Client configuration](#client-configuration) above).
+</Note>
+
+### Changing the key later
+
+Authentication settings can't be edited after a connector is added. To rotate the key or fix a wrong value, **remove the connector and add it again**.
+
+### Troubleshooting
+
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| Connection fails, Claude asks to sign in with OAuth | Authentication left on **Always required**, or the header value is missing the `Bearer ` prefix | Remove the connector, re-add with **None** and a correct `Bearer atk_...` value |
+| `401` on every call | Wrong, revoked, or malformed key; value sent without `Bearer ` | Check the key in the Attlas **API keys** tab; re-add the connector with the exact value |
+| Tools missing after connecting | The key's scope doesn't include them | Create a key with **Write** or **Delete** scope |
+| Works in Claude Code but not on claude.ai | Request-headers beta not enabled for your org | Use Claude Code or `mcp-remote`, or contact Claude support to request access |
+
+---
+
+## Monitoring activity and audit logs
+
+The **Recent activity** table at the bottom of the API keys tab logs every MCP call made to your workspace:
+
+- **When**: Relative timestamp of the request.
+- **Key**: Prefix of the key used (`atk_...`).
+- **Tool**: The MCP tool called (e.g. `list_chats`, `create_document`, `delete_trigger`).
+- **Target**: The resource touched by the operation.
+- **Result**: Success (`ok`) or error badge.
+
+### Filter changes
+
+Check **Changes only** to hide standard read queries and view only write and delete operations.
+
+### Restore deleted items
+
+If a tool soft-deletes a trigger or contact by mistake, click **Restore** in the activity row to bring it back to your workspace immediately.
+
+---
+
+## Managing keys
+
+- **Copy prefix**: Copy the key's prefix from the row menu for identification.
+- **Revoke key**: Disable a key instantly. Any external request using it will fail immediately.
+- **Delete permanently**: Once revoked, a key can be permanently deleted from your table.

@@ -1,0 +1,115 @@
+---
+title: "Habilidades"
+sidebarTitle: "Habilidades"
+description: "Instale habilidades prontas para agentes que acionam o MCP do workspace Attlas para você, assim tarefas comuns funcionam sem precisar descrever cada etapa."
+tag: "Novo"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+O [servidor MCP do workspace](/pt/mcp/workspace) fornece ao seu assistente de IA as ferramentas básicas para ler e
+modificar seu workspace Attlas. As habilidades adicionam a camada acima: a ordem correta de chamadas, os
+loops de espera pela ingestão e as pequenas armadilhas (algumas atualizações mesclam, outras sobrescrevem), empacotadas
+para que uma solicitação como "coloque nossa página de preços no chat com algumas perguntas abaixo" ou "configure
+meu novo chat" simplesmente funcione.
+
+<Info>
+  As habilidades são opcionais. O servidor MCP funciona por conta própria. As habilidades tornam as tarefas de várias etapas mais
+  confiáveis e evitam que você precise descrever o fluxo de trabalho toda vez.
+</Info>
+
+## Pré-requisito
+
+Conecte o [servidor MCP do workspace](/pt/mcp/workspace) primeiro, com uma chave de API que tenha o escopo de **Gravação**.
+Sem isso, as habilidades não têm o que chamar. Uma chave de Leitura é suficiente apenas para `attlas-insights`.
+
+## Habilidades disponíveis
+
+| Habilidade | O que ela faz |
+| --- | --- |
+| `attlas-chat-setup` | Identidade pública, perfil de negócio, horário de funcionamento, objetivo da conversa (suporte, agendamento, captura de leads), personalidade do assistente, tema visual. |
+| `attlas-knowledge` | Adiciona texto colado, páginas da web ou vídeos do YouTube e redes sociais à base de conhecimento de um chat, acompanha o status de ingestão (incluindo o motivo da falha quando algo dá errado), limpa documentos importados bagunçados, remove documentos obsoletos. |
+| `attlas-triggers` | Cria, edita, reordena, aninha e exclui todos os tipos de gatilho (links, mídia, atalhos de contato, produtos da loja) e perguntas sugeridas. Coloca cada fonte em um caminho: um gatilho para o conteúdo com 2 a 5 perguntas geradas a partir dele aninhadas abaixo. Configura a aba da loja. |
+| `attlas-insights` | Métricas principais, tendências, rankings, relatórios analíticos gerados, resumos legíveis das conversas dos visitantes e triagem de contatos do CRM. Sinaliza respostas fracas para que você possa corrigi-las com uma atualização de documento ou uma Correção. |
+
+Uma vez instaladas, você não chama as habilidades pelo nome. Seu assistente escolhe a correta com base na
+solicitação, por exemplo "adicione nossa página de preços ao bot de vendas" ou "como foi o chat de suporte
+este mês".
+
+## Instalação
+
+As habilidades estão no repositório público
+[`attlaslabs/attlas-skills`](https://github.com/attlaslabs/attlas-skills).
+
+<CodeGroup>
+
+```bash skills CLI
+# Instala todas as quatro em cada diretório de agente que gerencia
+# (.claude/skills, .agents/skills, ...) e as registra no skills-lock.json.
+# Execute a partir da raiz do seu projeto. Execute novamente para atualizar.
+npx skills add attlaslabs/attlas-skills
+```
+
+```bash Claude Code
+# A CLI de habilidades acima já cobre o Claude Code. Para instalar manualmente:
+git clone https://github.com/attlaslabs/attlas-skills
+cp -r attlas-skills/skills/attlas-* ~/.claude/skills/
+```
+
+```bash Codex
+# Grava as habilidades em .agents/skills/, que o Codex lê.
+npx skills add attlaslabs/attlas-skills
+```
+
+```bash Cursor / VS Code / Claude Desktop
+# Clone o repositório e copie as pastas de habilidades para o diretório de habilidades do cliente.
+git clone https://github.com/attlaslabs/attlas-skills
+cp -r attlas-skills/skills/attlas-* <seu-diretório-de-habilidades>/
+```
+
+</CodeGroup>
+
+<Tip>
+  No Claude Code, copie para `~/.claude/skills/` para disponibilizar a habilidade em todos os lugares, ou para
+  `<projeto>/.claude/skills/` para restringi-la a um projeto.
+</Tip>
+
+## O que cada habilidade sabe
+
+Estes são os detalhes que as habilidades carregam para que seu assistente não precise redescobri-los:
+
+- **Ler antes de escrever.** `list_triggers` antes de reordenar, `get_chat_config` antes de alterar
+  configurações, `list_documents` antes de editar a base de conhecimento.
+- **A ingestão é assíncrona.** Adicionar um documento retorna imediatamente com o status
+  `processing`. A habilidade faz polling até `completed`, `failed` ou `exceeded` antes de informar que está
+  concluído.
+- **Mesclar versus sobrescrever.** `update_activity_profile` mescla as chaves que você passa.
+  `update_theme` substitui todo o objeto de tema. As habilidades enviam o formato correto para cada um.
+- **As perguntas pertencem a um caminho.** Quando você adiciona uma fonte, a habilidade cria um gatilho para ela
+  e aninha de 2 a 5 perguntas geradas a partir do próprio conteúdo dessa fonte abaixo, em vez
+  de soltar uma lista plana de perguntas sem estrutura.
+- **Uma chamada ou duas.** `generate_and_nest` gera as perguntas e as cria sob um
+  gatilho pai em uma única etapa. `generate_questions` apenas retorna sugestões para você
+  aprovar primeiro. A habilidade escolhe com base na necessidade de revisão do texto.
+- **As exclusões são diferentes.** Gatilhos e contatos vão para uma lixeira de 30 dias. Documentos são permanentes.
+  A habilidade confirma antes de exclusões em massa.
+- **Os limites do plano aparecem como `feature_not_available`.** Algumas fontes (links de vídeo e redes sociais)
+  e integrações precisam de um plano pago. A habilidade verifica e informa claramente.
+- **A estrutura impulsiona a qualidade da resposta.** Quando a habilidade escreve um documento de conhecimento, ela usa
+  cabeçalhos e listas Markdown, um tópico por documento, e sinaliza respostas conflitantes ou fracas
+  para você corrigir com uma atualização de documento ou uma Correção.
+
+## Verifique a instalação
+
+Peça ao seu assistente algo que uma habilidade cobre e observe quais ferramentas MCP ele chama:
+
+<Steps>
+  <Step title="Liste seus chats">
+    Peça "liste meus chats Attlas". Isso confirma a conexão MCP e retorna os ids numéricos dos
+    chats que as habilidades precisam.
+  </Step>
+  <Step title="Experimente um fluxo de trabalho">
+    Peça "no meu chat &lt;nome do chat&gt;, adicione uma resposta rápida perguntando sobre preços". A
+    habilidade `attlas-triggers` deve chamar `list_chats`, depois `list_triggers` e depois
+    `create_trigger`.
+  </Step>
+</Steps>

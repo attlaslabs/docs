@@ -1,0 +1,126 @@
+---
+title: "Integração MCP do Chat"
+sidebarTitle: "Chat"
+description: "Conecte a base de conhecimento do seu chat a ferramentas de IA como Claude Code, Cursor, Claude Desktop, VS Code e Codex via MCP."
+tag: "Novo"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+A integração de endpoint MCP permite que assistentes de codificação de IA externos e ferramentas de desktop se conectem diretamente ao seu chat do Attlas usando o protocolo Model Context Protocol (MCP). Uma vez habilitada, assistentes externos podem pesquisar a base de conhecimento do seu chat e recuperar respostas precisas e fundamentadas diretamente no seu editor de código ou terminal.
+
+---
+
+## Principais benefícios
+
+- **Sem chave e público**: Ferramentas externas se conectam diretamente pela URL pública MCP do seu chat, sem exigir conta ou chave de API.
+- **Foco em privacidade**: Apenas a base de conhecimento enviada para o chat é exposta. Conversas, contatos e leads nunca são acessíveis pelo MCP.
+- **Trechos prontos para uso**: Copie configurações prontas para colar para clientes populares, incluindo Claude Code, Cursor, Claude Desktop, VS Code e Codex.
+- **Controle de acesso instantâneo**: Desative a integração a qualquer momento para revogar imediatamente o acesso externo.
+
+---
+
+## Ferramentas disponíveis
+
+Quando um assistente externo se conecta ao seu chat, ele obtém acesso a duas ferramentas integradas:
+
+| Ferramenta | Descrição | Consumo de cota |
+| --- | --- | --- |
+| `search_knowledge` | Pesquisa a base de conhecimento do seu chat e retorna trechos relevantes com referências de documentos de origem. | **Grátis** (sem uso de cota) |
+| `ask` | Faz uma pergunta e retorna uma resposta direta embasada estritamente na base de conhecimento do seu chat, juntamente com citações de fontes. | Consome **1 mensagem** por chamada |
+
+---
+
+## Cota de mensagens e uso
+
+Como a ferramenta `ask` executa uma chamada de modelo de IA para resumir e responder perguntas, ela consome os créditos de mensagem do seu workspace:
+
+- **1 mensagem por pergunta**: Cada chamada à ferramenta `ask` deduz **1 mensagem** da sua cota mensal do workspace, exatamente como uma mensagem de visitante no seu chat público.
+- **Limites de cota**: Se seu workspace ficar sem créditos de mensagem, as solicitações `ask` retornarão um erro `quota_exceeded` até que a cota seja redefinida ou o plano seja atualizado.
+- **Pesquisa gratuita**: A ferramenta `search_knowledge` realiza apenas a recuperação de documentos e **não** consome nenhuma cota de mensagens.
+
+<Note>
+  Você pode acompanhar seu saldo de mensagens restante a qualquer momento em **Configurações do workspace > Faturamento**.
+</Note>
+
+---
+
+## Como habilitar o endpoint MCP
+
+<Note>
+  Seu chat deve estar configurado no modo de acesso **Público** para habilitar o endpoint MCP. Chats privados ou protegidos por senha não podem expor um endpoint MCP público.
+</Note>
+
+1. Abra seu chat no painel do Attlas.
+2. Vá para **Configurações** e selecione a aba **Integrações**.
+3. Localize o cartão **Endpoint MCP** e clique em **Conectar**.
+4. No diálogo, escolha seu cliente de IA no menu suspenso para obter a configuração exata.
+
+---
+
+## Configuração do cliente
+
+Selecione sua ferramenta abaixo para copiar o comando ou configuração de instalação:
+
+<CodeGroup>
+
+```bash Claude Code
+# Run this in your terminal from your project folder:
+claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slug>/
+```
+
+```json Cursor
+{
+  "mcpServers": {
+    "attlas": {
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```json Claude Desktop
+{
+  "mcpServers": {
+    "attlas": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://attlas.so/mcp/chat/<your-chat-slug>/"
+      ]
+    }
+  }
+}
+```
+
+```json VS Code
+{
+  "servers": {
+    "attlas": {
+      "type": "http",
+      "url": "https://attlas.so/mcp/chat/<your-chat-slug>/"
+    }
+  }
+}
+```
+
+```toml Codex
+[mcp_servers.attlas]
+command = "npx"
+args = ["mcp-remote", "https://attlas.so/mcp/chat/<your-chat-slug>/"]
+```
+
+</CodeGroup>
+
+<Tip>
+  Se você utiliza o **Cursor**, também pode clicar no botão **Adicionar ao Cursor** diretamente dentro do modal no Attlas para instalar a conexão com um único clique.
+</Tip>
+
+---
+
+## Segurança
+
+<Warning>
+  Qualquer pessoa com a URL pública MCP do seu chat pode consultar a base de conhecimento. Habilite esta integração apenas para chats cujos documentos sejam destinados ao acesso público.
+</Warning>
+
+Para revogar o acesso, desative a chave do endpoint MCP em **Configurações > Integrações**. As consultas externas serão interrompidas imediatamente.

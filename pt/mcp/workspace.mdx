@@ -1,0 +1,235 @@
+---
+title: "Workspace MCP"
+sidebarTitle: "Workspace"
+description: "Crie chaves de API do Workspace para conectar assistentes de codificação de IA e ferramentas de desktop ao seu workspace da Attlas via MCP."
+tag: "Novo"
+og:image: "/images/thumbs/thumb_mcp.webp"
+---
+
+As chaves de API do Workspace permitem que ferramentas de desenvolvimento externas e assistentes de IA (Claude Code, Cursor, Claude Desktop, VS Code e Codex) se conectem a todo o seu workspace da Attlas usando o Model Context Protocol (MCP).
+
+Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo definido que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises no seu workspace.
+
+<Tip>
+  Depois de conectar o MCP, recomendamos instalar as [habilidades da Attlas](/pt/mcp/skills). Elas ensinam ao seu assistente a forma correta de usar essas ferramentas, para que pedidos como "coloque nossa página de preços no chat com perguntas abaixo" ou "configure meu novo chat" funcionem em uma única etapa.
+</Tip>
+
+---
+
+## Principais benefícios
+
+- **Acesso total ao workspace**: Conecte seu assistente uma única vez para pesquisar e gerenciar todos os chats, documentos, gatilhos, contatos do CRM e métricas em todo o workspace.
+- **Escopos de permissão granulares**: Escolha exatamente o que cada chave pode fazer (Ler, Gravar ou Excluir).
+- **Registro de atividade ao vivo**: Monitore cada chamada MCP em tempo real, com carimbo de data/hora, chave usada, recurso de destino e resultado.
+- **Restauração com um clique**: Recupere instantaneamente gatilhos ou contatos excluídos de forma reversível por uma ferramenta externa.
+- **Revogação imediata**: Revogue chaves ativas imediatamente a qualquer momento.
+
+---
+
+## Escopos de permissão
+
+Ao criar uma chave de API, selecione as permissões que correspondem ao seu caso de uso:
+
+| Escopo | Rótulo da interface | O que pode fazer |
+| --- | --- | --- |
+| `read` | **Ler** | Visualizar e pesquisar chats, documentos, gatilhos, contatos, conversas e análises. Incluído por padrão em todas as chaves. |
+| `write` | **Gravar** | Criar e atualizar documentos, gatilhos, contatos e configurações de chat. Inclui automaticamente as permissões de leitura. |
+| `destructive` | **Excluir** | Excluir permanentemente chats, documentos, gatilhos, contatos e conversas. Inclui automaticamente as permissões de gravação e leitura. |
+
+<Warning>
+  Conceda a permissão **Excluir** apenas a fluxos de trabalho confiáveis nos quais a limpeza automatizada ou a exclusão de recursos seja explicitamente necessária.
+</Warning>
+
+---
+
+## Requisitos de plano
+
+O servidor MCP do Workspace em si funciona em todos os planos. Algumas ações seguem os mesmos limites de plano do painel:
+
+| Ação | Requisito |
+| --- | --- |
+| Ler métricas, tendências, rankings ou gerar um relatório | O intervalo retrocede somente até a janela de histórico do seu plano (Free: 90 dias, Starter: 1 ano, PRO: 2 anos). Intervalos maiores são reduzidos a essa janela. |
+| Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X a uma base de conhecimento | Starter ou PRO (transcrição de vídeo). Links de páginas da web funcionam em todos os planos. |
+| Editar as configurações do banco de dados SQL conectado de um chat | Starter ou PRO (integrações avançadas). |
+
+<Note>
+  Quando uma ação exige um plano superior, a ferramenta retorna um erro `feature_not_available` que informa o plano mínimo necessário, em vez de falhar sem explicação.
+</Note>
+
+---
+
+## Como criar uma chave de API
+
+1. No painel da Attlas, abra **Configurações do Workspace**.
+2. Vá para a aba **Chaves de API** (ou **MCP**).
+3. Clique em **Criar chave de API**.
+4. Insira um nome (por exemplo, `Cursor assistant` ou `CI/CD ingestion`).
+5. Escolha as permissões (**Gravar** ou **Excluir**).
+6. Clique em **Criar chave** e copie sua chave secreta (`atk_...`) imediatamente.
+
+<Warning>
+  Sua chave de API é exibida apenas uma vez. Armazene-a com segurança. A Attlas não pode exibir a chave novamente depois que o diálogo for fechado.
+</Warning>
+
+---
+
+## Configuração do cliente
+
+O endpoint MCP do Workspace está hospedado em:
+```text
+https://attlas.so/mcp/
+```
+
+Autentique passando sua chave como token Bearer no cabeçalho `Authorization`:
+
+<CodeGroup>
+
+```bash Claude Code
+# Run in your terminal from your project directory:
+claude mcp add attlas --transport http https://attlas.so/mcp/ \
+  --header "Authorization: Bearer atk_your_api_key"
+```
+
+```json Cursor
+{
+  "mcpServers": {
+    "attlas": {
+      "url": "https://attlas.so/mcp/",
+      "headers": {
+        "Authorization": "Bearer atk_your_api_key"
+      }
+    }
+  }
+}
+```
+
+```json Claude Desktop
+{
+  "mcpServers": {
+    "attlas": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://attlas.so/mcp/",
+        "--header",
+        "Authorization: Bearer atk_your_api_key"
+      ]
+    }
+  }
+}
+```
+
+```json VS Code
+{
+  "servers": {
+    "attlas": {
+      "type": "http",
+      "url": "https://attlas.so/mcp/",
+      "headers": {
+        "Authorization": "Bearer atk_your_api_key"
+      }
+    }
+  }
+}
+```
+
+```toml Codex
+[mcp_servers.attlas]
+command = "npx"
+args = [
+  "mcp-remote",
+  "https://attlas.so/mcp/",
+  "--header",
+  "Authorization: Bearer atk_your_api_key"
+]
+```
+
+</CodeGroup>
+
+<Tip>
+  Se você usa o **Cursor**, clique no botão **Adicionar ao Cursor** diretamente na aba de chaves de API da Attlas para configurar a conexão com um único clique.
+</Tip>
+
+---
+
+## Claude web e desktop (conector personalizado)
+
+Para conectar a partir do claude.ai ou do aplicativo Claude para desktop, adicione a Attlas como um **conector personalizado**. O endpoint do Workspace autentica com uma chave de API, e não com OAuth, então alguns campos precisam de valores específicos.
+
+<Steps>
+  <Step title="Abra a caixa de diálogo do conector personalizado">
+    No Claude, vá para **Configurações → Conectores → Adicionar conector personalizado** (Team e Enterprise: **Configurações da organização → Conectores → Adicionar → Personalizado**).
+  </Step>
+  <Step title="Informe a URL com a barra final">
+    ```text
+    https://attlas.so/mcp/
+    ```
+    Mantenha a barra final. `https://attlas.so/mcp` (sem barra) é redirecionado, e alguns clientes descartam o cabeçalho `Authorization` ao seguir um redirecionamento.
+  </Step>
+  <Step title="Defina a autenticação como Nenhuma">
+    Depois de continuar, o Claude testa a URL e pode pré-selecionar **Sempre obrigatório**, marcado como *Detectado*. Isso é um falso positivo: o servidor retorna `401` para a sondagem não autenticada, e o Claude interpreta isso como OAuth.
+
+    Em vez disso, selecione **Nenhuma**. A descrição dessa opção diz explicitamente: *"ou para servidores que usam uma chave de API em vez de OAuth."* A seção **Cliente OAuth** então desaparece.
+  </Step>
+  <Step title="Adicione a chave como um cabeçalho de requisição">
+    Abra **Cabeçalhos de requisição** e adicione um cabeçalho:
+
+    | Campo | Valor |
+    | --- | --- |
+    | Nome | `authorization` (escolha na lista; minúsculas são aceitas, nomes de cabeçalho HTTP não diferenciam maiúsculas de minúsculas) |
+    | Valor | `Bearer atk_your_api_key` |
+    | Obrigatório | marcado |
+
+    <Warning>
+      Informe o valor **exatamente** como o servidor espera, incluindo a palavra `Bearer` e um espaço antes da chave. O Claude envia o valor literalmente e não adiciona nenhum esquema. `atk_...` sozinho é enviado como `Authorization: atk_...` e o servidor o rejeita com `401`.
+    </Warning>
+  </Step>
+  <Step title="Adicione o conector">
+    Clique em **Adicionar** e habilite a Attlas no menu **+** em uma conversa.
+  </Step>
+</Steps>
+
+<Note>
+  **Cabeçalhos de requisição** é um recurso beta disponível para um conjunto limitado de organizações. Se você não vir essa seção, conecte-se com o Claude Code ou `mcp-remote` (veja [Configuração do cliente](#client-configuration) acima).
+</Note>
+
+### Alterando a chave posteriormente
+
+As configurações de autenticação não podem ser editadas depois que um conector é adicionado. Para rotacionar a chave ou corrigir um valor errado, **remova o conector e adicione-o novamente**.
+
+### Solução de problemas
+
+| Sintoma | Causa | Correção |
+| --- | --- | --- |
+| A conexão falha e o Claude pede para entrar com OAuth | Autenticação deixada em **Sempre obrigatório**, ou o valor do cabeçalho está sem o prefixo `Bearer ` | Remova o conector e adicione novamente com **Nenhuma** e um valor correto de `Bearer atk_...` |
+| `401` em todas as chamadas | Chave incorreta, revogada ou malformada; valor enviado sem `Bearer ` | Verifique a chave na aba **Chaves de API** da Attlas; adicione o conector novamente com o valor exato |
+| Ferramentas ausentes após a conexão | O escopo da chave não as inclui | Crie uma chave com o escopo **Gravar** ou **Excluir** |
+| Funciona no Claude Code, mas não no claude.ai | O beta de cabeçalhos de requisição não está habilitado para sua organização | Use o Claude Code ou `mcp-remote`, ou entre em contato com o suporte do Claude para solicitar acesso |
+
+---
+
+## Monitoramento de atividades e registros de auditoria
+
+A tabela **Atividade recente** na parte inferior da aba de chaves de API registra todas as chamadas MCP feitas ao seu workspace:
+
+- **Quando**: Carimbo de data/hora relativo da solicitação.
+- **Chave**: Prefixo da chave usada (`atk_...`).
+- **Ferramenta**: A ferramenta MCP chamada (por exemplo, `list_chats`, `create_document`, `delete_trigger`).
+- **Alvo**: O recurso afetado pela operação.
+- **Resultado**: Indicador de sucesso (`ok`) ou erro.
+
+### Filtrar alterações
+
+Marque **Somente alterações** para ocultar consultas padrão de leitura e visualizar apenas operações de gravação e exclusão.
+
+### Restaurar itens excluídos
+
+Se uma ferramenta excluir temporariamente um gatilho ou contato por engano, clique em **Restaurar** na linha da atividade para trazê-lo de volta ao seu workspace imediatamente.
+
+---
+
+## Gerenciando chaves
+
+- **Copiar prefixo**: Copie o prefixo da chave no menu da linha para identificação.
+- **Revogar chave**: Desative uma chave instantaneamente. Qualquer solicitação externa que a utilize falhará imediatamente.
+- **Excluir permanentemente**: Depois de revogada, uma chave pode ser excluída permanentemente da sua tabela.
