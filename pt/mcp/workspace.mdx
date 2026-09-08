@@ -77,7 +77,7 @@ O servidor MCP do Workspace em si funciona em todos os planos. Algumas ações s
 
 O endpoint MCP do Workspace está hospedado em:
 ```text
-https://attlas.so/mcp/
+https://attlas.so/mcp
 ```
 
 Autentique passando sua chave como token Bearer no cabeçalho `Authorization`:
@@ -86,7 +86,7 @@ Autentique passando sua chave como token Bearer no cabeçalho `Authorization`:
 
 ```bash Claude Code
 # Run in your terminal from your project directory:
-claude mcp add attlas --transport http https://attlas.so/mcp/ \
+claude mcp add attlas --transport http https://attlas.so/mcp \
   --header "Authorization: Bearer atk_your_api_key"
 ```
 
@@ -94,7 +94,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
 {
   "mcpServers": {
     "attlas": {
-      "url": "https://attlas.so/mcp/",
+      "url": "https://attlas.so/mcp",
       "headers": {
         "Authorization": "Bearer atk_your_api_key"
       }
@@ -110,7 +110,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
       "command": "npx",
       "args": [
         "mcp-remote",
-        "https://attlas.so/mcp/",
+        "https://attlas.so/mcp",
         "--header",
         "Authorization: Bearer atk_your_api_key"
       ]
@@ -124,7 +124,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
   "servers": {
     "attlas": {
       "type": "http",
-      "url": "https://attlas.so/mcp/",
+      "url": "https://attlas.so/mcp",
       "headers": {
         "Authorization": "Bearer atk_your_api_key"
       }
@@ -138,7 +138,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
 command = "npx"
 args = [
   "mcp-remote",
-  "https://attlas.so/mcp/",
+  "https://attlas.so/mcp",
   "--header",
   "Authorization: Bearer atk_your_api_key"
 ]
@@ -160,11 +160,10 @@ Para conectar a partir do claude.ai ou do aplicativo Claude para desktop, adicio
   <Step title="Abra a caixa de diálogo do conector personalizado">
     No Claude, vá para **Configurações → Conectores → Adicionar conector personalizado** (Team e Enterprise: **Configurações da organização → Conectores → Adicionar → Personalizado**).
   </Step>
-  <Step title="Informe a URL com a barra final">
+  <Step title="Informe a URL">
     ```text
-    https://attlas.so/mcp/
+    https://attlas.so/mcp
     ```
-    Mantenha a barra final. `https://attlas.so/mcp` (sem barra) é redirecionado, e alguns clientes descartam o cabeçalho `Authorization` ao seguir um redirecionamento.
   </Step>
   <Step title="Defina a autenticação como Nenhuma">
     Depois de continuar, o Claude testa a URL e pode pré-selecionar **Sempre obrigatório**, marcado como *Detectado*. Isso é um falso positivo: o servidor retorna `401` para a sondagem não autenticada, e o Claude interpreta isso como OAuth.

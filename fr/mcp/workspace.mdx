@@ -77,7 +77,7 @@ Le serveur MCP de l'espace de travail fonctionne lui-même sur tous les plans. Q
 
 Le point de terminaison MCP de l'espace de travail est hébergé à :
 ```text
-https://attlas.so/mcp/
+https://attlas.so/mcp
 ```
 
 Authentifiez-vous en passant votre clé comme jeton Bearer dans l'en-tête `Authorization` :
@@ -86,7 +86,7 @@ Authentifiez-vous en passant votre clé comme jeton Bearer dans l'en-tête `Auth
 
 ```bash Claude Code
 # Exécutez dans votre terminal depuis le répertoire de votre projet :
-claude mcp add attlas --transport http https://attlas.so/mcp/ \
+claude mcp add attlas --transport http https://attlas.so/mcp \
   --header "Authorization: Bearer atk_votre_clé_api"
 ```
 
@@ -94,7 +94,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
 {
   "mcpServers": {
     "attlas": {
-      "url": "https://attlas.so/mcp/",
+      "url": "https://attlas.so/mcp",
       "headers": {
         "Authorization": "Bearer atk_votre_clé_api"
       }
@@ -110,7 +110,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
       "command": "npx",
       "args": [
         "mcp-remote",
-        "https://attlas.so/mcp/",
+        "https://attlas.so/mcp",
         "--header",
         "Authorization: Bearer atk_votre_clé_api"
       ]
@@ -124,7 +124,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
   "servers": {
     "attlas": {
       "type": "http",
-      "url": "https://attlas.so/mcp/",
+      "url": "https://attlas.so/mcp",
       "headers": {
         "Authorization": "Bearer atk_votre_clé_api"
       }
@@ -138,7 +138,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/ \
 command = "npx"
 args = [
   "mcp-remote",
-  "https://attlas.so/mcp/",
+  "https://attlas.so/mcp",
   "--header",
   "Authorization: Bearer atk_votre_clé_api"
 ]
@@ -160,11 +160,10 @@ Pour vous connecter depuis claude.ai ou l'application de bureau Claude, ajoutez 
   <Step title="Ouvrez la boîte de dialogue du connecteur personnalisé">
     Dans Claude, allez dans **Paramètres → Connecteurs → Ajouter un connecteur personnalisé** (Équipe et Entreprise : **Paramètres de l'organisation → Connecteurs → Ajouter → Personnalisé**).
   </Step>
-  <Step title="Saisissez l'URL avec son slash final">
+  <Step title="Saisissez l'URL">
     ```text
-    https://attlas.so/mcp/
+    https://attlas.so/mcp
     ```
-    Conservez le slash final. `https://attlas.so/mcp` (sans slash) est redirigé, et certains clients suppriment l'en-tête `Authorization` lors du suivi d'une redirection.
   </Step>
   <Step title="Définissez l'authentification sur Aucune">
     Après avoir continué, Claude sonde l'URL et peut présélectionner **Toujours requis**, marqué *Détecté*. C'est un faux positif : le serveur renvoie `401` à la sonde non authentifiée, et Claude interprète cela comme de l'OAuth.
