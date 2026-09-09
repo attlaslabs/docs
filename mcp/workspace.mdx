@@ -16,139 +16,109 @@ Unlike the public chat MCP endpoint, workspace API keys are private, scoped cred
 
 ---
 
-## Key benefits
+## Quickstart
 
-- **Full workspace access**: Connect your assistant once to search and manage all chats, documents, triggers, CRM contacts, and metrics across the workspace.
-- **Granular permission scopes**: Choose exactly what each key can do (Read, Write, or Delete).
-- **Live activity log**: Monitor every MCP call in real time, with the timestamp, key used, target resource, and outcome.
-- **One-click restore**: Instantly recover triggers or contacts soft-deleted by an external tool.
-- **Instant revocation**: Revoke active keys immediately at any time.
+Connect your AI assistant to your Attlas workspace in three steps:
 
----
+<Steps>
+  <Step title="Create an API key">
+    1. In the Attlas dashboard, open **Workspace settings**.
+    2. Go to the **API keys** (or **MCP**) tab.
+    3. Click **Create API key**.
+    4. Enter a name (e.g. `Cursor assistant` or `Claude Code`).
+    5. Choose your permissions (**Write** to create and edit resources, or **Delete** if you require deletion privileges).
+    6. Click **Create key** and copy your secret key (`atk_...`) immediately.
 
-## Permission scopes
+    <Warning>
+      Your API key is only displayed once. Store it securely. Attlas cannot display the secret again once the dialog is closed.
+    </Warning>
+  </Step>
 
-When creating an API key, select the permissions that match your use case:
+  <Step title="Configure your AI client">
+    The workspace MCP endpoint is hosted at:
+    ```text
+    https://attlas.so/mcp
+    ```
 
-| Scope | UI label | What it can do |
-| --- | --- | --- |
-| `read` | **Read** | View and search chats, documents, triggers, contacts, conversations, and analytics. Included by default on all keys. |
-| `write` | **Write** | Create and update documents, triggers, contacts, and chat settings. Automatically includes Read permissions. |
-| `destructive` | **Delete** | Permanently delete chats, documents, triggers, contacts, and conversations. Automatically includes Write and Read permissions. |
+    Select your AI tool below to copy the setup command or configuration file:
 
-<Warning>
-  Only grant the **Delete** permission to trusted workflows where automated cleanup or resource deletion is explicitly required.
-</Warning>
+    <CodeGroup>
 
----
+    ```bash Claude Code
+    # Run in your terminal from your project directory:
+    claude mcp add attlas --transport http https://attlas.so/mcp \
+      --header "Authorization: Bearer atk_your_api_key"
+    ```
 
-## Plan requirements
-
-The workspace MCP server itself works on every plan. A few actions follow the same plan limits as the dashboard:
-
-| Action | Requirement |
-| --- | --- |
-| Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
-| Adding a YouTube, Instagram, TikTok, Facebook, or X video link to a knowledge base | Starter or PRO (video transcription). Web page links work on every plan. |
-| Editing a chat's connected SQL database settings | Starter or PRO (advanced integrations). |
-
-<Note>
-  When an action needs a higher plan, the tool returns a `feature_not_available` error that names the minimum plan, instead of failing without explanation.
-</Note>
-
----
-
-## How to create an API key
-
-1. In the Attlas dashboard, open **Workspace settings**.
-2. Go to the **API keys** (or **MCP**) tab.
-3. Click **Create API key**.
-4. Enter a name (e.g. `Cursor assistant` or `CI/CD ingestion`).
-5. Choose your permissions (**Write** or **Delete**).
-6. Click **Create key** and copy your secret key (`atk_...`) immediately.
-
-<Warning>
-  Your API key is only displayed once. Store it securely. Attlas cannot display the secret again once the dialog is closed.
-</Warning>
-
----
-
-## Client configuration
-
-The workspace MCP endpoint is hosted at:
-```text
-https://attlas.so/mcp
-```
-
-Authenticate by passing your key as a Bearer token in the `Authorization` header:
-
-<CodeGroup>
-
-```bash Claude Code
-# Run in your terminal from your project directory:
-claude mcp add attlas --transport http https://attlas.so/mcp \
-  --header "Authorization: Bearer atk_your_api_key"
-```
-
-```json Cursor
-{
-  "mcpServers": {
-    "attlas": {
-      "url": "https://attlas.so/mcp",
-      "headers": {
-        "Authorization": "Bearer atk_your_api_key"
+    ```json Cursor
+    {
+      "mcpServers": {
+        "attlas": {
+          "url": "https://attlas.so/mcp",
+          "headers": {
+            "Authorization": "Bearer atk_your_api_key"
+          }
+        }
       }
     }
-  }
-}
-```
+    ```
 
-```json Claude Desktop
-{
-  "mcpServers": {
-    "attlas": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://attlas.so/mcp",
-        "--header",
-        "Authorization: Bearer atk_your_api_key"
-      ]
-    }
-  }
-}
-```
-
-```json VS Code
-{
-  "servers": {
-    "attlas": {
-      "type": "http",
-      "url": "https://attlas.so/mcp",
-      "headers": {
-        "Authorization": "Bearer atk_your_api_key"
+    ```json Claude Desktop
+    {
+      "mcpServers": {
+        "attlas": {
+          "command": "npx",
+          "args": [
+            "mcp-remote",
+            "https://attlas.so/mcp",
+            "--header",
+            "Authorization: Bearer atk_your_api_key"
+          ]
+        }
       }
     }
-  }
-}
-```
+    ```
 
-```toml Codex
-[mcp_servers.attlas]
-command = "npx"
-args = [
-  "mcp-remote",
-  "https://attlas.so/mcp",
-  "--header",
-  "Authorization: Bearer atk_your_api_key"
-]
-```
+    ```json VS Code
+    {
+      "servers": {
+        "attlas": {
+          "type": "http",
+          "url": "https://attlas.so/mcp",
+          "headers": {
+            "Authorization": "Bearer atk_your_api_key"
+          }
+        }
+      }
+    }
+    ```
 
-</CodeGroup>
+    ```toml Codex
+    [mcp_servers.attlas]
+    command = "npx"
+    args = [
+      "mcp-remote",
+      "https://attlas.so/mcp",
+      "--header",
+      "Authorization: Bearer atk_your_api_key"
+    ]
+    ```
 
-<Tip>
-  If you use **Cursor**, click the **Add to Cursor** button directly inside the Attlas API keys tab to configure the connection with a single click.
-</Tip>
+    </CodeGroup>
+
+    <Tip>
+      If you use **Cursor**, click the **Add to Cursor** button directly inside the Attlas API keys tab to configure the connection with a single click.
+    </Tip>
+  </Step>
+
+  <Step title="Verify the connection">
+    Test your setup by asking your assistant:
+    ```text
+    List my Attlas chats
+    ```
+    Your assistant will call the `list_chats` tool and return the list of chats with their numeric identifiers.
+  </Step>
+</Steps>
 
 ---
 
@@ -189,12 +159,8 @@ To connect from claude.ai or the Claude desktop app, add Attlas as a **custom co
 </Steps>
 
 <Note>
-  **Request headers** is a beta feature available to a limited set of organizations. If you don't see that section, connect with Claude Code or `mcp-remote` instead (see [Client configuration](#client-configuration) above).
+  **Request headers** is a beta feature available to a limited set of organizations. If you don't see that section, connect with Claude Code or `mcp-remote` instead (see [Quickstart](#quickstart) above).
 </Note>
-
-### Changing the key later
-
-Authentication settings can't be edited after a connector is added. To rotate the key or fix a wrong value, **remove the connector and add it again**.
 
 ### Troubleshooting
 
@@ -204,6 +170,70 @@ Authentication settings can't be edited after a connector is added. To rotate th
 | `401` on every call | Wrong, revoked, or malformed key; value sent without `Bearer ` | Check the key in the Attlas **API keys** tab; re-add the connector with the exact value |
 | Tools missing after connecting | The key's scope doesn't include them | Create a key with **Write** or **Delete** scope |
 | Works in Claude Code but not on claude.ai | Request-headers beta not enabled for your org | Use Claude Code or `mcp-remote`, or contact Claude support to request access |
+
+---
+
+## Permission scopes
+
+When creating an API key, select the permissions that match your use case:
+
+| Scope | UI label | What it can do |
+| --- | --- | --- |
+| `read` | **Read** | View and search chats, documents, triggers, contacts, conversations, and analytics. Included by default on all keys. |
+| `write` | **Write** | Create and update documents, corrections, triggers, contacts, branding, avatar, SEO, and chat settings. Automatically includes Read permissions. |
+| `destructive` | **Delete** | Permanently delete chats, documents, triggers, contacts, and conversations. Automatically includes Write and Read permissions. |
+
+<Warning>
+  Only grant the **Delete** permission to trusted workflows where automated cleanup or resource deletion is explicitly required.
+</Warning>
+
+---
+
+## Plan requirements
+
+The workspace MCP server itself works on every plan. A few actions follow the same plan limits as the dashboard:
+
+| Action | Requirement |
+| --- | --- |
+| Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
+| Adding a YouTube, Instagram, TikTok, Facebook, or X video link to a knowledge base | Starter or PRO (video transcription). Web page links work on every plan. |
+| Removing the Attlas branding badge (`update_branding`) | Brand add-on. |
+| Customizing chat SEO metadata (`update_seo`) | Basic plan or higher. |
+| Editing a chat's connected SQL database settings | Starter or PRO (advanced integrations). |
+
+---
+
+## Available capabilities & tools
+
+Once connected, your assistant can manage all areas of your workspace:
+
+### Chat setup, branding & live preview
+- `preview_chat`: Render an interactive live preview of your public chat inside MCP Apps hosts without consuming message credits or affecting analytics.
+- `update_chat`: Modify chat configuration, goals, and behavior settings.
+- `update_avatar`: Set the chat avatar from a public image URL (automatically hosted) or an emoji.
+- `update_branding`: Show or hide the "Powered by Attlas" badge (requires the Brand add-on).
+- `update_seo`: Set meta title, meta description, and social share image (`og:image`).
+- `update_social_links`: Set social media profile links (X, LinkedIn, Instagram, YouTube, TikTok, etc.) shown on the chat.
+- `update_theme` & `list_theme_presets`: Browse and apply visual color themes.
+- `set_personality` & `list_archetypes`: Customize tone and assign persona archetypes.
+
+### Knowledge & continuous learning
+- `create_document`: Add text documents directly to the knowledge base.
+- `update_document`: Edit text document content with automatic character balance adjustment.
+- `ingest_url`: Crawl web pages or transcribe video links (YouTube, TikTok, Instagram, X).
+- `clean_document`: Reformat imported documents with AI Markdown cleanup.
+- `create_correction`: Teach the chat the definitive answer to questions it previously answered poorly or failed to answer.
+
+### Triggers & lead capture
+- `list_triggers`, `create_trigger`, `update_trigger`, `reorder_triggers`: Manage buttons, links, and sections on the public chat.
+- `generate_questions`: Produce suggested visitor questions based on uploaded documents.
+- `generate_and_nest`: Generate questions and nest them under a parent trigger in a single operation.
+
+### Insights & signals
+- `list_signals`: Review missed questions (`weak_answer`), downvoted answers (`thumbs_down`), and visitor drop-offs (`left_after`).
+- `list_conversations` & `read_conversation`: Inspect visitor conversations and message transcripts.
+- `get_metrics`, `get_timeseries`, `get_rankings`: Fetch activity stats and conversion rates.
+- `generate_report` & `read_report`: Generate structured summaries of chat performance.
 
 ---
 
@@ -217,18 +247,6 @@ The **Recent activity** table at the bottom of the API keys tab logs every MCP c
 - **Target**: The resource touched by the operation.
 - **Result**: Success (`ok`) or error badge.
 
-### Filter changes
-
-Check **Changes only** to hide standard read queries and view only write and delete operations.
-
 ### Restore deleted items
 
 If a tool soft-deletes a trigger or contact by mistake, click **Restore** in the activity row to bring it back to your workspace immediately.
-
----
-
-## Managing keys
-
-- **Copy prefix**: Copy the key's prefix from the row menu for identification.
-- **Revoke key**: Disable a key instantly. Any external request using it will fail immediately.
-- **Delete permanently**: Once revoked, a key can be permanently deleted from your table.

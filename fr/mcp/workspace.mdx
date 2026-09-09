@@ -1,234 +1,252 @@
 ---
-title: "Espace de travail MCP"
-sidebarTitle: "Espace"
-description: "Créez des clés API d'espace de travail pour connecter les assistants de codage IA et les outils de bureau à votre espace de travail Attlas via MCP."
+title: "MCP de l'espace de travail"
+sidebarTitle: "Espace de travail"
+description: "Créez des clés API Workspace pour connecter des assistants de codage IA et des outils de bureau à votre espace de travail Attlas via MCP."
 tag: "Nouveau"
 og:image: "/images/thumbs/thumb_mcp.webp"
 ---
 
-Les clés API d'espace de travail permettent aux outils de développement externes et aux assistants IA (Claude Code, Cursor, Claude Desktop, VS Code et Codex) de se connecter à l'ensemble de votre espace de travail Attlas en utilisant le Model Context Protocol (MCP).
+Les clés API Workspace permettent aux outils de développement externes et aux assistants IA (Claude Code, Cursor, Claude Desktop, VS Code et Codex) de se connecter à l'ensemble de votre espace de travail Attlas à l'aide du Model Context Protocol (MCP).
 
-Contrairement au point de terminaison MCP public du chat, les clés API d'espace de travail sont des identifiants privés et limités qui couvrent tous les chats, les documents de connaissance, les déclencheurs, les contacts et les analyses de votre espace de travail.
+Contrairement au point de terminaison MCP public du chat, les clés API Workspace sont des informations d'identification privées et limitées qui couvrent tous les chats, documents de connaissances, déclencheurs, contacts et analyses de votre espace de travail.
 
 <Tip>
-  Après avoir connecté le MCP, nous vous recommandons d'installer les [compétences Attlas](/fr/mcp/skills). Elles apprennent à votre assistant la bonne façon d'utiliser ces outils, afin que des demandes comme « mets notre page de tarification dans le chat avec des questions en dessous » ou « configure mon nouveau chat » fonctionnent en une seule étape.
+  Après avoir connecté le MCP, nous vous recommandons d'installer les [compétences Attlas](/fr/mcp/skills). Elles apprennent à votre assistant la bonne façon d'utiliser ces outils, afin que des demandes comme « mettre notre page de tarification dans le chat avec des questions en dessous » ou « configurer mon nouveau chat » fonctionnent en une seule étape.
 </Tip>
 
 ---
 
-## Avantages clés
+## Démarrage rapide
 
-- **Accès complet à l'espace de travail** : Connectez votre assistant une seule fois pour rechercher et gérer tous les chats, documents, déclencheurs, contacts CRM et métriques de l'espace de travail.
-- **Portées de permission granulaires** : Choisissez exactement ce que chaque clé peut faire (Lecture, Écriture ou Suppression).
-- **Journal d'activité en direct** : Surveillez chaque appel MCP en temps réel, avec l'horodatage, la clé utilisée, la ressource cible et le résultat.
-- **Restauration en un clic** : Récupérez instantanément les déclencheurs ou les contacts supprimés de manière réversible par un outil externe.
-- **Révocation instantanée** : Révoquez les clés actives immédiatement à tout moment.
-
----
-
-## Portées de permission
-
-Lors de la création d'une clé API, sélectionnez les permissions qui correspondent à votre cas d'usage :
-
-| Portée | Libellé UI | Ce qu'elle peut faire |
-| --- | --- | --- |
-| `read` | **Lecture** | Voir et rechercher des chats, documents, déclencheurs, contacts, conversations et analyses. Inclus par défaut sur toutes les clés. |
-| `write` | **Écriture** | Créer et mettre à jour des documents, déclencheurs, contacts et paramètres de chat. Inclut automatiquement les permissions de Lecture. |
-| `destructive` | **Suppression** | Supprimer définitivement des chats, documents, déclencheurs, contacts et conversations. Inclut automatiquement les permissions d'Écriture et de Lecture. |
-
-<Warning>
-  N'accordez la permission **Suppression** qu'aux flux de travail de confiance où le nettoyage automatisé ou la suppression de ressources est explicitement requis.
-</Warning>
-
----
-
-## Prérequis des plans
-
-Le serveur MCP de l'espace de travail fonctionne lui-même sur tous les plans. Quelques actions suivent les mêmes limites de plan que le tableau de bord :
-
-| Action | Prérequis |
-| --- | --- |
-| Lire les métriques, tendances, classements ou générer un rapport | La plage ne remonte que jusqu'à la fenêtre d'historique de votre plan (Gratuit : 90 jours, Starter : 1 an, PRO : 2 ans). Les plages plus larges sont réduites à cette fenêtre. |
-| Ajouter un lien vidéo YouTube, Instagram, TikTok, Facebook ou X à une base de connaissances | Starter ou PRO (transcription vidéo). Les liens de pages web fonctionnent sur tous les plans. |
-| Modifier les paramètres de la base de données SQL connectée d'un chat | Starter ou PRO (intégrations avancées). |
-
-<Note>
-  Lorsqu'une action nécessite un plan supérieur, l'outil renvoie une erreur `feature_not_available` qui nomme le plan minimum requis, au lieu d'échouer sans explication.
-</Note>
-
----
-
-## Comment créer une clé API
-
-1. Dans le tableau de bord Attlas, ouvrez les **Paramètres de l'espace de travail**.
-2. Allez dans l'onglet **Clés API** (ou **MCP**).
-3. Cliquez sur **Créer une clé API**.
-4. Saisissez un nom (par exemple `Assistant Cursor` ou `Ingestion CI/CD`).
-5. Choisissez vos permissions (**Écriture** ou **Suppression**).
-6. Cliquez sur **Créer la clé** et copiez immédiatement votre clé secrète (`atk_...`).
-
-<Warning>
-  Votre clé API ne s'affiche qu'une seule fois. Stockez-la en lieu sûr. Attlas ne peut plus afficher le secret une fois la boîte de dialogue fermée.
-</Warning>
-
----
-
-## Configuration client
-
-Le point de terminaison MCP de l'espace de travail est hébergé à :
-```text
-https://attlas.so/mcp
-```
-
-Authentifiez-vous en passant votre clé comme jeton Bearer dans l'en-tête `Authorization` :
-
-<CodeGroup>
-
-```bash Claude Code
-# Exécutez dans votre terminal depuis le répertoire de votre projet :
-claude mcp add attlas --transport http https://attlas.so/mcp \
-  --header "Authorization: Bearer atk_votre_clé_api"
-```
-
-```json Cursor
-{
-  "mcpServers": {
-    "attlas": {
-      "url": "https://attlas.so/mcp",
-      "headers": {
-        "Authorization": "Bearer atk_votre_clé_api"
-      }
-    }
-  }
-}
-```
-
-```json Claude Desktop
-{
-  "mcpServers": {
-    "attlas": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://attlas.so/mcp",
-        "--header",
-        "Authorization: Bearer atk_votre_clé_api"
-      ]
-    }
-  }
-}
-```
-
-```json VS Code
-{
-  "servers": {
-    "attlas": {
-      "type": "http",
-      "url": "https://attlas.so/mcp",
-      "headers": {
-        "Authorization": "Bearer atk_votre_clé_api"
-      }
-    }
-  }
-}
-```
-
-```toml Codex
-[mcp_servers.attlas]
-command = "npx"
-args = [
-  "mcp-remote",
-  "https://attlas.so/mcp",
-  "--header",
-  "Authorization: Bearer atk_votre_clé_api"
-]
-```
-
-</CodeGroup>
-
-<Tip>
-  Si vous utilisez **Cursor**, cliquez directement sur le bouton **Ajouter à Cursor** dans l'onglet des clés API Attlas pour configurer la connexion en un seul clic.
-</Tip>
-
----
-
-## Claude web et desktop (connecteur personnalisé)
-
-Pour vous connecter depuis claude.ai ou l'application de bureau Claude, ajoutez Attlas en tant que **connecteur personnalisé**. Le point de terminaison de l'espace de travail s'authentifie avec une clé API, pas OAuth, donc quelques champs nécessitent des valeurs spécifiques.
+Connectez votre assistant IA à votre espace de travail Attlas en trois étapes :
 
 <Steps>
-  <Step title="Ouvrez la boîte de dialogue du connecteur personnalisé">
-    Dans Claude, allez dans **Paramètres → Connecteurs → Ajouter un connecteur personnalisé** (Équipe et Entreprise : **Paramètres de l'organisation → Connecteurs → Ajouter → Personnalisé**).
+  <Step title="Créer une clé API">
+    1. Dans le tableau de bord Attlas, ouvrez **Paramètres de l'espace de travail**.
+    2. Allez dans l'onglet **Clés API** (ou **MCP**).
+    3. Cliquez sur **Créer une clé API**.
+    4. Saisissez un nom (par ex. `Cursor assistant` ou `Claude Code`).
+    5. Choisissez vos autorisations (**Écriture** pour créer et modifier des ressources, ou **Suppression** si vous avez besoin de privilèges de suppression).
+    6. Cliquez sur **Créer une clé** et copiez immédiatement votre clé secrète (`atk_...`).
+
+    <Warning>
+      Votre clé API ne s'affiche qu'une seule fois. Conservez-la en lieu sûr. Attlas ne peut pas afficher à nouveau le secret une fois la boîte de dialogue fermée.
+    </Warning>
   </Step>
-  <Step title="Saisissez l'URL">
+
+  <Step title="Configurez votre client IA">
+    Le point de terminaison MCP de l'espace de travail est hébergé à l'adresse :
+    ```text
+    https://attlas.so/mcp
+    ```
+
+    Sélectionnez votre outil d'IA ci-dessous pour copier la commande de configuration ou le fichier de configuration :
+
+    <CodeGroup>
+
+    ```bash Claude Code
+    # Run in your terminal from your project directory:
+    claude mcp add attlas --transport http https://attlas.so/mcp \
+      --header "Authorization: Bearer atk_your_api_key"
+    ```
+
+    ```json Cursor
+    {
+      "mcpServers": {
+        "attlas": {
+          "url": "https://attlas.so/mcp",
+          "headers": {
+            "Authorization": "Bearer atk_your_api_key"
+          }
+        }
+      }
+    }
+    ```
+
+    ```json Claude Desktop
+    {
+      "mcpServers": {
+        "attlas": {
+          "command": "npx",
+          "args": [
+            "mcp-remote",
+            "https://attlas.so/mcp",
+            "--header",
+            "Authorization: Bearer atk_your_api_key"
+          ]
+        }
+      }
+    }
+    ```
+
+    ```json VS Code
+    {
+      "servers": {
+        "attlas": {
+          "type": "http",
+          "url": "https://attlas.so/mcp",
+          "headers": {
+            "Authorization": "Bearer atk_your_api_key"
+          }
+        }
+      }
+    }
+    ```
+
+    ```toml Codex
+    [mcp_servers.attlas]
+    command = "npx"
+    args = [
+      "mcp-remote",
+      "https://attlas.so/mcp",
+      "--header",
+      "Authorization: Bearer atk_your_api_key"
+    ]
+    ```
+
+    </CodeGroup>
+
+    <Tip>
+      Si vous utilisez **Cursor**, cliquez sur le bouton **Ajouter à Cursor** directement dans l'onglet Clés API d'Attlas pour configurer la connexion en un seul clic.
+    </Tip>
+  </Step>
+
+  <Step title="Vérifiez la connexion">
+    Testez votre configuration en demandant à votre assistant :
+    ```text
+    List my Attlas chats
+    ```
+    Votre assistant appellera l'outil `list_chats` et renverra la liste des chats avec leurs identifiants numériques.
+  </Step>
+</Steps>
+
+---
+
+## Claude Web et Bureau (connecteur personnalisé)
+
+Pour vous connecter depuis claude.ai ou l'application de bureau Claude, ajoutez Attlas en tant que **connecteur personnalisé**. Le point de terminaison de l'espace de travail s'authentifie avec une clé API, pas avec OAuth, donc quelques champs nécessitent des valeurs spécifiques.
+
+<Steps>
+  <Step title="Ouvrir la boîte de dialogue du connecteur personnalisé">
+    Dans Claude, accédez à **Paramètres → Connecteurs → Ajouter un connecteur personnalisé** (Team et Enterprise : **Paramètres de l'organisation → Connecteurs → Ajouter → Personnalisé**).
+  </Step>
+  <Step title="Saisir l'URL">
     ```text
     https://attlas.so/mcp
     ```
   </Step>
-  <Step title="Définissez l'authentification sur Aucune">
-    Après avoir continué, Claude sonde l'URL et peut présélectionner **Toujours requis**, marqué *Détecté*. C'est un faux positif : le serveur renvoie `401` à la sonde non authentifiée, et Claude interprète cela comme de l'OAuth.
+  <Step title="Définir l'authentification sur Aucun">
+    Après avoir continué, Claude sonde l'URL et peut présélectionner **Toujours requis**, marqué *Détecté*. Il s'agit d'un faux positif : le serveur renvoie `401` à la sonde non authentifiée, et Claude interprète cela comme OAuth.
 
-    Sélectionnez **Aucune** à la place. La description de cette option le dit explicitement : *« ou pour les serveurs qui utilisent une clé API plutôt qu'OAuth. »* La section **Client OAuth** disparaît alors.
+    Sélectionnez **Aucun** à la place. La description de cette option l'indique explicitement : *« ou pour les serveurs qui utilisent une clé API plutôt qu'OAuth »*. La section **Client OAuth** disparaît alors.
   </Step>
-  <Step title="Ajoutez la clé en tant qu'en-tête de requête">
+  <Step title="Ajouter la clé comme en-tête de requête">
     Ouvrez **En-têtes de requête** et ajoutez un en-tête :
 
     | Champ | Valeur |
     | --- | --- |
-    | Nom | `authorization` (choisissez-le dans la liste ; les minuscules sont acceptées, les noms d'en-tête HTTP sont insensibles à la casse) |
-    | Valeur | `Bearer atk_votre_clé_api` |
+    | Nom | `authorization` (choisissez-le dans la liste ; les minuscules sont acceptées, les noms d'en-tête HTTP ne sont pas sensibles à la casse) |
+    | Valeur | `Bearer atk_your_api_key` |
     | Requis | coché |
 
     <Warning>
-      Saisissez la valeur **exactement** comme le serveur l'attend, y compris le mot `Bearer` et un espace avant la clé. Claude envoie la valeur telle quelle et n'ajoute aucun schéma. `atk_...` seul est envoyé comme `Authorization: atk_...` et le serveur le rejette avec `401`.
+      Saisissez la valeur **exactement** comme le serveur l'attend, y compris le mot `Bearer` et un espace avant la clé. Claude envoie la valeur telle quelle et n'ajoute aucun schéma. `atk_...` seul est envoyé sous la forme `Authorization: atk_...` et le serveur le rejette avec une erreur `401`.
     </Warning>
   </Step>
-  <Step title="Ajoutez le connecteur">
+  <Step title="Ajouter le connecteur">
     Cliquez sur **Ajouter**, puis activez Attlas depuis le menu **+** dans une conversation.
   </Step>
 </Steps>
 
 <Note>
-  **En-têtes de requête** est une fonctionnalité bêta disponible pour un ensemble limité d'organisations. Si vous ne voyez pas cette section, connectez-vous avec Claude Code ou `mcp-remote` à la place (voir [Configuration client](#configuration-client) ci-dessus).
+  **En-têtes de requête** est une fonctionnalité bêta disponible pour un ensemble limité d'organisations. Si vous ne voyez pas cette section, connectez-vous avec Claude Code ou `mcp-remote` à la place (voir [Démarrage rapide](#quickstart) ci-dessus).
 </Note>
-
-### Changer la clé ultérieurement
-
-Les paramètres d'authentification ne peuvent pas être modifiés après l'ajout d'un connecteur. Pour faire tourner la clé ou corriger une valeur erronée, **supprimez le connecteur et ajoutez-le à nouveau**.
 
 ### Dépannage
 
-| Symptôme | Cause | Correction |
+| Symptôme | Cause | Correctif |
 | --- | --- | --- |
-| La connexion échoue, Claude demande de se connecter avec OAuth | Authentification laissée sur **Toujours requis**, ou la valeur de l'en-tête manque le préfixe `Bearer` | Supprimez le connecteur, ajoutez-le à nouveau avec **Aucune** et une valeur `Bearer atk_...` correcte |
-| `401` à chaque appel | Clé erronée, révoquée ou mal formatée ; valeur envoyée sans `Bearer` | Vérifiez la clé dans l'onglet **Clés API** d'Attlas ; ajoutez à nouveau le connecteur avec la valeur exacte |
-| Outils manquants après la connexion | La portée de la clé ne les inclut pas | Créez une clé avec la portée **Écriture** ou **Suppression** |
+| La connexion échoue, Claude demande de se connecter avec OAuth | L'authentification est restée sur **Toujours requis**, ou la valeur de l'en-tête ne contient pas le préfixe `Bearer ` | Supprimez le connecteur, puis ajoutez-le à nouveau avec **Aucun** et une valeur `Bearer atk_...` correcte |
+| `401` à chaque appel | Clé incorrecte, révoquée ou malformée ; valeur envoyée sans `Bearer ` | Vérifiez la clé dans l'onglet **Clés API** d'Attlas ; réajoutez le connecteur avec la valeur exacte |
+| Outils manquants après la connexion | Le périmètre de la clé ne les inclut pas | Créez une clé avec le périmètre **Écriture** ou **Suppression** |
 | Fonctionne dans Claude Code mais pas sur claude.ai | La bêta des en-têtes de requête n'est pas activée pour votre organisation | Utilisez Claude Code ou `mcp-remote`, ou contactez le support Claude pour demander l'accès |
+
+---
+
+## Portées des autorisations
+
+Lors de la création d'une clé API, sélectionnez les autorisations correspondant à votre cas d'usage :
+
+| Portée | Libellé de l'interface | Ce qu'il peut faire |
+| --- | --- | --- |
+| `read` | **Lecture** | Voir et rechercher des chats, documents, déclencheurs, contacts, conversations et analyses. Inclus par défaut sur toutes les clés. |
+| `write` | **Écriture** | Créer et mettre à jour des documents, corrections, déclencheurs, contacts, image de marque, avatar, SEO et paramètres de chat. Inclut automatiquement les autorisations de Lecture. |
+| `destructive` | **Suppression** | Supprimer définitivement des chats, documents, déclencheurs, contacts et conversations. Inclut automatiquement les autorisations d'Écriture et de Lecture. |
+
+<Warning>
+  N'accordez l'autorisation **Suppression** qu'aux flux de travail de confiance où un nettoyage automatisé ou une suppression de ressources est explicitement requis.
+</Warning>
+
+---
+
+## Exigences selon l'offre
+
+Le serveur MCP de l'espace de travail fonctionne lui-même sur toutes les offres. Quelques actions suivent les mêmes limites d'offre que le tableau de bord :
+
+| Action | Exigence |
+| --- | --- |
+| Lire des métriques, des tendances, des classements ou générer un rapport | La plage ne remonte que jusqu'à la fenêtre d'historique de votre offre (Gratuit : 90 jours, Starter : 1 an, PRO : 2 ans). Les plages plus larges sont rognées à cette fenêtre. |
+| Ajouter un lien vidéo YouTube, Instagram, TikTok, Facebook ou X à une base de connaissances | Starter ou PRO (transcription vidéo). Les liens de pages Web fonctionnent sur toutes les offres. |
+| Supprimer le badge de marque Attlas (`update_branding`) | Module complémentaire Brand. |
+| Personnaliser les métadonnées SEO du chat (`update_seo`) | Offre Basic ou supérieure. |
+| Modifier les paramètres de base de données SQL connectée d'un chat | Starter ou PRO (intégrations avancées). |
+
+---
+
+## Capacités et outils disponibles
+
+Une fois connecté, votre assistant peut gérer tous les aspects de votre espace de travail :
+
+### Configuration du chat, image de marque et aperçu en direct
+- `preview_chat` : Afficher un aperçu interactif en direct de votre chat public dans les hôtes d'applications MCP sans consommer de crédits de messages ni affecter les analyses.
+- `update_chat` : Modifier la configuration du chat, les objectifs et les paramètres de comportement.
+- `update_avatar` : Définir l'avatar du chat à partir d'une URL d'image publique (hébergée automatiquement) ou d'un emoji.
+- `update_branding` : Afficher ou masquer le badge « Propulsé par Attlas » (nécessite le module complémentaire Brand).
+- `update_seo` : Définir le titre meta, la description meta et l'image de partage social (`og:image`).
+- `update_social_links` : Définir les liens de profils de réseaux sociaux (X, LinkedIn, Instagram, YouTube, TikTok, etc.) affichés sur le chat.
+- `update_theme` et `list_theme_presets` : Parcourir et appliquer des thèmes de couleurs visuels.
+- `set_personality` et `list_archetypes` : Personnaliser le ton et attribuer des archétypes de persona.
+
+### Connaissances et apprentissage continu
+- `create_document` : Ajouter des documents texte directement à la base de connaissances.
+- `update_document` : Modifier le contenu des documents texte avec ajustement automatique de l'équilibre des caractères.
+- `ingest_url` : Explorer des pages web ou transcrire des liens vidéo (YouTube, TikTok, Instagram, X).
+- `clean_document` : Reformater les documents importés grâce au nettoyage Markdown par IA.
+- `create_correction` : Apprendre au chat la réponse définitive aux questions auxquelles il a mal répondu ou n'a pas répondu auparavant.
+
+### Déclencheurs et capture de prospects
+- `list_triggers`, `create_trigger`, `update_trigger`, `reorder_triggers` : Gérer les boutons, les liens et les sections du chat public.
+- `generate_questions` : Produire des questions suggérées pour les visiteurs à partir des documents importés.
+- `generate_and_nest` : Générer des questions et les imbriquer sous un déclencheur parent en une seule opération.
+
+### Informations et signaux
+- `list_signals` : Examiner les questions manquées (`weak_answer`), les réponses mal notées (`thumbs_down`) et les abandons de visiteurs (`left_after`).
+- `list_conversations` et `read_conversation` : Inspecter les conversations des visiteurs et les transcriptions des messages.
+- `get_metrics`, `get_timeseries`, `get_rankings` : Récupérer les statistiques d'activité et les taux de conversion.
+- `generate_report` et `read_report` : Générer des synthèses structurées des performances du chat.
 
 ---
 
 ## Surveillance de l'activité et journaux d'audit
 
-Le tableau **Activité récente** en bas de l'onglet des clés API enregistre chaque appel MCP effectué vers votre espace de travail :
+Le tableau **Activité récente** en bas de l'onglet Clés API journalise chaque appel MCP effectué vers votre espace de travail :
 
 - **Quand** : Horodatage relatif de la requête.
 - **Clé** : Préfixe de la clé utilisée (`atk_...`).
-- **Outil** : L'outil MCP appelé (par exemple `list_chats`, `create_document`, `delete_trigger`).
-- **Cible** : La ressource touchée par l'opération.
+- **Outil** : L'outil MCP appelé (par ex. `list_chats`, `create_document`, `delete_trigger`).
+- **Cible** : La ressource concernée par l'opération.
 - **Résultat** : Badge de succès (`ok`) ou d'erreur.
-
-### Filtrer les modifications
-
-Cochez **Modifications uniquement** pour masquer les requêtes de lecture standard et n'afficher que les opérations d'écriture et de suppression.
 
 ### Restaurer les éléments supprimés
 
-Si un outil supprime par erreur un déclencheur ou un contact de manière réversible, cliquez sur **Restaurer** dans la ligne d'activité pour le ramener immédiatement dans votre espace de travail.
-
----
-
-## Gestion des clés
-
-- **Copier le préfixe** : Copiez le préfixe de la clé depuis le menu de la ligne pour l'identification.
-- **Révoquer la clé** : Désactivez une clé instantanément. Toute requête externe l'utilisant échouera immédiatement.
-- **Supprimer définitivement** : Une fois révoquée, une clé peut être définitivement supprimée de votre tableau.
+Si un outil supprime temporairement un déclencheur ou un contact par erreur, cliquez sur **Restaurer** dans la ligne d'activité pour le réintégrer immédiatement dans votre espace de travail.
