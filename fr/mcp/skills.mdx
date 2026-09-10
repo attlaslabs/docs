@@ -1,49 +1,49 @@
 ---
-title: "Compétences"
-sidebarTitle: "Compétences"
-description: "Installez des compétences d'agent prêtes à l'emploi qui pilotent le MCP de l'espace de travail Attlas pour vous, afin que les tâches courantes s'exécutent sans avoir à détailler chaque étape."
+title: "skills"
+sidebarTitle: "Skills"
+description: "Installez des skills d'agent prêtes à l'emploi qui pilotent le MCP de l'espace de travail Attlas pour vous, afin que les tâches courantes s'exécutent sans avoir à détailler chaque étape."
 tag: "Nouveau"
 og:image: "/images/thumbs/thumb_mcp.webp"
 ---
 
 Le [serveur MCP de l'espace de travail](/fr/mcp/workspace) donne à votre assistant IA les outils bruts pour lire et
-modifier votre espace de travail Attlas. Les compétences ajoutent la couche supérieure : l'ordre correct des appels, les
+modifier votre espace de travail Attlas. Les skills ajoutent la couche supérieure : l'ordre correct des appels, les
 boucles d'attente d'ingestion, et les petits pièges (certaines mises à jour fusionnent, d'autres écrasent), le tout
 conditionné pour qu'une demande comme « mets notre page de tarification dans le chat avec quelques questions en dessous »
 ou « configure mon nouveau chat » fonctionne tout simplement.
 
 <Info>
-  Les compétences sont optionnelles. Le serveur MCP fonctionne de manière autonome. Les compétences rendent les tâches
+  Les skills sont optionnelles. Le serveur MCP fonctionne de manière autonome. Les skills rendent les tâches
   en plusieurs étapes plus fiables et vous évitent de décrire le flux de travail à chaque fois.
 </Info>
 
 ## Prérequis
 
 Connectez d'abord le [serveur MCP de l'espace de travail](/fr/mcp/workspace), avec une clé API disposant de la portée
-**Write**. Sans cela, les compétences n'ont rien à appeler. Une clé Read suffit pour `attlas-insights` uniquement.
+**Write**. Sans cela, les skills n'ont rien à appeler. Une clé Read suffit pour `attlas-insights` uniquement.
 
-## Compétences disponibles
+## skills disponibles
 
-| Compétence | Ce qu'elle gère |
+| skill | Ce qu'elle gère |
 | --- | --- |
 | `attlas-chat-setup` | Identité publique, profil professionnel, heures d'ouverture, objectif de conversation (support, rendez-vous, capture de leads), personnalité de l'assistant, thème visuel. |
 | `attlas-knowledge` | Ajouter du texte collé, des pages web ou des vidéos YouTube et sociales à la base de connaissances d'un chat, suivre le statut d'ingestion (y compris la raison de l'échec en cas de problème), nettoyer les documents importés désordonnés, supprimer les documents obsolètes. |
 | `attlas-triggers` | Créer, modifier, réorganiser, imbriquer et supprimer chaque type de déclencheur (liens, médias, raccourcis de contact, produits de la boutique) et les questions suggérées. Placer chaque source sur un chemin : un déclencheur pour le contenu avec 2 à 5 questions générées à partir de celui-ci, imbriquées en dessous. Configurer l'onglet boutique. |
 | `attlas-insights` | Métriques principales, tendances, classements, rapports d'analyse générés, résumés lisibles des conversations des visiteurs et tri des contacts CRM. Signale les réponses faibles afin que vous puissiez les corriger par une mise à jour de document ou une Correction. |
 
-Une fois installées, vous n'appelez pas les compétences par leur nom. Votre assistant choisit la bonne en fonction de la
+Une fois installées, vous n'appelez pas les skills par leur nom. Votre assistant choisit la bonne en fonction de la
 demande, par exemple « ajoute notre page de tarification au robot commercial » ou « comment s'est comporté le chat de
 support ce mois-ci ».
 
 ## Installation
 
-Les compétences résident dans le dépôt public
+Les skills résident dans le dépôt public
 [`attlaslabs/attlas-skills`](https://github.com/attlaslabs/attlas-skills).
 
 <CodeGroup>
 
 ```bash skills CLI
-# Installe les quatre compétences dans chaque répertoire d'agent qu'il gère
+# Installe les quatre skills dans chaque répertoire d'agent qu'il gère
 # (.claude/skills, .agents/skills, ...) et les enregistre dans skills-lock.json.
 # Exécutez depuis la racine de votre projet. Réexécutez pour mettre à jour.
 npx skills add attlaslabs/attlas-skills
@@ -56,12 +56,12 @@ cp -r attlas-skills/skills/attlas-* ~/.claude/skills/
 ```
 
 ```bash Codex
-# Écrit les compétences dans .agents/skills/, que Codex lit.
+# Écrit les skills dans .agents/skills/, que Codex lit.
 npx skills add attlaslabs/attlas-skills
 ```
 
 ```bash Cursor / VS Code / Claude Desktop
-# Clonez le dépôt et copiez les dossiers de compétences dans le répertoire skills du client.
+# Clonez le dépôt et copiez les dossiers de skills dans le répertoire skills du client.
 git clone https://github.com/attlaslabs/attlas-skills
 cp -r attlas-skills/skills/attlas-* <votre-répertoire-skills>/
 ```
@@ -69,49 +69,49 @@ cp -r attlas-skills/skills/attlas-* <votre-répertoire-skills>/
 </CodeGroup>
 
 <Tip>
-  Dans Claude Code, copiez dans `~/.claude/skills/` pour rendre une compétence disponible partout, ou dans
+  Dans Claude Code, copiez dans `~/.claude/skills/` pour rendre une skill disponible partout, ou dans
   `<projet>/.claude/skills/` pour la limiter à un seul projet.
 </Tip>
 
-## Ce que chaque compétence sait
+## Ce que chaque skill sait
 
-Voici les détails que les compétences contiennent pour que votre assistant n'ait pas à les redécouvrir :
+Voici les détails que les skills contiennent pour que votre assistant n'ait pas à les redécouvrir :
 
 - **Lire avant d'écrire.** `list_triggers` avant de réorganiser, `get_chat_config` avant de modifier les
   paramètres, `list_documents` avant de modifier la connaissance.
 - **L'ingestion est asynchrone.** L'ajout d'un document renvoie immédiatement un statut `processing`.
-  La compétence effectue des vérifications périodiques jusqu'à ce que le statut soit `completed`, `failed` ou
+  Le skill effectue des vérifications périodiques jusqu'à ce que le statut soit `completed`, `failed` ou
   `exceeded` avant de vous informer que c'est terminé.
 - **Fusionner ou écraser.** `update_activity_profile` fusionne les clés que vous passez.
-  `update_theme` remplace l'objet thème entier. Les compétences envoient la structure correcte pour chacun.
-- **Les questions appartiennent à un chemin.** Lorsque vous ajoutez une source, la compétence crée un
+  `update_theme` remplace l'objet thème entier. Les skills envoient la structure correcte pour chacun.
+- **Les questions appartiennent à un chemin.** Lorsque vous ajoutez une source, le skill crée un
   déclencheur pour celle-ci et imbrique 2 à 5 questions générées à partir du propre contenu de cette source
   en dessous, plutôt que de déposer une liste plate de questions sans structure.
 - **Un appel ou deux.** `generate_and_nest` génère les questions et les crée sous un déclencheur parent en une
-  seule étape. `generate_questions` renvoie simplement des suggestions à approuver d'abord. La compétence
+  seule étape. `generate_questions` renvoie simplement des suggestions à approuver d'abord. Le skill
   choisit selon que la formulation nécessite une révision.
 - **Les suppressions diffèrent.** Les déclencheurs et les contacts sont placés dans une corbeille de 30 jours.
-  Les documents sont supprimés de manière permanente. La compétence demande confirmation avant les
+  Les documents sont supprimés de manière permanente. Le skill demande confirmation avant les
   suppressions groupées.
 - **Les limites du forfait apparaissent sous `feature_not_available`.** Certaines sources (liens vidéo et
-  sociaux) et intégrations nécessitent un forfait payant. La compétence vérifie et vous le dit clairement.
-- **La structure détermine la qualité des réponses.** Lorsque la compétence rédige un document de connaissance,
+  sociaux) et intégrations nécessitent un forfait payant. Le skill vérifie et vous le dit clairement.
+- **La structure détermine la qualité des réponses.** Lorsque le skill rédige un document de connaissance,
   elle utilise des titres et des listes Markdown, un sujet par document, et signale les réponses
   contradictoires ou faibles afin que vous puissiez les corriger par une mise à jour de document ou une
   Correction.
 
 ## Vérifier l'installation
 
-Demandez à votre assistant quelque chose qu'une compétence couvre et observez quels outils MCP il appelle :
+Demandez à votre assistant quelque chose qu'un skill couvre et observez quels outils MCP il appelle :
 
 <Steps>
   <Step title="Lister vos chats">
     Demandez « liste mes chats Attlas ». Cela confirme la connexion MCP et renvoie les identifiants
-    numériques de chat dont les compétences ont besoin.
+    numériques de chat dont les skills ont besoin.
   </Step>
   <Step title="Essayer un flux de travail">
     Demandez « sur mon chat &lt;nom du chat&gt;, ajoute une réponse rapide qui demande des informations
-    sur les tarifs ». La compétence `attlas-triggers` devrait appeler `list_chats`, puis `list_triggers`,
+    sur les tarifs ». Le skill `attlas-triggers` devrait appeler `list_chats`, puis `list_triggers`,
     puis `create_trigger`.
   </Step>
 </Steps>
