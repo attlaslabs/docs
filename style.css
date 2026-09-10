@@ -7,7 +7,7 @@ html, main, body {
 }
 
 .sidebar-group ul {
-    padding-left: 16px;
+    padding-left: 1rem;
 }
 
 .prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)) {
@@ -38,20 +38,27 @@ html, main, body {
     height: stretch;
 }
 
+#header p {
+    text-wrap: pretty;
+}
+
 #header {
-    padding: 18px;
+    padding: 1.25rem;
     background-color: rgb(0, 0, 0, 0.03);
-    border-radius: 14px;
-    margin-left: -18px;
-    margin-right: -18px;
+    border-radius: 0.875rem;
+    margin: 0;
 }
 
 @media (min-width: 768px) {
     #header {
-        padding: 24px;
-        border-radius: 20px;
-        margin-left: -24px;
-        margin-right: -24px;
+        padding: 1.5rem;
+        margin-left: -1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    [role="list"] {
+        margin-left: 0.75rem;
     }
 }
 
@@ -59,14 +66,23 @@ html, main, body {
     background-color: rgba(255, 255, 255, 0.025);
 }
 
+@media (max-width: 639px) {
+  [data-table-wrapper] {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+
 .mdx-content img, .mdx-content video {
-    border-radius: 12px;
+    border-radius: 0.75rem;
     margin-bottom: 1.25em;
 }
 
 .mdx-content picture > img {
     margin-bottom: 0;
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 [data-name="frame"] {
@@ -80,10 +96,10 @@ html, main, body {
 
 @media (min-width: 768px) {
     .mdx-content img, .mdx-content video {
-        border-radius: 20px;
+        border-radius: 1.25rem;
     }
     .mdx-content picture > img {
-        border-radius: 12px;
+        border-radius: 0.75rem;
     }
 }
 
