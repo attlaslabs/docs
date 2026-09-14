@@ -64,14 +64,14 @@ Sélectionnez votre outil ci-dessous pour copier la commande ou la configuration
 
 ```bash Claude Code
 # Run this in your terminal from your project folder:
-claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slug>
+claude mcp add attlas --transport http https://mcp.attlas.so/chat/<your-chat-slug>
 ```
 
 ```json Cursor
 {
   "mcpServers": {
     "attlas": {
-      "url": "https://attlas.so/mcp/chat/<your-chat-slug>"
+      "url": "https://mcp.attlas.so/chat/<your-chat-slug>"
     }
   }
 }
@@ -84,7 +84,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slu
       "command": "npx",
       "args": [
         "mcp-remote",
-        "https://attlas.so/mcp/chat/<your-chat-slug>"
+        "https://mcp.attlas.so/chat/<your-chat-slug>"
       ]
     }
   }
@@ -96,7 +96,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slu
   "servers": {
     "attlas": {
       "type": "http",
-      "url": "https://attlas.so/mcp/chat/<your-chat-slug>"
+      "url": "https://mcp.attlas.so/chat/<your-chat-slug>"
     }
   }
 }
@@ -105,7 +105,7 @@ claude mcp add attlas --transport http https://attlas.so/mcp/chat/<your-chat-slu
 ```toml Codex
 [mcp_servers.attlas]
 command = "npx"
-args = ["mcp-remote", "https://attlas.so/mcp/chat/<your-chat-slug>"]
+args = ["mcp-remote", "https://mcp.attlas.so/chat/<your-chat-slug>"]
 ```
 
 </CodeGroup>

@@ -36,7 +36,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
   <Step title="Configurez votre client IA">
     Le point de terminaison MCP de l'espace de travail est hébergé à l'adresse :
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
 
     Sélectionnez votre outil d'IA ci-dessous pour copier la commande de configuration ou le fichier de configuration :
@@ -45,7 +45,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
 
     ```bash Claude Code
     # Run in your terminal from your project directory:
-    claude mcp add attlas --transport http https://attlas.so/mcp \
+    claude mcp add attlas --transport http https://mcp.attlas.so \
       --header "Authorization: Bearer atk_your_api_key"
     ```
 
@@ -53,7 +53,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
     {
       "mcpServers": {
         "attlas": {
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -69,7 +69,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
           "command": "npx",
           "args": [
             "mcp-remote",
-            "https://attlas.so/mcp",
+            "https://mcp.attlas.so",
             "--header",
             "Authorization: Bearer atk_your_api_key"
           ]
@@ -83,7 +83,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
       "servers": {
         "attlas": {
           "type": "http",
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -97,7 +97,7 @@ Connectez votre assistant IA à votre espace de travail Attlas en trois étapes 
     command = "npx"
     args = [
       "mcp-remote",
-      "https://attlas.so/mcp",
+      "https://mcp.attlas.so",
       "--header",
       "Authorization: Bearer atk_your_api_key"
     ]
@@ -131,7 +131,7 @@ Pour vous connecter depuis claude.ai ou l'application de bureau Claude, ajoutez 
   </Step>
   <Step title="Saisir l'URL">
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
   </Step>
   <Step title="Définir l'authentification sur Aucun">

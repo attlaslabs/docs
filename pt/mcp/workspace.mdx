@@ -36,7 +36,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
   <Step title="Configure seu cliente de IA">
     O endpoint MCP do workspace está hospedado em:
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
 
     Selecione sua ferramenta de IA abaixo para copiar o comando de configuração ou o arquivo de configuração:
@@ -45,7 +45,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
 
     ```bash Claude Code
     # Execute no terminal a partir do diretório do seu projeto:
-    claude mcp add attlas --transport http https://attlas.so/mcp \
+    claude mcp add attlas --transport http https://mcp.attlas.so \
       --header "Authorization: Bearer atk_your_api_key"
     ```
 
@@ -53,7 +53,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
     {
       "mcpServers": {
         "attlas": {
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -69,7 +69,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
           "command": "npx",
           "args": [
             "mcp-remote",
-            "https://attlas.so/mcp",
+            "https://mcp.attlas.so",
             "--header",
             "Authorization: Bearer atk_your_api_key"
           ]
@@ -83,7 +83,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
       "servers": {
         "attlas": {
           "type": "http",
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -97,7 +97,7 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
     command = "npx"
     args = [
       "mcp-remote",
-      "https://attlas.so/mcp",
+      "https://mcp.attlas.so",
       "--header",
       "Authorization: Bearer atk_your_api_key"
     ]
@@ -131,7 +131,7 @@ Para conectar a partir do claude.ai ou do aplicativo desktop do Claude, adicione
   </Step>
   <Step title="Insira a URL">
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
   </Step>
   <Step title="Defina Autenticação como Nenhuma">

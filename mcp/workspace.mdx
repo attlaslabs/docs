@@ -36,7 +36,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
   <Step title="Configure your AI client">
     The workspace MCP endpoint is hosted at:
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
 
     Select your AI tool below to copy the setup command or configuration file:
@@ -45,7 +45,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
 
     ```bash Claude Code
     # Run in your terminal from your project directory:
-    claude mcp add attlas --transport http https://attlas.so/mcp \
+    claude mcp add attlas --transport http https://mcp.attlas.so \
       --header "Authorization: Bearer atk_your_api_key"
     ```
 
@@ -53,7 +53,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
     {
       "mcpServers": {
         "attlas": {
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -69,7 +69,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
           "command": "npx",
           "args": [
             "mcp-remote",
-            "https://attlas.so/mcp",
+            "https://mcp.attlas.so",
             "--header",
             "Authorization: Bearer atk_your_api_key"
           ]
@@ -83,7 +83,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
       "servers": {
         "attlas": {
           "type": "http",
-          "url": "https://attlas.so/mcp",
+          "url": "https://mcp.attlas.so",
           "headers": {
             "Authorization": "Bearer atk_your_api_key"
           }
@@ -97,7 +97,7 @@ Connect your AI assistant to your Attlas workspace in three steps:
     command = "npx"
     args = [
       "mcp-remote",
-      "https://attlas.so/mcp",
+      "https://mcp.attlas.so",
       "--header",
       "Authorization: Bearer atk_your_api_key"
     ]
@@ -131,7 +131,7 @@ To connect from claude.ai or the Claude desktop app, add Attlas as a **custom co
   </Step>
   <Step title="Enter the URL">
     ```text
-    https://attlas.so/mcp
+    https://mcp.attlas.so
     ```
   </Step>
   <Step title="Set Authentication to None">
