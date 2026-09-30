@@ -1,67 +1,123 @@
 ---
 title: "Base de données SQL"
-description: "Laissez Attlas interroger vos bases de données SQL directement pour analyser les données et répondre à des questions complexes en temps réel."
+description: "Laissez Attlas interroger directement vos bases de données SQL pour analyser des données et répondre à des questions complexes en temps réel."
 og:image: "/images/thumbs/thumb_postgresql.webp"
 ---
 
-L'intégration de base de données SQL (compatible PostgreSQL) vous permet de connecter une base de données à votre espace de discussion. Une fois connecté, Attlas pourra lire le schéma des tables autorisées et formuler des requêtes de lecture pour répondre avec précision aux questions de vos utilisateurs.
+L'intégration de base de données SQL (compatible PostgreSQL) connecte une base de données à votre chat. Attlas lit la structure des tables que vous choisissez de partager et écrit des requêtes en lecture seule pour répondre aux questions de vos visiteurs avec des données en direct.
+
+Elle fonctionne avec toute base de données PostgreSQL, et Supabase est le moyen le plus simple de commencer.
 
 ---
 
-## **🛠️ Comment connecter**
+## **🛠️ Comment se connecter**
 
-1. Accédez à vos **Paramètres de discussion** \> **Intégrations** \> **Base de données SQL**.
-2. Cliquez sur **Connecter** et renseignez les informations de votre base de données :
-   - **Nom et description :** un nom convivial et une description pour aider l'IA à comprendre les données contenues.
-   - **Devise (facultatif) :** la devise principale utilisée pour les valeurs monétaires dans vos tables, ce qui aide l'IA à formater et interpréter les données financières.
-   - **Hôte et port :** l'adresse et le port de votre serveur de base de données (par défaut `5432` pour PostgreSQL).
-   - **Base de données :** le nom de votre base de données.
-   - **Utilisateur et mot de passe :** vos identifiants de base de données (idéalement en lecture seule).
-   - **Mode SSL :** sélectionnez `require` ou `disable`.
-3. Cliquez sur **Tester** pour vérifier les identifiants et voir combien de tables sont trouvées.
-4. Cliquez sur **Enregistrer** pour terminer.
+1. Allez dans vos **Paramètres du chat** \> **Intégrations** \> **Base de données SQL**.
+2. Cliquez sur **Connect** et remplissez les détails de votre base de données :
+   - **Nom et description :** Un nom et une description conviviaux pour aider l'IA à comprendre les données qu'elle contient.
+   - **Devise (facultatif) :** La devise principale utilisée pour les valeurs monétaires dans vos tables, aidant l'IA à formater et interpréter les données financières.
+   - **Hôte et port :** L'adresse et le port de votre serveur de base de données (par défaut `5432` pour PostgreSQL).
+   - **Base de données :** Le nom de votre base de données.
+   - **Utilisateur et mot de passe :** Vos identifiants de base de données (idéalement en lecture seule).
+   - **Mode SSL :** Sélectionnez `require` ou `disable`.
+3. Cliquez sur **Test** pour vérifier les identifiants et voir combien de tables sont trouvées.
+4. Cliquez sur **Save** pour terminer.
 
 ---
 
-## Remplir les informations de connexion
+## Connecter une base de données Supabase
 
-Cliquez sur le bouton Connecter pour ouvrir le formulaire et renseigner les champs suivants :
+Supabase affiche deux types de détails de connexion. Utilisez celui du pooler.
+
+<Warning>
+  L'hôte de **connexion directe** (`db.<project-ref>.supabase.co`) ne fonctionne qu'avec IPv6, et Attlas se connecte via IPv4. Cela échoue avec une erreur `ENETUNREACH`.
+</Warning>
+
+1. Dans votre projet Supabase, cliquez sur **Connect** en haut du tableau de bord.
+2. Ouvrez l'onglet **Session pooler**.
+3. Copiez les valeurs dans le formulaire :
+
+| Champ | Valeur |
+| --- | --- |
+| Hôte | `aws-0-<region>.pooler.supabase.com` |
+| Port | `5432` |
+| Base de données | `postgres` |
+| Utilisateur | `postgres.<project-ref>` (conservez le suffixe `.<project-ref>`) |
+| Mot de passe | Votre mot de passe de base de données |
+| Mode SSL | `require` |
+
+<Tip>
+  Si vous voyez « Tenant or user not found », vérifiez que votre utilisateur inclut la référence du projet. Si vous avez oublié le mot de passe, réinitialisez-le depuis la même page Supabase.
+</Tip>
+
+---
+
+## Remplir les détails de connexion
+
+Cliquez sur le bouton Connect pour ouvrir le formulaire et remplissez les champs suivants :
 
 | Champ | Exemple de description |
 | --- | --- |
 | Nom | Un nom convivial pour identifier cette connexion |
 | Description | Une description de ce que fait la base de données (aide Attlas à comprendre le contexte des données) |
 | Devise | La devise principale utilisée pour les données monétaires dans cette base de données (par exemple, USD, EUR), facultatif |
-| Hôte | L'adresse de votre serveur de base de données. [db.example.com](http://db.example.com) ou 123.45.67.89 |
+| Hôte | L'adresse de votre serveur de base de données, par exemple `aws-0-us-west-1.pooler.supabase.com` ou `123.45.67.89` |
 | Port | Le port de connexion (5432 par défaut pour PostgreSQL) |
 | Base de données | Le nom de votre base de données |
-| Utilisateur | Le nom d'utilisateur de connexion |
+| Utilisateur | Le nom d'utilisateur de connexion, par exemple `postgres.<project-ref>` sur Supabase |
 | Mot de passe | Le mot de passe associé à l'utilisateur |
 | Mode SSL | Le niveau de sécurité de la connexion SSL |
+| Instructions | Règles facultatives sur la façon dont Attlas utilise cette base de données. Disponible dans les paramètres une fois connecté |
 
 ---
 
 ## **⚙️ Gérer votre intégration**
 
-Cliquez sur **Paramètres** sur la carte de votre base de données SQL active pour gérer les éléments suivants :
+Cliquez sur **Settings** sur la carte de votre base de données SQL active pour gérer les éléments suivants :
 
-- **Sélectionner les tables à partager :** vous n'avez pas à tout partager. Activez/désactivez les tables ou vues spécifiques auxquelles l'IA est autorisée à accéder.
-- **Actualiser le schéma :** si vous ajoutez ou modifiez des colonnes/tables dans votre base de données, cliquez sur **Actualiser** pour synchroniser les modifications avec l'IA.
-- **Désactiver temporairement :** activez ou désactivez l'intégration à tout moment à l'aide du bouton à bascule.
-- **Déconnecter :** cliquez sur **Déconnecter** pour supprimer complètement la connexion à la base de données.
+- **Sélectionner les tables à partager :** Choisissez les tables ou vues qu'Attlas peut lire. Attlas vérifie cette liste à chaque requête et bloque toute table que vous n'avez pas partagée, quelles que soient les permissions de votre utilisateur de base de données.
+- **Instructions :** Écrivez les règles qu'Attlas doit suivre avec vos données (voir ci-dessous).
+- **Actualiser le schéma :** Après avoir ajouté ou modifié des tables ou des colonnes, cliquez sur **Refresh** pour les synchroniser.
+- **Désactiver temporairement :** Activez ou désactivez l'intégration avec l'interrupteur.
+- **Déconnecter :** Supprimez la connexion à la base de données.
+
+### Instructions
+
+La description indique ce que contient votre base de données. Les instructions indiquent comment l'utiliser. Écrivez une règle par ligne, jusqu'à 1 000 caractères :
+
+```text
+- Ne montre que les projets au statut 'published'.
+- Les prix sont stockés en centimes.
+- 'code' est l'identifiant que les clients utilisent.
+- Ne cite jamais les lots marqués 'soldout'.
+```
+
+<Tip>
+  Utilisez les instructions pour masquer les brouillons, expliquer les unités, ou nommer la colonne que vos clients utilisent pour trouver un article.
+</Tip>
+
+### Schémas
+
+Attlas lit tous les schémas de votre base de données, pas seulement `public`. Les tables en dehors de `public` apparaissent sous la forme `schema.table`, par exemple `cms.projects`. Les schémas internes de Supabase (`auth`, `storage`, `realtime`, `vault` et similaires) ne sont jamais lus.
+
+<Note>
+  Les connexions existantes ne voient les nouveaux schémas qu'après avoir cliqué sur **Refresh Schema**. Votre sélection actuelle de tables reste inchangée.
+</Note>
 
 ## **💡 Bonnes pratiques pour le schéma de base de données**
 
 Pour aider Attlas à écrire des requêtes précises et à effectuer des calculs exacts, tenez compte de ces conseils de conception de schéma :
 
-- **Utilisez des types de colonnes précis :** si vous souhaitez que le chat effectue des calculs, tels que des sommes, des moyennes ou des ratios, sur des données numériques, assurez-vous que ces colonnes utilisent un type numérique, tel que `numeric`, `decimal`, `integer` ou `float`. Évitez de stocker des nombres sous forme de texte, comme `varchar` ou `text`, car cela rend les calculs plus difficiles et moins précis.
-- **Ajoutez des commentaires de colonne :** utilisez les commentaires de base de données sur vos tables et colonnes. Ajouter une brève description directement à une colonne, par exemple `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fournit un contexte essentiel qui guide Attlas dans la rédaction des requêtes SQL correctes.
+- **Utilisez des types de colonnes précis :** Si vous voulez que le chat effectue des calculs, comme des sommes, des moyennes ou des ratios, sur des données numériques, assurez-vous que ces colonnes utilisent un type numérique, tel que `numeric`, `decimal`, `integer` ou `float`. Évitez de stocker les nombres sous forme de texte, comme `varchar` ou `text`, car cela rend les calculs plus difficiles et moins précis.
+- **Ajoutez des commentaires aux colonnes :** Utilisez les commentaires de base de données sur vos tables et colonnes. L'ajout d'une brève description directement sur une colonne, par exemple `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fournit un contexte crucial qui guide Attlas dans l'écriture des requêtes SQL correctes.
 
 ---
 
 ## **🔒 Bonnes pratiques de sécurité**
 
-Pour protéger vos données, nous vous recommandons vivement :
+Pour garantir la sécurité de vos données, nous vous recommandons vivement :
 
-- **Utilisez un utilisateur en lecture seule :** créez un utilisateur de base de données avec uniquement les autorisations `SELECT`. Attlas n'a pas besoin d'accès en écriture (`INSERT`, `UPDATE`, `DELETE`).
-- **Gardez SSL activé :** nous vous recommandons de configurer `sslmode` sur `require` pour chiffrer les données en transit.
+- **Partagez uniquement ce dont vous avez besoin :** Attlas rejette toute requête qui touche une table que vous n'avez pas partagée. Gardez les tables contenant des données personnelles ou des identifiants décochées.
+- **Les vues nécessitent leurs tables sources :** Une vue que vous partagez lit depuis d'autres tables. Ces tables doivent également être partagées.
+- **Utilisez un utilisateur en lecture seule :** Créez un utilisateur de base de données avec uniquement les permissions `SELECT`. Attlas n'envoie que des requêtes en lecture, et un utilisateur en lecture seule ajoute une couche de protection supplémentaire.
+- **Gardez SSL activé :** Définissez `sslmode` sur `require` pour chiffrer les données en transit.

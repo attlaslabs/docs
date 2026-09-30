@@ -4,7 +4,9 @@ description: "Let Attlas query your SQL databases directly to analyze data and a
 og:image: "/images/thumbs/thumb_postgresql.webp"
 ---
 
-The SQL database integration (PostgreSQL-compatible) allows you to connect a database to your chat room. Once connected, Attlas will be able to read the schema of the authorized tables and formulate read queries to accurately answer your users' questions.
+The SQL database integration (PostgreSQL-compatible) connects a database to your chat. Attlas reads the structure of the tables you choose to share and writes read-only queries to answer your visitors' questions with live data.
+
+It works with any PostgreSQL database, and Supabase is the easiest place to start.
 
 ---
 
@@ -23,6 +25,33 @@ The SQL database integration (PostgreSQL-compatible) allows you to connect a dat
 
 ---
 
+## Connect a Supabase database
+
+Supabase shows two kinds of connection details. Use the pooler one.
+
+<Warning>
+  The **Direct connection** host (`db.<project-ref>.supabase.co`) only works over IPv6, and Attlas connects over IPv4. It fails with an `ENETUNREACH` error.
+</Warning>
+
+1. In your Supabase project, click **Connect** at the top of the dashboard.
+2. Open the **Session pooler** tab.
+3. Copy the values into the form:
+
+| Field | Value |
+| --- | --- |
+| Host | `aws-0-<region>.pooler.supabase.com` |
+| Port | `5432` |
+| Database | `postgres` |
+| User | `postgres.<project-ref>` (keep the `.<project-ref>` suffix) |
+| Password | Your database password |
+| SSL Mode | `require` |
+
+<Tip>
+  If you see "Tenant or user not found", check that your user includes the project reference. If you forgot the password, reset it from the same Supabase page.
+</Tip>
+
+---
+
 ## Fill in the connection details
 
 Click the Connect button to open the form and fill in the following fields:
@@ -32,12 +61,13 @@ Click the Connect button to open the form and fill in the following fields:
 | Name | A friendly name to identify this connection |
 | Description | A description of what the database does (helps Attlas understand the context of the data) |
 | Currency | The primary currency used for monetary data in this database (e.g., USD, EUR), optional |
-| Host | The address of your database server.	[db.example.com](http://db.example.com) or 123.45.67.89 |
+| Host | The address of your database server, for example `aws-0-us-west-1.pooler.supabase.com` or `123.45.67.89` |
 | Port | The connection port (5432 by default for PostgreSQL) |
 | Database | The name of your database |
-| User | The connection username |
+| User | The connection username, for example `postgres.<project-ref>` on Supabase |
 | Password | The password associated with the user |
 | SSL Mode | The security level of the SSL connection |
+| Instructions | Optional rules for how Attlas uses this database. Available in the settings once connected |
 
 ---
 
@@ -45,10 +75,34 @@ Click the Connect button to open the form and fill in the following fields:
 
 Click **Settings** on your active SQL Database card to manage the following:
 
-- **Select Tables to Share:** You don't have to share everything. Toggle which specific tables or views the AI is allowed to access.
-- **Refresh Schema:** If you add or edit columns/tables in your database, click **Refresh** to sync the changes with the AI.
-- **Temporarily Disable:** Turn the integration on or off at any time using the toggle switch.
-- **Disconnect:** Click **Disconnect** to completely remove the database connection.
+- **Select Tables to Share:** Choose which tables or views Attlas can read. Attlas checks this list on every query and blocks any table you did not share, whatever your database user is allowed to read.
+- **Instructions:** Write the rules Attlas must follow with your data (see below).
+- **Refresh Schema:** After you add or change tables or columns, click **Refresh** to sync them.
+- **Temporarily Disable:** Turn the integration on or off with the toggle.
+- **Disconnect:** Remove the database connection.
+
+### Instructions
+
+The description says what your database contains. Instructions say how to use it. Write one rule per line, up to 1,000 characters:
+
+```text
+- Only show projects with status 'published'.
+- Prices are stored in cents.
+- 'code' is the identifier customers use.
+- Never mention units marked 'soldout'.
+```
+
+<Tip>
+  Use instructions to hide drafts, explain units, or name the column your customers use to find an item.
+</Tip>
+
+### Schemas
+
+Attlas reads every schema in your database, not only `public`. Tables outside `public` appear as `schema.table`, for example `cms.projects`. Internal Supabase schemas (`auth`, `storage`, `realtime`, `vault` and similar) are never read.
+
+<Note>
+  Existing connections only see new schemas after you click **Refresh Schema**. Your current table selection stays unchanged.
+</Note>
 
 ## **💡 Best practices for database schema**
 
@@ -63,5 +117,7 @@ To help Attlas write accurate queries and perform precise calculations, consider
 
 To keep your data safe, we highly recommend:
 
-- **Use a Read-Only User:** Create a database user with only `SELECT` permissions. Attlas does not need write access (`INSERT`, `UPDATE`, `DELETE`).
-- **Keep SSL Enabled:** We recommend setting `sslmode` to `require` to encrypt data in transit.
+- **Share only what you need:** Attlas rejects any query that touches a table you did not share. Keep tables with personal data or credentials unchecked.
+- **Views need their source tables:** A view you share reads from other tables. Those tables must be shared too.
+- **Use a read-only user:** Create a database user with only `SELECT` permissions. Attlas only sends read queries, and a read-only user adds a second layer of protection.
+- **Keep SSL enabled:** Set `sslmode` to `require` to encrypt data in transit.

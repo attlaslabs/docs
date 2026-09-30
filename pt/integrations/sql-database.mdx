@@ -1,67 +1,123 @@
 ---
 title: "Banco de dados SQL"
-description: "Permita que o Attlas consulte seus bancos de dados SQL diretamente para analisar dados e responder a perguntas complexas em tempo real."
+description: "Permita que o Attlas consulte seus bancos de dados SQL diretamente para analisar dados e responder perguntas complexas em tempo real."
 og:image: "/images/thumbs/thumb_postgresql.webp"
 ---
 
-A integração com banco de dados SQL (compatível com PostgreSQL) permite conectar um banco de dados à sua sala de chat. Uma vez conectado, o Attlas será capaz de ler o esquema das tabelas autorizadas e formular consultas de leitura para responder com precisão às perguntas dos seus usuários.
+A integração com banco de dados SQL (compatível com PostgreSQL) conecta um banco de dados ao seu chat. O Attlas lê a estrutura das tabelas que você escolhe compartilhar e escreve consultas somente leitura para responder às perguntas dos visitantes com dados em tempo real.
+
+Funciona com qualquer banco de dados PostgreSQL, e o Supabase é o lugar mais fácil para começar.
 
 ---
 
 ## **🛠️ Como conectar**
 
-1. Acesse **Configurações do Chat** \> **Integrações** \> **Banco de Dados SQL**.
+1. Vá para **Configurações do Chat** \> **Integrações** \> **Banco de dados SQL**.
 2. Clique em **Conectar** e preencha os detalhes do seu banco de dados:
-   - **Nome e descrição:** Um nome amigável e uma descrição para ajudar a IA a entender quais dados estão contidos.
-   - **Moeda (opcional):** A moeda principal usada para valores monetários nas suas tabelas, ajudando a IA a formatar e interpretar dados financeiros.
-   - **Host e porta:** O endereço do servidor do banco de dados e a porta (o padrão é `5432` para PostgreSQL).
+   - **Nome e descrição:** Um nome amigável e uma descrição para ajudar a IA a entender que dados estão contidos.
+   - **Moeda (opcional):** A moeda principal usada para valores monetários em suas tabelas, auxiliando a IA a formatar e interpretar dados financeiros.
+   - **Host e porta:** O endereço do servidor de banco de dados e a porta (o padrão é `5432` para PostgreSQL).
    - **Banco de dados:** O nome do seu banco de dados.
-   - **Usuário e senha:** Suas credenciais do banco de dados (idealmente somente leitura).
+   - **Usuário e senha:** Suas credenciais do banco de dados (de preferência, somente leitura).
    - **Modo SSL:** Selecione `require` ou `disable`.
 3. Clique em **Testar** para verificar as credenciais e ver quantas tabelas foram encontradas.
-4. Clique em **Salvar** para finalizar.
+4. Clique em **Salvar** para concluir.
+
+---
+
+## Conectar um banco de dados Supabase
+
+O Supabase mostra dois tipos de detalhes de conexão. Use o de pooler.
+
+<Warning>
+  O host de **conexão direta** (`db.<project-ref>.supabase.co`) só funciona sobre IPv6, e o Attlas se conecta via IPv4. Ele falha com um erro `ENETUNREACH`.
+</Warning>
+
+1. No seu projeto Supabase, clique em **Conectar** no topo do painel.
+2. Abra a guia **Session pooler**.
+3. Copie os valores para o formulário:
+
+| Campo | Valor |
+| --- | --- |
+| Host | `aws-0-<region>.pooler.supabase.com` |
+| Porta | `5432` |
+| Banco de dados | `postgres` |
+| Usuário | `postgres.<project-ref>` (mantenha o sufixo `.<project-ref>`) |
+| Senha | Sua senha do banco de dados |
+| Modo SSL | `require` |
+
+<Tip>
+  Se você vir "Tenant or user not found", verifique se o seu usuário inclui a referência do projeto. Se você esqueceu a senha, redefina-a na mesma página do Supabase.
+</Tip>
 
 ---
 
 ## Preencha os detalhes da conexão
 
-Clique no botão Conectar para abrir o formulário e preencha os seguintes campos:
+Clique no botão Conectar para abrir o formulário e preencher os seguintes campos:
 
 | Campo | Exemplo de descrição |
 | --- | --- |
-| Nome | Um nome amigável para identificar essa conexão |
+| Nome | Um nome amigável para identificar esta conexão |
 | Descrição | Uma descrição do que o banco de dados faz (ajuda o Attlas a entender o contexto dos dados) |
-| Moeda | A moeda principal usada para dados monetários neste banco de dados (ex.: USD, EUR), opcional |
-| Host | O endereço do servidor do banco de dados.	[db.example.com](http://db.example.com) ou 123.45.67.89 |
+| Moeda | A moeda principal usada para dados monetários neste banco de dados (por exemplo, USD, EUR), opcional |
+| Host | O endereço do servidor do seu banco de dados, por exemplo `aws-0-us-west-1.pooler.supabase.com` ou `123.45.67.89` |
 | Porta | A porta de conexão (5432 por padrão para PostgreSQL) |
 | Banco de dados | O nome do seu banco de dados |
-| Usuário | O nome de usuário da conexão |
+| Usuário | O nome de usuário da conexão, por exemplo `postgres.<project-ref>` no Supabase |
 | Senha | A senha associada ao usuário |
 | Modo SSL | O nível de segurança da conexão SSL |
+| Instruções | Regras opcionais sobre como o Attlas usa este banco de dados. Disponíveis nas configurações depois de conectar |
 
 ---
 
 ## **⚙️ Gerenciando sua integração**
 
-Clique em **Configurações** no cartão do Banco de Dados SQL ativo para gerenciar o seguinte:
+Clique em **Configurações** no cartão do seu Banco de dados SQL ativo para gerenciar o seguinte:
 
-- **Selecionar tabelas para compartilhar:** Você não precisa compartilhar tudo. Ative/desative quais tabelas ou views específicas a IA tem permissão para acessar.
-- **Atualizar esquema:** Se você adicionar ou editar colunas/tabelas no banco de dados, clique em **Atualizar** para sincronizar as mudanças com a IA.
-- **Desativar temporariamente:** Ligue ou desligue a integração a qualquer momento usando o botão de alternância.
-- **Desconectar:** Clique em **Desconectar** para remover completamente a conexão com o banco de dados.
+- **Selecionar tabelas para compartilhar:** Escolha quais tabelas ou views o Attlas pode ler. O Attlas verifica esta lista a cada consulta e bloqueia qualquer tabela que você não compartilhou, independentemente do que seu usuário de banco de dados tem permissão para ler.
+- **Instruções:** Escreva as regras que o Attlas deve seguir com seus dados (veja abaixo).
+- **Atualizar schema:** Após adicionar ou alterar tabelas ou colunas, clique em **Atualizar** para sincronizá-las.
+- **Desativar temporariamente:** Ative ou desative a integração com o botão de alternância.
+- **Desconectar:** Remova a conexão com o banco de dados.
 
-## **💡 Melhores práticas para o esquema do banco de dados**
+### Instruções
 
-Para ajudar o Attlas a escrever consultas precisas e realizar cálculos exatos, considere estas dicas de design de esquema:
+A descrição diz o que o seu banco de dados contém. As instruções dizem como usá-lo. Escreva uma regra por linha, até 1.000 caracteres:
 
-- **Use tipos de coluna precisos:** Se você deseja que o chat realize cálculos, como somas, médias ou proporções, em dados numéricos, certifique-se de que essas colunas usem um tipo numérico, como `numeric`, `decimal`, `integer` ou `float`. Evite armazenar números como texto, como `varchar` ou `text`, pois isso torna os cálculos mais difíceis e menos precisos.
-- **Adicione comentários nas colunas:** Use comentários do banco de dados nas suas tabelas e colunas. Adicionar uma breve descrição diretamente a uma coluna, por exemplo `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fornece um contexto crucial que orienta o Attlas a escrever as consultas SQL corretas.
+```text
+- Mostre apenas projetos com status 'published'.
+- Os preços são armazenados em centavos.
+- 'code' é o identificador que os clientes usam.
+- Nunca mencione unidades marcadas como 'soldout'.
+```
+
+<Tip>
+  Use instruções para ocultar rascunhos, explicar unidades ou nomear a coluna que seus clientes usam para encontrar um item.
+</Tip>
+
+### Esquemas
+
+O Attlas lê todos os esquemas do seu banco de dados, não apenas o `public`. Tabelas fora do `public` aparecem como `schema.tabela`, por exemplo `cms.projects`. Os esquemas internos do Supabase (`auth`, `storage`, `realtime`, `vault` e similares) nunca são lidos.
+
+<Note>
+  Conexões existentes só veem novos esquemas após você clicar em **Atualizar schema**. Sua seleção atual de tabelas permanece inalterada.
+</Note>
+
+## **💡 Boas práticas para o schema do banco de dados**
+
+Para ajudar o Attlas a escrever consultas precisas e realizar cálculos exatos, considere estas dicas de design de schema:
+
+- **Use tipos de coluna precisos:** Se você deseja que o chat realize cálculos, como somas, médias ou proporções, em dados numéricos, garanta que essas colunas usem um tipo numérico, como `numeric`, `decimal`, `integer` ou `float`. Evite armazenar números como texto, como `varchar` ou `text`, pois isso torna os cálculos mais difíceis e menos precisos.
+- **Adicione comentários nas colunas:** Use comentários de banco de dados em suas tabelas e colunas. Adicionar uma breve descrição diretamente a uma coluna, por exemplo `COMMENT ON COLUMN users.status IS 'Active statuses: active, suspended, pending'`, fornece contexto crucial que orienta o Attlas a escrever as consultas SQL corretas.
 
 ---
 
-## **🔒 Melhores práticas de segurança**
+## **🔒 Boas práticas de segurança**
 
 Para manter seus dados seguros, recomendamos fortemente:
 
-- **Use um usuário somente leitura:** Crie um usuário de banco de dados com apenas permissões `SELECT`. O Attlas não precisa de acesso de gravação (`INSERT`, `UPDATE`, `DELETE`).
-- **Mantenha o SSL ativado:** Recomendamos definir `sslmode` como `require` para criptografar os dados em trânsito.
+- **Compartilhe apenas o necessário:** O Attlas rejeita qualquer consulta que acesse uma tabela que você não compartilhou. Mantenha desmarcadas as tabelas com dados pessoais ou credenciais.
+- **Views precisam de suas tabelas de origem:** Uma view que você compartilha lê de outras tabelas. Essas tabelas também devem ser compartilhadas.
+- **Use um usuário somente leitura:** Crie um usuário de banco de dados com apenas permissões `SELECT`. O Attlas só envia consultas de leitura, e um usuário somente leitura adiciona uma segunda camada de proteção.
+- **Mantenha o SSL ativado:** Defina `sslmode` como `require` para criptografar os dados em trânsito.
