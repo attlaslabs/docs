@@ -1,12 +1,12 @@
 ---
 title: "Compartilhe seu chat em qualquer lugar"
 sidebarTitle: "Opções de compartilhamento"
-description: "Conheça as diferentes formas de distribuir seu chat e alcançar seu público."
+description: "Explore as diferentes maneiras de distribuir seu chat e alcançar seu público."
 ---
 
 Depois que seu chat estiver configurado e treinado, é hora de compartilhá-lo com o mundo.
 
-A Attlas oferece vários métodos de distribuição para que você escolha o que melhor se adapta ao seu público, canal ou projeto.
+Attlas oferece vários métodos de distribuição para que você possa escolher o que melhor se adapta ao seu público, canal ou projeto.
 
 Para acessar essas opções, clique no botão **<kbd>Compartilhar</kbd>** localizado no canto superior direito da plataforma.
 
@@ -16,20 +16,19 @@ Para acessar essas opções, clique no botão **<kbd>Compartilhar</kbd>** locali
 
 ## Opções de compartilhamento
 
-Aqui estão as 4 principais formas de compartilhar seu chat:
+Aqui estão as 3 principais maneiras de compartilhar seu chat:
 
-1. **Link direto**: Perfeito para redes sociais, e-mails e aplicativos de mensagens.
-2. **Escanear e conversar (QR Code)**: Ideal para materiais impressos e locais físicos.
-3. **Balão de chat**: Um botão flutuante no canto inferior do seu site.
-4. **Exibir em uma página (Iframe)**: Um widget inline integrado diretamente às suas páginas.
+1. **Link direto**: Ideal para redes sociais, e-mails e aplicativos de mensagens.
+2. **Escaneie e converse (QR Code)**: Ideal para materiais impressos e locais físicos.
+3. **Incorporar no seu site**: Três modos, **Padrão** (em linha), **Balão** (botão flutuante) e **Popup** (abre a partir do seu próprio botão).
 
 ---
 
 ## Link direto
 
-O link direto permite compartilhar uma versão em página cheia do seu chat. Você pode usá-lo em várias plataformas:
+O link direto permite compartilhar uma versão de página inteira do seu chat. Você pode usá-lo em várias plataformas:
 
-- **Redes sociais**: Compartilhe links diretamente em posts ou links de bio (bio do Instagram, LinkedIn, Linktree).
+- **Redes sociais**: Compartilhe links diretamente em postagens ou links na bio (bio do Instagram, LinkedIn, Linktree).
 - **Mensagens**: Envie diretamente via WhatsApp, SMS ou Telegram.
 - **E-mail**: Adicione a newsletters, campanhas ou assinaturas de e-mail.
 - **Materiais promocionais**: Adicione a apresentações, PDFs ou documentos.
@@ -38,154 +37,180 @@ Basta copiar o link público gerado no seu painel e compartilhá-lo com seu púb
 
 ---
 
-## Escanear e conversar (QR Code)
+## Escaneie e converse (QR Code)
 
-Conecte o mundo físico ao seu chat de IA gerando um QR Code personalizado. É altamente eficaz para:
+Conecte o mundo físico ao seu chat com IA gerando um QR Code personalizado. É muito eficaz para:
 
-- **Materiais impressos**: Cartões de visita, flyers, catálogos e livretos.
-- **Locais físicos**: Cardápios de restaurante, mesas, embalagens ou pôsteres.
+- **Materiais impressos**: Cartões de visita, folhetos, catálogos e livretos.
+- **Locais físicos**: Cardápios de restaurante, mesas, embalagens ou cartazes.
 - **Eventos**: Banners, estandes de feiras e apresentações.
 
-Ao escanear, os usuários serão levados diretamente ao seu chat no navegador do celular.
+Ao serem escaneados, os usuários serão levados diretamente para o seu chat no navegador do celular.
 
 <Info>
-  Se você alterar seu nome de usuário na seção **Perfil**, precisará gerar e baixar um novo QR Code.
+  Se você alterar seu nome de usuário na seção **Perfil**, será necessário gerar e baixar um novo QR Code.
 </Info>
 
 ---
 
-## Adicionar um balão de chat
+## Incorporar no seu site
 
-Adicione um balão de chat flutuante no canto inferior do seu site para que os visitantes possam interagir com seu assistente sem sair do seu site.
+A opção **Incorporar no seu site** coloca seu chat em suas próprias páginas. Escolha um dos três modos, visualize-o ao vivo e copie o código.
 
+| Modo | O que os visitantes veem | Plano |
+| :-- | :-- | :-- |
+| **Padrão** | O chat fica dentro da sua página, como uma imagem ou vídeo. | Todos os planos |
+| **Balão** | Um botão flutuante no canto de cada página. Ele abre o chat em um pequeno painel. | Starter e PRO |
+| **Popup** | O chat abre em uma janela sobre sua página quando alguém clica no seu próprio botão ou link. | Starter e PRO |
 
- ![Site do balão de chat da Attlas](/images/attlas-bubble-chat-site.jpg)
-
+Alterne entre os modos na parte superior do painel. Clique em **Obter o código** para ver o trecho, ou **Voltar para visualização** para retornar.
 
 <Note>
-  A opção de compartilhamento via balão de chat está disponível exclusivamente nos **planos Starter e PRO da Attlas**.
+  O balão e o popup estão disponíveis nos planos **Attlas Starter e PRO**. No plano Gratuito, o painel mostra um botão **Atualizar** em vez do código.
 </Note>
 
-### Instalação
+### Opções
 
-Copie o trecho de script e cole-o logo antes da tag de fechamento `</body>` do seu HTML:
+| Opção | Aplica-se a | O que faz |
+| :-- | :-- | :-- |
+| **Perfil do chat** | Todos os modos | Mostrar ou ocultar o avatar, nome, descrição, links sociais e botão de compartilhamento. |
+| **Altura** | Padrão | Altura do chat na sua página, em pixels (mínimo 300). |
+| **Texto do botão** | Popup | O rótulo do botão que geramos para você. |
+| **Largura** | Popup | Largura da janela popup, em pixels (mínimo 320, padrão 440). |
 
-```html
-<script 
-  id="attlas-widget" 
-  data-chat-id="SEU_CHAT_ID" 
-  src="https://attlas.so/embed.js" 
-  defer>
-</script>
-```
+### Padrão
 
-### Lista de domínios permitidos (Whitelist)
+Cole o código onde o chat deve aparecer: uma central de ajuda, um site de documentação, um portal de suporte ou uma página do Notion.
 
-Para proteger a cota da sua conta e garantir que seu chat seja carregado apenas no seu próprio site, você pode restringir os domínios autorizados a executar o script.
-
-
- ![Screenshot Studio 1781949144938](/images/white-list-domains.webp)
-
-
-- **Como funciona:** Nas **Configurações de incorporação** do seu chat, você pode especificar uma lista de domínios permitidos (ex.: `meusite.com.br`). O script do widget será inicializado apenas nessas origens.
-- **Nenhum domínio especificado (Padrão):** Se a lista de domínios permitidos estiver vazia, o script do widget funcionará em **qualquer domínio** (útil para testes locais).
-
-<Info>
-  A verificação da lista de domínios permitidos é executada dinamicamente quando o script busca a configuração do widget.
-</Info>
-
----
-
-## Exibir em uma página
-
-A opção **Exibir em uma página** permite incorporar o chat completo diretamente em uma página da web usando um iframe. Ao adicionar este código ao seu site, blog ou página do Notion, o chat aparecerá diretamente dentro do conteúdo da página.
-
-Esta opção é ideal para:
-
-- Centrais de ajuda e páginas de FAQ
-- Bases de conhecimento e sites de documentação
-- Portais de suporte
-- Painéis internos
-
-### Instalação
-
-Copie e cole o seguinte código HTML no editor do seu site, no local onde deseja que o chat apareça:
+![Site de chat padrão do Attlas](/images/sharing-standard.webp)
 
 ```html
-<iframe 
-  src="https://attlas.so/chats/seu-slug-de-chat?embed=true" 
-  width="100%" 
-  height="700px">
+<iframe
+  src="https://attlas.so/your-chat-slug?embed=inline"
+  width="100%"
+  height="700"
+  style="border:none;">
 </iframe>
 ```
 
 <Tip>
-  Você pode ajustar a largura e a altura do iframe para se adequar ao layout do seu site.
+  O chat preenche o quadro sem nenhum cartão ao redor. Defina a largura e a altura para se ajustarem ao seu layout.
 </Tip>
 
+### Balão
+
+Cole esta tag no final de cada página que deve mostrar o balão:
+
+```html
+<script src="https://attlas.so/embed.js" id="YOUR_CHAT_ID" async></script>
+```
+
+A cor, posição e ícone do balão vêm das configurações do seu chat. Use o link **Personalizar o balão** no painel para alterá-los.
+
+![Chat em balão do Attlas](/images/sharing-bubble.webp)
+
+### Popup
+
+O popup não tem um botão próprio. Você escolhe o que o abre, para que se adapte ao seu design.
+
+**1. Adicione o script** uma vez, no final da sua página:
+
+```html
+<script src="https://attlas.so/embed.js" id="YOUR_CHAT_ID" data-mode="popup" async></script>
+```
+
+![Chat popup do Attlas](/images/sharing-popup.webp)
+
+**2. Adicione um botão.** Qualquer elemento com o atributo `data-attlas-open` abre o chat: um botão, uma div ou uma imagem.
+
+```html
+<button data-attlas-open="YOUR_CHAT_ID">Chat with us</button>
+```
+
+**Construtores de sites sem atributos personalizados.** Aponte qualquer link para este endereço em vez disso:
+
+```html
+<a href="#attlas-open=YOUR_CHAT_ID">Chat with us</a>
+```
+
+**Seu próprio código.** Abra e feche o popup a partir do JavaScript:
+
+```js
+Attlas.open("YOUR_CHAT_ID", { width: 440 });
+Attlas.close("YOUR_CHAT_ID");
+```
+
+O painel preenche o ID do chat, o texto do botão e a largura para você.
+
+### Lista de permissões de domínio
+
+Para proteger sua cota e garantir que o chat carregue apenas no seu próprio site, restrinja os domínios permitidos para executar o script.
+
+![Domínios permitidos](/images/sharing-domains.webp)
+
+- **Como funciona:** Na seção **Domínios permitidos** abaixo do código do Balão e Popup, adicione os domínios que você usa (por exemplo `mywebsite.com`). O script só inicia nesses domínios.
+- **Nenhum domínio listado (padrão):** O script funciona em **qualquer domínio**, o que é útil para testes locais.
+
 <Warning>
-  **Nota de segurança:** A configuração de lista de domínios permitidos (`allowed_domains`) **aplica-se apenas ao script do widget**. Ela não protege nem restringe o carregamento direto da URL do iframe. Qualquer pessoa que incorporar a URL direta do iframe em uma página personalizada ainda poderá renderizar e interagir com o chat.
+  A lista de permissões se aplica apenas aos scripts **Balão** e **Popup**. Ela não restringe o iframe **Padrão**. Qualquer pessoa que incorporar a URL do iframe em sua própria página ainda poderá exibir e usar o chat.
 </Warning>
 
 ---
 
 ## Canais de distribuição
 
-A aba **Distribuição** no painel de compartilhamento permite criar canais nomeados para rastrear de onde suas conversas estão vindo, por exemplo, distinguindo usuários que chegaram pelo seu site daqueles que vieram por uma newsletter ou um QR Code em um evento.
+A aba **Distribuição** no painel Compartilhar permite criar canais nomeados para rastrear de onde suas conversas estão vindo, por exemplo, distinguindo usuários que chegaram pelo seu site daqueles que vieram por uma newsletter ou um QR Code em um evento.
 
 ### O que é um canal?
 
-Um canal é um rótulo que você define (ex.: `site`, `newsletter`, `evento-junho`). Ao selecioná-lo na aba de compartilhamento, a Attlas anexa automaticamente um parâmetro `?origin=<canal>` a cada método de compartilhamento que você copiar:
+Um canal é um rótulo que você define (ex.: `website`, `newsletter`, `event-june`). Ao selecioná-lo na aba Compartilhar, o Attlas anexa automaticamente um parâmetro `?origin=<channel>` a cada método de compartilhamento que você copiar:
 
 | Método de compartilhamento | Com canal selecionado |
 | :-- | :-- |
-| Link direto | `https://attlas.so/seu-chat?origin=site` |
-| Incorporação por iframe | `src="https://attlas.so/seu-chat?origin=site"` |
-| Script do balão de chat | `<script ... data-origin="site" ...>` |
+| Link direto | `https://attlas.so/your-chat?origin=website` |
+| Padrão (iframe) | `src="https://attlas.so/your-chat?embed=inline&origin=website"` |
+| Script Balão e Popup | `<script ... data-origin="website" ...>` |
 
-Isso permite que você veja em suas análises qual canal originou cada conversa.
+Isso permite ver nas suas análises qual canal gerou cada conversa.
 
 ### Criando um canal
 
-
- ![Aba de canais de distribuição](/images/distribution-channel_1.webp)
-
+ ![Aba canais de distribuição](/images/sharing-channel_1.webp)
 
 1. Abra o painel **Compartilhar** e mude para a aba **Distribuição**.
 2. Clique no campo de entrada do canal e digite um nome (ex.: `newsletter`), depois pressione **Enter** para adicioná-lo.
-3. Repita o processo para adicionar quantos canais precisar.
-4. Os canais são salvos automaticamente, sem necessidade de confirmação extra.
+3. Repita para adicionar quantos canais precisar.
+4. Os canais são salvos automaticamente, sem necessidade de confirmação adicional.
 
 <Info>
-  Os nomes dos canais são convertidos para slug automaticamente: espaços e caracteres especiais são convertidos em hífens e minúsculas (ex.: `Minha Postagem no Blog` → `minha-postagem-no-blog`).
+  Os nomes dos canais são transformados em slugs automaticamente: espaços e caracteres especiais são convertidos em hífens e em letras minúsculas (ex.: `My Blog Post` → `my-blog-post`).
 </Info>
 
 ### Usando um canal ao compartilhar
 
-
- ![Compartilhamento de link de canais de distribuição](/images/distribution-channel_2.webp)
-
+ ![Compartilhamento de link dos canais de distribuição](/images/sharing-channel_2.webp)
 
 1. Volte para a aba **Compartilhar**.
-2. Se você tiver canais definidos, um menu suspenso aparecerá no topo da aba.
+2. Se você tiver canais definidos, um menu suspenso aparece no topo da aba.
 3. Selecione o canal que corresponde ao destino para o qual você está compartilhando.
-4. Copie o link, o código do iframe ou o script, o parâmetro `origin` já está incluído.
+4. Copie o link ou o código de incorporação, o parâmetro `origin` já está incluído.
 
 <Tip>
-  Deixe o seletor de canal em **Todos os canais** quando quiser um link genérico, sem atribuição.
+  Deixe o seletor de canal em **Todos os canais** quando quiser um link genérico sem atribuição.
 </Tip>
 
 ---
 
 ## Qual opção você deve escolher?
 
-Cada método de compartilhamento serve a um propósito diferente:
+Cada método de compartilhamento atende a um propósito diferente:
 
-| Opção | Ideal para | Rastreamento de canal | Lista de domínios permitidos |
+| Opção | Ideal para | Rastreamento de canal | Lista de permissões de domínio |
 | :-- | :-- | :-- | :-- |
 | **Link direto** | Compartilhamento rápido em qualquer canal digital | Sim (`?origin=`) | Não |
-| **Escanear e conversar** | Materiais físicos e QR Codes | Sim (codificado no QR) | Não |
-| **Balão de chat** | Adicionar um assistente interativo ao seu site | Sim (`data-origin=`) | **Sim** (restringe o carregamento do widget) |
-| **Exibir em uma página** | Incorporar a experiência completa do chat inline | Sim (`?origin=`) | Não (ignora as verificações de domínio) |
+| **Escaneie e converse** | Materiais físicos e QR Codes | Sim (codificado no QR) | Não |
+| **Incorporar: Padrão** | O chat completo em linha em uma página | Sim (`origin=`) | Não (ignora verificações de domínio) |
+| **Incorporar: Balão** | Um assistente flutuante em todas as páginas | Sim (`data-origin=`) | **Sim** |
+| **Incorporar: Popup** | Um chat que abre a partir do seu próprio botão ou link | Sim (`data-origin=`) | **Sim** |
 
 Você pode usar uma ou várias dessas opções ao mesmo tempo, criando mais oportunidades para os usuários interagirem com seu chat.

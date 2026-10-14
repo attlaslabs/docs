@@ -16,12 +16,11 @@ To access these options, click the **<kbd>Share</kbd>** button located in the to
 
 ## Sharing options
 
-Here are the 4 main ways to share your chat:
+Here are the 3 main ways to share your chat:
 
 1. **Direct link**: Perfect for social media, emails and messaging apps.
 2. **Scan & Chat (QR Code)**: Ideal for printed materials and physical locations.
-3. **Chat bubble**: A floating button at the bottom of your website.
-4. **Display on a page (Iframe)**: An inline widget integrated directly into your pages.
+3. **Embed on your website**: Three modes, **Standard** (inline), **Bubble** (floating button) and **Popup** (opens from your own button).
 
 ---
 
@@ -54,77 +53,106 @@ When scanned, users will be taken directly to your chat in their mobile browser.
 
 ---
 
-## Add a chat bubble
+## Embed on your website
 
-Add a floating chat bubble in the bottom corner of your website so visitors can interact with your assistant without leaving your site.
+The **Embed on your website** option puts your chat on your own pages. Pick one of three modes, preview it live, then copy the code.
 
+| Mode | What visitors see | Plan |
+| :-- | :-- | :-- |
+| **Standard** | The chat sits inside your page, like an image or a video. | All plans |
+| **Bubble** | A floating button in the corner of every page. It opens the chat in a small panel. | Starter and PRO |
+| **Popup** | The chat opens in a window over your page when someone clicks your own button or link. | Starter and PRO |
 
- ![Attlas Bubble Chat Site](/images/attlas-bubble-chat-site.jpg)
-
+Switch between modes at the top of the panel. Click **Get the code** to see the snippet, or **Back to preview** to return.
 
 <Note>
-  The chat bubble sharing option is available exclusively on the **Attlas Starter and PRO plans**.
+  The bubble and the popup are available on the **Attlas Starter and PRO plans**. On the Free plan, the panel shows an **Upgrade** button instead of the code.
 </Note>
 
-### Installation
+### Options
 
-Copy the script snippet and paste it right before the closing `</body>` tag of your HTML:
+| Option | Applies to | What it does |
+| :-- | :-- | :-- |
+| **Chat profile** | All modes | Show or hide the avatar, name, description, social links and share button. |
+| **Height** | Standard | Height of the chat on your page, in pixels (minimum 300). |
+| **Button text** | Popup | The label of the button we generate for you. |
+| **Width** | Popup | Width of the popup window, in pixels (minimum 320, default 440). |
 
-```html
-<script 
-  id="attlas-widget" 
-  data-chat-id="YOUR_CHAT_ID" 
-  src="https://attlas.so/embed.js" 
-  defer>
-</script>
-```
+### Standard
 
-### Domain Whitelisting
+Paste the code where the chat should appear: a help center, a documentation site, a support portal or a Notion page.
 
-To protect your account's quota and ensure your chat is only loaded on your own website, you can restrict the domains authorized to run the script.
-
-
- ![Screenshot Studio 1781949144938](/images/white-list-domains.webp)
-
-
-- **How it works:** In your chat's **Embed Settings**, you can specify a list of allowed domains (e.g., `mywebsite.com`). The widget script will only initialize on these origins.
-- **No domain specified (Default):** If the allowed domains list is empty, the widget script will function on **any domain** (useful for local testing).
-
-<Info>
-  The domain whitelist check is executed dynamically when the script fetches the widget configuration.
-</Info>
-
----
-
-## Display on a page
-
-The **Display on a page** option allows you to embed the full chat directly into a webpage using an iframe. By adding this code to your website, blog, or Notion page, the chat will appear directly within the page content.
-
-This option is ideal for:
-
-- Help centers and FAQ pages
-- Knowledge bases and documentation sites
-- Support portals
-- Internal dashboards
-
-### Installation
-
-Copy and paste the following HTML code into your website's editor where you want the chat to appear:
+![Attlas Standard Chat Site](/images/sharing-standard.webp)
 
 ```html
-<iframe 
-  src="https://attlas.so/chats/your-chat-slug?embed=true" 
-  width="100%" 
-  height="700px">
+<iframe
+  src="https://attlas.so/your-chat-slug?embed=inline"
+  width="100%"
+  height="700"
+  style="border:none;">
 </iframe>
 ```
 
 <Tip>
-  You can adjust the iframe's width and height to fit your website layout.
+  The chat fills the frame with no card around it. Set the width and height to fit your layout.
 </Tip>
 
+### Bubble
+
+Paste this tag at the end of every page that should show the bubble:
+
+```html
+<script src="https://attlas.so/embed.js" id="YOUR_CHAT_ID" async></script>
+```
+
+The color, position and icon of the bubble come from your chat settings. Use the **Customize the bubble** link in the panel to change them.
+
+![Attlas Bubble Chat](/images/sharing-bubble.webp)
+
+### Popup
+
+The popup has no button of its own. You choose what opens it, so it fits your design.
+
+**1. Add the script** once, at the end of your page:
+
+```html
+<script src="https://attlas.so/embed.js" id="YOUR_CHAT_ID" data-mode="popup" async></script>
+```
+
+![Attlas Popup Chat](/images/sharing-popup.webp)
+
+**2. Add a button.** Any element with the `data-attlas-open` attribute opens the chat: a button, a div or an image.
+
+```html
+<button data-attlas-open="YOUR_CHAT_ID">Chat with us</button>
+```
+
+**Site builders without custom attributes.** Point any link to this address instead:
+
+```html
+<a href="#attlas-open=YOUR_CHAT_ID">Chat with us</a>
+```
+
+**Your own code.** Open and close the popup from JavaScript:
+
+```js
+Attlas.open("YOUR_CHAT_ID", { width: 440 });
+Attlas.close("YOUR_CHAT_ID");
+```
+
+The panel fills in your chat ID, button text and width for you.
+
+### Domain whitelisting
+
+To protect your quota and make sure the chat only loads on your own website, restrict the domains allowed to run the script.
+
+![Allowed domains](/images/sharing-domains.webp)
+
+- **How it works:** In the **Allowed domains** section under the Bubble and Popup code, add the domains you use (for example `mywebsite.com`). The script only starts on these domains.
+- **No domain listed (default):** The script works on **any domain**, which is handy for local testing.
+
 <Warning>
-  **Security Note:** The domain whitelist configuration (`allowed_domains`) **only applies to the widget script**. It does not protect or restrict the direct loading of the iframe URL. Anyone embedding the direct iframe URL on a custom page will still be able to render and interact with the chat.
+  The whitelist applies to the **Bubble** and **Popup** scripts only. It does not restrict the **Standard** iframe. Anyone who embeds the iframe URL on their own page can still display and use the chat.
 </Warning>
 
 ---
@@ -140,15 +168,14 @@ A channel is a label you define (e.g. `website`, `newsletter`, `event-june`). Wh
 | Share method | With channel selected |
 | :-- | :-- |
 | Direct link | `https://attlas.so/your-chat?origin=website` |
-| Iframe embed | `src="https://attlas.so/your-chat?origin=website"` |
-| Chat bubble script | `<script ... data-origin="website" ...>` |
+| Standard (iframe) | `src="https://attlas.so/your-chat?embed=inline&origin=website"` |
+| Bubble and Popup script | `<script ... data-origin="website" ...>` |
 
 This lets you see in your analytics which channel drove each conversation.
 
 ### Creating a channel
 
-
- ![Distribution channels tab](/images/distribution-channel_1.webp)
+ ![Distribution channels tab](/images/sharing-channel_1.webp)
 
 
 1. Open the **Share** panel and switch to the **Distribution** tab.
@@ -162,14 +189,13 @@ This lets you see in your analytics which channel drove each conversation.
 
 ### Using a channel when sharing
 
-
- ![Distribution channels link sharing](/images/distribution-channel_2.webp)
+ ![Distribution channels link sharing](/images/sharing-channel_2.webp)
 
 
 1. Switch back to the **Share** tab.
 2. If you have channels defined, a dropdown appears at the top of the tab.
 3. Select the channel that matches the destination you are sharing to.
-4. Copy the link, iframe code, or script, the `origin` parameter is already included.
+4. Copy the link or the embed code, the `origin` parameter is already included.
 
 <Tip>
   Leave the channel selector on **All channels** when you want a generic link without attribution.
@@ -185,7 +211,8 @@ Each sharing method serves a different purpose:
 | :-- | :-- | :-- | :-- |
 | **Direct link** | Quick sharing across any digital channel | Yes (`?origin=`) | No |
 | **Scan & Chat** | Physical materials and QR Codes | Yes (encoded in QR) | No |
-| **Chat bubble** | Adding an interactive assistant to your website | Yes (`data-origin=`) | **Yes** (restricts widget load) |
-| **Display on a page** | Embedding the full chat experience inline | Yes (`?origin=`) | No (bypasses domain checks) |
+| **Embed: Standard** | The full chat inline in a page | Yes (`origin=`) | No (bypasses domain checks) |
+| **Embed: Bubble** | A floating assistant on every page | Yes (`data-origin=`) | **Yes** |
+| **Embed: Popup** | A chat that opens from your own button or link | Yes (`data-origin=`) | **Yes** |
 
 You can use one or several of these options at the same time, creating more opportunities for users to interact with your chat.
