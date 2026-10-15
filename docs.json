@@ -190,7 +190,8 @@
                   "basic/ai-chat",
                   "basic/conversation-history",
                   "basic/analytics",
-                  "basic/crm"
+                  "basic/crm",
+                  "basic/agent"
                 ]
               },
               {
@@ -324,7 +325,8 @@
                   "fr/basic/ai-chat",
                   "fr/basic/conversation-history",
                   "fr/basic/analytics",
-                  "fr/basic/crm"
+                  "fr/basic/crm",
+                  "fr/basic/agent"
                 ],
                 "icon": "box"
               },
@@ -452,7 +454,8 @@
                   "pt/basic/ai-chat",
                   "pt/basic/conversation-history",
                   "pt/basic/analytics",
-                  "pt/basic/crm"
+                  "pt/basic/crm",
+                  "pt/basic/agent"
                 ],
                 "icon": "box"
               },
