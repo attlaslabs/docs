@@ -10,7 +10,7 @@ Workspace API keys let external developer tools and AI assistants (Claude Code, 
 Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, and analytics in your workspace.
 
 <Tip>
-  After connecting the MCP, we recommend installing the [Attlas skills](/mcp/skills). They teach your assistant the right way to use these tools, so requests like "put our pricing page in the chat with questions under it" or "set up my new chat" work in one step.
+  Your assistant already knows how to set up and improve an Attlas chat. Ask "help me set up my chat" or "what should I add to my sales chat" and it guides you step by step. Nothing to install.
 </Tip>
 
 ---
@@ -44,7 +44,6 @@ Connect your AI assistant to your Attlas workspace in three steps:
     <CodeGroup>
 
     ```bash Claude Code
-    # Run in your terminal from your project directory:
     claude mcp add attlas --transport http https://mcp.attlas.so \
       --header "Authorization: Bearer atk_your_api_key"
     ```
@@ -169,6 +168,7 @@ To connect from claude.ai or the Claude desktop app, add Attlas as a **custom co
 | `401` on every call | Wrong, revoked, or malformed key; value sent without `Bearer ` | Check the key in the Attlas **API keys** tab; re-add the connector with the exact value |
 | Tools missing after connecting | The key's scope doesn't include them | Create a key with **Write** or **Delete** scope |
 | Works in Claude Code but not on claude.ai | Request-headers beta not enabled for your org | Use Claude Code or `mcp-remote`, or contact Claude support to request access |
+| `429 Rate limit exceeded` | More than 120 calls in one minute with the same key | Wait the number of seconds given in the `retry-after` header, then retry |
 
 ---
 
@@ -180,7 +180,7 @@ When creating an API key, select the permissions that match your use case:
 | --- | --- | --- |
 | `read` | **Read** | View and search chats, documents, triggers, contacts, conversations, and analytics. Included by default on all keys. |
 | `write` | **Write** | Create and update documents, corrections, triggers, contacts, branding, avatar, SEO, and chat settings. Automatically includes Read permissions. |
-| `destructive` | **Delete** | Permanently delete chats, documents, triggers, contacts, and conversations. Automatically includes Write and Read permissions. |
+| `destructive` | **Delete** | Delete chats, documents, triggers, contacts, and conversations. Chats and documents go for good. Triggers and contacts stay 30 days in the trash, so you can restore them. Automatically includes Write and Read permissions. |
 
 <Warning>
   Only grant the **Delete** permission to trusted workflows where automated cleanup or resource deletion is explicitly required.
@@ -194,45 +194,115 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 
 | Action | Requirement |
 | --- | --- |
+| Creating a chat (`create_chat`) | Uses one chat from your plan's quota. Returns `quota_exceeded` when none is left. |
 | Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
-| Adding a YouTube, Instagram, TikTok, Facebook, or X video link to a knowledge base | Starter or PRO (video transcription). Web page links work on every plan. |
+| Adding a YouTube, Instagram, TikTok, Facebook, or X video link, or an audio file, to a knowledge base | Starter or PRO. Web page links work on every plan. |
 | Removing the Attlas branding badge (`update_branding`) | Brand add-on. |
-| Customizing chat SEO metadata (`update_seo`) | Basic plan or higher. |
-| Editing a chat's connected SQL database settings | Starter or PRO (advanced integrations). |
+| Customizing chat SEO metadata (`update_seo`) | Starter or PRO. |
+| Editing a chat's connected SQL database settings | Starter or PRO. |
+
+<Tip>
+  Your assistant can call `can_use` to check an action against your plan, and `get_usage` to see your remaining chats, messages, and characters.
+</Tip>
 
 ---
 
-## Available capabilities & tools
+## Available tools
 
-Once connected, your assistant can manage all areas of your workspace:
+Each tool needs the scope shown next to it. A key only sees the tools its scope allows.
 
-### Chat setup, branding & live preview
-- `preview_chat`: Render an interactive live preview of your public chat inside MCP Apps hosts without consuming message credits or affecting analytics.
-- `update_chat`: Modify chat configuration, goals, and behavior settings.
-- `update_avatar`: Set the chat avatar from a public image URL (automatically hosted) or an emoji.
-- `update_branding`: Show or hide the "Powered by Attlas" badge (requires the Brand add-on).
-- `update_seo`: Set meta title, meta description, and social share image (`og:image`).
-- `update_social_links`: Set social media profile links (X, LinkedIn, Instagram, YouTube, TikTok, etc.) shown on the chat.
-- `update_theme` & `list_theme_presets`: Browse and apply visual color themes.
-- `set_personality` & `list_archetypes`: Customize tone and assign persona archetypes.
+### Chats and setup
 
-### Knowledge & continuous learning
-- `create_document`: Add text documents directly to the knowledge base.
-- `update_document`: Edit text document content with automatic character balance adjustment.
-- `ingest_url`: Crawl web pages or transcribe video links (YouTube, TikTok, Instagram, X).
-- `clean_document`: Reformat imported documents with AI Markdown cleanup.
-- `create_correction`: Teach the chat the definitive answer to questions it previously answered poorly or failed to answer.
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_chats` | Read | Lists your chats with their ids. Your assistant calls it first. |
+| `get_chat_overview` | Read | Everything about one chat in one read, plus a ranked list of what is missing. |
+| `get_chat_config` | Read | A chat's settings: objective, lead capture, integrations, avatar, SEO, business info. |
+| `preview_chat` | Read | Shows a live preview of the public chat. Messages sent in the preview are free and do not count in analytics. |
+| `list_theme_presets` / `list_archetypes` | Read | The themes and personalities you can pick from. |
+| `create_chat` | Write | Creates a new chat. |
+| `update_chat` | Write | Name, description, welcome message, and which tab opens first. |
+| `update_activity_profile` | Write | Business info: website, email, phone, address, opening hours, company or person. |
+| `set_objective` | Write | Support, appointment booking, or lead capture, plus your own instructions. |
+| `set_personality` | Write | Tone of voice, or a ready-made personality. |
+| `update_theme` | Write | Colors and visual theme. |
+| `update_avatar` | Write | Avatar from an image URL or an emoji. |
+| `update_social_links` | Write | The row of social icons at the bottom of the chat. |
+| `update_seo` | Write | Meta title, meta description, and share image. |
+| `update_branding` | Write | Shows or hides the "Powered by Attlas" badge. |
+| `update_database_connection` | Write | Name, description, currency, and on/off of a connected SQL database. Credentials stay untouched. |
 
-### Triggers & lead capture
-- `list_triggers`, `create_trigger`, `update_trigger`, `reorder_triggers`: Manage buttons, links, and sections on the public chat.
-- `generate_questions`: Produce suggested visitor questions based on uploaded documents.
-- `generate_and_nest`: Generate questions and nest them under a parent trigger in a single operation.
+### Knowledge
 
-### Insights & signals
-- `list_signals`: Review missed questions (`weak_answer`), downvoted answers (`thumbs_down`), and visitor drop-offs (`left_after`).
-- `list_conversations` & `read_conversation`: Inspect visitor conversations and message transcripts.
-- `get_metrics`, `get_timeseries`, `get_rankings`: Fetch activity stats and conversion rates.
-- `generate_report` & `read_report`: Generate structured summaries of chat performance.
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_documents` / `read_document` | Read | Lists a chat's documents with their status, or reads one in full. |
+| `create_document` | Write | Adds a text document. |
+| `ingest_url` | Write | Adds a web page, a file link, or a video (YouTube, TikTok, Instagram, X). |
+| `update_document` | Write | Edits a text document. Only the difference in length counts against your quota. |
+| `clean_document` | Write | Reformats a messy imported document. |
+| `create_correction` | Write | Teaches the chat the right answer to a question it got wrong. |
+
+<Info>
+  Adding or editing knowledge takes a moment. These tools answer right away with a `processing` status, and your assistant checks `list_documents` until the document is ready.
+</Info>
+
+### Triggers
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_triggers` | Read | Lists a chat's buttons, links, media, products, and questions. |
+| `create_trigger` / `update_trigger` | Write | Adds or edits a trigger. |
+| `reorder_triggers` | Write | Changes the order and nesting. |
+| `generate_questions` | Write | Suggests visitor questions from your documents, without creating anything. |
+| `generate_and_nest` | Write | Generates questions and places them under a trigger in one step. |
+
+### Contacts and appointments
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_contacts` | Read | Lists contacts captured by your chats, with their stage. |
+| `list_appointments` | Read | Lists booked appointments. |
+| `update_contact` | Write | Changes a contact's stage or internal notes. |
+
+### Insights
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `get_metrics` | Read | Messages, views, clicks, leads, conversion, and knowledge coverage, compared to the previous period. |
+| `get_timeseries` / `get_rankings` | Read | Activity over time, and top triggers, countries, devices, and channels. |
+| `list_signals` | Read | Questions your chat could not answer, downvoted answers, and visitors who left. |
+| `list_conversations` / `read_conversation` | Read | Visitor conversations and their messages. |
+| `list_reports` / `read_report` | Read | Reports already generated. |
+| `generate_report` | Write | Writes an analytics report for a period. |
+
+### Plan
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `get_usage` | Read | Your plan and remaining chats, messages, and characters. |
+| `can_use` | Read | Checks whether your plan allows an action. |
+
+### Delete
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `delete_chat` | Delete | Deletes a chat and everything in it. Permanent. |
+| `delete_document` | Delete | Deletes a document and gives back its characters. Permanent. |
+| `delete_trigger` / `delete_contact` | Delete | Moves a trigger or contact to the trash for 30 days. |
+| `delete_conversation` | Delete | Hides a conversation everywhere. You cannot restore it through MCP. |
+
+---
+
+## What stays in the dashboard
+
+Some settings need you at [attlas.so](https://attlas.so). Your assistant tells you when a request falls here:
+
+- Changing a chat's URL.
+- Connecting an integration: Google Calendar, Notion, a SQL database, Bandsintown, a custom domain, or a webhook. Once connected, your assistant can configure and use it.
+- Access mode, password, and public or private visibility.
+- Plan, billing, and add-ons.
+- Workspace members and invitations.
 
 ---
 
@@ -246,6 +316,8 @@ The **Recent activity** table at the bottom of the API keys tab logs every MCP c
 - **Target**: The resource touched by the operation.
 - **Result**: Success (`ok`) or error badge.
 
+Turn on **Changes only** to hide read calls.
+
 ### Restore deleted items
 
-If a tool soft-deletes a trigger or contact by mistake, click **Restore** in the activity row to bring it back to your workspace immediately.
+If a tool deleted a trigger or contact by mistake, click **Restore** in its activity row within 30 days.

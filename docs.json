@@ -85,6 +85,10 @@
   "$schema": "https://mintlify.com/docs.json",
   "redirects": [
     {
+      "source": "/mcp/skills",
+      "destination": "/mcp/workspace"
+    },
+    {
       "source": "/playbooks/link-in-bio",
       "destination": "/playbooks/creators/link-in-bio"
     },
@@ -281,7 +285,6 @@
           {
             "group": "MCP",
             "pages": [
-              "mcp/skills",
               "mcp/workspace",
               "mcp/chat"
             ]
@@ -410,7 +413,6 @@
           {
             "group": "MCP",
             "pages": [
-              "fr/mcp/skills",
               "fr/mcp/workspace",
               "fr/mcp/chat"
             ]
@@ -539,7 +541,6 @@
           {
             "group": "MCP",
             "pages": [
-              "pt/mcp/skills",
               "pt/mcp/workspace",
               "pt/mcp/chat"
             ]

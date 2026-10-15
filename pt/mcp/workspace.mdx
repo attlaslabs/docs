@@ -1,17 +1,18 @@
 ---
 title: "Workspace MCP"
 sidebarTitle: "Workspace"
-description: "Crie chaves de API do Workspace para conectar assistentes de código de IA e ferramentas de desktop ao seu workspace do Attlas via MCP."
-tag: "New"
+description: "Crie chaves de API do Workspace para conectar assistentes IA e ferramentas de desktop ao seu workspace do Attlas via MCP."
+tag: "Novo"
 ---
 
-As chaves de API do Workspace permitem que ferramentas de desenvolvedor externas e assistentes de IA (Claude Code, Cursor, Claude Desktop, VS Code e Codex) se conectem a todo o seu workspace do Attlas usando o Model Context Protocol (MCP).
+As chaves de API do Workspace permitem que ferramentas de desenvolvimento externas e assistentes de IA (Claude Code, Cursor, Claude Desktop, VS Code e Codex) conectem-se a todo o seu workspace do Attlas usando o Model Context Protocol (MCP).
 
-Ao contrário do endpoint público de MCP do chat, as chaves de API do workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises do seu workspace.
+Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises do seu workspace.
 
 <Tip>
-  Após conectar o MCP, recomendamos instalar as [Attlas skills](/pt/mcp/skills). Elas ensinam ao seu assistente a forma correta de usar essas ferramentas, para que solicitações como "coloque nossa página de preços no chat com perguntas abaixo" ou "configure meu novo chat" funcionem em uma única etapa.
+  Seu assistente já sabe como configurar e aprimorar um chat do Attlas. Pergunte "ajude-me a configurar meu chat" ou "o que devo adicionar ao meu chat de vendas" e ele te guiará passo a passo. Nada para instalar.
 </Tip>
+
 
 ---
 
@@ -29,22 +30,21 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
     6. Clique em **Criar chave** e copie sua chave secreta (`atk_...`) imediatamente.
 
     <Warning>
-      Sua chave de API é exibida apenas uma vez. Armazene-a com segurança. O Attlas não pode exibir o segredo novamente após o fechamento do diálogo.
+      Sua chave de API é exibida apenas uma vez. Armazene-a com segurança. O Attlas não pode exibir a chave secreta novamente depois que o diálogo for fechado.
     </Warning>
   </Step>
 
   <Step title="Configure seu cliente de IA">
-    O endpoint MCP do workspace está hospedado em:
+    O endpoint MCP do Workspace está hospedado em:
     ```text
     https://mcp.attlas.so
     ```
 
-    Selecione sua ferramenta de IA abaixo para copiar o comando de configuração ou o arquivo de configuração:
+    Selecione sua ferramenta de IA abaixo para copiar o comando de configuração ou arquivo de configuração:
 
     <CodeGroup>
 
     ```bash Claude Code
-    # Execute no terminal a partir do diretório do seu projeto:
     claude mcp add attlas --transport http https://mcp.attlas.so \
       --header "Authorization: Bearer atk_your_api_key"
     ```
@@ -123,10 +123,10 @@ Conecte seu assistente de IA ao seu workspace do Attlas em três etapas:
 
 ## Claude web e desktop (conector personalizado)
 
-Para conectar a partir do claude.ai ou do aplicativo desktop do Claude, adicione o Attlas como um **conector personalizado**. O endpoint do workspace autentica com uma chave de API, não OAuth, portanto alguns campos precisam de valores específicos.
+Para conectar a partir do claude.ai ou do aplicativo Claude Desktop, adicione o Attlas como um **conector personalizado**. O endpoint do Workspace se autentica com uma chave de API, não com OAuth, então alguns campos precisam de valores específicos.
 
 <Steps>
-  <Step title="Abra o diálogo do conector personalizado">
+  <Step title="Abra o diálogo de conector personalizado">
     No Claude, vá para **Configurações → Conectores → Adicionar conector personalizado** (Team e Enterprise: **Configurações da organização → Conectores → Adicionar → Personalizado**).
   </Step>
   <Step title="Insira a URL">
@@ -149,7 +149,7 @@ Para conectar a partir do claude.ai ou do aplicativo desktop do Claude, adicione
     | Obrigatório | marcado |
 
     <Warning>
-      Insira o valor **exatamente** como o servidor espera, incluindo a palavra `Bearer` e um espaço antes da chave. O Claude envia o valor literalmente e não adiciona nenhum esquema. `atk_...` sozinho é enviado como `Authorization: atk_...` e o servidor rejeita com `401`.
+      Digite o valor **exatamente** como o servidor espera, incluindo a palavra `Bearer` e um espaço antes da chave. O Claude envia o valor literalmente e não adiciona nenhum esquema. `atk_...` sozinho é enviado como `Authorization: atk_...` e o servidor rejeita com `401`.
     </Warning>
   </Step>
   <Step title="Adicione o conector">
@@ -158,7 +158,7 @@ Para conectar a partir do claude.ai ou do aplicativo desktop do Claude, adicione
 </Steps>
 
 <Note>
-  **Cabeçalhos de requisição** é um recurso beta disponível para um conjunto limitado de organizações. Se você não vir essa seção, conecte-se com o Claude Code ou `mcp-remote` (consulte [Início rápido](#inicio-rapido) acima).
+  **Request headers** é um recurso beta disponível para um conjunto limitado de organizações. Se você não vir essa seção, conecte-se com Claude Code ou `mcp-remote` em vez disso (veja [Início rápido](#quickstart) acima).
 </Note>
 
 ### Solução de problemas
@@ -194,57 +194,129 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 
 | Ação | Requisito |
 | --- | --- |
-| Ler métricas, tendências, rankings ou gerar um relatório | O intervalo remonta apenas até a janela de histórico do seu plano (Free: 90 dias, Starter: 1 ano, PRO: 2 anos). Intervalos maiores são limitados a essa janela. |
-| Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X a uma base de conhecimento | Starter ou PRO (transcrição de vídeo). Links de páginas da web funcionam em todos os planos. |
-| Remover o selo de branding do Attlas (`update_branding`) | Complemento Brand. |
-| Personalizar metadados de SEO do chat (`update_seo`) | Plano Basic ou superior. |
-| Editar as configurações do banco de dados SQL conectado do chat | Starter ou PRO (integrações avançadas). |
+| Criar um chat (`create_chat`) | Usa um chat da cota do seu plano. Retorna `quota_exceeded` quando não há mais nenhum. |
+| Ler métricas, tendências, rankings ou gerar um relatório | O intervalo retorna apenas até o período de histórico do seu plano (Gratuito: 90 dias, Starter: 1 ano, PRO: 2 anos). Intervalos maiores são limitados a essa janela. |
+| Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X, ou um arquivo de áudio, a uma base de conhecimento | Starter ou PRO. Links de páginas da web funcionam em todos os planos. |
+| Remover o selo de branding do Attlas (`update_branding`) | Complemento de marca. |
+| Personalizar metadados de SEO do chat (`update_seo`) | Starter ou PRO. |
+| Editar as configurações de banco de dados SQL conectado de um chat | Starter ou PRO. |
+
+<Tip>
+  Seu assistente pode chamar `can_use` para verificar se uma ação é permitida pelo seu plano, e `get_usage` para ver seus chats, mensagens e caracteres restantes.
+</Tip>
 
 ---
 
-## Recursos e ferramentas disponíveis
+## Ferramentas disponíveis
 
-Uma vez conectado, seu assistente pode gerenciar todas as áreas do seu workspace:
+Cada ferramenta precisa do escopo mostrado ao lado. Uma chave só vê as ferramentas que seu escopo permite.
 
-### Configuração do chat, branding e pré-visualização ao vivo
-- `preview_chat`: Renderiza uma pré-visualização interativa ao vivo do seu chat público dentro dos hosts do MCP Apps sem consumir créditos de mensagens ou afetar as análises.
-- `update_chat`: Modifica a configuração do chat, metas e configurações de comportamento.
-- `update_avatar`: Define o avatar do chat a partir de uma URL de imagem pública (hospedada automaticamente) ou de um emoji.
-- `update_branding`: Mostra ou oculta o selo "Powered by Attlas" (requer o complemento Brand).
-- `update_seo`: Define o título meta, a descrição meta e a imagem de compartilhamento social (`og:image`).
-- `update_social_links`: Define os links de perfil de redes sociais (X, LinkedIn, Instagram, YouTube, TikTok, etc.) exibidos no chat.
-- `update_theme` e `list_theme_presets`: Navegue e aplique temas de cores visuais.
-- `set_personality` e `list_archetypes`: Personalize o tom e atribua arquétipos de persona.
+### Chats e configuração
 
-### Conhecimento e aprendizado contínuo
-- `create_document`: Adiciona documentos de texto diretamente à base de conhecimento.
-- `update_document`: Edita o conteúdo de documentos de texto com ajuste automático de balanceamento de caracteres.
-- `ingest_url`: Rastreia páginas da web ou transcreve links de vídeo (YouTube, TikTok, Instagram, X).
-- `clean_document`: Reformata documentos importados com limpeza de Markdown por IA.
-- `create_correction`: Ensina ao chat a resposta definitiva para perguntas que ele respondeu mal ou não conseguiu responder anteriormente.
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_chats` | Read | Lista seus chats com seus ids. Seu assistente chama primeiro. |
+| `get_chat_overview` | Read | Tudo sobre um chat em uma única leitura, além de uma lista classificada do que está faltando. |
+| `get_chat_config` | Read | Configurações de um chat: objetivo, captação de leads, integrações, avatar, SEO, informações da empresa. |
+| `preview_chat` | Read | Mostra uma prévia ao vivo do chat público. As mensagens enviadas na prévia são gratuitas e não contam nas análises. |
+| `list_theme_presets` / `list_archetypes` | Read | Os temas e personalidades que você pode escolher. |
+| `create_chat` | Write | Cria um novo chat. |
+| `update_chat` | Write | Nome, descrição, mensagem de boas-vindas e qual aba abre primeiro. |
+| `update_activity_profile` | Write | Informações da empresa: site, email, telefone, endereço, horário de funcionamento, empresa ou pessoa. |
+| `set_objective` | Write | Suporte, agendamento de consultas ou captação de leads, além de suas próprias instruções. |
+| `set_personality` | Write | Tom de voz ou uma personalidade pronta. |
+| `update_theme` | Write | Cores e tema visual. |
+| `update_avatar` | Write | Avatar a partir de uma URL de imagem ou um emoji. |
+| `update_social_links` | Write | A fileira de ícones sociais na parte inferior do chat. |
+| `update_seo` | Write | Meta título, meta descrição e imagem de compartilhamento. |
+| `update_branding` | Write | Mostra ou oculta o selo 'Powered by Attlas'. |
+| `update_database_connection` | Write | Nome, descrição, moeda e ativação/desativação de um banco de dados SQL conectado. As credenciais permanecem intocadas. |
 
-### Gatilhos e captura de leads
-- `list_triggers`, `create_trigger`, `update_trigger`, `reorder_triggers`: Gerencia botões, links e seções no chat público.
-- `generate_questions`: Produz perguntas sugeridas para visitantes com base nos documentos enviados.
-- `generate_and_nest`: Gera perguntas e as aninha sob um gatilho pai em uma única operação.
+### Conhecimento
 
-### Insights e sinais
-- `list_signals`: Revise perguntas não respondidas (`weak_answer`), respostas com voto negativo (`thumbs_down`) e abandonos de visitantes (`left_after`).
-- `list_conversations` e `read_conversation`: Inspecione conversas de visitantes e transcrições de mensagens.
-- `get_metrics`, `get_timeseries`, `get_rankings`: Obtenha estatísticas de atividade e taxas de conversão.
-- `generate_report` e `read_report`: Gere resumos estruturados do desempenho do chat.
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_documents` / `read_document` | Read | Lista os documentos de um chat com seus status, ou lê um na íntegra. |
+| `create_document` | Write | Adiciona um documento de texto. |
+| `ingest_url` | Write | Adiciona uma página da web, um link de arquivo ou um vídeo (YouTube, TikTok, Instagram, X). |
+| `update_document` | Write | Edita um documento de texto. Apenas a diferença no comprimento conta contra sua cota. |
+| `clean_document` | Write | Reformata um documento importado bagunçado. |
+| `create_correction` | Write | Ensina ao chat a resposta certa para uma pergunta que ele errou. |
+
+<Info>
+  Adicionar ou editar conhecimento leva um instante. Essas ferramentas respondem imediatamente com um status `processing`, e seu assistente verifica `list_documents` até que o documento esteja pronto.
+</Info>
+
+### Gatilhos
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_triggers` | Read | Lista botões, links, mídia, produtos e perguntas de um chat. |
+| `create_trigger` / `update_trigger` | Write | Adiciona ou edita um gatilho. |
+| `reorder_triggers` | Write | Altera a ordem e o aninhamento. |
+| `generate_questions` | Write | Sugere perguntas de visitantes a partir de seus documentos, sem criar nada. |
+| `generate_and_nest` | Write | Gera perguntas e as coloca sob um gatilho em uma única etapa. |
+
+### Contatos e agendamentos
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_contacts` | Read | Lista os contatos capturados por seus chats, com seu estágio. |
+| `list_appointments` | Read | Lista os agendamentos realizados. |
+| `update_contact` | Write | Altera o estágio de um contato ou notas internas. |
+
+### Insights
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `get_metrics` | Read | Mensagens, visualizações, cliques, leads, conversão e cobertura de conhecimento, comparados ao período anterior. |
+| `get_timeseries` / `get_rankings` | Read | Atividade ao longo do tempo, e principais gatilhos, países, dispositivos e canais. |
+| `list_signals` | Read | Perguntas que seu chat não conseguiu responder, respostas negativadas e visitantes que saíram. |
+| `list_conversations` / `read_conversation` | Read | Conversas de visitantes e suas mensagens. |
+| `list_reports` / `read_report` | Read | Relatórios já gerados. |
+| `generate_report` | Write | Escreve um relatório de análise para um período. |
+
+### Plano
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `get_usage` | Read | Seu plano e chats, mensagens e caracteres restantes. |
+| `can_use` | Read | Verifica se seu plano permite uma ação. |
+
+### Excluir
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `delete_chat` | Delete | Exclui um chat e tudo nele. Permanente. |
+| `delete_document` | Delete | Exclui um documento e devolve seus caracteres. Permanente. |
+| `delete_trigger` / `delete_contact` | Delete | Move um gatilho ou contato para a lixeira por 30 dias. |
+| `delete_conversation` | Delete | Oculta uma conversa em todos os lugares. Você não pode restaurá-la via MCP. |
 
 ---
 
-## Monitoramento de atividade e registros de auditoria
+## O que permanece no painel
 
-A tabela **Atividade recente** na parte inferior da aba de chaves de API registra cada chamada MCP feita ao seu workspace:
+Algumas configurações precisam que você esteja em [attlas.so](https://attlas.so). Seu assistente informa quando uma solicitação se enquadra aqui:
 
-- **Quando**: Carimbo de data/hora relativo da solicitação.
-- **Chave**: Prefixo da chave usada (`atk_...`).
-- **Ferramenta**: A ferramenta MCP chamada (por exemplo, `list_chats`, `create_document`, `delete_trigger`).
-- **Alvo**: O recurso afetado pela operação.
-- **Resultado**: Indicador de sucesso (`ok`) ou erro.
+- Alterar a URL de um chat.
+- Conectar uma integração: Google Calendar, Notion, um banco de dados SQL, Bandsintown, um domínio personalizado ou um webhook. Uma vez conectado, seu assistente pode configurá-lo e usá-lo.
+- Modo de acesso, senha e visibilidade pública ou privada.
+- Plano, faturamento e complementos.
+- Membros do Workspace e convites.
+
+---
+
+## Monitoramento de atividade e logs de auditoria
+
+A tabela **Recent activity** na parte inferior da aba de chaves de API registra cada chamada MCP feita ao seu espaço de trabalho:
+
+- **When**: Timestamp relativo da solicitação.
+- **Key**: Prefixo da chave usada (`atk_...`).
+- **Tool**: A ferramenta MCP chamada (ex. `list_chats`, `create_document`, `delete_trigger`).
+- **Target**: O recurso afetado pela operação.
+- **Result**: Selo de sucesso (`ok`) ou erro.
+
+Ative **Changes only** para ocultar chamadas de leitura.
 
 ### Restaurar itens excluídos
 

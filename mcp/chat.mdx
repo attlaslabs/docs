@@ -116,6 +116,19 @@ args = ["mcp-remote", "https://mcp.attlas.so/chat/<your-chat-slug>"]
 
 ---
 
+## Limits
+
+To prevent abuse, Attlas caps how often the endpoint answers:
+
+| Tool | Per visitor IP | Per chat |
+| --- | --- | --- |
+| `ask` | 10 per minute | 60 per hour, 500 per day |
+| `search_knowledge` | 30 per minute | 300 per hour |
+
+Past a limit, the call fails with a rate limit error. Retry a little later.
+
+---
+
 ## Security
 
 <Warning>

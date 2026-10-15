@@ -20,7 +20,7 @@ Aqui estão as 3 principais maneiras de compartilhar seu chat:
 
 1. **Link direto**: Ideal para redes sociais, e-mails e aplicativos de mensagens.
 2. **Escaneie e converse (QR Code)**: Ideal para materiais impressos e locais físicos.
-3. **Incorporar no seu site**: Três modos, **Padrão** (em linha), **Balão** (botão flutuante) e **Popup** (abre a partir do seu próprio botão).
+3. **Incorporar no seu site**: Três modos, **Padrão** (em linha), **Bolha** (botão flutuante) e **Popup** (abre a partir do seu próprio botão).
 
 ---
 
@@ -60,13 +60,13 @@ A opção **Incorporar no seu site** coloca seu chat em suas próprias páginas.
 | Modo | O que os visitantes veem | Plano |
 | :-- | :-- | :-- |
 | **Padrão** | O chat fica dentro da sua página, como uma imagem ou vídeo. | Todos os planos |
-| **Balão** | Um botão flutuante no canto de cada página. Ele abre o chat em um pequeno painel. | Starter e PRO |
+| **Bolha** | Um botão flutuante no canto de cada página. Ele abre o chat em um pequeno painel. | Starter e PRO |
 | **Popup** | O chat abre em uma janela sobre sua página quando alguém clica no seu próprio botão ou link. | Starter e PRO |
 
 Alterne entre os modos na parte superior do painel. Clique em **Obter o código** para ver o trecho, ou **Voltar para visualização** para retornar.
 
 <Note>
-  O balão e o popup estão disponíveis nos planos **Attlas Starter e PRO**. No plano Gratuito, o painel mostra um botão **Atualizar** em vez do código.
+  A bolha e o popup estão disponíveis nos planos **Attlas Starter e PRO**. No plano Gratuito, o painel mostra um botão **Atualizar** em vez do código.
 </Note>
 
 ### Opções
@@ -97,17 +97,17 @@ Cole o código onde o chat deve aparecer: uma central de ajuda, um site de docum
   O chat preenche o quadro sem nenhum cartão ao redor. Defina a largura e a altura para se ajustarem ao seu layout.
 </Tip>
 
-### Balão
+### Bolha
 
-Cole esta tag no final de cada página que deve mostrar o balão:
+Cole esta tag no final de cada página que deve mostrar a bolha:
 
 ```html
 <script src="https://attlas.so/embed.js" id="YOUR_CHAT_ID" async></script>
 ```
 
-A cor, posição e ícone do balão vêm das configurações do seu chat. Use o link **Personalizar o balão** no painel para alterá-los.
+A cor, posição e ícone da bolha vêm das configurações do seu chat. Use o link **Personalizar a bolha** no painel para alterá-los.
 
-![Chat em balão do Attlas](/images/sharing-bubble.webp)
+![Chat em bolha do Attlas](/images/sharing-bubble.webp)
 
 ### Popup
 
@@ -148,11 +148,11 @@ Para proteger sua cota e garantir que o chat carregue apenas no seu próprio sit
 
 ![Domínios permitidos](/images/sharing-domains.webp)
 
-- **Como funciona:** Na seção **Domínios permitidos** abaixo do código do Balão e Popup, adicione os domínios que você usa (por exemplo `mywebsite.com`). O script só inicia nesses domínios.
+- **Como funciona:** Na seção **Domínios permitidos** abaixo do código do Bolha e Popup, adicione os domínios que você usa (por exemplo `mywebsite.com`). O script só inicia nesses domínios.
 - **Nenhum domínio listado (padrão):** O script funciona em **qualquer domínio**, o que é útil para testes locais.
 
 <Warning>
-  A lista de permissões se aplica apenas aos scripts **Balão** e **Popup**. Ela não restringe o iframe **Padrão**. Qualquer pessoa que incorporar a URL do iframe em sua própria página ainda poderá exibir e usar o chat.
+  A lista de permissões se aplica apenas aos scripts **Bolha** e **Popup**. Ela não restringe o iframe **Padrão**. Qualquer pessoa que incorporar a URL do iframe em sua própria página ainda poderá exibir e usar o chat.
 </Warning>
 
 ---
@@ -169,7 +169,7 @@ Um canal é um rótulo que você define (ex.: `website`, `newsletter`, `event-ju
 | :-- | :-- |
 | Link direto | `https://attlas.so/your-chat?origin=website` |
 | Padrão (iframe) | `src="https://attlas.so/your-chat?embed=inline&origin=website"` |
-| Script Balão e Popup | `<script ... data-origin="website" ...>` |
+| Script Bolha e Popup | `<script ... data-origin="website" ...>` |
 
 Isso permite ver nas suas análises qual canal gerou cada conversa.
 
@@ -210,7 +210,7 @@ Cada método de compartilhamento atende a um propósito diferente:
 | **Link direto** | Compartilhamento rápido em qualquer canal digital | Sim (`?origin=`) | Não |
 | **Escaneie e converse** | Materiais físicos e QR Codes | Sim (codificado no QR) | Não |
 | **Incorporar: Padrão** | O chat completo em linha em uma página | Sim (`origin=`) | Não (ignora verificações de domínio) |
-| **Incorporar: Balão** | Um assistente flutuante em todas as páginas | Sim (`data-origin=`) | **Sim** |
+| **Incorporar: Bolha** | Um assistente flutuante em todas as páginas | Sim (`data-origin=`) | **Sim** |
 | **Incorporar: Popup** | Um chat que abre a partir do seu próprio botão ou link | Sim (`data-origin=`) | **Sim** |
 
 Você pode usar uma ou várias dessas opções ao mesmo tempo, criando mais oportunidades para os usuários interagirem com seu chat.
