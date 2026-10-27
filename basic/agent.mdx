@@ -8,7 +8,7 @@ tag: "Beta"
 
 ![Agent](/images/agent.webp)
 
-The agent is a chat inside your dashboard. You type a request in plain words, and it reads your chat's data or changes the chat for you.
+The agent is a chat inside your dashboard. You type a request in plain words, and it reads your chat's data or changes the chat for you. It relies on the same core tools as our Workspace MCP (spanning 50 read and write capabilities, while delete actions remain reserved for the dashboard).
 
 For example, you can ask:
 
@@ -44,6 +44,18 @@ The agent works on the chat you have open. Your chat preview stays visible on th
 
 ---
 
+## Assisted chat creation
+
+When creating a new chat or completing your initial onboarding, the agent can build your chat with you through a guided screen:
+
+1. Click **Create with assistant** in the new chat dialog, or start from the onboarding flow.
+2. Provide your website address, an Instagram handle, or simply your business name.
+3. The agent reads your public profile, extracts your logo or photo as an avatar, writes your greeting, and drafts your first questions.
+4. You answer 5 or 6 short questions about your business to fill in details that cannot be found online.
+5. When finished, you get a direct share link, a downloadable QR code, and an interactive preview to test your chat before publishing.
+
+---
+
 ## Start from your top improvements
 
 When you open a new conversation, the agent shows **Top improvements**: the three most useful things missing from your chat, such as knowledge, a greeting, or suggested questions. You also see your coverage rate and the number of leads from the last 30 days.
@@ -60,6 +72,8 @@ The mode selector sits in the message box.
 |---|---|
 | **Manual** (default) | The agent shows each change on a card. You click **Apply** to make it, or **Refuse** to skip it. |
 | **Auto** | The agent makes changes right away and shows a card for each one it applied. |
+
+When the agent proposes several changes in a single turn, **Apply all** and **Refuse all** buttons appear so you can review everything in one click.
 
 <Warning>
   The agent never deletes anything, in either mode. To delete a trigger, a document or a contact, use the matching screen in the dashboard.
@@ -78,7 +92,11 @@ The mode selector sits in the message box.
 | Contacts and appointments | Goal and personality |
 | Questions your chat answered badly | Business info, description, greeting and SEO |
 | Knowledge documents | Knowledge: add a link or a file, write a document, add a correction, clean a document |
-| Reports | Generate a new report |
+| Reports | Distribution channels: create named channels (website, Instagram bio, newsletter) to tag incoming conversations |
+| Web page previews (product price, image and description) | Generate a new report |
+| Instagram and LinkedIn profiles | |
+| Embed code for your website | |
+| Product skills and playbooks | |
 
 The agent can also advise you: which feature fits your goal, how to organize your knowledge, which questions your visitors expect.
 
@@ -86,7 +104,7 @@ Some settings stay in the dashboard. The agent points you to the right screen wh
 
 - deleting anything,
 - changing your chat's URL,
-- connecting an integration (Google Calendar, Notion, a database, a custom domain, a webhook),
+- connecting an integration (Google Calendar, Notion, a database, Bandsintown, the Meta Conversions API, a custom domain, a webhook),
 - access mode, password or visibility,
 - your plan, billing and workspace members.
 

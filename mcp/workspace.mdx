@@ -7,7 +7,7 @@ tag: "New"
 
 Workspace API keys let external developer tools and AI assistants (Claude Code, Cursor, Claude Desktop, VS Code, and Codex) connect to your entire Attlas workspace using the Model Context Protocol (MCP).
 
-Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, and analytics in your workspace.
+Attlas exposes 55 tools in total across your workspace: 26 read tools, 24 write tools, and 5 delete tools. Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, and analytics in your workspace.
 
 <Tip>
   Your assistant already knows how to set up and improve an Attlas chat. Ask "help me set up my chat" or "what should I add to my sales chat" and it guides you step by step. Nothing to install.
@@ -204,6 +204,7 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 | Removing the Attlas branding badge (`update_branding`) | Brand add-on. |
 | Customizing chat SEO metadata (`update_seo`) | Starter or PRO. |
 | Editing a chat's connected SQL database settings | Starter or PRO. |
+| Bubble or popup embed code (`get_embed_code`) | Pro plan. Standard iframe embed works on every plan. |
 
 <Tip>
   Your assistant can call `can_use` to check an action against your plan, and `get_usage` to see your remaining chats, messages, and characters.
@@ -213,7 +214,7 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 
 ## Available tools
 
-Each tool needs the scope shown next to it. A key only sees the tools its scope allows.
+Attlas provides 55 tools in total. Each tool needs the scope shown next to it, and a key only sees the tools its scope allows.
 
 ### Chats and setup
 
@@ -223,8 +224,14 @@ Each tool needs the scope shown next to it. A key only sees the tools its scope 
 | `get_chat_overview` | Read | Everything about one chat in one read, plus a ranked list of what is missing. |
 | `get_chat_config` | Read | A chat's settings: objective, lead capture, integrations, avatar, SEO, business info. |
 | `preview_chat` | Read | Shows a live preview of the public chat. Messages sent in the preview are free and do not count in analytics. |
+| `get_embed_code` | Read | Generates ready-to-paste embed snippets (standard iframe, bubble button, or popup trigger) with optional channel tracking. |
+| `read_skill` | Read | Accesses Attlas product playbooks and best practices (guided setup, triggers, theme, industries, knowledge). |
+| `read_url_preview` | Read | Fetches public metadata and e-commerce product prices from a URL before creating a trigger. |
+| `read_instagram_profile` | Read | Extracts profile details, avatar picture URL, and external links from an Instagram handle. |
+| `read_linkedin` | Read | Extracts profile or company details, logo, summary, and links from LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Read | The themes and personalities you can pick from. |
 | `create_chat` | Write | Creates a new chat. |
+| `create_channel` | Write | Adds a named distribution channel (website, Instagram bio, newsletter) to tag incoming conversations. |
 | `update_chat` | Write | Name, description, welcome message, and which tab opens first. |
 | `update_activity_profile` | Write | Business info: website, email, phone, address, opening hours, company or person. |
 | `set_objective` | Write | Support, appointment booking, or lead capture, plus your own instructions. |
@@ -303,7 +310,7 @@ Each tool needs the scope shown next to it. A key only sees the tools its scope 
 Some settings need you at [attlas.so](https://attlas.so). Your assistant tells you when a request falls here:
 
 - Changing a chat's URL.
-- Connecting an integration: Google Calendar, Notion, a SQL database, Bandsintown, a custom domain, or a webhook. Once connected, your assistant can configure and use it.
+- Connecting an integration: Google Calendar, Notion, a SQL database, Bandsintown, the Meta Conversions API, a custom domain, or a webhook. Once connected, your assistant can configure and use it.
 - Access mode, password, and public or private visibility.
 - Plan, billing, and add-ons.
 - Workspace members and invitations.

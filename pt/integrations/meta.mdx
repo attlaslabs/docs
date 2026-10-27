@@ -1,0 +1,80 @@
+---
+title: "API de Conversões da Meta (Tráfego pago)"
+sidebarTitle: "Meta (CAPI)"
+description: "Envie eventos de conversão server-side para a Meta para otimizar suas campanhas de anúncios e rastrear leads com precisão."
+badge: "New"
+---
+
+Se você veicula anúncios pagos na Meta (Facebook e Instagram) direcionados ao seu Chat da Attlas, enviar dados de conversão de volta para a Meta é essencial. Sem isso, a Meta otimiza apenas para cliques no link, o que aumenta seu custo real por lead (CPL).
+
+A Attlas se conecta diretamente à API de Conversões da Meta (CAPI) no lado do servidor. Sempre que um visitante preenche um formulário de lead ou agenda um compromisso no seu chat, a Attlas envia esse evento de conversão diretamente para a Meta.
+
+---
+
+## Por que o rastreamento server-side é importante
+
+Diferente do rastreamento web tradicional que depende de um pixel no navegador, a Attlas gerencia o rastreamento de conversões inteiramente no servidor:
+
+- **Sem script de rastreamento no cliente**: Seu chat permanece rápido e leve, sem nenhum script de rastreamento externo carregado na página.
+- **Compatível com privacidade e SEO**: Nenhum cookie de rastreamento é definido pelo chat, evitando banners intrusivos de consentimento de cookies e preservando a rastreabilidade ideal para mecanismos de busca.
+- **Rastreamento confiável**: Eventos server-side contornam bloqueadores de anúncios e restrições de privacidade do navegador que frequentemente bloqueiam pixels de navegador.
+- **Atribuição de primeiro toque**: A Attlas registra o clique original no anúncio da Meta (`fbclid`) quando o visitante chega, mantendo a atribuição precisa mesmo após uma conversa prolongada.
+
+---
+
+## Eventos de conversão suportados
+
+A Attlas mapeia automaticamente as ações do visitante para os eventos padrão da Meta:
+
+| Evento | Acionado quando | Descrição |
+| --- | --- | --- |
+| `Lead` | Envio de formulário de contato | Um visitante envia seus dados de contato (nome, e-mail, telefone) pelo chat. |
+| `Schedule` | Agendamento no calendário | Um visitante agenda um compromisso pelo calendário do Google integrado. |
+
+<Info>
+Os dados de contato (e-mail, telefone, nome e país) são normalizados e protegidos por hash usando SHA-256 antes de serem enviados para a Meta, em total conformidade com os requisitos de privacidade de dados de clientes da Meta.
+</Info>
+
+---
+
+## Como configurar a API de Conversões da Meta
+
+![Configuração da Meta](/images/integration-meta.webp)
+
+Configurar a conexão leva apenas alguns minutos:
+
+1. Abra suas **Configurações do Chat** no painel da Attlas.
+2. Selecione a aba **Integrações**.
+3. Localize o card **API de Conversões da Meta** e clique em **Conectar**.
+4. Preencha seu **ID do Pixel** e **Token de acesso**.
+5. (Opcional) Insira um **Código de evento de teste** se quiser verificar os eventos antes de publicar.
+6. Clique em **Salvar**. A Attlas verifica as credenciais diretamente com a Meta antes de salvar.
+
+---
+
+## Configurações
+
+| Campo | Obrigatório | Descrição |
+| --- | --- | --- |
+| `Pixel ID` | Sim | O ID numérico do seu Pixel ou Dataset da Meta. Você pode encontrá-lo no Gerenciador de Eventos da Meta, em Fontes de dados. |
+| `Access token` | Sim | Um token de acesso da API de Conversões gerado nas configurações do seu pixel no Gerenciador de Eventos da Meta. A Attlas armazena esse token de forma criptografada. |
+| `Test event code` | Não | Um código temporário encontrado na aba "Eventos de teste" do Gerenciador de Eventos da Meta (ex.: `TEST12345`). Quando preenchido, os eventos são roteados apenas para o console de testes e não afetam campanhas de anúncios ativas. |
+
+<Warning>
+Lembre-se de limpar o campo **Código de evento de teste** quando terminar os testes. Enquanto houver um código de teste presente, os eventos não contarão para a entrega e otimização de campanhas ativas.
+</Warning>
+
+---
+
+## Testando sua integração
+
+Depois que sua conexão for salva:
+
+1. Acesse o **Gerenciador de Eventos da Meta** e abra a aba **Eventos de teste** do seu pixel.
+2. Se estiver usando um código de teste, verifique se o mesmo código está salvo no diálogo de integração da Attlas.
+3. Na Attlas, abra o diálogo da integração da Meta e clique em **Enviar evento de teste**.
+4. Verifique a tela do Gerenciador de Eventos da Meta. Você verá um evento `Lead` chegando em segundos.
+
+<Tip>
+Você pode pausar o envio de conversões a qualquer momento usando o botão de alternância no card da Meta, sem excluir suas credenciais.
+</Tip>

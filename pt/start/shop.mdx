@@ -1,15 +1,15 @@
 ---
 title: "Loja e produtos"
 sidebarTitle: "Loja"
-description: "Exiba produtos, mercadorias e bens digitais diretamente no seu chat com um layout de loja dedicado."
+description: "Exiba produtos, mercadorias e itens digitais diretamente no seu chat com um layout de loja dedicado."
 ---
 
-A aba **Loja** permite que você exiba mercadorias, itens físicos, produtos digitais e serviços diretamente no seu chat.
+A aba **Loja** permite que você exiba mercadorias, itens físicos, produtos digitais e serviços diretamente dentro do seu chat.
 
-Quando você adiciona produtos, o Attlas os apresenta em um layout de loja dedicado de 2 colunas, facilitando a navegação e a compra para seus visitantes.
+Quando você adiciona produtos, o Attlas os apresenta em um layout de loja dedicado com duas colunas, facilitando a navegação e a compra para seus visitantes.
 
 <Check>
-  Para gerenciar seu catálogo, acesse a página **"Gatilhos"** e mude para a aba **"Loja"**.
+  Para gerenciar seu catálogo, acesse a página **Gatilhos** no seu painel e selecione a aba **Loja**.
 </Check>
 
 ![Gatilho de Produto](/images/trigger-product.webp)
@@ -18,47 +18,71 @@ Quando você adiciona produtos, o Attlas os apresenta em um layout de loja dedic
 
 Cada gatilho de produto inclui:
 
-- **Imagem de capa**: Visual de alta qualidade exibindo seu item.
-- **Título do produto**: Nome claro e conciso para o item.
-- **Preço e moeda**: Valor e código da moeda (compatível com USD, EUR, GBP, BRL, CAD, JPY e mais).
-- **URL de destino**: Link externo apontando diretamente para sua página de checkout, loja online ou processador de pagamento (ex.: Stripe, Shopify, Gumroad).
+- **Imagem de capa**: Imagem de alta resolução exibindo seu item. Necessária para exibir o card.
+- **Título**: Nome claro do produto.
+- **Preço e moeda**: Preço do item e código de moeda de 3 letras (ex: USD, EUR, GBP, BRL, CAD).
+- **URL**: Link de destino que aponta diretamente para sua página de checkout, loja online ou link de pagamento (como Stripe, Shopify ou Gumroad).
 
 <Info>
-  **Exibição automática de moeda**: Quando os visitantes navegam pelo seu chat no idioma de preferência, o Attlas converte e exibe automaticamente o preço equivalente na moeda local deles.
+  **Exibição automática de moeda**: O Attlas converte e exibe automaticamente o preço equivalente na moeda local do seu visitante, com base no idioma e região dele.
 </Info>
 
 ---
 
-## Abas de Links e Loja
+## Organizando com categorias
 
-<video autoPlay muted loop playsInline src="/videos/triggers-tabs.mp4" />
+Você pode organizar produtos em categorias usando gatilhos de **Seção** (como "Vestuário", "Impressões", "Cursos" ou "Acessórios").
 
-Nas configurações do seu chat, seus gatilhos são organizados em abas:
+Para criar uma categoria:
 
-1. **Links & Media**: Para seus links, cartões, incorporações e atalhos de contato.
-2. **Loja**: Para seus produtos e coleções da loja.
-3. **Perguntas**: Para sugestões de início de conversa.
+1. Na aba **Loja**, clique em **Produto** ou no botão **+**.
+2. Selecione **Seção** e nomeie sua categoria.
+3. Arraste os cards de produto para dentro da seção para agrupá-los.
 
-Quando você tem pelo menos um produto na sua Loja, o Attlas adiciona automaticamente um **alternador de Links / Loja** no topo do seu chat público. Os visitantes podem alternar facilmente entre seus links gerais e os itens da loja.
+<Tip>
+  Os cabeçalhos de seção na aba Loja se estendem por ambas as colunas da grade de produtos para introduzir cada grupo de forma clara.
+</Tip>
+
+<Note>
+  A aba Loja aceita apenas cards de **Produto** e cabeçalhos de categoria de **Seção**. Todos os outros tipos de gatilho (links, arquivos, botões de contato, mapas) pertencem à aba **Links**.
+</Note>
 
 ---
 
-## Organizando com seções
+## Escolhendo o rótulo da sua aba: Loja ou Catálogo
 
-Você pode adicionar divisores de **Seção** na aba Loja para categorizar seus produtos (ex.: "Vestuário", "E-books", "Acessórios", "Cursos").
+Você pode personalizar o nome de exibição da aba da sua loja para combinar com o seu negócio:
 
-<Tip>
-  Os cabeçalhos de seção na aba Loja ocupam automaticamente ambas as colunas da grade de produtos, mantendo seu catálogo limpo e fácil de navegar.
-</Tip>
+1. Abra a página **Gatilhos**.
+2. Clique na pequena seta ao lado do cabeçalho da aba **Loja**.
+3. Escolha entre **Loja** e **Catálogo**.
+
+| Rótulo | Quando usar |
+| :--- | :--- |
+| **Loja** | Os links dos seus produtos levam diretamente a uma página de checkout ou carrinho de compras onde os visitantes compram online imediatamente. |
+| **Catálogo** | Os links dos seus produtos levam a itens de portfólio, listagens de imóveis ou páginas de solicitação de orçamento onde os visitantes navegam antes de entrar em contato. |
+
+---
+
+## Definindo a aba padrão
+
+Quando você tem pelo menos um produto na sua aba Loja, o Attlas revela um menu suspenso **Mostrar primeiro** no cabeçalho da aba.
+
+Você pode selecionar qual aba os visitantes veem primeiro ao abrir seu chat:
+
+- **Links**: Mostra seus links gerais, cards e incorporações de mídia primeiro.
+- **Loja** (ou **Catálogo**): Mostra sua grade de produtos primeiro. Ideal quando vender ou exibir inventário é o objetivo principal do seu chat.
+
+Os visitantes ainda podem alternar entre as abas a qualquer momento usando o seletor no topo do chat.
 
 ---
 
 ## Melhores práticas
 
-- **Imagens de alta resolução**: Use fotos limpas e bem iluminadas com proporções consistentes para uma aparência profissional de vitrine.
-- **Links diretos para checkout**: Vincule diretamente ao URL de checkout ou carrinho específico do produto para minimizar atritos para o comprador.
-- **Títulos descritivos**: Mantenha os títulos dos produtos curtos para que se encaixem bem nas telas de dispositivos móveis.
+- **Imagens de capa consistentes**: Use fotos com proporções correspondentes para dar à sua grade de produtos uma aparência limpa.
+- **Links diretos para checkout**: Envie os visitantes diretamente para o checkout ou página de compra do item para minimizar atritos.
+- **Títulos concisos**: Mantenha os nomes dos produtos curtos para que se ajustem bem às telas de dispositivos móveis.
 
-<Card title="Aprenda a adicionar perguntas sugeridas ao seu chat" icon="messages" horizontal href="/pt/start/questions">
-  Guie os visitantes e inicie conversas com prompts selecionados e perguntas geradas por IA.
+<Card title="Aprenda como adicionar perguntas sugeridas ao seu chat" icon="messages" horizontal href="/pt/start/questions">
+  Guie os visitantes e inicie conversas com sugestões personalizadas e perguntas geradas por IA.
 </Card>

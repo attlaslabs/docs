@@ -238,7 +238,8 @@
                   "integrations/sql-database",
                   "integrations/bandsintown",
                   "integrations/tally",
-                  "integrations/mintlify"
+                  "integrations/mintlify",
+                  "integrations/meta"
                 ],
                 "icon": "shapes"
               },
@@ -371,7 +372,8 @@
                   "fr/integrations/sql-database",
                   "fr/integrations/bandsintown",
                   "fr/integrations/tally",
-                  "fr/integrations/mintlify"
+                  "fr/integrations/mintlify",
+                  "fr/integrations/meta"
                 ],
                 "icon": "shapes"
               },
@@ -500,7 +502,8 @@
                   "pt/integrations/sql-database",
                   "pt/integrations/bandsintown",
                   "pt/integrations/tally",
-                  "pt/integrations/mintlify"
+                  "pt/integrations/mintlify",
+                  "pt/integrations/meta"
                 ],
                 "icon": "shapes"
               },

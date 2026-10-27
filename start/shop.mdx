@@ -4,12 +4,12 @@ sidebarTitle: "Shop"
 description: "Showcase products, merchandise, and digital goods directly in your chat with a dedicated store layout."
 ---
 
-The **Shop** tab allows you to showcase merchandise, physical items, digital products, and services directly inside your chat.
+The **Shop** tab allows you to showcase merchandise, physical items, digital goods, and services directly inside your chat.
 
-When you add products, Attlas presents them in a dedicated 2-column store layout that makes browsing and purchasing seamless for your visitors.
+When you add products, Attlas presents them in a dedicated 2-column store layout that makes browsing and purchasing simple for your visitors.
 
 <Check>
-  To manage your catalog, navigate to the **"Triggers"** page and switch to the **"Shop"** tab.
+  To manage your catalog, navigate to the **Triggers** page in your dashboard and select the **Shop** tab.
 </Check>
 
 ![Product Trigger](/images/trigger-product.webp)
@@ -18,46 +18,70 @@ When you add products, Attlas presents them in a dedicated 2-column store layout
 
 Each product trigger includes:
 
-- **Cover image**: High-quality visual showcasing your item.
-- **Product title**: Clear and concise name for the item.
-- **Price and currency**: Amount and currency code (supporting USD, EUR, GBP, BRL, CAD, JPY, and more).
-- **Destination URL**: Outbound link pointing directly to your checkout page, online store, or payment processor (e.g. Stripe, Shopify, Gumroad).
+- **Cover image**: High-resolution visual showcasing your item. Required to display the card.
+- **Title**: Clear name for the product.
+- **Price and currency**: Item price and 3-letter currency code (e.g. USD, EUR, GBP, BRL, CAD).
+- **URL**: Destination link pointing directly to your checkout page, online store, or payment link (such as Stripe, Shopify, or Gumroad).
 
 <Info>
-  **Automatic currency display**: When visitors browse your chat in their preferred language, Attlas automatically converts and displays the equivalent price in their local currency.
+  **Automatic currency display**: Attlas automatically converts and displays the equivalent price in your visitor's local currency based on their language and region.
 </Info>
 
 ---
 
-## Links and Shop tabs
+## Organizing with categories
 
-<video autoPlay muted loop playsInline src="/videos/triggers-tabs.mp4" />
+You can organize products into categories using **Section** triggers (such as "Apparel", "Prints", "Courses", or "Accessories").
 
-In your chat settings, your triggers are organized across tabs:
+To create a category:
 
-1. **Links & Media**: For your links, cards, embeds, and contact shortcuts.
-2. **Shop**: For your products and store collections.
-3. **Questions**: For suggested conversation starters.
+1. In the **Shop** tab, click **Product** or the **+** button.
+2. Select **Section** and name your category.
+3. Drag product cards under the section to nest them.
 
-When you have at least one product in your Shop, Attlas automatically adds a **Links / Shop switcher** at the top of your public chat. Visitors can easily toggle between your general links and your store items.
+<Tip>
+  Section headers in the Shop tab span across both columns of the product grid to introduce each group clearly.
+</Tip>
+
+<Note>
+  The Shop tab only accepts **Product** cards and **Section** category headers. All other trigger types (links, files, contact buttons, maps) belong in the **Links** tab.
+</Note>
 
 ---
 
-## Organizing with sections
+## Choosing your tab label: Shop or Catalogue
 
-You can add **Section** dividers in your Shop tab to categorize your products (e.g. "Apparel", "E-books", "Accessories", "Courses").
+You can customize the display name of your store tab to match your business:
 
-<Tip>
-  Section headers in the Shop tab automatically span across both columns of the product grid to keep your catalog clean and easy to browse.
-</Tip>
+1. Open the **Triggers** page.
+2. Click the small arrow next to the **Shop** tab header.
+3. Choose between **Shop** and **Catalogue**.
+
+| Label | When to use |
+| :--- | :--- |
+| **Shop** | Your product links lead directly to a checkout page or shopping cart where visitors purchase online immediately. |
+| **Catalogue** | Your product links lead to portfolio items, real estate listings, or quote request pages where visitors browse before getting in touch. |
+
+---
+
+## Setting the default tab
+
+When you have at least one product in your Shop tab, Attlas reveals a **Shown first** dropdown menu in the tab header.
+
+You can select which tab visitors see first when opening your chat:
+
+- **Links**: Shows your general links, cards, and media embeds first.
+- **Shop** (or **Catalogue**): Shows your product grid first. Ideal when selling or showcasing inventory is the main goal of your chat.
+
+Visitors can still switch between tabs at any time using the switcher at the top of the chat.
 
 ---
 
 ## Best practices
 
-- **High-resolution images**: Use clean, well-lit photos with consistent aspect ratios for a professional storefront look.
-- **Direct checkout links**: Link directly to the specific product checkout or cart URL to minimize friction for the buyer.
-- **Descriptive titles**: Keep product titles short so they fit neatly on mobile screens.
+- **Consistent cover images**: Use photos with matching aspect ratios to give your product grid a clean look.
+- **Direct checkout links**: Send visitors straight to the checkout or item purchase page to minimize friction.
+- **Concise titles**: Keep product names short so they fit neatly on mobile screens.
 
 <Card title="Learn how to add suggested questions to your chat" icon="messages" horizontal href="/start/questions">
   Guide visitors and spark conversations with curated prompts and AI-generated questions.

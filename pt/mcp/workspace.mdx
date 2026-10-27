@@ -7,7 +7,7 @@ tag: "Novo"
 
 As chaves de API do Workspace permitem que ferramentas de desenvolvimento externas e assistentes de IA (Claude Code, Cursor, Claude Desktop, VS Code e Codex) conectem-se a todo o seu workspace do Attlas usando o Model Context Protocol (MCP).
 
-Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises do seu workspace.
+O Attlas disponibiliza 55 ferramentas no total em seu workspace: 26 ferramentas de leitura, 24 de escrita e 5 de exclusão. Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises do seu workspace.
 
 <Tip>
   Seu assistente já sabe como configurar e aprimorar um chat do Attlas. Pergunte "ajude-me a configurar meu chat" ou "o que devo adicionar ao meu chat de vendas" e ele te guiará passo a passo. Nada para instalar.
@@ -204,6 +204,7 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 | Remover o selo de branding do Attlas (`update_branding`) | Complemento de marca. |
 | Personalizar metadados de SEO do chat (`update_seo`) | Starter ou PRO. |
 | Editar as configurações de banco de dados SQL conectado de um chat | Starter ou PRO. |
+| Código de incorporação de balão ou popup (`get_embed_code`) | Plano PRO. A incorporação padrão via iframe funciona em todos os planos. |
 
 <Tip>
   Seu assistente pode chamar `can_use` para verificar se uma ação é permitida pelo seu plano, e `get_usage` para ver seus chats, mensagens e caracteres restantes.
@@ -213,7 +214,7 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 
 ## Ferramentas disponíveis
 
-Cada ferramenta precisa do escopo mostrado ao lado. Uma chave só vê as ferramentas que seu escopo permite.
+O Attlas disponibiliza 55 ferramentas no total. Cada ferramenta precisa do escopo mostrado ao lado, e uma chave só vê as ferramentas que seu escopo permite.
 
 ### Chats e configuração
 
@@ -223,8 +224,14 @@ Cada ferramenta precisa do escopo mostrado ao lado. Uma chave só vê as ferrame
 | `get_chat_overview` | Read | Tudo sobre um chat em uma única leitura, além de uma lista classificada do que está faltando. |
 | `get_chat_config` | Read | Configurações de um chat: objetivo, captação de leads, integrações, avatar, SEO, informações da empresa. |
 | `preview_chat` | Read | Mostra uma prévia ao vivo do chat público. As mensagens enviadas na prévia são gratuitas e não contam nas análises. |
+| `get_embed_code` | Read | Gera snippets de incorporação prontos para colar (iframe padrão, botão de balão ou gatilho popup) com rastreamento opcional de canais. |
+| `read_skill` | Read | Acessa playbooks de produto e melhores práticas da Attlas (configuração guiada, gatilhos, tema, setores, conhecimento). |
+| `read_url_preview` | Read | Obtém metadados públicos e preços de produtos de e-commerce a partir de uma URL antes de criar um gatilho. |
+| `read_instagram_profile` | Read | Extrai detalhes do perfil, URL da foto de avatar e links externos a partir de um perfil do Instagram. |
+| `read_linkedin` | Read | Extrai detalhes de perfil ou empresa, logotipo, resumo e links do LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Read | Os temas e personalidades que você pode escolher. |
 | `create_chat` | Write | Cria um novo chat. |
+| `create_channel` | Write | Adiciona um canal de distribuição nomeado (site, bio do Instagram, newsletter) para marcar conversas recebidas. |
 | `update_chat` | Write | Nome, descrição, mensagem de boas-vindas e qual aba abre primeiro. |
 | `update_activity_profile` | Write | Informações da empresa: site, email, telefone, endereço, horário de funcionamento, empresa ou pessoa. |
 | `set_objective` | Write | Suporte, agendamento de consultas ou captação de leads, além de suas próprias instruções. |
@@ -303,7 +310,7 @@ Cada ferramenta precisa do escopo mostrado ao lado. Uma chave só vê as ferrame
 Algumas configurações precisam que você esteja em [attlas.so](https://attlas.so). Seu assistente informa quando uma solicitação se enquadra aqui:
 
 - Alterar a URL de um chat.
-- Conectar uma integração: Google Calendar, Notion, um banco de dados SQL, Bandsintown, um domínio personalizado ou um webhook. Uma vez conectado, seu assistente pode configurá-lo e usá-lo.
+- Conectar uma integração: Google Calendar, Notion, um banco de dados SQL, Bandsintown, a API de Conversões da Meta, um domínio personalizado ou um webhook. Uma vez conectado, seu assistente pode configurá-lo e usá-lo.
 - Modo de acesso, senha e visibilidade pública ou privada.
 - Plano, faturamento e complementos.
 - Membros do Workspace e convites.

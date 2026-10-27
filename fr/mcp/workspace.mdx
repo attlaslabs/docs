@@ -7,7 +7,7 @@ tag: "Nouveau"
 
 Les clés API d'Espace de travail permettent aux outis de dévelopement externes et aux assistants IA (Claude Code, Cursor, Claude Desktop, VS Code et Codex) de se connecter à l'ensemble de votre espace de travail Attlas en utilisant le Model Context Protocol (MCP).
 
-Contrairement au point de terminaison MCP de chat public, les clés API d'Espace de travail sont des identifiants privés avec périmètre qui couvrent tous les chats, documents de connaissances, déclencheurs, contacts et analyses de votre espace de travail.
+Attlas expose 55 outils au total dans votre espace de travail : 26 outils de lecture, 24 outils d'écriture et 5 outils de suppression. Contrairement au point de terminaison MCP de chat public, les clés API d'Espace de travail sont des identifiants privés avec périmètre qui couvrent tous les chats, documents de connaissances, déclencheurs, contacts et analyses de votre espace de travail.
 
 <Tip>
   Votre assistant sait déjà comment configurer et améliorer un chat Attlas. Demandez « aide-moi à configurer mon chat » ou « que devrais-je ajouter à mon chat commercial » et il vous guide pas à pas. Rien à installer.
@@ -202,6 +202,7 @@ Le serveur MCP d'Espace de travail fonctionne avec tous les plans. Quelques acti
 | Retirer le badge de marque Attlas (`update_branding`) | Module complémentaire de marque. |
 | Personnaliser les métadonnées SEO du chat (`update_seo`) | Starter ou PRO. |
 | Modifier les paramètres de la base de données SQL connectée au chat | Starter ou PRO. |
+| Code d'intégration de bulle ou popup (`get_embed_code`) | Forfait PRO. L'intégration iframe standard fonctionne avec tous les forfaits. |
 
 <Tip>
   Votre assistant peut appeler `can_use` pour vérifier une action par rapport à votre plan, et `get_usage` pour voir vos chats, messages et caractères restants.
@@ -211,7 +212,7 @@ Le serveur MCP d'Espace de travail fonctionne avec tous les plans. Quelques acti
 
 ## Outis disponibles
 
-Chaque outil nécessite le périmètre indiqué à côté. Une clé ne voit que les outis autorisés par son périmètre.
+Attlas propose 55 outils au total. Chaque outil nécessite le périmètre indiqué à côté, et une clé ne voit que les outils autorisés par son périmètre.
 
 ### Chats et configuration
 
@@ -221,8 +222,14 @@ Chaque outil nécessite le périmètre indiqué à côté. Une clé ne voit que 
 | `get_chat_overview` | Lire | Toutes les informations d'un chat en une seule lecture, plus une liste classée des éléments manquants. |
 | `get_chat_config` | Lire | Paramètres d'un chat : objectif, capture de leads, intégrations, avatar, SEO, informations sur l'entreprise. |
 | `preview_chat` | Lire | Affiche un aperçu en direct du chat public. Les messages envoyés dans l'aperçu sont gratuits et ne sont pas comptabilisés dans les analyses. |
+| `get_embed_code` | Lire | Génère des extraits de code d'intégration prêts à coller (iframe standard, bouton bulle ou déclencheur popup) avec suivi optionnel des canaux. |
+| `read_skill` | Lire | Accède aux guides produit et aux meilleures pratiques d'Attlas (configuration guidée, déclencheurs, thème, secteurs, connaissances). |
+| `read_url_preview` | Lire | Récupère les métadonnées publiques et les prix des produits e-commerce à partir d'une URL avant de créer un déclencheur. |
+| `read_instagram_profile` | Lire | Extrait les informations de profil, l'URL de la photo d'avatar et les liens externes d'un compte Instagram. |
+| `read_linkedin` | Lire | Extrait les informations d'un profil ou d'une entreprise, le logo, le résumé et les liens depuis LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Lire | Les thèmes et personnalités parmi lesquels vous pouvez choisir. |
 | `create_chat` | Écrire | Cré un nouveau chat. |
+| `create_channel` | Écrire | Ajoute un canal de diffusion nommé (site web, bio Instagram, newsletter) pour identifier les conversations entrantes. |
 | `update_chat` | Écrire | Nom, description, message de bienvenue et onglet qui s'ouvre en premier. |
 | `update_activity_profile` | Écrire | Informations sur l'entreprise : site web, e-mail, téléphone, adresse, horaires d'ouverture, entreprise ou personne. |
 | `set_objective` | Écrire | Support, prise de rendez-vous ou capture de leads, plus vos propres instructions. |
@@ -301,7 +308,7 @@ Chaque outil nécessite le périmètre indiqué à côté. Une clé ne voit que 
 Certains paramètres nécessitent que vous soyez sur [attlas.so](https://attlas.so). Votre assistant vous indique quand une demande concerne ces points :
 
 - Modifier l'URL d'un chat.
-- Connecter une intégration : Google Calendar, Notion, une base de données SQL, Bandsintown, un domaine personnalisé ou un webhook. Une fois connectée, votre assistant peut la configer et l'utiliser.
+- Connecter une intégration : Google Calendar, Notion, une base de données SQL, Bandsintown, l'API Conversions Meta, un domaine personnalisé ou un webhook. Une fois connectée, votre assistant peut la configurer et l'utiliser.
 - Mode d'accès, mot de passe et visibilité publique ou privée.
 - Plan, facturation et modules complémentaires.
 - Membres de l'espace de travail et invitations.
