@@ -21,6 +21,7 @@ Attlas offers a wide variety of link and media trigger types organized by catego
 ### Start with
 
 - **External links**: Direct users to external websites, landing pages, or resources.
+- **Forms**: Launch multi-step questionnaires, surveys, or lead flows directly inside the chat.
 - **Cards**: Highlight articles, announcements, or featured items with a visual 16:9 cover image.
 - **Files**: Offer downloadable PDFs, e-books, guides, or catalogs.
 
@@ -121,6 +122,38 @@ Share documents, presentations, spreadsheets, or any other files stored in Googl
 Simply add the public share link to give visitors instant access to your content.
 
 ![Google Drive Trigger](/images/trigger-editor-google-drive.webp)
+
+---
+
+### Forms
+
+Launch interactive step-by-step forms and questionnaires directly inside the conversation thread.
+
+Forms guide visitors through questions one at a time, making it easy to qualify leads, collect feedback, or gather structured information without sending users to external pages.
+
+When configuring a Form trigger:
+
+- **Title**: Enter the label displayed on the trigger button (e.g. "Get a quote" or "Start questionnaire").
+- **Form**: Select the form from your chat that will run when visitors click the trigger.
+
+When a visitor clicks a Form trigger:
+
+- The button label appears as a message sent by the visitor in the chat.
+- The assistant immediately begins the form flow and presents the first step.
+- Visitors respond directly in the chat using the input bar (text, options, dates, or contact details).
+- Completed answers are saved to your CRM.
+
+<Info>
+  Create and manage your forms in the **Forms** section of your dashboard. If a linked form is deleted, the trigger is automatically hidden on the public chat until a new form is assigned.
+</Info>
+
+<Tip>
+  Running marketing ads? You can set any Form trigger to launch automatically on arrival when visitors open a campaign link. Learn more in our [Campaigns](/pro/campaigns) guide.
+</Tip>
+
+<Card title="Learn how to build and customize chat forms" icon="clipboard-list" horizontal href="/basic/forms">
+  Explore our dedicated guide to learn how to create forms, configure step types, and collect structured responses.
+</Card>
 
 ---
 
@@ -282,6 +315,7 @@ Click on the icon preview in the edit drawer to open the media picker:
 | **Card** | No (displays its own cover image) | None |
 | **File** | Yes | File / Paperclip |
 | **Google Drive** | Yes | Google Drive Logo |
+| **Form** | Yes | Checklist |
 | **Mini-video** | No (displays its own video player) | None |
 | **YouTube video** | No | YouTube Logo |
 | **YouTube channel** | Yes | YouTube Logo |
@@ -315,6 +349,7 @@ Only certain trigger types can act as a parent (foldable) and contain child trig
 | File | Yes |
 | Google Drive | Yes |
 | Section | Yes |
+| Form | No |
 | Mini-video | No |
 | YouTube video | No |
 | YouTube channel | No |

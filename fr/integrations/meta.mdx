@@ -1,54 +1,68 @@
 ---
-title: "API Conversions Meta (Trafic payant)"
+title: "API de conversions Meta (Trafic payant)"
 sidebarTitle: "Meta (CAPI)"
-description: "Envoyez les événements de conversion côté serveur à Meta pour optimiser vos campagnes publicitaires et suivre les leads avec précision."
-badge: "New"
+description: "Envoyez les événements de conversion côté serveur à Meta pour optimiser vos campagnes publicitaires et suivre les prospects avec précision."
+tag: "New"
 ---
 
-Si vous diffusez des publicités payantes sur Meta (Facebook et Instagram) vers votre Attlas Chat, il est essentiel d'envoyer les données de conversion à Meta. Sans cela, Meta n'optimise que les clics sur les liens, ce qui augmente votre coût réel par lead (CPL).
+Si vous diffusez des publicités payantes sur Meta (Facebook et Instagram) renvoyant vers votre chat Attlas, il est essentiel d'envoyer les données de conversion à Meta. Sans cela, Meta optimise uniquement pour les clics sur les liens, ce qui augmente votre coût par lead réel (CPL).
 
-Attlas se connecte directement à l'API Conversions Meta (CAPI) côté serveur. Dès qu'un visiteur remplit un formulaire de lead ou réserve un rendez-vous dans votre chat, Attlas envoie cet événement de conversion directement à Meta.
+Attlas se connecte directement à l'API de conversions Meta (CAPI) côté serveur. Chaque fois qu'un visiteur convertit dans votre chat, Attlas envoie cet événement de conversion directement à Meta sans dépendre d'un pixel navigateur.
 
 ---
 
 ## Pourquoi le suivi côté serveur est important
 
-Contrairement au suivi web traditionnel qui repose sur un pixel de navigateur, Attlas gère entièrement le suivi des conversions côté serveur :
+Contrairement au suivi web traditionnel qui repose sur un pixel navigateur, Attlas gère le suivi des conversions entièrement côté serveur :
 
-- **Aucun script de suivi côté client** : Votre chat reste rapide et léger, sans aucun script de suivi externe chargé sur la page.
-- **Respectueux de la vie privée et du SEO** : Aucun cookie de suivi n'est défini par le chat, ce qui évite les bannières de consentement aux cookies intrusives et préserve une explorabilité optimale pour les moteurs de recherche.
-- **Suivi fiable** : Les événements côté serveur contournent les bloqueurs de publicités et les restrictions de confidentialité des navigateurs qui bloquent souvent les pixels de navigateur.
-- **Attribution au premier contact** : Attlas enregistre le clic publicitaire Meta d'origine (`fbclid`) lorsque le visiteur arrive, conservant une attribution précise même après une conversation prolongée.
+- **Aucun script de suivi côté client** : votre chat reste rapide et léger, sans aucun script de suivi externe chargé dans le navigateur.
+- **Respectueux de la vie privée et du référencement** : le chat ne définit aucun cookie de suivi, évitant les bannières intrusives de consentement aux cookies et préservant une exploration optimale pour les moteurs de recherche.
+- **Suivi fiable** : les événements côté serveur contournent les bloqueurs de publicité et les restrictions de confidentialité du navigateur qui bloquent souvent les pixels navigateur.
+- **Attribution au premier contact** : Attlas enregistre le clic d'origine sur la publicité Meta (`fbclid`) lorsque le visiteur arrive, conservant ainsi une attribution précise même après une longue conversation.
+- **Données de test propres** : les conversations dans le bac à sable du tableau de bord ou marquées comme internes n'envoient jamais d'événements à Meta, empêchant les conversations de test de fausser vos métriques de campagne.
 
 ---
 
 ## Événements de conversion pris en charge
 
-Attlas mappe automatiquement les actions des visiteurs vers les événements standard Meta :
+Attlas mappe automatiquement les actions des visiteurs vers les événements standard de Meta :
 
 | Événement | Déclenché lorsque | Description |
 | --- | --- | --- |
-| `Lead` | Soumission du formulaire de contact | Un visiteur soumet ses coordonnées (nom, e-mail, téléphone) via le chat. |
-| `Schedule` | Réservation dans le calendrier | Un visiteur réserve un rendez-vous via le planificateur Google Calendar intégré. |
+| `Lead` | Capture de contact ou formulaire complété | Un visiteur soumet ses coordonnées dans le chat, remplit un formulaire de chat guidé ou demande une conversation WhatsApp. |
+| `Schedule` | Réservation d'un calendrier | Un visiteur prend un rendez-vous via l'outil de planification Google Calendar intégré. |
 
 <Info>
-Les coordonnées (e-mail, téléphone, prénom et pays) sont normalisées et hachées avec SHA-256 avant d'être envoyées à Meta, en totale conformité avec les exigences de confidentialité des données clients de Meta.
+Les détails de contact (e-mail, téléphone, prénom et pays) sont normalisés et hachés avec SHA-256 avant d'être envoyés à Meta, en totale conformité avec les exigences de confidentialité des données clients de Meta.
 </Info>
 
 ---
 
-## Comment configurer l'API Conversions Meta
+## Suivi des campagnes et des paramètres UTM
+
+Si votre campagne publicitaire dirige le trafic vers un canal de campagne spécifique ou inclut des paramètres de suivi, Attlas les transmet automatiquement à Meta :
+
+- **Origine de la campagne** : lorsque les visiteurs arrivent via un lien de campagne dédié (`?origin=<campaign_id>`), l'identifiant de la campagne est inclus dans les données personnalisées de l'événement. Pour apprendre à créer des écrans d'accueil personnalisés et des déclencheurs de conversation pour vos publicités, consultez notre guide [Campagnes](/fr/pro/campaigns).
+- **Campagne UTM** : tout paramètre `utm_campaign` capturé à l'arrivée est joint à l'événement de conversion pour une analyse facile dans le Gestionnaire d'événements Meta.
+
+<Tip>
+Combinez l'API de conversions Meta avec les [Campagnes](/fr/pro/campaigns) pour afficher des messages d'accueil personnalisés et des déclencheurs de conversation ciblés pour chaque publicité tout en suivant automatiquement les conversions.
+</Tip>
+
+---
+
+## Comment configurer l'API de conversions Meta
 
 ![Configuration Meta](/images/integration-meta.webp)
 
 La configuration de la connexion ne prend que quelques minutes :
 
-1. Ouvrez vos **Paramètres du chat** dans le tableau de bord Attlas.
+1. Ouvrez vos **Paramètres de chat** dans le tableau de bord Attlas.
 2. Sélectionnez l'onglet **Intégrations**.
-3. Trouvez la carte **API Conversions Meta** et cliquez sur **Connecter**.
-4. Renseignez votre **Pixel ID** et votre **Jeton d'accès**.
-5. (Facultatif) Saisissez un **Code d'événement test** si vous souhaitez vérifier les événements avant la mise en ligne.
-6. Cliquez sur **Enregistrer**. Attlas vérifie les identifiants directement auprès de Meta avant l'enregistrement.
+3. Repérez la carte **API de conversions Meta** et cliquez sur **Connecter**.
+4. Renseignez votre **ID Pixel** et votre **Jeton d'accès**.
+5. (Facultatif) Saisissez un **Code d'événement de test** si vous souhaitez vérifier les événements avant de passer en production.
+6. Cliquez sur **Enregistrer**. Si un code d'événement de test est fourni, Attlas vérifie vos identifiants directement auprès de Meta avant l'enregistrement.
 
 ---
 
@@ -56,12 +70,12 @@ La configuration de la connexion ne prend que quelques minutes :
 
 | Champ | Requis | Description |
 | --- | --- | --- |
-| `Pixel ID` | Oui | L'identifiant numérique de votre Pixel Meta ou de votre jeu de données. Vous le trouverez dans le Gestionnaire d'événements Meta, sous Sources de données. |
-| `Access token` | Oui | Un jeton d'accès API Conversions généré à partir des paramètres de votre pixel dans le Gestionnaire d'événements Meta. Attlas stocke ce jeton chiffré. |
-| `Test event code` | Non | Un code temporaire disponible dans l'onglet « Événements test » du Gestionnaire d'événements Meta (par exemple `TEST12345`). Lorsqu'il est renseigné, les événements sont uniquement envoyés vers la console de test et n'affectent pas les campagnes publicitaires en direct. |
+| `Pixel ID` | Oui | L'ID numérique de votre Pixel Meta ou de votre ensemble de données. Vous pouvez le trouver dans le Gestionnaire d'événements Meta sous Sources de données. |
+| `Access token` | Oui | Un jeton d'accès de l'API de conversions généré à partir des paramètres de votre pixel dans le Gestionnaire d'événements Meta. Attlas stocke ce jeton de manière chiffrée. |
+| `Test event code` | Non | Un code temporaire disponible dans l'onglet « Événements de test » du Gestionnaire d'événements Meta (par exemple `TEST12345`). Lorsqu'il est renseigné, les événements sont uniquement acheminés vers la console de test et n'affecteront pas les campagnes publicitaires en production. |
 
 <Warning>
-Pensez à vider le champ **Code d'événement test** une fois les tests terminés. Tant qu'un code test est présent, les événements ne seront pas pris en compte dans la diffusion et l'optimisation des campagnes en direct.
+Le **Code d'événement de test** est facultatif et sert uniquement à vérifier votre configuration. Laissez-le vide si vous souhaitez passer en production. Le code expire automatiquement 1 heure après son enregistrement. Pour passer en production immédiatement, laissez le champ vide avant d'enregistrer.
 </Warning>
 
 ---
@@ -70,11 +84,11 @@ Pensez à vider le champ **Code d'événement test** une fois les tests terminé
 
 Une fois votre connexion enregistrée :
 
-1. Accédez à votre **Gestionnaire d'événements Meta** et ouvrez l'onglet **Événements test** pour votre pixel.
-2. Si vous utilisez un code test, assurez-vous que le même code est enregistré dans la boîte de dialogue d'intégration Attlas.
-3. Dans Attlas, ouvrez la boîte de dialogue d'intégration Meta et cliquez sur **Envoyer un événement test**.
-4. Vérifiez l'écran du Gestionnaire d'événements Meta. Vous verrez apparaître un événement `Lead` entrant en quelques secondes.
+1. Accédez à votre **Gestionnaire d'événements Meta** et ouvrez l'onglet **Événements de test** pour votre pixel.
+2. Si vous utilisez un code de test, assurez-vous que le même code est enregistré dans la boîte de dialogue d'intégration Attlas.
+3. Dans Attlas, ouvrez la boîte de dialogue d'intégration Meta et cliquez sur **Envoyer un événement de test**.
+4. Vérifiez l'écran du Gestionnaire d'événements Meta. Vous verrez un événement `Lead` entrant apparaître en quelques secondes.
 
 <Tip>
-Vous pouvez mettre en pause la transmission des conversions à tout moment à l'aide de l'interrupteur sur la carte Meta, sans supprimer vos identifiants.
+Vous pouvez suspendre le rapport de conversion à tout moment en utilisant le bouton bascule sur la carte Meta, sans supprimer vos identifiants.
 </Tip>

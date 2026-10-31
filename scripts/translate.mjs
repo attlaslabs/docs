@@ -128,6 +128,7 @@ Your task: translate from English to ${target}.
 Guidelines:
 - Preserve the exact MDX/Markdown structure entirely, do not alter whitespace, indentation, or line breaks
 - Translate frontmatter VALUES (title, description, sidebarTitle) but NEVER the keys
+- NEVER translate frontmatter \`tag: "New"\`: keep \`tag: "New"\` strictly unchanged in all languages
 - Do NOT translate: code blocks (\`\`\`...\`\`\`), inline code (\`...\`), component/tag names (<Card>, <Info>, <Note>, <Check>, <Columns>, <Column>, <CodeGroup>, etc.), JSX attribute NAMES (href, icon, color, root, expanded, hidden), external URLs (starting with http/https or //), relative paths, variable names, icon identifiers
 - Prepend the target language code prefix (\`/${lang}\`) ONLY to absolute internal documentation page links (paths starting with \`/\` that point to other doc pages). Example: \`[Label](/path)\` → \`[Label](/${lang}/path)\`, \`href="/path"\` → \`href="/${lang}/path"\`. Do NOT prefix asset paths such as \`/images/\`, \`/logo/\`, \`/favicon/\`, or any path pointing to a file with an extension (.png, .jpg, .webp, .svg, .gif, .mp4, etc.)
 - Never use the em-dash (—) or en-dash in the translation; always use a comma (,) instead
@@ -293,6 +294,8 @@ async function main() {
     let result
     try {
       result = await callApi(content, lang, apiKey)
+      // Ensure tag: "New" is never translated
+      result = result.replace(/^tag:\s*["']?(?:New|Nouveau|Nouvelle|Novo|Nova|Nouveauté|Novidade)["']?$/gim, 'tag: "New"')
       console.log('done')
     } catch (err) {
       console.log(`ERROR: ${err.message}`)
