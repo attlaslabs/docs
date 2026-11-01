@@ -64,6 +64,7 @@ Quando o formulário chega a um bloco de resposta, a barra de entrada do chat se
 | **Número** | `/number` | Teclado numérico. | Apenas números, com limites mínimo e máximo opcionais. |
 | **Link** | `/url` | Teclado para URL. | Endereço de site válido (`https://` adicionado automaticamente se estiver faltando). |
 | **Período** | `/period` | Seletor de intervalo de datas. | Seletor de data inicial e final. |
+| **Enviar um arquivo** | `/file` | Botão de anexo de arquivo. | Fotos ou documentos PDF de até 20 MB. Ative **Vários arquivos (máx. 5)** para envios múltiplos. Requer o plano Pro. |
 
 ### Campos de contato
 
@@ -84,7 +85,7 @@ Os campos de contato capturam os detalhes do visitante e qualificam leads em seu
 
 ---
 
-## Mensagem de agradecimento e menções com `@`
+## Mensagem de agradecimento e redirecionamento
 
 O último bloco no seu editor é a mensagem de agradecimento. Esta mensagem é exibida automaticamente quando um visitante conclui o formulário.
 
@@ -95,6 +96,15 @@ Obrigado, @firstname! Recebemos sua solicitação de @choice e entraremos em con
 ```
 
 Se deixada em branco, o Attlas exibe uma mensagem de confirmação padrão no idioma do visitante.
+
+### Redirecionamento automático
+
+Você pode redirecionar os visitantes para um endereço externo (como página de pagamento, agendamento de calendário ou seu site principal) após a conclusão do formulário:
+
+1. Clique no bloco final na parte inferior do editor de formulário.
+2. Insira um endereço completo (`https://...`) no campo **URL de redirecionamento**.
+
+Após o envio, o chat exibe sua mensagem de agradecimento e um link **Continuar**. A página redireciona automaticamente após 3 segundos. Em widgets incorporados e iframes, os visitantes clicam em **Continuar** para abrir o link na janela principal.
 
 ---
 

@@ -8,7 +8,7 @@ tag: "Beta"
 
 ![Agente](/images/agent.webp)
 
-O agente é um chat dentro do seu painel. Você digita um pedido em linguagem natural, e ele lê os dados do seu chat ou faz alterações para você.
+O agente é um chat dentro do seu painel. Você digita um pedido em linguagem natural, e ele lê os dados do seu chat ou faz alterações para você. Ele se baseia nas mesmas ferramentas fundamentais do nosso Workspace MCP (abrangendo 59 recursos de leitura e escrita, além da exclusão segura de formulários para a lixeira de 30 dias, enquanto outras ações destrutivas permanecem exclusivas do painel).
 
 Por exemplo, você pode perguntar:
 
@@ -62,7 +62,7 @@ O seletor de modo fica na caixa de mensagem.
 | **Auto** | O agente faz as alterações imediatamente e mostra um cartão para cada uma que aplicou. |
 
 <Warning>
-  O agente nunca apaga nada, em nenhum modo. Para excluir um gatilho, um documento ou um contato, use a tela correspondente no painel.
+  O agente nunca apaga seus dados definitivamente. Ele pode mover um formulário para a lixeira de 30 dias via `delete_form` (o que o desconecta com segurança e permite sua restauração), seguindo o modo Manual ou Auto selecionado. Para excluir um chat, documento, gatilho, campanha ou contato, use a tela correspondente no painel.
 
   No modo **Auto**, textos escritos por seus visitantes ou encontrados em seus documentos podem provocar uma alteração que você não solicitou. Fique no modo **Manual** se quiser revisar cada alteração antes.
 </Warning>
@@ -73,20 +73,26 @@ O seletor de modo fica na caixa de mensagem.
 
 | Ler | Alterar |
 |---|---|
-| Visitas, leads e números de conversão | Perguntas sugeridas (gatilhos): adicionar, editar, reordenar, agrupar |
+| Visitas, leads e números de conversão | Perguntas sugeridas (gatilhos): adicionar, editar, reordenar, agrupar ou conectar a formulários |
 | Conversas dos visitantes | Tema, identidade visual, avatar e links sociais |
 | Contatos e compromissos | Objetivo e personalidade |
 | Perguntas que seu chat respondeu mal | Informações do negócio, descrição, saudação e SEO |
 | Documentos de conhecimento | Conhecimento: adicionar um link ou arquivo, escrever um documento, adicionar uma correção, limpar um documento |
-| Relatórios | Gerar um novo relatório |
+| Formulários e funis de desistência de 30 dias | Formulários: criar, editar, configurar uploads de arquivos (Pro) e URL de redirecionamento, restaurar ou mover para a lixeira, e conectar à captação ou a gatilhos |
+| Campanhas de anúncios e métricas de conversão | Campanhas de anúncios: criar, definir frase de boas-vindas, copiar gatilhos do menu, iniciar formulário na chegada, restaurar |
+| Relatórios | Canais de distribuição: criar canais nomeados (site, bio do Instagram, newsletter) para marcar conversas recebidas |
+| Prévia de páginas da web (preço de produto, imagem e descrição) | Gerar um novo relatório |
+| Perfis do Instagram e LinkedIn | |
+| Código de incorporação para seu site | |
+| Playbooks e skills de produtos | |
 
 O agente também pode aconselhá-lo: qual recurso se adequa ao seu objetivo, como organizar seu conhecimento, quais perguntas seus visitantes esperam.
 
 Algumas configurações permanecem no painel. O agente indica a tela correta quando você pergunta sobre:
 
-- excluir qualquer coisa,
+- exclusão definitiva de chats, documentos, gatilhos, campanhas ou contatos (apenas formulários podem ser movidos para a lixeira pelo agente),
 - alterar a URL do seu chat,
-- conectar uma integração (Google Calendar, Notion, um banco de dados, um domínio personalizado, um webhook),
+- conectar uma integração (Google Calendar, Notion, um banco de dados, Bandsintown, a API de Conversões da Meta, um domínio personalizado, um webhook),
 - modo de acesso, senha ou visibilidade,
 - seu plano, faturamento e membros do espaço de trabalho.
 

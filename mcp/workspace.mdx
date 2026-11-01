@@ -7,7 +7,7 @@ tag: "New"
 
 Workspace API keys let external developer tools and AI assistants (Claude Code, Cursor, Claude Desktop, VS Code, and Codex) connect to your entire Attlas workspace using the Model Context Protocol (MCP).
 
-Attlas exposes 55 tools in total across your workspace: 26 read tools, 24 write tools, and 5 delete tools. Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, and analytics in your workspace.
+Attlas exposes 67 tools in total across your workspace: 30 read tools, 30 write tools, and 7 delete tools. Unlike the public chat MCP endpoint, workspace API keys are private, scoped credentials that cover all chats, knowledge documents, triggers, contacts, forms, campaigns, and analytics in your workspace.
 
 <Tip>
   Your assistant already knows how to set up and improve an Attlas chat. Ask "help me set up my chat" or "what should I add to my sales chat" and it guides you step by step. Nothing to install.
@@ -184,7 +184,7 @@ When creating an API key, select the permissions that match your use case:
 | --- | --- | --- |
 | `read` | **Read** | View and search chats, documents, triggers, contacts, conversations, and analytics. Included by default on all keys. |
 | `write` | **Write** | Create and update documents, corrections, triggers, contacts, branding, avatar, SEO, and chat settings. Automatically includes Read permissions. |
-| `destructive` | **Delete** | Delete chats, documents, triggers, contacts, and conversations. Chats and documents go for good. Triggers and contacts stay 30 days in the trash, so you can restore them. Automatically includes Write and Read permissions. |
+| `destructive` | **Delete** | Delete chats, documents, triggers, contacts, conversations, forms, and campaigns. Chats and documents go for good. Triggers, contacts, forms, and campaigns stay 30 days in the trash, so you can restore them. Automatically includes Write and Read permissions. |
 
 <Warning>
   Only grant the **Delete** permission to trusted workflows where automated cleanup or resource deletion is explicitly required.
@@ -201,6 +201,7 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 | Creating a chat (`create_chat`) | Uses one chat from your plan's quota. Returns `quota_exceeded` when none is left. |
 | Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
 | Adding a YouTube, Instagram, TikTok, Facebook, or X video link, or an audio file, to a knowledge base | Starter or PRO. Web page links work on every plan. |
+| Adding a file upload step to a form (`create_form`, `update_form`) | Pro plan and above. |
 | Removing the Attlas branding badge (`update_branding`) | Brand add-on. |
 | Customizing chat SEO metadata (`update_seo`) | Starter or PRO. |
 | Editing a chat's connected SQL database settings | Starter or PRO. |
@@ -214,7 +215,7 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 
 ## Available tools
 
-Attlas provides 55 tools in total. Each tool needs the scope shown next to it, and a key only sees the tools its scope allows.
+Attlas provides 67 tools in total across read, write, and delete scopes. Each tool needs the scope shown next to it, and a key only sees the tools its scope allows.
 
 ### Chats and setup
 
@@ -231,10 +232,10 @@ Attlas provides 55 tools in total. Each tool needs the scope shown next to it, a
 | `read_linkedin` | Read | Extracts profile or company details, logo, summary, and links from LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Read | The themes and personalities you can pick from. |
 | `create_chat` | Write | Creates a new chat. |
-| `create_channel` | Write | Adds a named distribution channel (website, Instagram bio, newsletter) to tag incoming conversations. |
+| `create_channel` | Write | Adds a named distribution channel or ad campaign with an optional welcome headline. |
 | `update_chat` | Write | Name, description, welcome message, and which tab opens first. |
 | `update_activity_profile` | Write | Business info: website, email, phone, address, opening hours, company or person. |
-| `set_objective` | Write | Support, appointment booking, or lead capture, plus your own instructions. |
+| `set_objective` | Write | Support, appointment booking, or lead capture (with optional form_id), plus your own instructions. |
 | `set_personality` | Write | Tone of voice, or a ready-made personality. |
 | `update_theme` | Write | Colors and visual theme. |
 | `update_avatar` | Write | Avatar from an image URL or an emoji. |
@@ -262,11 +263,31 @@ Attlas provides 55 tools in total. Each tool needs the scope shown next to it, a
 
 | Tool | Scope | What it does |
 | --- | --- | --- |
-| `list_triggers` | Read | Lists a chat's buttons, links, media, products, and questions. |
-| `create_trigger` / `update_trigger` | Write | Adds or edits a trigger. |
+| `list_triggers` | Read | Lists a chat's triggers, including form triggers and campaign welcome triggers. |
+| `create_trigger` / `update_trigger` | Write | Adds or edits a trigger, including form triggers (with form_id) and campaign triggers (with campaign_id). |
 | `reorder_triggers` | Write | Changes the order and nesting. |
 | `generate_questions` | Write | Suggests visitor questions from your documents, without creating anything. |
 | `generate_and_nest` | Write | Generates questions and places them under a trigger in one step. |
+
+### Forms
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_forms` | Read | Lists a chat's forms, step count, contact fields, and where each form is plugged. Pass `trashed: true` to list forms in the 30-day trash. |
+| `read_form` | Read | Reads a full form with parsed steps, question options, and thank-you markdown. |
+| `get_form_funnel` | Read | Returns 30-day funnel metrics: drop-offs per step, starts by source, and completed leads. |
+| `create_form` | Write | Creates a multi-step question form with structured steps, optional file upload (Pro), a thank-you note, and an optional redirect URL. |
+| `update_form` | Write | Updates a form's name, steps, thank-you message, or redirect URL while preserving step IDs for funnel tracking. |
+| `restore_form` | Write | Restores a deleted form from the 30-day trash. |
+
+### Campaigns
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `list_campaigns` | Read | Lists ad campaigns with their unique link, welcome headline, triggers, and 30-day performance. Pass `trashed: true` to view trashed campaigns. |
+| `update_campaign` | Write | Updates a campaign's welcome headline, launch trigger on arrival, or renames the campaign. |
+| `copy_trigger_to_campaign` | Write | Copies an existing menu trigger and its nested sub-tree into a campaign's welcome screen. |
+| `restore_campaign` | Write | Restores a deleted campaign and its welcome triggers from the 30-day trash. |
 
 ### Contacts and appointments
 
@@ -301,6 +322,8 @@ Attlas provides 55 tools in total. Each tool needs the scope shown next to it, a
 | `delete_chat` | Delete | Deletes a chat and everything in it. Permanent. |
 | `delete_document` | Delete | Deletes a document and gives back its characters. Permanent. |
 | `delete_trigger` / `delete_contact` | Delete | Moves a trigger or contact to the trash for 30 days. |
+| `delete_form` | Delete | Moves a form to the trash for 30 days and unplugs it from lead capture and triggers. |
+| `delete_campaign` | Delete | Moves an ad campaign and its welcome triggers to the trash for 30 days. |
 | `delete_conversation` | Delete | Hides a conversation everywhere. You cannot restore it through MCP. |
 
 ---
@@ -331,4 +354,4 @@ Turn on **Changes only** to hide read calls.
 
 ### Restore deleted items
 
-If a tool deleted a trigger or contact by mistake, click **Restore** in its activity row within 30 days.
+If a tool deleted a trigger, contact, form, or campaign by mistake, click **Restore** in its activity row within 30 days.

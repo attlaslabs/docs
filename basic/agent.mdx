@@ -8,7 +8,7 @@ tag: "Beta"
 
 ![Agent](/images/agent.webp)
 
-The agent is a chat inside your dashboard. You type a request in plain words, and it reads your chat's data or changes the chat for you. It relies on the same core tools as our Workspace MCP (spanning 50 read and write capabilities, while delete actions remain reserved for the dashboard).
+The agent is a chat inside your dashboard. You type a request in plain words, and it reads your chat's data or changes the chat for you. It relies on the same core tools as our Workspace MCP (spanning 59 read and write capabilities, plus safe form deletion into the 30-day trash, while other destructive actions remain reserved for the dashboard).
 
 For example, you can ask:
 
@@ -76,7 +76,7 @@ The mode selector sits in the message box.
 When the agent proposes several changes in a single turn, **Apply all** and **Refuse all** buttons appear so you can review everything in one click.
 
 <Warning>
-  The agent never deletes anything, in either mode. To delete a trigger, a document or a contact, use the matching screen in the dashboard.
+  The agent never permanently deletes your data. It can move a form to the 30-day trash with `delete_form` (which unplugs it safely and can be restored), following your chosen Manual or Auto mode. To delete a chat, document, trigger, campaign, or contact, use the matching screen in the dashboard.
 
   In **Auto** mode, text written by your visitors or found in your documents can steer a change you didn't ask for. Stay in **Manual** if you want to check every change first.
 </Warning>
@@ -87,11 +87,13 @@ When the agent proposes several changes in a single turn, **Apply all** and **Re
 
 | Read | Change |
 |---|---|
-| Visits, leads and conversion figures | Suggested questions (triggers): add, edit, reorder, group |
+| Visits, leads and conversion figures | Suggested questions (triggers): add, edit, reorder, group, or connect to forms |
 | Visitor conversations | Theme, branding, avatar and social links |
 | Contacts and appointments | Goal and personality |
 | Questions your chat answered badly | Business info, description, greeting and SEO |
 | Knowledge documents | Knowledge: add a link or a file, write a document, add a correction, clean a document |
+| Forms and 30-day funnel drop-offs | Forms: create, edit, configure file uploads (Pro) and redirect URLs, restore, or move to trash, and plug into lead capture or triggers |
+| Ad campaigns and conversion metrics | Ad campaigns: create, set welcome headline, copy menu triggers, set form on arrival, restore |
 | Reports | Distribution channels: create named channels (website, Instagram bio, newsletter) to tag incoming conversations |
 | Web page previews (product price, image and description) | Generate a new report |
 | Instagram and LinkedIn profiles | |
@@ -102,7 +104,7 @@ The agent can also advise you: which feature fits your goal, how to organize you
 
 Some settings stay in the dashboard. The agent points you to the right screen when you ask for:
 
-- deleting anything,
+- permanently deleting chats, documents, triggers, campaigns, or contacts (only forms can be moved to the trash by the agent),
 - changing your chat's URL,
 - connecting an integration (Google Calendar, Notion, a database, Bandsintown, the Meta Conversions API, a custom domain, a webhook),
 - access mode, password or visibility,

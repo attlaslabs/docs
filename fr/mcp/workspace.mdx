@@ -7,7 +7,7 @@ tag: "New"
 
 Les clés API d'Espace de travail permettent aux outis de dévelopement externes et aux assistants IA (Claude Code, Cursor, Claude Desktop, VS Code et Codex) de se connecter à l'ensemble de votre espace de travail Attlas en utilisant le Model Context Protocol (MCP).
 
-Attlas expose 55 outils au total dans votre espace de travail : 26 outils de lecture, 24 outils d'écriture et 5 outils de suppression. Contrairement au point de terminaison MCP de chat public, les clés API d'Espace de travail sont des identifiants privés avec périmètre qui couvrent tous les chats, documents de connaissances, déclencheurs, contacts et analyses de votre espace de travail.
+Attlas expose 67 outils au total dans votre espace de travail : 30 outils de lecture, 30 outils d'écriture et 7 outils de suppression. Contrairement au point de terminaison MCP de chat public, les clés API d'Espace de travail sont des identifiants privés avec périmètre qui couvrent tous les chats, documents de connaissances, déclencheurs, contacts, formulaires, campagnes et analyses de votre espace de travail.
 
 <Tip>
   Votre assistant sait déjà comment configurer et améliorer un chat Attlas. Demandez « aide-moi à configurer mon chat » ou « que devrais-je ajouter à mon chat commercial » et il vous guide pas à pas. Rien à installer.
@@ -182,7 +182,7 @@ Lors de la création d'une clé API, séléctionnez les autorisations qui corres
 | --- | --- | --- |
 | `read` | **Lire** | Consulter et rechercher chats, documents, déclencheurs, contacts, conversations et analyses. Inclus par défaut sur toutes les clés. |
 | `write` | **Écrire** | Créer et mettre à jour les documents, corrections, déclencheurs, contacts, image de marque, avatar, SEO et paramètres des chats. Inclut automtiquement les autorisations de lecture. |
-| `destructive` | **Supprimer** | Supprimer les chats, documents, déclencheurs, contacts et conversations. Les chats et les documents sont définitivement supprimés. Les déclencheurs et contacts restent 30 jours dans la corbeille, vous pouvez donc les restaurer. Inclut automtiquement les autorisations d'écriture et de lecture. |
+| `destructive` | **Supprimer** | Supprimer les chats, documents, déclencheurs, contacts, conversations, formulaires et campagnes. Les chats et les documents sont définitivement supprimés. Les déclencheurs, contacts, formulaires et campagnes restent 30 jours dans la corbeille, vous pouvez donc les restaurer. Inclut automtiquement les autorisations d'écriture et de lecture. |
 
 <Warning>
   N'accordez l'autorisation **Supprimer** qu'à des flux de travail de confiance pour lesquels un nettoyage automatisé ou la suppression de ressources est explictement nécéssaire.
@@ -199,6 +199,7 @@ Le serveur MCP d'Espace de travail fonctionne avec tous les plans. Quelques acti
 | Créer un chat (`create_chat`) | Utilise un chat du quota de votre plan. Renvoie `quota_exceeded` lorsqu'il n'y en a plus. |
 | Lire les métriues, tendances, classements ou générer un rapport | La péride ne remonte que jusqu'à la fenêtre d'historique de votre plan (Gratuit : 90 jours, Starter : 1 an, PRO : 2 ans). Les pérides plus larges sont réduites à cette fenêtre. |
 | Ajouter un lien vidéo YouTube, Instagram, TikTok, Facebook ou X, ou un fichier audio, à une base de connaissances | Starter ou PRO. Les liens de pages Web fonctionnent avec tous les plans. |
+| Ajouter une étape d'envoi de fichier à un formulaire (`create_form`, `update_form`) | Forfait PRO et supérieur. |
 | Retirer le badge de marque Attlas (`update_branding`) | Module complémentaire de marque. |
 | Personnaliser les métadonnées SEO du chat (`update_seo`) | Starter ou PRO. |
 | Modifier les paramètres de la base de données SQL connectée au chat | Starter ou PRO. |
@@ -212,7 +213,7 @@ Le serveur MCP d'Espace de travail fonctionne avec tous les plans. Quelques acti
 
 ## Outis disponibles
 
-Attlas propose 55 outils au total. Chaque outil nécessite le périmètre indiqué à côté, et une clé ne voit que les outils autorisés par son périmètre.
+Attlas propose 67 outils au total à travers les périmètres de lecture, d'écriture et de suppression. Chaque outil nécessite le périmètre indiqué à côté, et une clé ne voit que les outils autorisés par son périmètre.
 
 ### Chats et configuration
 
@@ -228,11 +229,11 @@ Attlas propose 55 outils au total. Chaque outil nécessite le périmètre indiqu
 | `read_instagram_profile` | Lire | Extrait les informations de profil, l'URL de la photo d'avatar et les liens externes d'un compte Instagram. |
 | `read_linkedin` | Lire | Extrait les informations d'un profil ou d'une entreprise, le logo, le résumé et les liens depuis LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Lire | Les thèmes et personnalités parmi lesquels vous pouvez choisir. |
-| `create_chat` | Écrire | Cré un nouveau chat. |
-| `create_channel` | Écrire | Ajoute un canal de diffusion nommé (site web, bio Instagram, newsletter) pour identifier les conversations entrantes. |
+| `create_chat` | Écrire | Crée un nouveau chat. |
+| `create_channel` | Écrire | Ajoute un canal de diffusion nommé ou une campagne publicitaire avec une phrase d'accueil optionnelle. |
 | `update_chat` | Écrire | Nom, description, message de bienvenue et onglet qui s'ouvre en premier. |
 | `update_activity_profile` | Écrire | Informations sur l'entreprise : site web, e-mail, téléphone, adresse, horaires d'ouverture, entreprise ou personne. |
-| `set_objective` | Écrire | Support, prise de rendez-vous ou capture de leads, plus vos propres instructions. |
+| `set_objective` | Écrire | Support, prise de rendez-vous ou capture de leads (avec form_id optionnel), plus vos propres instructions. |
 | `set_personality` | Écrire | Ton de voix, ou une personnalité prête à l'emploi. |
 | `update_theme` | Écrire | Couleurs et thème visuel. |
 | `update_avatar` | Écrire | Avatar à partir d'une URL d'image ou d'un emoji. |
@@ -260,11 +261,31 @@ Attlas propose 55 outils au total. Chaque outil nécessite le périmètre indiqu
 
 | Outil | Périmètre | Action |
 | --- | --- | --- |
-| `list_triggers` | Lire | Liste les boutons, liens, médias, produits et questions d'un chat. |
-| `create_trigger` / `update_trigger` | Écrire | Ajoute ou modifie un déclencheur. |
+| `list_triggers` | Lire | Liste les déclencheurs d'un chat, y compris les déclencheurs de formulaire et d'écran de bienvenue de campagne. |
+| `create_trigger` / `update_trigger` | Écrire | Ajoute ou modifie un déclencheur, y compris les déclencheurs de formulaires (avec form_id) et de campagnes (avec campaign_id). |
 | `reorder_triggers` | Écrire | Modifie l'ordre et l'imbrication. |
 | `generate_questions` | Écrire | Suggère des questions des visiteurs à partir de vos documents, sans rien créer. |
 | `generate_and_nest` | Écrire | Génère des questions et les place sous un déclencheur en une seule étape. |
+
+### Formulaires
+
+| Outil | Périmètre | Action |
+| --- | --- | --- |
+| `list_forms` | Lire | Liste les formulaires d'un chat, le nombre d'étapes, les champs de contact et où chaque formulaire est branché. Passez `trashed: true` pour lister ceux dans la corbeille de 30 jours. |
+| `read_form` | Lire | Lit un formulaire complet avec étapes analysées, options de questions et message de remerciement au format markdown. |
+| `get_form_funnel` | Lire | Renvoie les métriques de l'entonnoir sur 30 jours : abandons par étape, démarrages par source et leads complétés. |
+| `create_form` | Écrire | Crée un formulaire de questions guidé avec étapes structurées, envoi de fichier optionnel (Pro), message de remerciement et URL de redirection optionnelle. |
+| `update_form` | Écrire | Met à jour le nom, les étapes, le message de remerciement ou l'URL de redirection d'un formulaire tout en préservant les identifiants d'étapes pour le suivi de l'entonnoir. |
+| `restore_form` | Écrire | Restaure un formulaire supprimé depuis la corbeille de 30 jours. |
+
+### Campagnes
+
+| Outil | Périmètre | Action |
+| --- | --- | --- |
+| `list_campaigns` | Lire | Liste les campagnes publicitaires avec leur lien unique, phrase d'accueil, déclencheurs et performances sur 30 jours. Passez `trashed: true` pour voir celles dans la corbeille. |
+| `update_campaign` | Écrire | Met à jour la phrase d'accueil d'une campagne, le déclencheur lancé à l'arrivée ou renomme la campagne. |
+| `copy_trigger_to_campaign` | Écrire | Copie un déclencheur existant du menu et son sous-arbre directement dans l'écran de bienvenue d'une campagne. |
+| `restore_campaign` | Écrire | Restaure une campagne supprimée et ses déclencheurs de bienvenue depuis la corbeille de 30 jours. |
 
 ### Contacts et rendez-vous
 
@@ -299,6 +320,8 @@ Attlas propose 55 outils au total. Chaque outil nécessite le périmètre indiqu
 | `delete_chat` | Supprimer | Supprime un chat et tout son contenu. Définitif. |
 | `delete_document` | Supprimer | Supprime un document et restitue ses caractères. Définitif. |
 | `delete_trigger` / `delete_contact` | Supprimer | Déplace un déclencheur ou un contact dans la corbeille pendant 30 jours. |
+| `delete_form` | Supprimer | Déplace un formulaire dans la corbeille pendant 30 jours et le débranche de la capture de leads et des déclencheurs. |
+| `delete_campaign` | Supprimer | Déplace une campagne publicitaire et ses déclencheurs d'accueil dans la corbeille pendant 30 jours. |
 | `delete_conversation` | Supprimer | Masque une conversation partout. Vous ne pouvez pas la restaurer via MCP. |
 
 ---
@@ -329,4 +352,4 @@ Activez **Modifications uniquement** pour masquer les appels de lecture.
 
 ### Restaurer les éléments supprimés
 
-Si un outil a supprimé un déclencheur ou un contact par erreur, cliquez sur **Restaure** dans sa ligne d'activité dans les 30 jours.
+Si un outil a supprimé un déclencheur, contact, formulaire ou campagne par erreur, cliquez sur **Restaurer** dans sa ligne d'activité dans les 30 jours.

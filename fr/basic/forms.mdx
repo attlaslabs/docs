@@ -64,6 +64,7 @@ Lorsque le formulaire atteint un bloc de réponse, la barre de saisie du chat s'
 | **Nombre** | `/number` | Clavier numérique. | Chiffres uniquement, avec des limites minimales et maximales optionnelles. |
 | **Lien** | `/url` | Clavier URL. | Adresse de site web valide (`https://` ajouté automatiquement si manquant). |
 | **Période** | `/period` | Sélecteur de plage de dates. | Sélecteur de date de début et de fin. |
+| **Envoyer un fichier** | `/file` | Bouton de pièce jointe. | Photos ou documents PDF jusqu'à 20 Mo. Activez **Plusieurs fichiers (5 max)** pour des envois multiples. Nécessite le forfait Pro. |
 
 ### Champs de contact
 
@@ -84,7 +85,7 @@ Les champs de contact capturent les détails du visiteur et qualifient les prosp
 
 ---
 
-## Message de remerciement et mentions `@`
+## Message de remerciement et redirection
 
 Le dernier bloc de votre éditeur est le message de remerciement. Ce message s'affiche automatiquement lorsqu'un visiteur termine le formulaire.
 
@@ -95,6 +96,15 @@ Merci, @firstname ! Nous avons bien reçu votre demande pour @choice et nous vou
 ```
 
 Si ce champ est laissé vide, Attlas affiche un message de confirmation par défaut dans la langue du visiteur.
+
+### Redirection automatique
+
+Vous pouvez rediriger les visiteurs vers une adresse externe (page de paiement, calendrier ou site web) une fois le formulaire terminé :
+
+1. Cliquez sur le bloc de fin au bas de l'éditeur de formulaire.
+2. Renseignez une adresse complète (`https://...`) dans le champ **URL de redirection**.
+
+Une fois envoyé, le chat affiche votre message de remerciement et un lien **Continuer**. La page redirige automatiquement au bout de 3 secondes. Dans les widgets intégrés et les iframes, les visiteurs cliquent sur **Continuer** pour ouvrir le lien dans la fenêtre principale.
 
 ---
 

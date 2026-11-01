@@ -8,7 +8,7 @@ tag: "Beta"
 
 ![Agent](/images/agent.webp)
 
-L'agent est une conversation intégrée à votre tableau de bord. Vous tapez une demande en langage courant, et il lit les données de votre chat ou modifie le chat pour vous.
+L'agent est une conversation intégrée à votre tableau de bord. Vous tapez une demande en langage courant, et il lit les données de votre chat ou modifie le chat pour vous. Il s'appuie sur les mêmes outils fondamentaux que notre Workspace MCP (couvrant 59 capacités de lecture et d'écriture, ainsi que la suppression sécurisée de formulaires dans la corbeille de 30 jours, tandis que les autres actions destructives restent réservées au tableau de bord).
 
 Par exemple, vous pouvez demander :
 
@@ -62,7 +62,7 @@ Le sélecteur de mode se trouve dans la zone de saisie du message.
 | **Auto** | L'agent applique les modifications immédiatement et affiche une carte pour chacune d'elles. |
 
 <Warning>
-  L'agent ne supprime jamais rien, quel que soit le mode. Pour supprimer un déclencheur, un document ou un contact, utilisez l'écran correspondant dans le tableau de bord.
+  L'agent ne supprime jamais définitivement vos données. Il peut déplacer un formulaire dans la corbeille de 30 jours via `delete_form` (ce qui le débranche en toute sécurité et permet de le restaurer), en respectant votre mode Manuel ou Auto. Pour supprimer un chat, document, déclencheur, campagne ou contact, utilisez l'écran correspondant dans le tableau de bord.
 
   En mode **Auto**, le texte écrit par vos visiteurs ou trouvé dans vos documents peut orienter une modification que vous n'aviez pas demandée. Restez en mode **Manuel** si vous souhaitez vérifier chaque modification au préalable.
 </Warning>
@@ -73,20 +73,26 @@ Le sélecteur de mode se trouve dans la zone de saisie du message.
 
 | Lire | Modifier |
 |---|---|
-| Visites, prospects et chiffres de conversion | Questions suggérées (déclencheurs) : ajouter, modifier, réorganiser, grouper |
+| Visites, prospects et chiffres de conversion | Questions suggérées (déclencheurs) : ajouter, modifier, réorganiser, grouper, ou relier à des formulaires |
 | Conversations des visiteurs | Thème, image de marque, avatar et liens sociaux |
 | Contacts et rendez-vous | Objectif et personnalité |
 | Questions auxquelles votre chat a mal répondu | Infos sur l'entreprise, description, message d'accueil et SEO |
 | Documents de connaissance | Connaissances : ajouter un lien ou un fichier, rédiger un document, ajouter une correction, nettoyer un document |
-| Rapports | Générer un nouveau rapport |
+| Formulaires et entonnoirs d'abandon sur 30 jours | Formulaires : créer, modifier, configurer l'envoi de fichiers (Pro) et l'URL de redirection, restaurer, ou placer dans la corbeille, et brancher sur la capture ou des déclencheurs |
+| Campagnes publicitaires et métriques de conversion | Campagnes publicitaires : créer, définir la phrase d'accueil, copier des déclencheurs du menu, lancer un formulaire à l'arrivée, restaurer |
+| Rapports | Canaux de diffusion : créer des canaux nommés (site web, bio Instagram, newsletter) pour identifier les conversations entrantes |
+| Aperçus de pages web (prix produit, image et description) | Générer un nouveau rapport |
+| Profils Instagram et LinkedIn | |
+| Code d'intégration pour votre site web | |
+| Guides et playbooks produit | |
 
 L'agent peut également vous conseiller : quelle fonctionnalité correspond à votre objectif, comment organiser vos connaissances, quelles questions vos visiteurs attendent.
 
 Certains paramètres restent dans le tableau de bord. L'agent vous indique l'écran approprié lorsque vous demandez :
 
-- la suppression de quoi que ce soit,
+- la suppression définitive de chats, documents, déclencheurs, campagnes ou contacts (seuls les formulaires peuvent être déplacés dans la corbeille par l'agent),
 - la modification de l'URL de votre chat,
-- la connexion d'une intégration (Google Calendar, Notion, une base de données, un domaine personnalisé, un webhook),
+- la connexion d'une intégration (Google Calendar, Notion, une base de données, Bandsintown, l'API Conversions Meta, un domaine personnalisé, un webhook),
 - le mode d'accès, le mot de passe ou la visibilité,
 - votre formule, la facturation et les membres de l'espace de travail.
 

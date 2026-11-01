@@ -7,7 +7,7 @@ tag: "New"
 
 As chaves de API do Workspace permitem que ferramentas de desenvolvimento externas e assistentes de IA (Claude Code, Cursor, Claude Desktop, VS Code e Codex) conectem-se a todo o seu workspace do Attlas usando o Model Context Protocol (MCP).
 
-O Attlas disponibiliza 55 ferramentas no total em seu workspace: 26 ferramentas de leitura, 24 de escrita e 5 de exclusão. Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos e análises do seu workspace.
+O Attlas disponibiliza 67 ferramentas no total em seu workspace: 30 ferramentas de leitura, 30 de escrita e 7 de exclusão. Diferente do endpoint MCP público de chat, as chaves de API do Workspace são credenciais privadas e com escopo que cobrem todos os chats, documentos de conhecimento, gatilhos, contatos, formulários, campanhas e análises do seu workspace.
 
 <Tip>
   Seu assistente já sabe como configurar e aprimorar um chat do Attlas. Pergunte "ajude-me a configurar meu chat" ou "o que devo adicionar ao meu chat de vendas" e ele te guiará passo a passo. Nada para instalar.
@@ -184,7 +184,7 @@ Ao criar uma chave de API, selecione as permissões que correspondem ao seu caso
 | --- | --- | --- |
 | `read` | **Leitura** | Visualizar e pesquisar chats, documentos, gatilhos, contatos, conversas e análises. Incluído por padrão em todas as chaves. |
 | `write` | **Escrita** | Criar e atualizar documentos, correções, gatilhos, contatos, branding, avatar, SEO e configurações do chat. Inclui automaticamente as permissões de Leitura. |
-| `destructive` | **Exclusão** | Excluir permanentemente chats, documentos, gatilhos, contatos e conversas. Inclui automaticamente as permissões de Escrita e Leitura. |
+| `destructive` | **Exclusão** | Excluir chats, documentos, gatilhos, contatos, conversas, formulários e campanhas. Chats e documentos são excluídos definitivamente. Gatilhos, contatos, formulários e campanhas permanecem 30 dias na lixeira, permitindo restauração. Inclui automaticamente as permissões de Escrita e Leitura. |
 
 <Warning>
   Conceda a permissão de **Exclusão** apenas a fluxos de trabalho confiáveis onde a limpeza automatizada ou a exclusão de recursos seja explicitamente necessária.
@@ -201,6 +201,7 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 | Criar um chat (`create_chat`) | Usa um chat da cota do seu plano. Retorna `quota_exceeded` quando não há mais nenhum. |
 | Ler métricas, tendências, rankings ou gerar um relatório | O intervalo retorna apenas até o período de histórico do seu plano (Gratuito: 90 dias, Starter: 1 ano, PRO: 2 anos). Intervalos maiores são limitados a essa janela. |
 | Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X, ou um arquivo de áudio, a uma base de conhecimento | Starter ou PRO. Links de páginas da web funcionam em todos os planos. |
+| Adicionar uma etapa de upload de arquivo a um formulário (`create_form`, `update_form`) | Plano PRO e superior. |
 | Remover o selo de branding do Attlas (`update_branding`) | Complemento de marca. |
 | Personalizar metadados de SEO do chat (`update_seo`) | Starter ou PRO. |
 | Editar as configurações de banco de dados SQL conectado de um chat | Starter ou PRO. |
@@ -214,7 +215,7 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 
 ## Ferramentas disponíveis
 
-O Attlas disponibiliza 55 ferramentas no total. Cada ferramenta precisa do escopo mostrado ao lado, e uma chave só vê as ferramentas que seu escopo permite.
+O Attlas disponibiliza 67 ferramentas no total entre os escopos de leitura, escrita e exclusão. Cada ferramenta precisa do escopo mostrado ao lado, e uma chave só vê as ferramentas que seu escopo permite.
 
 ### Chats e configuração
 
@@ -231,10 +232,10 @@ O Attlas disponibiliza 55 ferramentas no total. Cada ferramenta precisa do escop
 | `read_linkedin` | Read | Extrai detalhes de perfil ou empresa, logotipo, resumo e links do LinkedIn. |
 | `list_theme_presets` / `list_archetypes` | Read | Os temas e personalidades que você pode escolher. |
 | `create_chat` | Write | Cria um novo chat. |
-| `create_channel` | Write | Adiciona um canal de distribuição nomeado (site, bio do Instagram, newsletter) para marcar conversas recebidas. |
+| `create_channel` | Write | Adiciona um canal de distribuição nomeado ou uma campanha de anúncios com uma frase de boas-vindas opcional. |
 | `update_chat` | Write | Nome, descrição, mensagem de boas-vindas e qual aba abre primeiro. |
 | `update_activity_profile` | Write | Informações da empresa: site, email, telefone, endereço, horário de funcionamento, empresa ou pessoa. |
-| `set_objective` | Write | Suporte, agendamento de consultas ou captação de leads, além de suas próprias instruções. |
+| `set_objective` | Write | Suporte, agendamento de consultas ou captação de leads (com form_id opcional), além de suas próprias instruções. |
 | `set_personality` | Write | Tom de voz ou uma personalidade pronta. |
 | `update_theme` | Write | Cores e tema visual. |
 | `update_avatar` | Write | Avatar a partir de uma URL de imagem ou um emoji. |
@@ -262,11 +263,31 @@ O Attlas disponibiliza 55 ferramentas no total. Cada ferramenta precisa do escop
 
 | Ferramenta | Escopo | O que faz |
 | --- | --- | --- |
-| `list_triggers` | Read | Lista botões, links, mídia, produtos e perguntas de um chat. |
-| `create_trigger` / `update_trigger` | Write | Adiciona ou edita um gatilho. |
+| `list_triggers` | Read | Lista os gatilhos de um chat, incluindo gatilhos de formulário e de telas de boas-vindas de campanha. |
+| `create_trigger` / `update_trigger` | Write | Adiciona ou edita um gatilho, incluindo gatilhos de formulários (com form_id) e de campanhas (com campaign_id). |
 | `reorder_triggers` | Write | Altera a ordem e o aninhamento. |
 | `generate_questions` | Write | Sugere perguntas de visitantes a partir de seus documentos, sem criar nada. |
 | `generate_and_nest` | Write | Gera perguntas e as coloca sob um gatilho em uma única etapa. |
+
+### Formulários
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_forms` | Read | Lista os formulários de um chat, total de etapas, campos de contato e onde cada formulário está conectado. Passe `trashed: true` para listar os da lixeira de 30 dias. |
+| `read_form` | Read | Lê um formulário completo com etapas analisadas, opções de perguntas e mensagem de agradecimento em markdown. |
+| `get_form_funnel` | Read | Retorna métricas do funil de 30 dias: desistências por etapa, inícios por origem e leads concluídos. |
+| `create_form` | Write | Cria um formulário de perguntas guiadas com etapas estruturadas, upload de arquivo opcional (Pro), mensagem de agradecimento e URL de redirecionamento opcional. |
+| `update_form` | Write | Atualiza o nome, etapas, mensagem de agradecimento ou URL de redirecionamento de um formulário, preservando os identificadores de etapas para o funil. |
+| `restore_form` | Write | Restaura um formulário excluído da lixeira de 30 dias. |
+
+### Campanhas
+
+| Ferramenta | Escopo | O que faz |
+| --- | --- | --- |
+| `list_campaigns` | Read | Lista campanhas de anúncios com link exclusivo, frase de boas-vindas, gatilhos e desempenho de 30 dias. Passe `trashed: true` para ver as da lixeira. |
+| `update_campaign` | Write | Atualiza a frase de boas-vindas da campanha, o gatilho iniciado na chegada ou renomeia a campanha. |
+| `copy_trigger_to_campaign` | Write | Copia um gatilho existente do menu e sua subárvore aninhada diretamente para a tela de boas-vindas da campanha. |
+| `restore_campaign` | Write | Restaura uma campanha excluída e seus gatilhos de boas-vindas da lixeira de 30 dias. |
 
 ### Contatos e agendamentos
 
@@ -301,6 +322,8 @@ O Attlas disponibiliza 55 ferramentas no total. Cada ferramenta precisa do escop
 | `delete_chat` | Delete | Exclui um chat e tudo nele. Permanente. |
 | `delete_document` | Delete | Exclui um documento e devolve seus caracteres. Permanente. |
 | `delete_trigger` / `delete_contact` | Delete | Move um gatilho ou contato para a lixeira por 30 dias. |
+| `delete_form` | Delete | Move um formulário para a lixeira por 30 dias e o desconecta da captura de leads e dos gatilhos. |
+| `delete_campaign` | Delete | Move uma campanha de anúncios e seus gatilhos de boas-vindas para a lixeira por 30 dias. |
 | `delete_conversation` | Delete | Oculta uma conversa em todos os lugares. Você não pode restaurá-la via MCP. |
 
 ---
@@ -331,4 +354,4 @@ Ative **Changes only** para ocultar chamadas de leitura.
 
 ### Restaurar itens excluídos
 
-Se uma ferramenta excluir acidentalmente um gatilho ou contato por engano, clique em **Restaurar** na linha de atividade para trazê-lo de volta ao seu workspace imediatamente.
+Se uma ferramenta excluir acidentalmente um gatilho, contato, formulário ou campanha por engano, clique em **Restaurar** na linha de atividade dentro de 30 dias.

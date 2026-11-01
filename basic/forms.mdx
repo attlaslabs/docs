@@ -64,6 +64,7 @@ When the form reaches an answer block, the chat input bar adapts to what is expe
 | **Number** | `/number` | Numeric keyboard. | Numbers only, with optional minimum and maximum limits. |
 | **Link** | `/url` | URL keyboard. | Valid website address (`https://` added automatically if missing). |
 | **Period** | `/period` | Date range selector. | Start date and end date picker. |
+| **Upload a file** | `/file` | File attachment button. | Photos or PDF documents up to 20 MB. Enable **Several files (5 max)** for multiple uploads. Requires the Pro plan. |
 
 ### Contact fields
 
@@ -84,7 +85,7 @@ Contact fields capture visitor details and qualify leads in your CRM. Each conta
 
 ---
 
-## Thank-you message and `@` mentions
+## Thank-you message and redirection
 
 The last block in your editor is the thank-you message. This message displays automatically when a visitor finishes the form.
 
@@ -95,6 +96,15 @@ Thank you, @firstname! We received your request for @choice and will reach out v
 ```
 
 If left empty, Attlas displays a default confirmation message in the visitor's language.
+
+### Automatic redirection
+
+You can redirect visitors to an external address (such as a payment page, a calendar booking, or your main website) after they complete the form:
+
+1. Click the end block at the bottom of the form editor.
+2. Enter a full address (`https://...`) in the **Redirect URL** field.
+
+Once submitted, the chat displays your thank-you message and a **Continue** link. The page redirects automatically after 3 seconds. In embedded widgets and iframes, visitors tap **Continue** to open the link in the top window.
 
 ---
 
