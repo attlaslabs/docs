@@ -59,7 +59,8 @@ Lorsque le formulaire atteint un bloc de réponse, la barre de saisie du chat s'
 
 | Bloc | Commande | Mode de saisie | Validation |
 | :--- | :--- | :--- | :--- |
-| **Choix** | `/choice` | Options sous forme de boutons sous la question. | Sélectionnez une option. Activez **Plusieurs réponses** dans les paramètres pour la sélection multiple. |
+| **Choix** | `/choice` | Options sous forme de boutons sous la question. | Sélectionnez une option. Vous pouvez aussi activer **Plusieurs réponses** dans les paramètres pour la sélection multiple. |
+| **Cases à cocher** | `/checkboxes` | Options avec cases à cocher sous la question. | Sélectionnez une ou plusieurs options, puis appuyez sur **Continuer**. |
 | **Texte** | `/text` | Saisie de texte standard. | Texte non vide avec une longueur maximale optionnelle. Prend en charge la dictée vocale sur mobile. |
 | **Nombre** | `/number` | Clavier numérique. | Chiffres uniquement, avec des limites minimales et maximales optionnelles. |
 | **Lien** | `/url` | Clavier URL. | Adresse de site web valide (`https://` ajouté automatiquement si manquant). |
@@ -80,7 +81,7 @@ Les champs de contact capturent les détails du visiteur et qualifient les prosp
 | **Date préférée** | `/schedule` | Sélecteur de date pour les préférences de rendez-vous ou les dates cibles. |
 
 <Warning>
-  Un formulaire a besoin d'au moins un champ de contact pour créer un prospect dans votre CRM. Si vous posez uniquement des questions de type choix ou texte, les réponses sont stockées dans l'historique de conversation mais aucune fiche contact n'est créée.
+  Un formulaire a besoin d'au moins un champ de contact pour créer un prospect dans votre CRM. Si vous posez uniquement des questions de type choix, cases à cocher ou texte, les réponses sont stockées dans l'historique de conversation mais aucune fiche contact n'est créée.
 </Warning>
 
 ---
@@ -115,7 +116,7 @@ Le formulaire s'exécute directement dans l'interface de chat :
 1. **Étape par étape** : Le chat pose une question à la fois.
 2. **Saisie contextuelle** : Pour les saisies de téléphone, de date ou de texte, la barre de saisie du chat affiche un badge dédié (tel que "Votre WhatsApp" ou "Date préférée") et définit le bon clavier mobile.
 3. **Questions latérales** : Les visiteurs peuvent cliquer sur l'icône **<kbd>×</kbd>** sur le badge de saisie pour mettre en pause le formulaire et poser une question. Le chat répond en utilisant votre base de connaissances, puis reprend le formulaire à l'étape en cours.
-4. **Option de sortie** : Sous les questions de choix, les visiteurs peuvent appuyer sur **"Pas maintenant"** pour quitter le flux du formulaire sans interrompre la conversation.
+4. **Option de sortie** : Sous les questions de choix ou de cases à cocher, les visiteurs peuvent appuyer sur **"Pas maintenant"** pour quitter le flux du formulaire sans interrompre la conversation.
 
 ---
 

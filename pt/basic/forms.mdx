@@ -59,7 +59,8 @@ Quando o formulário chega a um bloco de resposta, a barra de entrada do chat se
 
 | Bloco | Comando | Modo de entrada | Validação |
 | :--- | :--- | :--- | :--- |
-| **Escolha** | `/choice` | Opções em botões abaixo da pergunta. | Selecione uma opção. Ative **Várias respostas** nas configurações para seleção múltipla. |
+| **Escolha** | `/choice` | Opções em botões abaixo da pergunta. | Selecione uma opção. Você também pode ativar **Várias respostas** nas configurações para seleção múltipla. |
+| **Caixas de seleção** | `/checkboxes` | Opções com caixas de seleção abaixo da pergunta. | Selecione uma ou mais opções e toque em **Continuar**. |
 | **Texto** | `/text` | Entrada de texto padrão. | Texto não vazio com comprimento máximo opcional. Suporta ditado por voz em dispositivos móveis. |
 | **Número** | `/number` | Teclado numérico. | Apenas números, com limites mínimo e máximo opcionais. |
 | **Link** | `/url` | Teclado para URL. | Endereço de site válido (`https://` adicionado automaticamente se estiver faltando). |
@@ -80,7 +81,7 @@ Os campos de contato capturam os detalhes do visitante e qualificam leads em seu
 | **Data preferida** | `/schedule` | Seletor de data para preferências de reunião ou datas alvo. |
 
 <Warning>
-  Um formulário precisa de pelo menos um campo de contato para criar um lead em seu CRM. Se você fizer apenas perguntas de escolha ou texto, as respostas são armazenadas no histórico da conversa, mas nenhum cartão de contato será criado.
+  Um formulário precisa de pelo menos um campo de contato para criar um lead em seu CRM. Se você fizer apenas perguntas de escolha, caixas de seleção ou texto, as respostas são armazenadas no histórico da conversa, mas nenhum cartão de contato será criado.
 </Warning>
 
 ---
@@ -115,7 +116,7 @@ O formulário é executado diretamente dentro da interface do chat:
 1. **Etapa por etapa**: O chat faz uma pergunta por vez.
 2. **Entrada sensível ao contexto**: Para entradas de telefone, data ou texto, a barra de entrada do chat exibe um selo dedicado (como "Seu WhatsApp" ou "Data preferida") e configura o teclado móvel correto.
 3. **Perguntas paralelas**: Os visitantes podem clicar no ícone **<kbd>×</kbd>** no selo de entrada para pausar o formulário e fazer uma pergunta. O chat responde usando sua base de conhecimento e, em seguida, retoma o formulário na etapa atual.
-4. **Opção de saída**: Abaixo das perguntas de escolha, os visitantes podem tocar em **"Agora não"** para sair do fluxo do formulário sem interromper a conversa.
+4. **Opção de saída**: Abaixo das perguntas de escolha ou de caixas de seleção, os visitantes podem tocar em **"Agora não"** para sair do fluxo do formulário sem interromper a conversa.
 
 ---
 

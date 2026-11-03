@@ -59,7 +59,8 @@ When the form reaches an answer block, the chat input bar adapts to what is expe
 
 | Block | Command | Input mode | Validation |
 | :--- | :--- | :--- | :--- |
-| **Choice** | `/choice` | Button options under the question. | Select one option. Enable **Several answers** in settings for multi-select. |
+| **Choice** | `/choice` | Button options under the question. | Select one option. You can also toggle **Several answers** in settings for multi-select. |
+| **Checkboxes** | `/checkboxes` | Checkbox options under the question. | Select one or more options, then tap **Continue**. |
 | **Text** | `/text` | Standard text input. | Non-empty text with optional maximum length. Supports voice dictation on mobile. |
 | **Number** | `/number` | Numeric keyboard. | Numbers only, with optional minimum and maximum limits. |
 | **Link** | `/url` | URL keyboard. | Valid website address (`https://` added automatically if missing). |
@@ -80,7 +81,7 @@ Contact fields capture visitor details and qualify leads in your CRM. Each conta
 | **Preferred date** | `/schedule` | Date picker for meeting preferences or target dates. |
 
 <Warning>
-  A form needs at least one contact field to create a lead in your CRM. If you only ask choice or text questions, responses are stored in the conversation history but no contact card is created.
+  A form needs at least one contact field to create a lead in your CRM. If you only ask choice, checkbox, or text questions, responses are stored in the conversation history but no contact card is created.
 </Warning>
 
 ---
@@ -115,7 +116,7 @@ The form runs directly inside the chat interface:
 1. **Step by step**: The chat asks one question at a time.
 2. **Context-aware input**: For phone, date, or text inputs, the chat input bar displays a dedicated badge (such as "Your WhatsApp" or "Preferred date") and sets the correct mobile keyboard.
 3. **Side questions**: Visitors can click the **<kbd>×</kbd>** icon on the input badge to pause the form and ask a question. The chat answers using your knowledge base, then resumes the form at the current step.
-4. **Exit option**: Under choice questions, visitors can tap **"Not now"** to leave the form flow without breaking the conversation.
+4. **Exit option**: Under choice or checkbox questions, visitors can tap **"Not now"** to leave the form flow without breaking the conversation.
 
 ---
 
