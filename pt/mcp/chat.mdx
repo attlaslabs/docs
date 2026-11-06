@@ -25,20 +25,20 @@ Quando um assistente externo se conecta ao seu chat, ele obtém acesso a duas fe
 | Ferramenta | Descrição | Consumo de cota |
 | --- | --- | --- |
 | `search_knowledge` | Pesquisa a base de conhecimento do seu chat e retorna trechos relevantes com referências de documentos de origem. | **Grátis** (sem uso de cota) |
-| `ask` | Faz uma pergunta e retorna uma resposta direta embasada estritamente na base de conhecimento do seu chat, juntamente com citações de fontes. | Consome **1 mensagem** por chamada |
+| `ask` | Faz uma pergunta e retorna uma resposta direta embasada estritamente na base de conhecimento do seu chat, juntamente com citações de fontes. | Consome **1 resposta** por chamada |
 
 ---
 
-## Cota de mensagens e uso
+## Cota de respostas e uso
 
-Como a ferramenta `ask` executa uma chamada de modelo de IA para resumir e responder perguntas, ela consome os créditos de mensagem do seu workspace:
+Como a ferramenta `ask` executa uma chamada de modelo de IA para resumir e responder perguntas, ela consome as respostas do seu workspace:
 
-- **1 mensagem por pergunta**: Cada chamada à ferramenta `ask` deduz **1 mensagem** da sua cota mensal do workspace, exatamente como uma mensagem de visitante no seu chat público.
-- **Limites de cota**: Se seu workspace ficar sem créditos de mensagem, as solicitações `ask` retornarão um erro `quota_exceeded` até que a cota seja redefinida ou o plano seja atualizado.
-- **Pesquisa gratuita**: A ferramenta `search_knowledge` realiza apenas a recuperação de documentos e **não** consome nenhuma cota de mensagens.
+- **1 resposta por pergunta**: Cada chamada à ferramenta `ask` deduz **1 resposta** da sua cota mensal do workspace, exatamente como uma resposta a um visitante no seu chat público.
+- **Limites de cota**: Se seu workspace ficar sem respostas, as solicitações `ask` retornarão um erro `quota_exceeded` até que a cota seja redefinida ou o plano seja atualizado.
+- **Pesquisa gratuita**: A ferramenta `search_knowledge` realiza apenas a recuperação de documentos e **não** consome nenhuma resposta.
 
 <Note>
-  Você pode acompanhar seu saldo de mensagens restante a qualquer momento em **Configurações do workspace > Faturamento**.
+  Você pode acompanhar suas respostas restantes a qualquer momento em **Configurações do workspace > Faturamento**.
 </Note>
 
 ---

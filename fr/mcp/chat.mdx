@@ -25,20 +25,20 @@ Lorsqu'un assistant externe se connecte à votre chat, il a accès à deux outil
 | Outil | Description | Consommation de quota |
 | --- | --- | --- |
 | `search_knowledge` | Recherche dans la base de connaissances de votre chat et renvoie des passages pertinents avec les références des documents sources. | **Gratuit** (n'utilise pas de quota) |
-| `ask` | Pose une question et renvoie une réponse directe basée strictement sur la base de connaissances de votre chat, accompagnée des citations sources. | Consomme **1 message** par appel |
+| `ask` | Pose une question et renvoie une réponse directe basée strictement sur la base de connaissances de votre chat, accompagnée des citations sources. | Consomme **1 réponse** par appel |
 
 ---
 
-## Quota de messages et utilisation
+## Quota de réponses et utilisation
 
-Parce que l'outil `ask` exécute un appel au modèle d'IA pour résumer et répondre aux questions, il consomme des crédits de messages de votre espace de travail :
+Parce que l'outil `ask` exécute un appel au modèle d'IA pour résumer et répondre aux questions, il consomme des réponses de votre espace de travail :
 
-- **1 message par question** : chaque appel à l'outil `ask` déduit **1 message** de votre quota mensuel d'espace de travail, exactement comme un message de visiteur sur votre chat public.
-- **Limites de quota** : si votre espace de travail n'a plus de crédits de messages, les requêtes `ask` renverront une erreur `quota_exceeded` jusqu'à ce que votre quota soit réinitialisé ou mis à niveau.
-- **Recherche gratuite** : l'outil `search_knowledge` effectue uniquement une extraction de documents et **ne consomme aucun** quota de messages.
+- **1 réponse par question** : chaque appel à l'outil `ask` déduit **1 réponse** de votre quota mensuel d'espace de travail, exactement comme une réponse à un visiteur sur votre chat public.
+- **Limites de quota** : si votre espace de travail n'a plus de réponses, les requêtes `ask` renverront une erreur `quota_exceeded` jusqu'à ce que votre quota soit réinitialisé ou mis à niveau.
+- **Recherche gratuite** : l'outil `search_knowledge` effectue uniquement une extraction de documents et **ne consomme aucune** réponse.
 
 <Note>
-  Vous pouvez suivre le solde de messages restant à tout moment dans **Paramètres de l'espace de travail > Facturation**.
+  Vous pouvez suivre les réponses restantes à tout moment dans **Paramètres de l'espace de travail > Facturation**.
 </Note>
 
 ---

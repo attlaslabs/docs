@@ -199,13 +199,13 @@ O servidor MCP do workspace funciona em todos os planos. Algumas ações seguem 
 | Ação | Requisito |
 | --- | --- |
 | Criar um chat (`create_chat`) | Usa um chat da cota do seu plano. Retorna `quota_exceeded` quando não há mais nenhum. |
-| Ler métricas, tendências, rankings ou gerar um relatório | O intervalo retorna apenas até o período de histórico do seu plano (Gratuito: 90 dias, Starter: 1 ano, PRO: 2 anos). Intervalos maiores são limitados a essa janela. |
-| Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X, ou um arquivo de áudio, a uma base de conhecimento | Starter ou PRO. Links de páginas da web funcionam em todos os planos. |
-| Adicionar uma etapa de upload de arquivo a um formulário (`create_form`, `update_form`) | Plano PRO e superior. |
+| Ler métricas, tendências, rankings ou gerar um relatório | O intervalo retorna apenas até o período de histórico do seu plano (Gratuito: 90 dias, Pro: 2 anos). Intervalos maiores são limitados a essa janela. |
+| Adicionar um link de vídeo do YouTube, Instagram, TikTok, Facebook ou X, ou um arquivo de áudio, a uma base de conhecimento | Plano Pro. Links de páginas da web funcionam em todos os planos. |
+| Adicionar uma etapa de upload de arquivo a um formulário (`create_form`, `update_form`) | Plano Pro. |
 | Remover o selo de branding do Attlas (`update_branding`) | Complemento de marca. |
-| Personalizar metadados de SEO do chat (`update_seo`) | Starter ou PRO. |
-| Editar as configurações de banco de dados SQL conectado de um chat | Starter ou PRO. |
-| Código de incorporação de balão ou popup (`get_embed_code`) | Plano PRO. A incorporação padrão via iframe funciona em todos os planos. |
+| Personalizar metadados de SEO do chat (`update_seo`) | Plano Pro. |
+| Editar as configurações de banco de dados SQL conectado de um chat | Plano Pro. |
+| Código de incorporação de balão ou popup (`get_embed_code`) | Todos os planos, nos três modos (padrão, balão, popup). |
 
 <Tip>
   Seu assistente pode chamar `can_use` para verificar se uma ação é permitida pelo seu plano, e `get_usage` para ver seus chats, mensagens e caracteres restantes.

@@ -199,13 +199,13 @@ The workspace MCP server itself works on every plan. A few actions follow the sa
 | Action | Requirement |
 | --- | --- |
 | Creating a chat (`create_chat`) | Uses one chat from your plan's quota. Returns `quota_exceeded` when none is left. |
-| Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Starter: 1 year, PRO: 2 years). Wider ranges are trimmed to that window. |
-| Adding a YouTube, Instagram, TikTok, Facebook, or X video link, or an audio file, to a knowledge base | Starter or PRO. Web page links work on every plan. |
-| Adding a file upload step to a form (`create_form`, `update_form`) | Pro plan and above. |
+| Reading metrics, trends, rankings, or generating a report | The range only goes back as far as your plan's history window (Free: 90 days, Pro: 2 years). Wider ranges are trimmed to that window. |
+| Adding a YouTube, Instagram, TikTok, Facebook, or X video link, or an audio file, to a knowledge base | Pro plan. Web page links work on every plan. |
+| Adding a file upload step to a form (`create_form`, `update_form`) | Pro plan. |
 | Removing the Attlas branding badge (`update_branding`) | Brand add-on. |
-| Customizing chat SEO metadata (`update_seo`) | Starter or PRO. |
-| Editing a chat's connected SQL database settings | Starter or PRO. |
-| Bubble or popup embed code (`get_embed_code`) | Pro plan. Standard iframe embed works on every plan. |
+| Customizing chat SEO metadata (`update_seo`) | Pro plan. |
+| Editing a chat's connected SQL database settings | Pro plan. |
+| Bubble or popup embed code (`get_embed_code`) | Every plan, for all three modes (standard, bubble, popup). |
 
 <Tip>
   Your assistant can call `can_use` to check an action against your plan, and `get_usage` to see your remaining chats, messages, and characters.

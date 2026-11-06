@@ -25,20 +25,20 @@ When an external assistant connects to your chat, it gets access to two built-in
 | Tool | Description | Quota consumption |
 | --- | --- | --- |
 | `search_knowledge` | Searches your chat's knowledge base and returns relevant passages with source document references. | **Free** (no quota used) |
-| `ask` | Asks a question and returns a direct answer grounded strictly in your chat's knowledge base, along with source citations. | Consumes **1 message** per call |
+| `ask` | Asks a question and returns a direct answer grounded strictly in your chat's knowledge base, along with source citations. | Consumes **1 response** per call |
 
 ---
 
-## Message quota and usage
+## Response quota and usage
 
-Because the `ask` tool executes an AI model call to summarize and answer questions, it consumes your workspace message credits:
+Because the `ask` tool executes an AI model call to summarize and answer questions, it consumes your workspace responses:
 
-- **1 message per question**: Each call to the `ask` tool deducts **1 message** from your monthly workspace quota, exactly like a visitor message on your public chat.
-- **Quota limits**: If your workspace runs out of message credits, `ask` requests will return a `quota_exceeded` error until your quota resets or is upgraded.
-- **Free search**: The `search_knowledge` tool only performs document retrieval and does **not** consume any message quota.
+- **1 response per question**: Each call to the `ask` tool deducts **1 response** from your monthly workspace quota, exactly like an answer to a visitor on your public chat.
+- **Quota limits**: If your workspace runs out of responses, `ask` requests will return a `quota_exceeded` error until your quota resets or is upgraded.
+- **Free search**: The `search_knowledge` tool only performs document retrieval and does **not** consume any responses.
 
 <Note>
-  You can track your remaining message balance at any time in **Workspace settings > Billing**.
+  You can track your remaining responses at any time in **Workspace settings > Billing**.
 </Note>
 
 ---

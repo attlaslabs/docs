@@ -197,13 +197,13 @@ Le serveur MCP d'Espace de travail fonctionne avec tous les plans. Quelques acti
 | Action | Exigence |
 | --- | --- |
 | Créer un chat (`create_chat`) | Utilise un chat du quota de votre plan. Renvoie `quota_exceeded` lorsqu'il n'y en a plus. |
-| Lire les métriues, tendances, classements ou générer un rapport | La péride ne remonte que jusqu'à la fenêtre d'historique de votre plan (Gratuit : 90 jours, Starter : 1 an, PRO : 2 ans). Les pérides plus larges sont réduites à cette fenêtre. |
-| Ajouter un lien vidéo YouTube, Instagram, TikTok, Facebook ou X, ou un fichier audio, à une base de connaissances | Starter ou PRO. Les liens de pages Web fonctionnent avec tous les plans. |
-| Ajouter une étape d'envoi de fichier à un formulaire (`create_form`, `update_form`) | Forfait PRO et supérieur. |
+| Lire les métriues, tendances, classements ou générer un rapport | La péride ne remonte que jusqu'à la fenêtre d'historique de votre plan (Gratuit : 90 jours, Pro : 2 ans). Les pérides plus larges sont réduites à cette fenêtre. |
+| Ajouter un lien vidéo YouTube, Instagram, TikTok, Facebook ou X, ou un fichier audio, à une base de connaissances | Offre Pro. Les liens de pages Web fonctionnent avec tous les plans. |
+| Ajouter une étape d'envoi de fichier à un formulaire (`create_form`, `update_form`) | Offre Pro. |
 | Retirer le badge de marque Attlas (`update_branding`) | Module complémentaire de marque. |
-| Personnaliser les métadonnées SEO du chat (`update_seo`) | Starter ou PRO. |
-| Modifier les paramètres de la base de données SQL connectée au chat | Starter ou PRO. |
-| Code d'intégration de bulle ou popup (`get_embed_code`) | Forfait PRO. L'intégration iframe standard fonctionne avec tous les forfaits. |
+| Personnaliser les métadonnées SEO du chat (`update_seo`) | Offre Pro. |
+| Modifier les paramètres de la base de données SQL connectée au chat | Offre Pro. |
+| Code d'intégration de bulle ou popup (`get_embed_code`) | Toutes les offres, pour les trois modes (standard, bulle, popup). |
 
 <Tip>
   Votre assistant peut appeler `can_use` pour vérifier une action par rapport à votre plan, et `get_usage` pour voir vos chats, messages et caractères restants.
